@@ -247,59 +247,6 @@
       line-height: 1.65;
     }
 
-    .emergency-119 {
-      background: #fff;
-
-      border: 2px solid #ffbeb8;
-
-      border-radius: 21px;
-
-      padding: 16px;
-
-      margin-bottom: 21px;
-    }
-
-    .emergency-119-title {
-      display: flex;
-      align-items: center;
-
-      gap: 8px;
-
-      margin-bottom: 7px;
-
-      color: #c3443d;
-
-      font-size: 16px;
-      font-weight: 900;
-    }
-
-    .emergency-119 p {
-      margin: 0 0 12px;
-
-      color: #7e6d6b;
-
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .call-119-button {
-      width: 100%;
-
-      border: none;
-      border-radius: 14px;
-
-      padding: 14px;
-
-      background: #e9564e;
-
-      color: white;
-
-      font-size: 15px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
     .teacher-managed-note {
       background: #eef5ff;
 
@@ -399,29 +346,6 @@
 
 
 
-  <div class="emergency-119">
-
-    <div class="emergency-119-title">
-      🚑 아주 위급한 상황이에요
-    </div>
-
-    <p>
-      반응이 없거나 의식이 흐린 등 심각한 응급상황에서는
-      주변 어른에게 즉시 알리고 학교의 응급대응 절차를 따라주세요.
-    </p>
-
-    <button
-      class="call-119-button"
-      onclick="confirmCall119()">
-
-      119에 전화하기
-
-    </button>
-
-  </div>
-
-
-
   <div class="teacher-managed-note">
 
     🔒 비상연락처는 보호자 또는 교직원이 등록·관리합니다.<br>
@@ -434,7 +358,7 @@
   <div class="bottom-message">
 
     전화 버튼을 누르면 휴대폰의 전화 기능이 열립니다.<br>
-    실제 대응은 학교의 응급계획과 학생의 개별 관리계획을 따라주세요.
+    도움이 필요하면 혼자 있지 말고 가까운 어른에게 바로 알려주세요.
 
   </div>
 
@@ -643,7 +567,7 @@ function renderContacts() {
     contactList.innerHTML =
       `
         <div class="empty-card">
-          아직 등록된 비상연락처가 없어요.<br>
+          아직 등록된 연락처가 없어요.<br>
           선생님이나 보호자에게 등록을 요청해주세요.
         </div>
       `;
@@ -874,28 +798,6 @@ function confirmCall(
     "tel:"
     +
     cleanedPhone;
-
-}
-
-
-
-function confirmCall119() {
-
-  const confirmed =
-    confirm(
-      "119에 전화할까요?\n\n"
-      +
-      "실수로 누른 경우에는 취소를 눌러주세요."
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  location.href =
-    "tel:119";
 
 }
 
