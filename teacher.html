@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>학생 관리 - GlucoGuard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .teacher-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .teacher-title {
+      margin: 2px 0 5px;
+      font-size: 26px;
+      color: #245978;
+    }
+
+    .teacher-description {
+      margin: 0;
+      font-size: 14px;
+      color: #78909c;
+    }
+
+    .teacher-login-card {
+      background: #eef5ff;
+      border-radius: 18px;
+      padding: 12px 14px;
+      margin-bottom: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .teacher-login-left {
+      min-width: 0;
+    }
+
+    .teacher-login-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      margin-bottom: 4px;
+      border-radius: 8px;
+      background: white;
+      font-size: 11px;
+      font-weight: bold;
+      color: #3974a2;
+    }
+
+    .teacher-email {
+      font-size: 12px;
+      color: #607d8b;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .logout-button {
+      border: none;
+      border-radius: 11px;
+      padding: 9px 11px;
+      background: white;
+      color: #8a5555;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dashboard-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .summary-box {
+      background: white;
+      border-radius: 20px;
+      padding: 17px;
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .summary-label {
+      margin-bottom: 7px;
+      font-size: 12px;
+      color: #78909c;
+    }
+
+    .summary-value {
+      font-size: 25px;
+      font-weight: 800;
+      color: #37474f;
+    }
+
+    .summary-value.alert {
+      color: #c84a45;
+    }
+
+    .section-title {
+      margin: 0 0 11px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #455a64;
+    }
+
+    .student-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .student-card {
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+
+      box-shadow:
+        0 6px 18px rgba(60,90,110,.08);
+    }
+
+    .student-card.attention {
+      border: 2px solid #f3a7a2;
+    }
+
+    .student-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .student-avatar {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+
+      border-radius: 21px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #fff4cf;
+
+      font-size: 37px;
+    }
+
+    .student-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .student-name {
+      margin-bottom: 4px;
+
+      font-size: 19px;
+      font-weight: 800;
+
+      color: #37474f;
+    }
+
+    .student-class {
+      font-size: 13px;
+      color: #78909c;
+    }
+
+    .status-badge {
+      flex-shrink: 0;
+
+      padding: 7px 10px;
+
+      border-radius: 11px;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .status-good {
+      background: #eef9ef;
+      color: #36734d;
+    }
+
+    .status-warning {
+      background: #fff0f0;
+      color: #b13f3a;
+    }
+
+    .status-no-data {
+      background: #f3f6f8;
+      color: #78909c;
+    }
+
+    .student-data {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+
+      margin-top: 17px;
+    }
+
+    .data-box {
+      padding: 14px;
+      border-radius: 17px;
+    }
+
+    .data-box.glucose {
+      background: #edf5ff;
+    }
+
+    .data-box.meal {
+      background: #fff8df;
+    }
+
+    .data-box.symptom {
+      margin-top: 10px;
+      background: #f4efff;
+    }
+
+    .data-box.activity {
+      margin-top: 10px;
+      background: #eef9ef;
+    }
+
+    .data-label {
+      margin-bottom: 6px;
+
+      font-size: 11px;
+
+      color: #78909c;
+    }
+
+    .data-value {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.4;
+
+      color: #37474f;
+    }
+
+    .data-time {
+      margin-top: 5px;
+
+      font-size: 11px;
+
+      color: #90a4ae;
+    }
+
+    .today-record-box {
+      margin-top: 10px;
+
+      padding: 12px 14px;
+
+      border-radius: 15px;
+
+      background: #f4f7f9;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .today-record-box span {
+      font-size: 13px;
+      color: #607d8b;
+    }
+
+    .today-record-box strong {
+      font-size: 14px;
+      color: #3974a2;
+    }
+
+    .alert-box {
+      margin-top: 12px;
+
+      padding: 13px;
+
+      border-radius: 15px;
+
+      background: #fff0f0;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      color: #9c3d39;
+    }
+
+    .alert-box strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .student-actions {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+
+      margin-top: 14px;
+    }
+
+    .student-action {
+      padding: 13px 8px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .records-action {
+      background: #edf5ff;
+      color: #245978;
+    }
+
+    .symptom-action {
+      background: #fff0f0;
+      color: #a43c37;
+    }
+
+    .password-action {
+      grid-column: 1 / -1;
+
+      background: #f3efff;
+
+      color: #665096;
+    }
+
+    .loading-card,
+    .empty-card {
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 30px;
+
+      text-align: center;
+
+      color: #78909c;
+
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .empty-icon {
+      margin-bottom: 10px;
+      font-size: 40px;
+    }
+
+    .empty-card h2 {
+      margin: 0 0 7px;
+
+      font-size: 18px;
+
+      color: #37474f;
+    }
+
+    .empty-card p {
+      margin: 0;
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .teacher-note {
+      margin-top: 18px;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background: #fff8df;
+
+      font-size: 11px;
+      line-height: 1.6;
+
+      color: #746b4d;
+    }
+
+
+    /* 비밀번호 창 */
+
+    .password-overlay {
+      display: none;
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 9999;
+
+      padding: 20px;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(39,55,66,.40);
+    }
+
+    .password-modal {
+      width: 100%;
+      max-width: 380px;
+
+      padding: 24px;
+
+      border-radius: 25px;
+
+      background: white;
+
+      box-shadow:
+        0 18px 40px rgba(40,60,70,.22);
+    }
+
+    .password-modal-icon {
+      width: 58px;
+      height: 58px;
+
+      margin: 0 auto 12px;
+
+      border-radius: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #f3efff;
+
+      font-size: 29px;
+    }
+
+    .password-modal h2 {
+      margin: 0 0 6px;
+
+      text-align: center;
+
+      font-size: 21px;
+
+      color: #37474f;
+    }
+
+    .password-student {
+      margin-bottom: 5px;
+
+      text-align: center;
+
+      font-size: 15px;
+      font-weight: 800;
+
+      color: #665096;
+    }
+
+    .password-description {
+      margin: 0 0 19px;
+
+      text-align: center;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      color: #78909c;
+    }
+
+    .password-label {
+      display: block;
+
+      margin-bottom: 6px;
+
+      font-size: 12px;
+      font-weight: bold;
+
+      color: #455a64;
+    }
+
+    .password-input {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 12px;
+
+      border: 1px solid #d8e2e8;
+
+      border-radius: 14px;
+
+      font-size: 16px;
+
+      outline: none;
+    }
+
+    .password-rule {
+      margin-bottom: 14px;
+
+      padding: 10px 12px;
+
+      border-radius: 12px;
+
+      background: #f7f5fc;
+
+      font-size: 11px;
+      line-height: 1.6;
+
+      color: #766a8f;
+    }
+
+    .password-message {
+      display: none;
+
+      margin-bottom: 14px;
+
+      padding: 11px 12px;
+
+      border-radius: 12px;
+
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .password-message.loading {
+      display: block;
+      background: #eef5ff;
+      color: #3974a2;
+    }
+
+    .password-message.success {
+      display: block;
+      background: #eef9ef;
+      color: #36734d;
+    }
+
+    .password-message.error {
+      display: block;
+      background: #fff0f0;
+      color: #a43c37;
+    }
+
+    .password-modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .password-cancel {
+      padding: 13px;
+
+      border: 1px solid #d8e2e8;
+
+      border-radius: 14px;
+
+      background: white;
+
+      color: #607d8b;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .password-reset {
+      padding: 13px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      background: #7562a7;
+
+      color: white;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .password-reset:disabled,
+    .password-cancel:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 380px) {
+
+      .student-data {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <div class="teacher-header">
+
+    <button
+      class="back-button"
+      onclick="goBack()">
+
+      ←
+
+    </button>
+
+
+    <div>
+
+      <h1 class="teacher-title">
+        👩‍🏫 학생 관리
+      </h1>
+
+      <p class="teacher-description">
+        담당 학생들의 오늘 상태를 확인해요.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="teacher-login-card">
+
+    <div class="teacher-login-left">
+
+      <div class="teacher-login-badge">
+        👩‍🏫 교직원 로그인
+      </div>
+
+      <div
+        id="teacherEmail"
+        class="teacher-email">
+
+        로그인 확인 중...
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()">
+
+      로그아웃
+
+    </button>
+
+  </div>
+
+
+
+  <div class="dashboard-summary">
+
+    <div class="summary-box">
+
+      <div class="summary-label">
+        관리 학생
+      </div>
+
+      <div
+        id="studentCount"
+        class="summary-value">
+
+        -
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <div class="summary-label">
+        확인 필요
+      </div>
+
+      <div
+        id="alertCount"
+        class="summary-value">
+
+        -
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="section-title">
+    오늘 관리 학생
+  </div>
+
+
+  <div
+    id="studentArea"
+    class="loading-card">
+
+    학생 정보를 불러오는 중...
+
+  </div>
+
+
+
+  <div class="teacher-note">
+
+    🔐 학생의 기존 비밀번호는 교직원에게 표시되지 않아요.
+    필요한 경우 새 임시 비밀번호로 재설정할 수 있어요.
+
+  </div>
+
+
+</div>
+
+
+
+<!-- 비밀번호 재설정 -->
+
+<div
+  id="passwordOverlay"
+  class="password-overlay">
+
+  <div class="password-modal">
+
+    <div class="password-modal-icon">
+      🔑
+    </div>
+
+
+    <h2>
+      학생 비밀번호 재설정
+    </h2>
+
+
+    <div
+      id="resetStudentName"
+      class="password-student">
+
+      학생
+
+    </div>
+
+
+    <p class="password-description">
+
+      기존 비밀번호는 확인할 수 없어요.<br>
+      학생이 사용할 새 임시 비밀번호를 설정합니다.
+
+    </p>
+
+
+    <label class="password-label">
+      새 임시 비밀번호
+    </label>
+
+
+    <input
+      id="newStudentPassword"
+      class="password-input"
+      type="password"
+      autocomplete="new-password"
+      placeholder="새 비밀번호">
+
+
+    <label class="password-label">
+      비밀번호 다시 입력
+    </label>
+
+
+    <input
+      id="newStudentPasswordConfirm"
+      class="password-input"
+      type="password"
+      autocomplete="new-password"
+      placeholder="한 번 더 입력">
+
+
+    <div class="password-rule">
+
+      🔐 비밀번호는 6자 이상으로 만들어주세요.<br>
+      재설정 후 학생에게 새 비밀번호를 알려주세요.
+
+    </div>
+
+
+    <div
+      id="passwordMessage"
+      class="password-message">
+    </div>
+
+
+    <div class="password-modal-actions">
+
+      <button
+        id="passwordCancelButton"
+        class="password-cancel"
+        onclick="closePasswordModal()">
+
+        취소
+
+      </button>
+
+
+      <button
+        id="passwordResetButton"
+        class="password-reset"
+        onclick="resetStudentPassword()">
+
+        🔑 재설정
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+let selectedStudentId =
+  null;
+
+
+let selectedStudentName =
+  null;
+
+
+let isResettingPassword =
+  false;
+
+
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const loggedIn =
+      await checkTeacherLogin();
+
+
+    if (!loggedIn) {
+      return;
+    }
+
+
+    await loadTeacherStudents();
+
+  }
+);
+
+
+
+async function checkTeacherLogin() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    error ||
+    !data.session
+  ) {
+
+    location.href =
+      "login.html";
+
+
+    return false;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  document.getElementById(
+    "teacherEmail"
+  ).textContent =
+    currentUser.email ||
+    "교직원 계정";
+
+
+  const {
+    data: profile,
+    error: profileError
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select("role")
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (
+    profileError ||
+    !profile ||
+    (
+      profile.role !== "teacher"
+      &&
+      profile.role !== "nurse"
+    )
+  ) {
+
+    alert(
+      "교직원 계정으로 로그인해주세요."
+    );
+
+
+    location.href =
+      "login.html";
+
+
+    return false;
+
+  }
+
+
+  return true;
+
+}
+
+
+
+/* =========================
+   학생 불러오기
+========================= */
+
+async function loadTeacherStudents() {
+
+  const area =
+    document.getElementById(
+      "studentArea"
+    );
+
+
+  const {
+    data: links,
+    error: linksError
+  } =
+    await supabaseClient
+      .from("teacher_students")
+      .select("student_id")
+      .eq(
+        "teacher_id",
+        currentUser.id
+      );
+
+
+  if (linksError) {
+
+    console.error(
+      linksError
+    );
+
+
+    showLoadError();
+
+
+    return;
+
+  }
+
+
+  if (
+    !links ||
+    links.length === 0
+  ) {
+
+    document.getElementById(
+      "studentCount"
+    ).textContent =
+      "0명";
+
+
+    document.getElementById(
+      "alertCount"
+    ).textContent =
+      "0명";
+
+
+    area.className =
+      "empty-card";
+
+
+    area.innerHTML = `
+
+      <div class="empty-icon">
+        👩‍🏫
+      </div>
+
+      <h2>
+        연결된 학생이 없어요
+      </h2>
+
+      <p>
+        학생이 연결되면 이곳에서 관리할 수 있어요.
+      </p>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  const studentIds =
+    links.map(
+      link =>
+        link.student_id
+    );
+
+
+  const {
+    data: profiles,
+    error: profilesError
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id, nickname, class_name, avatar"
+      )
+      .in(
+        "id",
+        studentIds
+      );
+
+
+  if (profilesError) {
+
+    console.error(
+      profilesError
+    );
+
+
+    showLoadError();
+
+
+    return;
+
+  }
+
+
+  const {
+    data: records,
+    error: recordsError
+  } =
+    await supabaseClient
+      .from("records")
+      .select(
+        "id, user_id, record_type, glucose_value, meal_type, intake_ratio, note, created_at"
+      )
+      .in(
+        "user_id",
+        studentIds
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
+
+  if (recordsError) {
+
+    console.error(
+      recordsError
+    );
+
+
+    showLoadError();
+
+
+    return;
+
+  }
+
+
+  const students =
+    profiles.map(
+      function(profile) {
+
+        const studentRecords =
+          records.filter(
+            record =>
+              record.user_id ===
+              profile.id
+          );
+
+
+        const latestGlucose =
+          studentRecords.find(
+            record =>
+              record.record_type ===
+              "glucose"
+          );
+
+
+        const latestMeal =
+          studentRecords.find(
+            record =>
+              record.record_type ===
+              "meal"
+          );
+
+
+        const latestSymptom =
+          studentRecords.find(
+            record =>
+              record.record_type ===
+              "symptom"
+          );
+
+
+        const latestActivity =
+          studentRecords.find(
+            record =>
+              record.record_type ===
+              "activity"
+          );
+
+
+        return {
+
+          ...profile,
+
+          latestGlucose,
+
+          latestMeal,
+
+          latestSymptom,
+
+          latestActivity,
+
+          todayCount:
+            getTodayRecordCount(
+              studentRecords
+            ),
+
+          needsAttention:
+            checkNeedsAttention(
+              latestGlucose,
+              latestSymptom,
+              latestActivity
+            )
+
+        };
+
+      }
+    );
+
+
+  students.sort(
+    function(a, b) {
+
+      return (
+        Number(
+          b.needsAttention
+        )
+        -
+        Number(
+          a.needsAttention
+        )
+      );
+
+    }
+  );
+
+
+  const alertStudents =
+    students.filter(
+      student =>
+        student.needsAttention
+    );
+
+
+  document.getElementById(
+    "studentCount"
+  ).textContent =
+    students.length +
+    "명";
+
+
+  document.getElementById(
+    "alertCount"
+  ).textContent =
+    alertStudents.length +
+    "명";
+
+
+  document.getElementById(
+    "alertCount"
+  ).classList.toggle(
+    "alert",
+    alertStudents.length > 0
+  );
+
+
+  renderStudents(
+    students
+  );
+
+}
+
+
+
+/* =========================
+   학생 카드
+========================= */
+
+function renderStudents(
+  students
+) {
+
+  const area =
+    document.getElementById(
+      "studentArea"
+    );
+
+
+  area.className =
+    "student-list";
+
+
+  area.innerHTML =
+    students
+      .map(
+        createStudentCard
+      )
+      .join("");
+
+}
+
+
+
+function createStudentCard(
+  student
+) {
+
+  const avatar =
+    student.avatar ||
+    "🐻";
+
+
+  const nickname =
+    student.nickname ||
+    "학생";
+
+
+  const className =
+    student.class_name ||
+    "학년 · 반 미등록";
+
+
+  let glucoseValue =
+    "기록 없음";
+
+
+  let glucoseTime =
+    "-";
+
+
+  if (
+    student.latestGlucose
+  ) {
+
+    glucoseValue =
+      student.latestGlucose
+        .glucose_value
+      +
+      " mg/dL";
+
+
+    glucoseTime =
+      formatTime(
+        student.latestGlucose
+          .created_at
+      );
+
+  }
+
+
+
+  let mealValue =
+    "기록 없음";
+
+
+  let mealTime =
+    "-";
+
+
+  if (
+    student.latestMeal
+  ) {
+
+    mealValue =
+      student.latestMeal
+        .meal_type ||
+      "식사";
+
+
+    if (
+      student.latestMeal.note
+    ) {
+
+      mealValue +=
+        " · "
+        +
+        student.latestMeal.note;
+
+    }
+
+
+    mealTime =
+      formatTime(
+        student.latestMeal
+          .created_at
+      );
+
+  }
+
+
+
+  /* 최근 상태 */
+
+  let symptomHtml =
+    "";
+
+
+  if (
+    student.latestSymptom
+  ) {
+
+    const symptom =
+      parseSymptomRecord(
+        student.latestSymptom
+      );
+
+
+    let text =
+      symptom.symptoms.length > 0
+        ? symptom.symptoms.join(" · ")
+        : symptom.conditionLabel ||
+          "상태 기록";
+
+
+    if (
+      student.latestSymptom
+        .glucose_value !== null
+    ) {
+
+      text +=
+        " · 혈당 "
+        +
+        student.latestSymptom
+          .glucose_value
+        +
+        " mg/dL";
+
+    }
+
+
+    symptomHtml = `
+
+      <div class="data-box symptom">
+
+        <div class="data-label">
+          🙂 최근 상태
+        </div>
+
+        <div class="data-value">
+          ${text}
+        </div>
+
+        <div class="data-time">
+          ${formatTime(
+            student.latestSymptom.created_at
+          )}
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  /* 최근 활동 */
+
+  let activityHtml =
+    "";
+
+
+  if (
+    student.latestActivity
+  ) {
+
+    const activity =
+      parseActivityRecord(
+        student.latestActivity
+      );
+
+
+    let text =
+      activity.activityType ||
+      student.latestActivity
+        .meal_type ||
+      "활동";
+
+
+    if (
+      activity.feeling
+    ) {
+
+      text +=
+        " · "
+        +
+        activity.feeling;
+
+    }
+
+
+    if (
+      student.latestActivity
+        .glucose_value !== null
+    ) {
+
+      text +=
+        " · 혈당 "
+        +
+        student.latestActivity
+          .glucose_value
+        +
+        " mg/dL";
+
+    }
+
+
+    activityHtml = `
+
+      <div class="data-box activity">
+
+        <div class="data-label">
+          🏃 최근 활동
+        </div>
+
+        <div class="data-value">
+          ${text}
+        </div>
+
+        <div class="data-time">
+          ${formatTime(
+            student.latestActivity.created_at
+          )}
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  let statusClass =
+    "status-good";
+
+
+  let statusText =
+    "특이사항 없음";
+
+
+  if (
+    !student.latestGlucose
+    &&
+    !student.latestSymptom
+    &&
+    !student.latestActivity
+  ) {
+
+    statusClass =
+      "status-no-data";
+
+
+    statusText =
+      "최근 기록 없음";
+
+  }
+
+
+  if (
+    student.needsAttention
+  ) {
+
+    statusClass =
+      "status-warning";
+
+
+    statusText =
+      "확인 필요";
+
+  }
+
+
+
+  let alertHtml =
+    "";
+
+
+  if (
+    student.needsAttention
+  ) {
+
+    const alertReason =
+      getAlertReason(
+        student.latestGlucose,
+        student.latestSymptom,
+        student.latestActivity
+      );
+
+
+    alertHtml = `
+
+      <div class="alert-box">
+
+        <strong>
+          🚨 확인이 필요해요
+        </strong>
+
+        ${alertReason}
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  return `
+
+    <div
+      class="student-card
+      ${student.needsAttention
+        ? "attention"
+        : ""}">
+
+
+      <div class="student-top">
+
+
+        <div class="student-avatar">
+          ${avatar}
+        </div>
+
+
+        <div class="student-info">
+
+          <div class="student-name">
+            ${nickname}
+          </div>
+
+          <div class="student-class">
+            ${className}
+          </div>
+
+        </div>
+
+
+        <div
+          class="status-badge
+          ${statusClass}">
+
+          ${statusText}
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="student-data">
+
+
+        <div class="data-box glucose">
+
+          <div class="data-label">
+            🩸 최근 혈당
+          </div>
+
+          <div class="data-value">
+            ${glucoseValue}
+          </div>
+
+          <div class="data-time">
+            ${glucoseTime}
+          </div>
+
+        </div>
+
+
+
+        <div class="data-box meal">
+
+          <div class="data-label">
+            🍱 최근 식사
+          </div>
+
+          <div class="data-value">
+            ${mealValue}
+          </div>
+
+          <div class="data-time">
+            ${mealTime}
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      ${symptomHtml}
+
+      ${activityHtml}
+
+
+      <div class="today-record-box">
+
+        <span>
+          오늘 기록
+        </span>
+
+        <strong>
+          ${student.todayCount}회
+        </strong>
+
+      </div>
+
+
+      ${alertHtml}
+
+
+      <div class="student-actions">
+
+
+        <button
+          class="student-action records-action"
+          onclick="openStudentRecords(
+            '${student.id}'
+          )">
+
+          📊 학생 기록 보기
+
+        </button>
+
+
+        <button
+          class="student-action symptom-action"
+          onclick="openStudentSymptom(
+            '${student.id}'
+          )">
+
+          🚨 증상 대응
+
+        </button>
+
+
+        <button
+          class="student-action password-action"
+          onclick="openPasswordModal(
+            '${student.id}',
+            '${escapeHtmlForJs(nickname)}'
+          )">
+
+          🔑 비밀번호 재설정
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =========================
+   증상 JSON 읽기
+========================= */
+
+function parseSymptomRecord(
+  record
+) {
+
+  const fallback = {
+
+    symptoms:
+      [],
+
+    condition:
+      null,
+
+    conditionLabel:
+      ""
+
+  };
+
+
+  if (
+    !record ||
+    !record.note
+  ) {
+
+    return fallback;
+
+  }
+
+
+  try {
+
+    const parsed =
+      JSON.parse(
+        record.note
+      );
+
+
+    return {
+
+      symptoms:
+        Array.isArray(
+          parsed.symptoms
+        )
+          ? parsed.symptoms
+          : [],
+
+      condition:
+        parsed.condition ||
+        null,
+
+      conditionLabel:
+        parsed.conditionLabel ||
+        ""
+
+    };
+
+
+  } catch (
+    error
+  ) {
+
+    return fallback;
+
+  }
+
+}
+
+
+
+/* =========================
+   활동 JSON 읽기
+========================= */
+
+function parseActivityRecord(
+  record
+) {
+
+  const fallback = {
+
+    activityType:
+      "",
+
+    feeling:
+      ""
+
+  };
+
+
+  if (
+    !record ||
+    !record.note
+  ) {
+
+    return fallback;
+
+  }
+
+
+  try {
+
+    const parsed =
+      JSON.parse(
+        record.note
+      );
+
+
+    return {
+
+      activityType:
+        parsed.activityType ||
+        "",
+
+      feeling:
+        parsed.feeling ||
+        ""
+
+    };
+
+
+  } catch (
+    error
+  ) {
+
+    return fallback;
+
+  }
+
+}
+
+
+
+/* =========================
+   확인 필요 판단
+========================= */
+
+function checkNeedsAttention(
+  latestGlucose,
+  latestSymptom,
+  latestActivity
+) {
+
+  /*
+    일반 혈당 기록
+  */
+
+  if (
+    latestGlucose
+  ) {
+
+    const value =
+      Number(
+        latestGlucose
+          .glucose_value
+      );
+
+
+    if (
+      value < 70
+      ||
+      value >= 250
+    ) {
+
+      return true;
+
+    }
+
+  }
+
+
+  /*
+    증상 기록
+  */
+
+  if (
+    latestSymptom
+  ) {
+
+    const symptom =
+      parseSymptomRecord(
+        latestSymptom
+      );
+
+
+    if (
+      symptom.condition ===
+      "danger"
+    ) {
+
+      return true;
+
+    }
+
+
+    if (
+      symptom.symptoms.includes(
+        "구토"
+      )
+    ) {
+
+      return true;
+
+    }
+
+
+    if (
+      latestSymptom
+        .glucose_value !== null
+    ) {
+
+      const value =
+        Number(
+          latestSymptom
+            .glucose_value
+        );
+
+
+      if (
+        value < 70
+        ||
+        value >= 250
+      ) {
+
+        return true;
+
+      }
+
+    }
+
+  }
+
+
+  /*
+    활동 기록
+  */
+
+  if (
+    latestActivity
+  ) {
+
+    const activity =
+      parseActivityRecord(
+        latestActivity
+      );
+
+
+    if (
+      activity.feeling ===
+      "몸이 이상해요"
+    ) {
+
+      return true;
+
+    }
+
+
+    if (
+      latestActivity
+        .glucose_value !== null
+    ) {
+
+      const value =
+        Number(
+          latestActivity
+            .glucose_value
+        );
+
+
+      if (
+        value < 70
+        ||
+        value >= 250
+      ) {
+
+        return true;
+
+      }
+
+    }
+
+  }
+
+
+  return false;
+
+}
+
+
+
+/* =========================
+   경고 이유
+========================= */
+
+function getAlertReason(
+  latestGlucose,
+  latestSymptom,
+  latestActivity
+) {
+
+  const reasons =
+    [];
+
+
+  if (
+    latestSymptom
+  ) {
+
+    const symptom =
+      parseSymptomRecord(
+        latestSymptom
+      );
+
+
+    if (
+      symptom.condition ===
+      "danger"
+    ) {
+
+      reasons.push(
+        "의식 또는 삼킴 상태 확인 필요"
+      );
+
+    }
+
+
+    if (
+      symptom.symptoms.includes(
+        "구토"
+      )
+    ) {
+
+      reasons.push(
+        "구토 증상 기록"
+      );
+
+    }
+
+
+    if (
+      latestSymptom
+        .glucose_value !== null
+    ) {
+
+      const value =
+        Number(
+          latestSymptom
+            .glucose_value
+        );
+
+
+      if (
+        value < 70
+        ||
+        value >= 250
+      ) {
+
+        reasons.push(
+          "상태 기록 당시 혈당 "
+          +
+          value
+          +
+          " mg/dL"
+        );
+
+      }
+
+    }
+
+  }
+
+
+
+  if (
+    latestActivity
+  ) {
+
+    const activity =
+      parseActivityRecord(
+        latestActivity
+      );
+
+
+    if (
+      activity.feeling ===
+      "몸이 이상해요"
+    ) {
+
+      reasons.push(
+        "활동 중 몸이 이상하다고 기록"
+      );
+
+    }
+
+
+    if (
+      latestActivity
+        .glucose_value !== null
+    ) {
+
+      const value =
+        Number(
+          latestActivity
+            .glucose_value
+        );
+
+
+      if (
+        value < 70
+        ||
+        value >= 250
+      ) {
+
+        reasons.push(
+          "활동 기록 당시 혈당 "
+          +
+          value
+          +
+          " mg/dL"
+        );
+
+      }
+
+    }
+
+  }
+
+
+
+  if (
+    latestGlucose
+  ) {
+
+    const value =
+      Number(
+        latestGlucose
+          .glucose_value
+      );
+
+
+    if (
+      value < 70
+      ||
+      value >= 250
+    ) {
+
+      reasons.push(
+        "최근 혈당 "
+        +
+        value
+        +
+        " mg/dL"
+      );
+
+    }
+
+  }
+
+
+  if (
+    reasons.length === 0
+  ) {
+
+    return "학생 상태를 다시 확인해주세요.";
+
+  }
+
+
+  return (
+    reasons.join(
+      " · "
+    )
+    +
+    ". 개별 관리계획에 따라 확인해주세요."
+  );
+
+}
+
+
+
+/* =========================
+   기록 보기
+========================= */
+
+function openStudentRecords(
+  studentId
+) {
+
+  sessionStorage.setItem(
+    "teacherSelectedStudent",
+    studentId
+  );
+
+
+  location.href =
+    "records.html";
+
+}
+
+
+
+/* =========================
+   증상 대응
+========================= */
+
+function openStudentSymptom(
+  studentId
+) {
+
+  sessionStorage.setItem(
+    "teacherSelectedStudent",
+    studentId
+  );
+
+
+  location.href =
+    "symptom.html";
+
+}
+
+
+
+/* =========================
+   비밀번호 재설정
+========================= */
+
+function openPasswordModal(
+  studentId,
+  studentName
+) {
+
+  selectedStudentId =
+    studentId;
+
+
+  selectedStudentName =
+    studentName;
+
+
+  isResettingPassword =
+    false;
+
+
+  document.getElementById(
+    "resetStudentName"
+  ).textContent =
+    "👧 " +
+    studentName;
+
+
+  document.getElementById(
+    "newStudentPassword"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "newStudentPasswordConfirm"
+  ).value =
+    "";
+
+
+  clearPasswordMessage();
+
+
+  setPasswordButtonsDisabled(
+    false
+  );
+
+
+  document.getElementById(
+    "passwordResetButton"
+  ).textContent =
+    "🔑 재설정";
+
+
+  document.getElementById(
+    "passwordOverlay"
+  ).style.display =
+    "flex";
+
+}
+
+
+
+function closePasswordModal() {
+
+  if (
+    isResettingPassword
+  ) {
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "passwordOverlay"
+  ).style.display =
+    "none";
+
+
+  selectedStudentId =
+    null;
+
+
+  selectedStudentName =
+    null;
+
+
+  clearPasswordMessage();
+
+}
+
+
+
+async function resetStudentPassword() {
+
+  if (
+    isResettingPassword
+  ) {
+
+    return;
+
+  }
+
+
+  const password =
+    document.getElementById(
+      "newStudentPassword"
+    ).value;
+
+
+  const confirmPassword =
+    document.getElementById(
+      "newStudentPasswordConfirm"
+    ).value;
+
+
+  if (
+    !selectedStudentId
+  ) {
+
+    showPasswordMessage(
+      "error",
+      "학생 정보를 확인할 수 없어요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    password.length < 6
+  ) {
+
+    showPasswordMessage(
+      "error",
+      "비밀번호는 6자 이상으로 만들어주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    password !==
+    confirmPassword
+  ) {
+
+    showPasswordMessage(
+      "error",
+      "입력한 비밀번호가 서로 달라요."
+    );
+
+
+    return;
+
+  }
+
+
+  const {
+    data: sessionData,
+    error: sessionError
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    sessionError ||
+    !sessionData.session
+  ) {
+
+    showPasswordMessage(
+      "error",
+      "로그인 정보가 만료되었어요. 다시 로그인해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const accessToken =
+    sessionData.session.access_token;
+
+
+  isResettingPassword =
+    true;
+
+
+  setPasswordButtonsDisabled(
+    true
+  );
+
+
+  document.getElementById(
+    "passwordResetButton"
+  ).textContent =
+    "변경 중...";
+
+
+  showPasswordMessage(
+    "loading",
+    "🔄 학생 비밀번호를 변경하고 있어요..."
+  );
+
+
+  try {
+
+    const response =
+      await fetch(
+        SUPABASE_URL +
+        "/functions/v1/reset-student-password",
+        {
+
+          method:
+            "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json",
+
+            "Authorization":
+              "Bearer " +
+              accessToken,
+
+            "apikey":
+              SUPABASE_PUBLISHABLE_KEY
+
+          },
+
+          body:
+            JSON.stringify({
+
+              studentId:
+                selectedStudentId,
+
+              newPassword:
+                password
+
+            })
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        result?.error ||
+        "비밀번호를 변경하지 못했어요."
+      );
+
+    }
+
+
+    showPasswordMessage(
+      "success",
+      "✅ "
+      +
+      selectedStudentName
+      +
+      " 학생의 비밀번호가 변경되었어요."
+    );
+
+
+    document.getElementById(
+      "passwordResetButton"
+    ).textContent =
+      "✅ 변경 완료";
+
+
+    document.getElementById(
+      "newStudentPassword"
+    ).value =
+      "";
+
+
+    document.getElementById(
+      "newStudentPasswordConfirm"
+    ).value =
+      "";
+
+
+    setTimeout(
+      function() {
+
+        isResettingPassword =
+          false;
+
+
+        document.getElementById(
+          "passwordOverlay"
+        ).style.display =
+          "none";
+
+
+        selectedStudentId =
+          null;
+
+
+        selectedStudentName =
+          null;
+
+
+        setPasswordButtonsDisabled(
+          false
+        );
+
+      },
+      1600
+    );
+
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    isResettingPassword =
+      false;
+
+
+    setPasswordButtonsDisabled(
+      false
+    );
+
+
+    document.getElementById(
+      "passwordResetButton"
+    ).textContent =
+      "🔑 재설정";
+
+
+    showPasswordMessage(
+      "error",
+      "⚠️ " +
+      error.message
+    );
+
+  }
+
+}
+
+
+
+function showPasswordMessage(
+  type,
+  message
+) {
+
+  const box =
+    document.getElementById(
+      "passwordMessage"
+    );
+
+
+  box.className =
+    "password-message " +
+    type;
+
+
+  box.textContent =
+    message;
+
+}
+
+
+
+function clearPasswordMessage() {
+
+  const box =
+    document.getElementById(
+      "passwordMessage"
+    );
+
+
+  box.className =
+    "password-message";
+
+
+  box.textContent =
+    "";
+
+}
+
+
+
+function setPasswordButtonsDisabled(
+  disabled
+) {
+
+  document.getElementById(
+    "passwordResetButton"
+  ).disabled =
+    disabled;
+
+
+  document.getElementById(
+    "passwordCancelButton"
+  ).disabled =
+    disabled;
+
+}
+
+
+
+/* =========================
+   오늘 기록
+========================= */
+
+function getTodayRecordCount(
+  records
+) {
+
+  const today =
+    new Date();
+
+
+  return records.filter(
+    function(record) {
+
+      const date =
+        new Date(
+          record.created_at
+        );
+
+
+      return (
+
+        date.getFullYear()
+          ===
+          today.getFullYear()
+
+        &&
+
+        date.getMonth()
+          ===
+          today.getMonth()
+
+        &&
+
+        date.getDate()
+          ===
+          today.getDate()
+
+      );
+
+    }
+  ).length;
+
+}
+
+
+
+/* =========================
+   시간
+========================= */
+
+function formatTime(
+  dateString
+) {
+
+  return new Date(
+    dateString
+  ).toLocaleTimeString(
+    "ko-KR",
+    {
+
+      hour:
+        "2-digit",
+
+      minute:
+        "2-digit"
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   문자열
+========================= */
+
+function escapeHtmlForJs(
+  text
+) {
+
+  return String(
+    text
+  )
+    .replaceAll(
+      "\\",
+      "\\\\"
+    )
+    .replaceAll(
+      "'",
+      "\\'"
+    );
+
+}
+
+
+
+/* =========================
+   오류
+========================= */
+
+function showLoadError() {
+
+  const area =
+    document.getElementById(
+      "studentArea"
+    );
+
+
+  area.className =
+    "empty-card";
+
+
+  area.innerHTML = `
+
+    <div class="empty-icon">
+      ⚠️
+    </div>
+
+    <h2>
+      학생 정보를 불러오지 못했어요
+    </h2>
+
+    <p>
+      잠시 후 다시 시도해주세요.
+    </p>
+
+  `;
+
+}
+
+
+
+/* =========================
+   뒤로가기
+========================= */
+
+function goBack() {
+
+  location.href =
+    "login.html";
+
+}
+
+
+
+/* =========================
+   로그아웃
+========================= */
+
+async function logout() {
+
+  await supabaseClient.auth
+    .signOut();
+
+
+  location.href =
+    "login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

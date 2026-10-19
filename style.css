@@ -1,0 +1,442 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  color: #263238;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f2f9ff 0%,
+      #fffdf5 100%
+    );
+}
+
+.container {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+/* 메인 상단 */
+
+.hero {
+  text-align: center;
+  padding: 12px 0 22px;
+}
+
+.hero-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  background: white;
+  border-radius: 50%;
+
+  box-shadow: 0 5px 16px rgba(67, 135, 180, 0.15);
+}
+
+h1 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+  color: #245978;
+}
+
+.subtitle {
+  margin: 9px 0 0;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: #607d8b;
+}
+
+/* 메인 메뉴 */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.menu-card {
+  width: 100%;
+  min-height: 82px;
+
+  padding: 13px 15px;
+
+  border: 0;
+  border-radius: 22px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  text-align: left;
+
+  box-shadow:
+    0 6px 15px rgba(60, 90, 110, 0.08);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 18px rgba(60, 90, 110, 0.12);
+}
+
+.icon-box {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+
+  border-radius: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+
+  background: rgba(255,255,255,0.75);
+}
+
+.menu-text {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-text strong {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.menu-text span {
+  font-size: 13px;
+  color: #62727b;
+}
+
+.arrow {
+  font-size: 29px;
+  color: #90a4ae;
+}
+
+.symptom {
+  background: #fff1f1;
+}
+
+.glucose {
+  background: #edf5ff;
+}
+
+.meal {
+  background: #fff7dc;
+}
+
+.exercise {
+  background: #eefbef;
+}
+
+.training {
+  background: #f5efff;
+}
+
+.emergency {
+  background: #ffe9e7;
+}
+
+.emergency .menu-text strong {
+  color: #b53a35;
+}
+
+.footer-text {
+  margin: 23px 0 0;
+
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: #78909c;
+}
+
+/* 증상 페이지 상단 */
+
+.sub-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.back-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(60,90,110,0.08);
+}
+
+.page-title {
+  margin: 2px 0 6px;
+
+  font-size: 26px;
+  line-height: 1.25;
+
+  color: #245978;
+}
+
+.page-description {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: #78909c;
+}
+
+/* 단계 카드 */
+
+.step-card {
+  background: white;
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  margin-bottom: 16px;
+
+  box-shadow:
+    0 5px 14px rgba(60,90,110,0.07);
+}
+
+.step-number {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  margin-bottom: 9px;
+
+  border-radius: 8px;
+
+  background: #eaf4ff;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  color: #3974a2;
+}
+
+.step-card h2 {
+  margin: 3px 0 7px;
+
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.help-text {
+  margin: 0 0 16px;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: #78909c;
+}
+
+/* 증상 선택 */
+
+.symptom-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.check-card input {
+  display: none;
+}
+
+.check-card span {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px;
+
+  border-radius: 15px;
+
+  background: #f7f9fb;
+
+  border: 2px solid transparent;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.check-card input:checked + span {
+  background: #eaf4ff;
+
+  border-color: #79aeda;
+
+  color: #245978;
+
+  font-weight: bold;
+}
+
+/* 의식 상태 */
+
+.state-options {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  margin-top: 15px;
+}
+
+.state-card {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+}
+
+.state-card.safe {
+  background: #eef9ef;
+}
+
+.state-card.danger {
+  background: #fff0f0;
+}
+
+.state-card input {
+  margin-top: 5px;
+}
+
+.state-card div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.state-card strong {
+  font-size: 16px;
+}
+
+.state-card span {
+  font-size: 14px;
+  line-height: 1.45;
+
+  color: #687a83;
+}
+
+/* 혈당 입력 */
+
+.glucose-input-wrap {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.glucose-input-wrap input {
+  flex: 1;
+  min-width: 0;
+
+  padding: 14px;
+
+  border: 1px solid #d8e2e8;
+  border-radius: 14px;
+
+  font-size: 20px;
+}
+
+.glucose-input-wrap span {
+  font-size: 15px;
+
+  color: #607d8b;
+}
+
+/* 대응 버튼 */
+
+.primary-action {
+  width: 100%;
+
+  padding: 17px;
+
+  margin: 4px 0 16px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: #4285b4;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(66,133,180,0.2);
+}
+
+/* 작은 화면 */
+
+@media (max-width: 380px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .symptom-grid {
+    grid-template-columns: 1fr;
+  }
+}

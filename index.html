@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>GlucoGuard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .top-login-card {
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 12px 14px;
+
+      margin-bottom: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .top-login-left {
+      min-width: 0;
+    }
+
+    .login-badge {
+      display: inline-block;
+
+      padding: 4px 8px;
+
+      margin-bottom: 4px;
+
+      border-radius: 8px;
+
+      background: #eef5ff;
+
+      color: #3974a2;
+
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .login-email {
+      font-size: 12px;
+
+      color: #78909c;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .logout-button {
+      border: none;
+
+      padding: 9px 11px;
+
+      border-radius: 11px;
+
+      background: #fff0f0;
+
+      color: #98514d;
+
+      font-size: 12px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       프로필
+    ========================= */
+
+    .profile-card {
+      background: white;
+
+      border-radius: 24px;
+
+      padding: 18px;
+
+      margin-bottom: 15px;
+
+      box-shadow:
+        0 6px 18px rgba(60,90,110,.08);
+    }
+
+    .profile-top {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+    }
+
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 22px;
+
+      background: #fff4cf;
+
+      font-size: 40px;
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .profile-label {
+      margin-bottom: 5px;
+
+      font-size: 12px;
+
+      color: #78909c;
+    }
+
+    .profile-name {
+      margin-bottom: 4px;
+
+      font-size: 21px;
+      font-weight: 800;
+
+      color: #37474f;
+    }
+
+    .profile-class {
+      font-size: 13px;
+
+      color: #78909c;
+    }
+
+    .profile-edit-button {
+      border: none;
+
+      padding: 8px 10px;
+
+      border-radius: 11px;
+
+      background: #f3f6f8;
+
+      color: #607d8b;
+
+      font-size: 11px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    .profile-bottom {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 9px;
+
+      margin-top: 15px;
+    }
+
+    .profile-stat {
+      padding: 11px;
+
+      border-radius: 14px;
+
+      background: #f5f8fa;
+    }
+
+    .profile-stat-label {
+      margin-bottom: 4px;
+
+      font-size: 11px;
+
+      color: #78909c;
+    }
+
+    .profile-stat-value {
+      font-size: 14px;
+      font-weight: 800;
+
+      color: #3974a2;
+    }
+
+
+    /* =========================
+       기록 보기 버튼
+    ========================= */
+
+    .records-button {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 14px;
+
+      border: none;
+
+      border-radius: 17px;
+
+      background: #edf5ff;
+
+      color: #245978;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       교직원 모드
+    ========================= */
+
+    .teacher-button {
+      width: 100%;
+
+      margin-top: 14px;
+
+      padding: 13px;
+
+      border: 1px solid #dce5ea;
+
+      border-radius: 15px;
+
+      background: white;
+
+      color: #607d8b;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       교직원 비밀번호 팝업
+    ========================= */
+
+    .teacher-overlay {
+      display: none;
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: 9999;
+
+      padding: 20px;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(39,55,66,.40);
+    }
+
+    .teacher-modal {
+      width: 100%;
+
+      max-width: 350px;
+
+      padding: 23px;
+
+      border-radius: 23px;
+
+      background: white;
+
+      box-shadow:
+        0 18px 40px rgba(40,60,70,.22);
+    }
+
+    .teacher-modal h2 {
+      margin: 0 0 7px;
+
+      text-align: center;
+
+      font-size: 20px;
+
+      color: #37474f;
+    }
+
+    .teacher-modal p {
+      margin: 0 0 17px;
+
+      text-align: center;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      color: #78909c;
+    }
+
+    .teacher-password {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 12px;
+
+      border: 1px solid #d8e2e8;
+
+      border-radius: 14px;
+
+      font-size: 17px;
+
+      text-align: center;
+
+      outline: none;
+    }
+
+    .teacher-modal-actions {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 9px;
+    }
+
+    .modal-cancel,
+    .modal-enter {
+      padding: 13px;
+
+      border-radius: 14px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .modal-cancel {
+      border: 1px solid #d8e2e8;
+
+      background: white;
+
+      color: #607d8b;
+    }
+
+    .modal-enter {
+      border: none;
+
+      background: #7562a7;
+
+      color: white;
+    }
+
+
+    .profile-setup {
+      display: none;
+
+      margin-bottom: 15px;
+
+      padding: 18px;
+
+      border-radius: 22px;
+
+      background: white;
+
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .profile-setup h2 {
+      margin: 0 0 7px;
+
+      font-size: 18px;
+
+      color: #37474f;
+    }
+
+    .profile-setup p {
+      margin: 0 0 14px;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      color: #78909c;
+    }
+
+    .setup-input {
+      width: 100%;
+
+      padding: 13px;
+
+      margin-bottom: 10px;
+
+      border: 1px solid #d8e2e8;
+
+      border-radius: 13px;
+
+      font-size: 15px;
+    }
+
+    .avatar-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 8px;
+
+      margin-bottom: 13px;
+    }
+
+    .avatar-option {
+      border: 2px solid transparent;
+
+      padding: 10px;
+
+      border-radius: 14px;
+
+      background: #f7f9fb;
+
+      font-size: 26px;
+
+      cursor: pointer;
+    }
+
+    .avatar-option.selected {
+      border-color: #79aeda;
+
+      background: #eaf4ff;
+    }
+
+    .setup-button {
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      background: #4285b4;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <!-- =========================
+       헤더
+  ========================= -->
+
+  <div class="hero">
+
+    <div class="hero-icon">
+      🌈
+    </div>
+
+    <h1>
+      GlucoGuard
+    </h1>
+
+    <p class="subtitle">
+      학교에서 안전하게<br>
+      나의 하루를 기록해요.
+    </p>
+
+  </div>
+
+
+
+  <!-- =========================
+       로그인 정보
+  ========================= -->
+
+  <div class="top-login-card">
+
+    <div class="top-login-left">
+
+      <div class="login-badge">
+        👧 학생 로그인
+      </div>
+
+      <div
+        id="loginEmail"
+        class="login-email">
+
+        로그인 확인 중...
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()">
+
+      로그아웃
+
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       신규 프로필 설정
+  ========================= -->
+
+  <div
+    id="profileSetup"
+    class="profile-setup">
+
+    <h2>
+      🌟 나의 Gluco 친구 만들기
+    </h2>
+
+    <p>
+      이름과 반, 함께할 친구를 골라주세요.
+    </p>
+
+
+    <input
+      id="setupNickname"
+      class="setup-input"
+      type="text"
+      maxlength="20"
+      placeholder="이름 또는 별명">
+
+
+    <input
+      id="setupClass"
+      class="setup-input"
+      type="text"
+      maxlength="30"
+      placeholder="예: 3학년 4반">
+
+
+    <div class="avatar-grid">
+
+      <button
+        class="avatar-option selected"
+        data-avatar="🐻"
+        onclick="selectAvatar(this)">
+
+        🐻
+
+      </button>
+
+      <button
+        class="avatar-option"
+        data-avatar="🐱"
+        onclick="selectAvatar(this)">
+
+        🐱
+
+      </button>
+
+      <button
+        class="avatar-option"
+        data-avatar="🐰"
+        onclick="selectAvatar(this)">
+
+        🐰
+
+      </button>
+
+      <button
+        class="avatar-option"
+        data-avatar="🐶"
+        onclick="selectAvatar(this)">
+
+        🐶
+
+      </button>
+
+    </div>
+
+
+    <button
+      class="setup-button"
+      onclick="saveNewProfile()">
+
+      친구 만들기 ✨
+
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       프로필
+  ========================= -->
+
+  <div
+    id="profileCard"
+    class="profile-card"
+    style="display:none;">
+
+
+    <div class="profile-top">
+
+
+      <div
+        id="profileAvatar"
+        class="profile-avatar">
+
+        🐻
+
+      </div>
+
+
+      <div class="profile-info">
+
+        <div class="profile-label">
+          🌟 나의 Gluco 친구
+        </div>
+
+        <div
+          id="profileName"
+          class="profile-name">
+
+          -
+
+        </div>
+
+        <div
+          id="profileClass"
+          class="profile-class">
+
+          -
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="profile-edit-button"
+        onclick="editProfile()">
+
+        수정
+
+      </button>
+
+
+    </div>
+
+
+
+    <div class="profile-bottom">
+
+
+      <div class="profile-stat">
+
+        <div class="profile-stat-label">
+          오늘 기록
+        </div>
+
+        <div
+          id="todayRecordCount"
+          class="profile-stat-value">
+
+          0회
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-stat">
+
+        <div class="profile-stat-label">
+          오늘 목표
+        </div>
+
+        <div class="profile-stat-value">
+          안전하게 기록하기 💙
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       기록 보기
+  ========================= -->
+
+  <button
+    id="recordsButton"
+    class="records-button"
+    style="display:none;"
+    onclick="location.href='records.html'">
+
+    📊 내 기록 보기
+
+  </button>
+
+
+
+  <!-- =========================
+       메뉴
+  ========================= -->
+
+  <div class="menu">
+
+
+    <button
+      class="menu-card meal"
+      onclick="location.href='meal.html'">
+
+      <div class="icon-box">
+        🍱
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          먹은 거 기록
+        </strong>
+
+        <span>
+          오늘 먹은 양을 간단히 남겨요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
+
+    <button
+      class="menu-card glucose"
+      onclick="location.href='glucose.html'">
+
+      <div class="icon-box">
+        🩸
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          혈당 기록
+        </strong>
+
+        <span>
+          혈당 또는 CGM 수치를 기록해요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
+
+    <button
+      class="menu-card exercise"
+      onclick="location.href='activity.html'">
+
+      <div class="icon-box">
+        🏃
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          활동 기록
+        </strong>
+
+        <span>
+          체육 전후와 몸 상태를 기록해요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
+
+    <button
+      class="menu-card symptom"
+      onclick="location.href='symptom.html'">
+
+      <div class="icon-box">
+        🙂
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          오늘 상태
+        </strong>
+
+        <span>
+          지금 느끼는 증상과 상태를 알려요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
+
+    <button
+      class="menu-card emergency"
+      onclick="location.href='symptom.html'">
+
+      <div class="icon-box">
+        🚨
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          선생님, 도와주세요!
+        </strong>
+
+        <span>
+          몸이 이상하면 바로 도움을 요청해요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
+  </div>
+
+
+
+  <button
+    class="teacher-button"
+    onclick="openTeacherMode()">
+
+    🔒 교직원 모드 열기
+
+  </button>
+
+
+
+  <p class="footer-text">
+
+    GlucoGuard는 학교생활을 돕기 위한 교육용 프로토타입이에요.<br>
+    실제 치료와 대응은 개인별 관리계획과 의료진 지침을 따라주세요.
+
+  </p>
+
+
+</div>
+
+
+
+<!-- =========================
+     교직원 데모 모드
+========================= -->
+
+<div
+  id="teacherOverlay"
+  class="teacher-overlay">
+
+
+  <div class="teacher-modal">
+
+
+    <h2>
+      🔒 교직원 모드
+    </h2>
+
+
+    <p>
+      데모용 교직원 비밀번호를 입력해주세요.
+    </p>
+
+
+    <input
+      id="teacherPassword"
+      class="teacher-password"
+      type="password"
+      maxlength="10"
+      placeholder="비밀번호">
+
+
+    <div class="teacher-modal-actions">
+
+
+      <button
+        class="modal-cancel"
+        onclick="closeTeacherMode()">
+
+        취소
+
+      </button>
+
+
+      <button
+        class="modal-enter"
+        onclick="enterTeacherMode()">
+
+        열기
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================
+   Supabase
+========================= */
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+let currentProfile =
+  null;
+
+
+let selectedAvatar =
+  "🐻";
+
+
+let isEditingProfile =
+  false;
+
+
+
+/* =========================
+   시작
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const ready =
+      await checkLogin();
+
+
+    if (!ready) {
+      return;
+    }
+
+
+    await loadProfile();
+
+
+    await loadTodayRecordCount();
+
+  }
+);
+
+
+
+/* =========================
+   로그인 확인
+========================= */
+
+async function checkLogin() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    error ||
+    !data.session
+  ) {
+
+    location.href =
+      "login.html";
+
+
+    return false;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  document.getElementById(
+    "loginEmail"
+  ).textContent =
+    currentUser.email ||
+    "학생 계정";
+
+
+  /*
+    역할 확인
+  */
+
+  const {
+    data: profile,
+    error: profileError
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "role"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (profileError) {
+
+    console.error(
+      profileError
+    );
+
+  }
+
+
+  /*
+    교직원이 index.html로 들어왔으면
+    자동으로 교직원 관리 화면으로 이동
+  */
+
+  if (
+    profile &&
+    (
+      profile.role === "teacher"
+      ||
+      profile.role === "nurse"
+    )
+  ) {
+
+    location.href =
+      "teacher.html";
+
+
+    return false;
+
+  }
+
+
+  return true;
+
+}
+
+
+
+/* =========================
+   프로필 불러오기
+========================= */
+
+async function loadProfile() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id, nickname, class_name, avatar, role"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "프로필 정보를 불러오지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    프로필 없는 신규 학생
+  */
+
+  if (!data) {
+
+    currentProfile =
+      null;
+
+
+    showProfileSetup();
+
+
+    return;
+
+  }
+
+
+  currentProfile =
+    data;
+
+
+  showProfileCard();
+
+}
+
+
+
+/* =========================
+   프로필 표시
+========================= */
+
+function showProfileCard() {
+
+  document.getElementById(
+    "profileSetup"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "profileCard"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "recordsButton"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "profileAvatar"
+  ).textContent =
+    currentProfile.avatar ||
+    "🐻";
+
+
+  document.getElementById(
+    "profileName"
+  ).textContent =
+    currentProfile.nickname ||
+    "학생";
+
+
+  document.getElementById(
+    "profileClass"
+  ).textContent =
+    currentProfile.class_name ||
+    "학년 · 반 미등록";
+
+}
+
+
+
+/* =========================
+   프로필 설정 화면
+========================= */
+
+function showProfileSetup() {
+
+  document.getElementById(
+    "profileCard"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "recordsButton"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "profileSetup"
+  ).style.display =
+    "block";
+
+
+  if (
+    currentProfile
+  ) {
+
+    isEditingProfile =
+      true;
+
+
+    document.getElementById(
+      "setupNickname"
+    ).value =
+      currentProfile.nickname ||
+      "";
+
+
+    document.getElementById(
+      "setupClass"
+    ).value =
+      currentProfile.class_name ||
+      "";
+
+
+    selectedAvatar =
+      currentProfile.avatar ||
+      "🐻";
+
+
+    updateAvatarSelection();
+
+  } else {
+
+    isEditingProfile =
+      false;
+
+
+    document.getElementById(
+      "setupNickname"
+    ).value =
+      "";
+
+
+    document.getElementById(
+      "setupClass"
+    ).value =
+      "";
+
+
+    selectedAvatar =
+      "🐻";
+
+
+    updateAvatarSelection();
+
+  }
+
+}
+
+
+
+/* =========================
+   프로필 수정
+========================= */
+
+function editProfile() {
+
+  showProfileSetup();
+
+}
+
+
+
+/* =========================
+   캐릭터 선택
+========================= */
+
+function selectAvatar(
+  button
+) {
+
+  selectedAvatar =
+    button.dataset.avatar;
+
+
+  updateAvatarSelection();
+
+}
+
+
+
+function updateAvatarSelection() {
+
+  const buttons =
+    document.querySelectorAll(
+      ".avatar-option"
+    );
+
+
+  buttons.forEach(
+    function(button) {
+
+      if (
+        button.dataset.avatar ===
+        selectedAvatar
+      ) {
+
+        button.classList.add(
+          "selected"
+        );
+
+      } else {
+
+        button.classList.remove(
+          "selected"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   프로필 저장
+========================= */
+
+async function saveNewProfile() {
+
+  const nickname =
+    document.getElementById(
+      "setupNickname"
+    ).value.trim();
+
+
+  const className =
+    document.getElementById(
+      "setupClass"
+    ).value.trim();
+
+
+  if (!nickname) {
+
+    alert(
+      "이름 또는 별명을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (!className) {
+
+    alert(
+      "학년과 반을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    신규 프로필
+  */
+
+  if (
+    !currentProfile
+  ) {
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .insert({
+
+          id:
+            currentUser.id,
+
+          nickname:
+            nickname,
+
+          class_name:
+            className,
+
+          avatar:
+            selectedAvatar,
+
+          role:
+            "student",
+
+          updated_at:
+            new Date()
+              .toISOString()
+
+        });
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+
+      alert(
+        "프로필을 저장하지 못했어요."
+      );
+
+
+      return;
+
+    }
+
+  } else {
+
+    /*
+      기존 프로필 수정
+    */
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .update({
+
+          nickname:
+            nickname,
+
+          class_name:
+            className,
+
+          avatar:
+            selectedAvatar,
+
+          updated_at:
+            new Date()
+              .toISOString()
+
+        })
+        .eq(
+          "id",
+          currentUser.id
+        );
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+
+      alert(
+        "프로필을 수정하지 못했어요."
+      );
+
+
+      return;
+
+    }
+
+  }
+
+
+  await loadProfile();
+
+}
+
+
+
+/* =========================
+   오늘 기록 개수
+========================= */
+
+async function loadTodayRecordCount() {
+
+  if (!currentUser) {
+    return;
+  }
+
+
+  const now =
+    new Date();
+
+
+  const start =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      0,
+      0,
+      0,
+      0
+    );
+
+
+  const end =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + 1,
+      0,
+      0,
+      0,
+      0
+    );
+
+
+  const {
+    count,
+    error
+  } =
+    await supabaseClient
+      .from("records")
+      .select(
+        "*",
+        {
+          count:
+            "exact",
+
+          head:
+            true
+        }
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .gte(
+        "created_at",
+        start.toISOString()
+      )
+      .lt(
+        "created_at",
+        end.toISOString()
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "todayRecordCount"
+  ).textContent =
+    (count || 0) +
+    "회";
+
+}
+
+
+
+/* =========================
+   교직원 데모 모드
+========================= */
+
+function openTeacherMode() {
+
+  document.getElementById(
+    "teacherPassword"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "teacherOverlay"
+  ).style.display =
+    "flex";
+
+
+  setTimeout(
+    function() {
+
+      document.getElementById(
+        "teacherPassword"
+      ).focus();
+
+    },
+    100
+  );
+
+}
+
+
+
+function closeTeacherMode() {
+
+  document.getElementById(
+    "teacherOverlay"
+  ).style.display =
+    "none";
+
+}
+
+
+
+function enterTeacherMode() {
+
+  const password =
+    document.getElementById(
+      "teacherPassword"
+    ).value;
+
+
+  /*
+    데모용
+    실제 보안은 Supabase role 기반으로 처리
+  */
+
+  if (
+    password !== "1001"
+  ) {
+
+    alert(
+      "교직원 비밀번호가 맞지 않아요."
+    );
+
+
+    return;
+
+  }
+
+
+  location.href =
+    "teacher.html";
+
+}
+
+
+
+/* =========================
+   로그아웃
+========================= */
+
+async function logout() {
+
+  const {
+    error
+  } =
+    await supabaseClient.auth
+      .signOut();
+
+
+  if (error) {
+
+    alert(
+      "로그아웃 중 오류가 발생했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  location.href =
+    "login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

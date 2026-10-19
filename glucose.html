@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>혈당 기록 - GlucoGuard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .glucose-hero {
+      padding: 22px;
+      margin-bottom: 16px;
+
+      border-radius: 22px;
+
+      background: #edf5ff;
+
+      text-align: center;
+    }
+
+    .glucose-hero-icon {
+      margin-bottom: 8px;
+      font-size: 42px;
+    }
+
+    .glucose-hero h2 {
+      margin: 0 0 6px;
+      font-size: 21px;
+    }
+
+    .glucose-hero p {
+      margin: 0;
+
+      font-size: 14px;
+      line-height: 1.5;
+
+      color: #687a83;
+    }
+
+    .glucose-big-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .glucose-big-input input {
+      flex: 1;
+      min-width: 0;
+
+      padding: 18px;
+
+      border: 1px solid #d8e2e8;
+      border-radius: 16px;
+
+      font-size: 28px;
+      font-weight: bold;
+
+      text-align: center;
+      outline: none;
+    }
+
+    .glucose-big-input span {
+      font-size: 14px;
+      color: #607d8b;
+    }
+
+    .result-card {
+      margin-bottom: 16px;
+      padding: 20px;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .low-result {
+      background: #fff3dc;
+    }
+
+    .high-result {
+      background: #fff0f0;
+    }
+
+    .normal-result {
+      background: #eef9ef;
+    }
+
+    .warning-result {
+      background: #fff4e9;
+    }
+
+    .result-icon {
+      margin-bottom: 7px;
+      font-size: 34px;
+    }
+
+    .result-card h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .result-card p {
+      margin: 7px 0;
+
+      font-size: 14px;
+      line-height: 1.65;
+
+      color: #53666f;
+    }
+
+    .save-record-button {
+      width: 100%;
+
+      padding: 16px;
+      margin-top: 14px;
+
+      border: none;
+      border-radius: 16px;
+
+      background: #3d9364;
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .save-record-button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    .saved-record-card {
+      margin-top: 15px;
+
+      padding: 16px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      text-align: left;
+    }
+
+    .saved-record-title {
+      margin-bottom: 10px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      color: #36734d;
+    }
+
+    .saved-record-row {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding: 5px 0;
+
+      font-size: 13px;
+
+      color: #607d8b;
+    }
+
+    .saved-record-row strong {
+      color: #37474f;
+    }
+
+    .timer-box {
+      margin-top: 16px;
+      padding: 17px;
+
+      border-radius: 17px;
+
+      background: white;
+
+      text-align: center;
+    }
+
+    .timer-title {
+      margin-bottom: 6px;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      color: #607d8b;
+    }
+
+    .timer-time {
+      margin-bottom: 10px;
+
+      font-size: 34px;
+      font-weight: 800;
+
+      color: #c17a25;
+    }
+
+    .timer-button {
+      width: 100%;
+      padding: 12px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #f0a23d;
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .small-notice {
+      margin-top: 14px;
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background: #f3f6f8;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      color: #6d7f88;
+    }
+
+    .back-home-button {
+      width: 100%;
+
+      margin-top: 12px;
+      padding: 13px;
+
+      border: 1px solid #d8e2e8;
+      border-radius: 15px;
+
+      background: white;
+
+      color: #607d8b;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <div class="sub-header">
+
+    <button
+      class="back-button"
+      onclick="location.href='index.html'">
+
+      ←
+
+    </button>
+
+    <div>
+
+      <h1 class="page-title">
+        🩸 혈당 기록
+      </h1>
+
+      <p class="page-description">
+        혈당 또는 CGM 수치를 확인해요.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="glucose-hero">
+
+    <div class="glucose-hero-icon">
+      🩸
+    </div>
+
+    <h2>
+      지금 수치는 얼마인가요?
+    </h2>
+
+    <p>
+      측정한 혈당 또는 CGM 수치를 입력해주세요.
+    </p>
+
+  </div>
+
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 1
+    </div>
+
+    <h2>
+      측정값 입력
+    </h2>
+
+    <p class="help-text">
+      확인한 수치를 숫자로 입력해주세요.
+    </p>
+
+    <div class="glucose-big-input">
+
+      <input
+        id="glucoseValue"
+        type="number"
+        inputmode="numeric"
+        min="20"
+        max="600"
+        placeholder="예: 110">
+
+      <span>
+        mg/dL
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="primary-action"
+    onclick="showResult()">
+
+    결과 확인하기
+
+  </button>
+
+
+  <div id="resultArea"></div>
+
+
+  <div class="small-notice">
+
+    📌 학생의 개별 당뇨관리계획과 의료진의 지침을 우선해주세요.
+
+  </div>
+
+
+  <button
+    class="back-home-button"
+    onclick="location.href='index.html'">
+
+    🏠 메인으로 돌아가기
+
+  </button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser = null;
+
+let currentGlucoseValue = null;
+
+let currentRecordSaved = false;
+
+let timerInterval = null;
+
+let remainingSeconds = 15 * 60;
+
+
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .getSession();
+
+
+    if (
+      error ||
+      !data.session
+    ) {
+
+      location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    currentUser =
+      data.session.user;
+
+  }
+);
+
+
+
+function showResult() {
+
+  const input =
+    document.getElementById(
+      "glucoseValue"
+    );
+
+
+  const value =
+    Number(
+      input.value
+    );
+
+
+  const resultArea =
+    document.getElementById(
+      "resultArea"
+    );
+
+
+  stopTimer();
+
+
+  currentRecordSaved =
+    false;
+
+
+  if (
+    input.value === "" ||
+    Number.isNaN(value)
+  ) {
+
+    resultArea.innerHTML = `
+
+      <div class="result-card warning-result">
+
+        <div class="result-icon">
+          ⚠️
+        </div>
+
+        <h2>
+          수치를 입력해주세요
+        </h2>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  if (
+    value < 20 ||
+    value > 600
+  ) {
+
+    resultArea.innerHTML = `
+
+      <div class="result-card warning-result">
+
+        <div class="result-icon">
+          ⚠️
+        </div>
+
+        <h2>
+          수치를 다시 확인해주세요
+        </h2>
+
+        <p>
+          입력한 값이 맞는지 다시 확인해주세요.
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  currentGlucoseValue =
+    value;
+
+
+  if (value < 70) {
+
+    resultArea.innerHTML = `
+
+      <div class="result-card low-result">
+
+        <div class="result-icon">
+          🍬
+        </div>
+
+        <h2>
+          낮은 혈당이 확인됐어요
+        </h2>
+
+        <p>
+          현재 수치:
+          <strong>${value} mg/dL</strong>
+        </p>
+
+        <p>
+          학생의 개별 당뇨관리계획에 따라
+          저혈당 대응을 진행해주세요.
+        </p>
+
+        <div class="timer-box">
+
+          <div class="timer-title">
+            15분 후 다시 확인
+          </div>
+
+          <div
+            id="timerDisplay"
+            class="timer-time">
+
+            15:00
+
+          </div>
+
+          <button
+            class="timer-button"
+            onclick="startTimer()">
+
+            ⏱️ 15분 타이머 시작
+
+          </button>
+
+        </div>
+
+        ${getSaveButton()}
+
+      </div>
+    `;
+
+  }
+
+  else if (value >= 250) {
+
+    resultArea.innerHTML = `
+
+      <div class="result-card high-result">
+
+        <div class="result-icon">
+          💧
+        </div>
+
+        <h2>
+          높은 혈당이 확인됐어요
+        </h2>
+
+        <p>
+          현재 수치:
+          <strong>${value} mg/dL</strong>
+        </p>
+
+        <p>
+          개별 당뇨관리계획에 따라
+          추가 확인과 대응을 진행해주세요.
+        </p>
+
+        ${getSaveButton()}
+
+      </div>
+    `;
+
+  }
+
+  else {
+
+    resultArea.innerHTML = `
+
+      <div class="result-card normal-result">
+
+        <div class="result-icon">
+          ✅
+        </div>
+
+        <h2>
+          현재 측정값
+        </h2>
+
+        <p>
+          현재 수치:
+          <strong>${value} mg/dL</strong>
+        </p>
+
+        <p>
+          학생마다 목표 혈당 범위가 다를 수 있어요.
+          개별 당뇨관리계획에 따라 확인해주세요.
+        </p>
+
+        ${getSaveButton()}
+
+      </div>
+    `;
+
+  }
+
+
+  setTimeout(
+    function() {
+
+      resultArea.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    },
+    100
+  );
+
+}
+
+
+
+function getSaveButton() {
+
+  return `
+
+    <button
+      id="saveRecordButton"
+      class="save-record-button"
+      onclick="saveGlucoseRecord()">
+
+      ⭐ 이 기록 저장하기
+
+    </button>
+
+    <div id="savedMessage"></div>
+
+  `;
+
+}
+
+
+
+async function saveGlucoseRecord() {
+
+  if (!currentUser) {
+
+    alert(
+      "로그인 정보를 확인할 수 없어요."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    currentGlucoseValue === null
+  ) {
+
+    return;
+
+  }
+
+
+  if (currentRecordSaved) {
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "saveRecordButton"
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "저장하는 중...";
+
+
+  const savedAt =
+    new Date();
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("records")
+      .insert({
+
+        user_id:
+          currentUser.id,
+
+        record_type:
+          "glucose",
+
+        glucose_value:
+          currentGlucoseValue,
+
+        created_at:
+          savedAt.toISOString()
+
+      })
+      .select(
+        "id, glucose_value, created_at"
+      )
+      .single();
+
+
+  if (error) {
+
+    console.error(error);
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "⭐ 이 기록 저장하기";
+
+
+    alert(
+      "기록 저장 중 오류가 발생했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  currentRecordSaved =
+    true;
+
+
+  button.textContent =
+    "✓ 저장 완료";
+
+
+  const recordDate =
+    new Date(
+      data.created_at
+    );
+
+
+  const dateText =
+    recordDate.toLocaleDateString(
+      "ko-KR",
+      {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }
+    );
+
+
+  const timeText =
+    recordDate.toLocaleTimeString(
+      "ko-KR",
+      {
+        hour: "2-digit",
+        minute: "2-digit"
+      }
+    );
+
+
+  document.getElementById(
+    "savedMessage"
+  ).innerHTML = `
+
+    <div class="saved-record-card">
+
+      <div class="saved-record-title">
+        🌟 혈당 기록 저장 완료
+      </div>
+
+      <div class="saved-record-row">
+
+        <span>
+          혈당
+        </span>
+
+        <strong>
+          ${data.glucose_value} mg/dL
+        </strong>
+
+      </div>
+
+
+      <div class="saved-record-row">
+
+        <span>
+          날짜
+        </span>
+
+        <strong>
+          ${dateText}
+        </strong>
+
+      </div>
+
+
+      <div class="saved-record-row">
+
+        <span>
+          시간
+        </span>
+
+        <strong>
+          ${timeText}
+        </strong>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+
+function startTimer() {
+
+  stopTimer();
+
+
+  remainingSeconds =
+    15 * 60;
+
+
+  updateTimerDisplay();
+
+
+  timerInterval =
+    setInterval(
+      function() {
+
+        remainingSeconds--;
+
+
+        updateTimerDisplay();
+
+
+        if (
+          remainingSeconds <= 0
+        ) {
+
+          stopTimer();
+
+          timerFinished();
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+
+function updateTimerDisplay() {
+
+  const display =
+    document.getElementById(
+      "timerDisplay"
+    );
+
+
+  if (!display) {
+    return;
+  }
+
+
+  const minutes =
+    Math.floor(
+      remainingSeconds / 60
+    );
+
+
+  const seconds =
+    remainingSeconds % 60;
+
+
+  display.textContent =
+    String(minutes).padStart(2, "0")
+    +
+    ":"
+    +
+    String(seconds).padStart(2, "0");
+
+}
+
+
+
+function stopTimer() {
+
+  if (timerInterval) {
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    timerInterval =
+      null;
+
+  }
+
+}
+
+
+
+function timerFinished() {
+
+  playBeep();
+
+  speakReminder();
+
+
+  alert(
+    "⏰ 재확인 시간입니다!\n혈당 또는 CGM 수치를 다시 확인해주세요."
+  );
+
+
+  const display =
+    document.getElementById(
+      "timerDisplay"
+    );
+
+
+  if (display) {
+
+    display.textContent =
+      "재확인!";
+
+  }
+
+}
+
+
+
+function playBeep() {
+
+  try {
+
+    const AudioContextClass =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+
+    const audioContext =
+      new AudioContextClass();
+
+
+    const oscillator =
+      audioContext.createOscillator();
+
+
+    const gainNode =
+      audioContext.createGain();
+
+
+    oscillator.connect(
+      gainNode
+    );
+
+
+    gainNode.connect(
+      audioContext.destination
+    );
+
+
+    oscillator.frequency.value =
+      880;
+
+
+    gainNode.gain.value =
+      0.25;
+
+
+    oscillator.start();
+
+
+    setTimeout(
+      function() {
+
+        oscillator.stop();
+
+        audioContext.close();
+
+      },
+      700
+    );
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+}
+
+
+
+function speakReminder() {
+
+  if (
+    !(
+      "speechSynthesis"
+      in window
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  const message =
+    new SpeechSynthesisUtterance(
+      "재확인 시간입니다. 혈당 또는 씨지엠 수치를 다시 확인해 주세요."
+    );
+
+
+  message.lang =
+    "ko-KR";
+
+
+  window.speechSynthesis
+    .speak(
+      message
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

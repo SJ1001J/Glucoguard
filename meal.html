@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>먹은 거 기록 - GlucoGuard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .meal-hero {
+      background: #fff7dc;
+
+      border-radius: 24px;
+
+      padding: 22px;
+
+      margin-bottom: 16px;
+
+      text-align: center;
+    }
+
+    .meal-hero-icon {
+      font-size: 44px;
+
+      margin-bottom: 8px;
+    }
+
+    .meal-hero h2 {
+      margin: 0 0 6px;
+
+      font-size: 22px;
+    }
+
+    .meal-hero p {
+      margin: 0;
+
+      font-size: 14px;
+      line-height: 1.5;
+
+      color: #687a83;
+    }
+
+
+    /* 사진 */
+
+    .photo-upload {
+      width: 100%;
+
+      min-height: 125px;
+
+      border: 2px dashed #e4c85c;
+
+      border-radius: 19px;
+
+      background: #fffdf5;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 18px;
+
+      text-align: center;
+
+      cursor: pointer;
+    }
+
+    .photo-upload input {
+      display: none;
+    }
+
+    .photo-upload strong {
+      font-size: 16px;
+    }
+
+    .photo-upload span {
+      font-size: 12px;
+
+      color: #78909c;
+    }
+
+    .photo-preview {
+      display: none;
+
+      width: 100%;
+
+      max-height: 280px;
+
+      margin-top: 13px;
+
+      object-fit: cover;
+
+      border-radius: 18px;
+    }
+
+
+    /* 식사 선택 */
+
+    .meal-type-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+
+      margin-top: 12px;
+    }
+
+    .meal-choice input {
+      display: none;
+    }
+
+    .meal-choice span {
+      min-height: 62px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      padding: 12px;
+
+      border: 2px solid transparent;
+
+      border-radius: 17px;
+
+      background: #f7f9fb;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .meal-choice input:checked + span {
+      background: #fff3bd;
+
+      border-color: #e4c14e;
+
+      color: #514819;
+    }
+
+
+    /* 먹은 양 */
+
+    .amount-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+
+      margin-top: 13px;
+    }
+
+    .amount-choice input {
+      display: none;
+    }
+
+    .amount-choice span {
+      min-height: 67px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 13px 16px;
+
+      border: 2px solid transparent;
+
+      border-radius: 18px;
+
+      background: #f7f9fb;
+
+      cursor: pointer;
+    }
+
+    .amount-choice input:checked + span {
+      background: #eef9ef;
+
+      border-color: #79bd8d;
+    }
+
+    .amount-emoji {
+      width: 45px;
+
+      font-size: 30px;
+
+      text-align: center;
+    }
+
+    .amount-text {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 3px;
+
+      text-align: left;
+    }
+
+    .amount-text strong {
+      font-size: 16px;
+    }
+
+    .amount-text small {
+      font-size: 12px;
+
+      color: #78909c;
+    }
+
+
+    /* 결과 */
+
+    .meal-result {
+      margin-top: 16px;
+
+      padding: 20px;
+
+      border-radius: 22px;
+
+      background: #eef9ef;
+
+      box-shadow:
+        0 5px 14px rgba(60,90,110,.07);
+    }
+
+    .meal-result-icon {
+      margin-bottom: 8px;
+
+      font-size: 36px;
+    }
+
+    .meal-result h2 {
+      margin: 0 0 12px;
+
+      font-size: 21px;
+    }
+
+    .meal-summary {
+      padding: 15px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    .save-meal-button {
+      width: 100%;
+
+      margin-top: 14px;
+
+      padding: 16px;
+
+      border: none;
+
+      border-radius: 16px;
+
+      background: #3d9364;
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .save-meal-button:disabled {
+      opacity: .65;
+
+      cursor: not-allowed;
+    }
+
+
+    .saved-card {
+      margin-top: 14px;
+
+      padding: 15px;
+
+      border-radius: 16px;
+
+      background: white;
+    }
+
+    .saved-title {
+      margin-bottom: 9px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      color: #36734d;
+    }
+
+    .saved-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding: 5px 0;
+
+      font-size: 13px;
+
+      color: #607d8b;
+    }
+
+    .saved-row strong {
+      color: #37474f;
+    }
+
+
+    /* 다음 행동 */
+
+    .next-actions {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 9px;
+
+      margin-top: 15px;
+    }
+
+    .next-button {
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 15px;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .next-glucose {
+      background: #edf5ff;
+
+      color: #245978;
+    }
+
+    .next-home {
+      background: white;
+
+      color: #607d8b;
+
+      border: 1px solid #d8e2e8;
+    }
+
+
+    .kid-notice {
+      margin-top: 14px;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background: #fff8df;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      color: #746b4d;
+    }
+
+
+    @media (max-width: 380px) {
+
+      .meal-type-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <!-- 상단 -->
+
+  <div class="sub-header">
+
+    <button
+      class="back-button"
+      onclick="location.href='index.html'">
+
+      ←
+
+    </button>
+
+
+    <div>
+
+      <h1 class="page-title">
+        🍱 먹은 거 기록
+      </h1>
+
+      <p class="page-description">
+        오늘 먹은 것을 간단하게 기록해요.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="meal-hero">
+
+    <div class="meal-hero-icon">
+      😋
+    </div>
+
+    <h2>
+      얼마나 먹었나요?
+    </h2>
+
+    <p>
+      어렵게 계산하지 않아도 돼요.<br>
+      먹은 만큼만 골라주세요!
+    </p>
+
+  </div>
+
+
+
+  <!-- STEP 1 -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 1
+    </div>
+
+    <h2>
+      📷 사진을 찍어볼까요?
+    </h2>
+
+    <p class="help-text">
+      사진은 안 찍어도 괜찮아요.
+    </p>
+
+
+    <label class="photo-upload">
+
+      <input
+        id="mealPhoto"
+        type="file"
+        accept="image/*"
+        capture="environment"
+        onchange="previewPhoto(event)">
+
+
+      <div style="font-size:35px;">
+        📷
+      </div>
+
+      <strong>
+        음식 사진 찍기
+      </strong>
+
+      <span>
+        눌러서 사진을 찍거나 골라요
+      </span>
+
+    </label>
+
+
+    <img
+      id="photoPreview"
+      class="photo-preview"
+      alt="음식 사진">
+
+  </div>
+
+
+
+  <!-- STEP 2 -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 2
+    </div>
+
+    <h2>
+      언제 먹었나요?
+    </h2>
+
+
+    <div class="meal-type-grid">
+
+
+      <label class="meal-choice">
+
+        <input
+          type="radio"
+          name="mealType"
+          value="아침">
+
+        <span>
+          🌅 아침
+        </span>
+
+      </label>
+
+
+      <label class="meal-choice">
+
+        <input
+          type="radio"
+          name="mealType"
+          value="점심">
+
+        <span>
+          🍚 점심
+        </span>
+
+      </label>
+
+
+      <label class="meal-choice">
+
+        <input
+          type="radio"
+          name="mealType"
+          value="간식">
+
+        <span>
+          🍪 간식
+        </span>
+
+      </label>
+
+
+      <label class="meal-choice">
+
+        <input
+          type="radio"
+          name="mealType"
+          value="기타">
+
+        <span>
+          🥪 기타
+        </span>
+
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- STEP 3 -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 3
+    </div>
+
+    <h2>
+      얼마나 먹었나요?
+    </h2>
+
+    <p class="help-text">
+      가장 비슷한 것을 골라주세요.
+    </p>
+
+
+    <div class="amount-list">
+
+
+      <label class="amount-choice">
+
+        <input
+          type="radio"
+          name="mealAmount"
+          value="1"
+          data-text="다 먹었어요">
+
+        <span>
+
+          <div class="amount-emoji">
+            😋
+          </div>
+
+          <div class="amount-text">
+
+            <strong>
+              다 먹었어요!
+            </strong>
+
+            <small>
+              거의 남기지 않았어요
+            </small>
+
+          </div>
+
+        </span>
+
+      </label>
+
+
+
+      <label class="amount-choice">
+
+        <input
+          type="radio"
+          name="mealAmount"
+          value="0.5"
+          data-text="반 정도 먹었어요">
+
+        <span>
+
+          <div class="amount-emoji">
+            🙂
+          </div>
+
+          <div class="amount-text">
+
+            <strong>
+              반 정도 먹었어요
+            </strong>
+
+            <small>
+              절반쯤 먹었어요
+            </small>
+
+          </div>
+
+        </span>
+
+      </label>
+
+
+
+      <label class="amount-choice">
+
+        <input
+          type="radio"
+          name="mealAmount"
+          value="0.25"
+          data-text="조금 먹었어요">
+
+        <span>
+
+          <div class="amount-emoji">
+            😐
+          </div>
+
+          <div class="amount-text">
+
+            <strong>
+              조금 먹었어요
+            </strong>
+
+            <small>
+              몇 입 정도 먹었어요
+            </small>
+
+          </div>
+
+        </span>
+
+      </label>
+
+
+
+      <label class="amount-choice">
+
+        <input
+          type="radio"
+          name="mealAmount"
+          value="0"
+          data-text="거의 안 먹었어요">
+
+        <span>
+
+          <div class="amount-emoji">
+            😕
+          </div>
+
+          <div class="amount-text">
+
+            <strong>
+              거의 안 먹었어요
+            </strong>
+
+            <small>
+              거의 그대로 남겼어요
+            </small>
+
+          </div>
+
+        </span>
+
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+  <button
+    class="primary-action"
+    onclick="showMealSummary()">
+
+    내 기록 확인하기
+
+  </button>
+
+
+
+  <div id="mealResult"></div>
+
+
+
+  <div class="kid-notice">
+
+    🌟 얼마나 먹었는지 솔직하게 기록하면 돼요.
+    많이 먹거나 적게 먹은 것이 잘못은 아니에요.
+
+  </div>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+let currentMeal =
+  null;
+
+
+let currentRecordSaved =
+  false;
+
+
+
+/* =========================
+   로그인 확인
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .getSession();
+
+
+    if (
+      error ||
+      !data.session
+    ) {
+
+      location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    currentUser =
+      data.session.user;
+
+  }
+);
+
+
+
+/* =========================
+   사진 미리보기
+========================= */
+
+function previewPhoto(event) {
+
+  const file =
+    event.target.files[0];
+
+
+  const preview =
+    document.getElementById(
+      "photoPreview"
+    );
+
+
+  if (!file) {
+
+    preview.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  preview.src =
+    URL.createObjectURL(
+      file
+    );
+
+
+  preview.style.display =
+    "block";
+
+}
+
+
+
+/* =========================
+   기록 확인
+========================= */
+
+function showMealSummary() {
+
+  const mealTypeInput =
+    document.querySelector(
+      'input[name="mealType"]:checked'
+    );
+
+
+  const mealAmountInput =
+    document.querySelector(
+      'input[name="mealAmount"]:checked'
+    );
+
+
+  if (!mealTypeInput) {
+
+    alert(
+      "언제 먹었는지 골라주세요."
+    );
+
+    return;
+
+  }
+
+
+  if (!mealAmountInput) {
+
+    alert(
+      "얼마나 먹었는지 골라주세요."
+    );
+
+    return;
+
+  }
+
+
+  const mealType =
+    mealTypeInput.value;
+
+
+  const ratio =
+    Number(
+      mealAmountInput.value
+    );
+
+
+  const amountText =
+    mealAmountInput.dataset.text;
+
+
+  currentMeal = {
+
+    mealType:
+      mealType,
+
+    intakeRatio:
+      ratio,
+
+    amountText:
+      amountText
+
+  };
+
+
+  currentRecordSaved =
+    false;
+
+
+  document.getElementById(
+    "mealResult"
+  ).innerHTML = `
+
+    <div class="meal-result">
+
+      <div class="meal-result-icon">
+        🍽️
+      </div>
+
+      <h2>
+        이렇게 기록할까요?
+      </h2>
+
+
+      <div class="meal-summary">
+
+        <strong>
+          ${mealType}
+        </strong>
+
+        <br><br>
+
+        ${amountText}
+
+      </div>
+
+
+      <button
+        id="saveMealButton"
+        class="save-meal-button"
+        onclick="saveMealRecord()">
+
+        ⭐ 저장하기
+
+      </button>
+
+
+      <div id="savedMealMessage"></div>
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById(
+      "mealResult"
+    )
+    .scrollIntoView({
+
+      behavior: "smooth",
+
+      block: "start"
+
+    });
+
+}
+
+
+
+/* =========================
+   Supabase 저장
+========================= */
+
+async function saveMealRecord() {
+
+  if (!currentUser) {
+
+    alert(
+      "로그인 정보를 확인할 수 없어요."
+    );
+
+    return;
+
+  }
+
+
+  if (!currentMeal) {
+
+    return;
+
+  }
+
+
+  if (currentRecordSaved) {
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "saveMealButton"
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "저장하는 중...";
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "records"
+      )
+      .insert({
+
+        user_id:
+          currentUser.id,
+
+        record_type:
+          "meal",
+
+        meal_type:
+          currentMeal.mealType,
+
+        intake_ratio:
+          currentMeal.intakeRatio,
+
+        note:
+          currentMeal.amountText,
+
+        planned_carbs:
+          null,
+
+        estimated_carbs:
+          null
+
+      })
+      .select(
+        "id, meal_type, intake_ratio, note, created_at"
+      )
+      .single();
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "⭐ 저장하기";
+
+
+    alert(
+      "기록 저장 중 오류가 발생했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  currentRecordSaved =
+    true;
+
+
+  button.textContent =
+    "✓ 저장 완료";
+
+
+  const recordDate =
+    new Date(
+      data.created_at
+    );
+
+
+  const dateText =
+    recordDate.toLocaleDateString(
+      "ko-KR"
+    );
+
+
+  const timeText =
+    recordDate.toLocaleTimeString(
+      "ko-KR",
+      {
+
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit"
+
+      }
+    );
+
+
+  document.getElementById(
+    "savedMealMessage"
+  ).innerHTML = `
+
+    <div class="saved-card">
+
+      <div class="saved-title">
+        🌟 잘 기록했어요!
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          식사
+        </span>
+
+        <strong>
+          ${data.meal_type}
+        </strong>
+
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          먹은 양
+        </span>
+
+        <strong>
+          ${data.note}
+        </strong>
+
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          날짜
+        </span>
+
+        <strong>
+          ${dateText}
+        </strong>
+
+      </div>
+
+
+      <div class="saved-row">
+
+        <span>
+          시간
+        </span>
+
+        <strong>
+          ${timeText}
+        </strong>
+
+      </div>
+
+
+      <div class="next-actions">
+
+        <button
+          class="next-button next-glucose"
+          onclick="location.href='glucose.html'">
+
+          🩸 혈당 확인하기
+
+        </button>
+
+
+        <button
+          class="next-button next-home"
+          onclick="location.href='index.html'">
+
+          🏠 메인으로 돌아가기
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+</script>
+
+</body>
+
+</html>

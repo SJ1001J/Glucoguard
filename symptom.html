@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>오늘 상태 - GlucoGuard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .viewer-card {
+      display: none;
+
+      margin-bottom: 15px;
+
+      padding: 13px 15px;
+
+      border-radius: 16px;
+
+      background: #f3efff;
+
+      color: #665096;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .viewer-card strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      font-size: 13px;
+    }
+
+
+    .symptom-option input {
+      display: none;
+    }
+
+    .symptom-option span {
+      min-height: 56px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px;
+
+      border: 2px solid transparent;
+
+      border-radius: 16px;
+
+      background: #f7f9fb;
+
+      font-size: 15px;
+
+      cursor: pointer;
+
+      text-align: center;
+    }
+
+    .symptom-option input:checked + span {
+      background: #eaf4ff;
+
+      border-color: #79aeda;
+
+      color: #245978;
+
+      font-weight: bold;
+    }
+
+
+    .condition-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .condition-option input {
+      display: none;
+    }
+
+    .condition-box {
+      display: block;
+
+      padding: 15px;
+
+      border-radius: 16px;
+
+      border: 2px solid transparent;
+
+      cursor: pointer;
+    }
+
+    .condition-box strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      font-size: 15px;
+    }
+
+    .condition-box small {
+      display: block;
+
+      font-size: 12px;
+
+      line-height: 1.55;
+
+      color: #687a83;
+    }
+
+    .condition-option.safe .condition-box {
+      background: #eef9ef;
+    }
+
+    .condition-option.danger .condition-box {
+      background: #fff0f0;
+    }
+
+    .condition-option input:checked + .condition-box {
+      border-color: #4285b4;
+
+      box-shadow:
+        0 0 0 3px rgba(66,133,180,.08);
+    }
+
+
+    .optional-label {
+      font-size: 12px;
+
+      color: #90a4ae;
+
+      font-weight: normal;
+    }
+
+
+    .guide-card {
+      display: none;
+
+      margin-bottom: 16px;
+
+      padding: 18px;
+
+      border-radius: 20px;
+
+      line-height: 1.65;
+    }
+
+    .guide-card.low {
+      display: block;
+
+      background: #fff5df;
+
+      color: #755f31;
+    }
+
+    .guide-card.high {
+      display: block;
+
+      background: #fff0f0;
+
+      color: #913f3b;
+    }
+
+    .guide-card.danger {
+      display: block;
+
+      background: #ffe5e3;
+
+      color: #8f302b;
+
+      border: 2px solid #ed9a94;
+    }
+
+    .guide-card.normal {
+      display: block;
+
+      background: #eef6ff;
+
+      color: #3e6984;
+    }
+
+    .guide-title {
+      margin-bottom: 7px;
+
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .guide-text {
+      margin: 0;
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+
+    .timer-card {
+      display: none;
+
+      margin-bottom: 16px;
+
+      padding: 18px;
+
+      border-radius: 20px;
+
+      background: #fff8df;
+
+      text-align: center;
+    }
+
+    .timer-title {
+      margin-bottom: 5px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      color: #7c6733;
+    }
+
+    .timer-display {
+      margin: 8px 0;
+
+      font-size: 34px;
+      font-weight: 800;
+
+      color: #b17618;
+    }
+
+    .timer-description {
+      margin-bottom: 12px;
+
+      font-size: 12px;
+
+      color: #8c7c59;
+    }
+
+    .timer-button {
+      padding: 11px 16px;
+
+      border: none;
+
+      border-radius: 13px;
+
+      background: #d9982f;
+
+      color: white;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    .save-message {
+      display: none;
+
+      margin-bottom: 16px;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    .save-message.success {
+      display: block;
+
+      background: #eef9ef;
+
+      color: #36734d;
+    }
+
+    .save-message.error {
+      display: block;
+
+      background: #fff0f0;
+
+      color: #a43c37;
+    }
+
+
+    .save-button {
+      width: 100%;
+
+      padding: 16px;
+
+      border: none;
+
+      border-radius: 18px;
+
+      background: #4285b4;
+
+      color: white;
+
+      font-size: 17px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 6px 15px rgba(66,133,180,.20);
+    }
+
+    .save-button:disabled {
+      opacity: .55;
+
+      cursor: not-allowed;
+    }
+
+
+    .safety-note {
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background: #f6f8f9;
+
+      font-size: 11px;
+
+      line-height: 1.65;
+
+      color: #78909c;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <!-- =========================
+       상단
+  ========================= -->
+
+  <div class="sub-header">
+
+    <button
+      class="back-button"
+      onclick="goBack()">
+
+      ←
+
+    </button>
+
+
+    <div>
+
+      <h1
+        id="pageTitle"
+        class="page-title">
+
+        🙂 오늘 상태
+
+      </h1>
+
+
+      <p
+        id="pageDescription"
+        class="page-description">
+
+        지금 느끼는 증상을 알려주세요.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       교직원 보기
+  ========================= -->
+
+  <div
+    id="viewerCard"
+    class="viewer-card">
+
+    <strong>
+      👩‍🏫 교직원 기록
+    </strong>
+
+    담당 학생의 상태를 기록하고 있어요.
+
+  </div>
+
+
+
+  <!-- =========================
+       STEP 1 증상
+  ========================= -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 1
+    </div>
+
+
+    <h2>
+      지금 어떤 느낌인가요?
+    </h2>
+
+
+    <p class="help-text">
+      해당되는 것을 모두 선택해주세요.
+    </p>
+
+
+    <div class="symptom-grid">
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="식은땀">
+
+        <span>
+          💦 식은땀
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="손 떨림">
+
+        <span>
+          ✋ 손 떨림
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="창백함">
+
+        <span>
+          😶 창백함
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="어지러움">
+
+        <span>
+          💫 어지러움
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="행동 변화">
+
+        <span>
+          😵 행동 변화
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="심한 졸림">
+
+        <span>
+          😴 심한 졸림
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="심한 갈증">
+
+        <span>
+          🥤 심한 갈증
+        </span>
+
+      </label>
+
+
+      <label class="symptom-option">
+
+        <input
+          type="checkbox"
+          name="symptom"
+          value="구토">
+
+        <span>
+          🤢 구토
+        </span>
+
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       STEP 2 의식 상태
+  ========================= -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 2
+    </div>
+
+
+    <h2>
+      지금 상태를 확인해주세요
+    </h2>
+
+
+    <p class="help-text">
+      의식과 삼킴 상태를 기준으로 선택해주세요.
+    </p>
+
+
+    <div class="condition-list">
+
+
+      <label class="condition-option safe">
+
+        <input
+          type="radio"
+          name="condition"
+          value="conscious">
+
+        <span class="condition-box">
+
+          <strong>
+            🙂 의식이 있고 삼킬 수 있어요
+          </strong>
+
+          <small>
+            질문에 반응하고 음식이나 음료를 안전하게 삼킬 수 있어요.
+          </small>
+
+        </span>
+
+      </label>
+
+
+
+      <label class="condition-option danger">
+
+        <input
+          type="radio"
+          name="condition"
+          value="danger">
+
+        <span class="condition-box">
+
+          <strong>
+            🚨 의식이 흐리거나 삼키기 어려워요
+          </strong>
+
+          <small>
+            반응이 이상하거나 의식이 없거나 안전하게 삼킬 수 없어요.
+          </small>
+
+        </span>
+
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       STEP 3 혈당
+  ========================= -->
+
+  <div class="step-card">
+
+    <div class="step-number">
+      STEP 3
+    </div>
+
+
+    <h2>
+      혈당을 알고 있나요?
+      <span class="optional-label">
+        선택
+      </span>
+    </h2>
+
+
+    <p class="help-text">
+      방금 확인한 혈당 또는 CGM 수치가 있다면 입력해주세요.
+    </p>
+
+
+    <div class="glucose-input-wrap">
+
+      <input
+        id="glucoseInput"
+        type="number"
+        min="20"
+        max="600"
+        placeholder="예: 85">
+
+      <span>
+        mg/dL
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       안내 확인
+  ========================= -->
+
+  <button
+    class="primary-action"
+    onclick="showGuide()">
+
+    🩺 지금 어떻게 해야 하나요?
+
+  </button>
+
+
+
+  <div
+    id="guideCard"
+    class="guide-card">
+
+    <div
+      id="guideTitle"
+      class="guide-title">
+    </div>
+
+    <p
+      id="guideText"
+      class="guide-text">
+    </p>
+
+  </div>
+
+
+
+  <!-- =========================
+       15분 타이머
+  ========================= -->
+
+  <div
+    id="timerCard"
+    class="timer-card">
+
+    <div class="timer-title">
+      ⏱️ 재확인 타이머
+    </div>
+
+
+    <div
+      id="timerDisplay"
+      class="timer-display">
+
+      15:00
+
+    </div>
+
+
+    <div class="timer-description">
+
+      개인별 관리계획에 따라 필요한 처치를 한 뒤
+      재확인 시간을 확인해주세요.
+
+    </div>
+
+
+    <button
+      id="timerButton"
+      class="timer-button"
+      onclick="startTimer()">
+
+      15분 타이머 시작
+
+    </button>
+
+  </div>
+
+
+
+  <!-- =========================
+       저장 메시지
+  ========================= -->
+
+  <div
+    id="saveMessage"
+    class="save-message">
+  </div>
+
+
+
+  <!-- =========================
+       저장
+  ========================= -->
+
+  <button
+    id="saveButton"
+    class="save-button"
+    onclick="saveSymptomRecord()">
+
+    💾 오늘 상태 기록 저장
+
+  </button>
+
+
+
+  <div class="safety-note">
+
+    GlucoGuard는 학교생활 지원을 위한 교육용 프로토타입이에요.
+    실제 대응은 학생의 개별 당뇨 관리계획(DMMP)과 의료진 지침을 우선해주세요.
+    의식이 없거나 삼킬 수 없는 경우에는 음식이나 음료를 입으로 주지 말고,
+    학생을 혼자 두지 않은 상태에서 학교의 응급대응 절차와 처방된 글루카곤 사용 지침을 따라주세요.
+
+  </div>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================
+   Supabase
+========================= */
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+
+let currentUser =
+  null;
+
+
+let targetUserId =
+  null;
+
+
+let viewerRole =
+  "student";
+
+
+let isTeacherView =
+  false;
+
+
+let targetStudentName =
+  null;
+
+
+let timerInterval =
+  null;
+
+
+let remainingSeconds =
+  15 * 60;
+
+
+
+/* =========================
+   시작
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const ready =
+      await initializePage();
+
+
+    if (!ready) {
+      return;
+    }
+
+  }
+);
+
+
+
+/* =========================
+   학생 / 교직원 판단
+========================= */
+
+async function initializePage() {
+
+  const {
+    data: sessionData,
+    error: sessionError
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    sessionError ||
+    !sessionData.session
+  ) {
+
+    location.href =
+      "login.html";
+
+
+    return false;
+
+  }
+
+
+  currentUser =
+    sessionData.session.user;
+
+
+  const {
+    data: profile,
+    error: profileError
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "role, nickname"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (profileError) {
+
+    console.error(
+      profileError
+    );
+
+
+    alert(
+      "계정 정보를 확인하지 못했어요."
+    );
+
+
+    return false;
+
+  }
+
+
+  viewerRole =
+    profile?.role ||
+    "student";
+
+
+  /*
+    교직원
+  */
+
+  if (
+    viewerRole === "teacher"
+    ||
+    viewerRole === "nurse"
+  ) {
+
+    const selectedStudent =
+      sessionStorage.getItem(
+        "teacherSelectedStudent"
+      );
+
+
+    if (!selectedStudent) {
+
+      alert(
+        "먼저 학생을 선택해주세요."
+      );
+
+
+      location.href =
+        "teacher.html";
+
+
+      return false;
+
+    }
+
+
+    targetUserId =
+      selectedStudent;
+
+
+    isTeacherView =
+      true;
+
+
+    /*
+      담당 학생인지 확인
+    */
+
+    const {
+      data: relation,
+      error: relationError
+    } =
+      await supabaseClient
+        .from("teacher_students")
+        .select("student_id")
+        .eq(
+          "teacher_id",
+          currentUser.id
+        )
+        .eq(
+          "student_id",
+          targetUserId
+        )
+        .maybeSingle();
+
+
+    if (
+      relationError ||
+      !relation
+    ) {
+
+      alert(
+        "담당 학생의 상태만 기록할 수 있어요."
+      );
+
+
+      location.href =
+        "teacher.html";
+
+
+      return false;
+
+    }
+
+
+    /*
+      학생 프로필
+    */
+
+    const {
+      data: studentProfile,
+      error: studentError
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "nickname, class_name"
+        )
+        .eq(
+          "id",
+          targetUserId
+        )
+        .maybeSingle();
+
+
+    if (studentError) {
+
+      console.error(
+        studentError
+      );
+
+    }
+
+
+    targetStudentName =
+      studentProfile?.nickname ||
+      "학생";
+
+
+    document.getElementById(
+      "pageTitle"
+    ).textContent =
+      "🚨 " +
+      targetStudentName +
+      " 학생 상태";
+
+
+    document.getElementById(
+      "pageDescription"
+    ).textContent =
+      (
+        studentProfile?.class_name
+          ? studentProfile.class_name +
+            " · "
+          : ""
+      )
+      +
+      "현재 증상과 상태를 확인해요.";
+
+
+    document.getElementById(
+      "viewerCard"
+    ).style.display =
+      "block";
+
+
+    return true;
+
+  }
+
+
+  /*
+    학생 본인
+  */
+
+  targetUserId =
+    currentUser.id;
+
+
+  isTeacherView =
+    false;
+
+
+  return true;
+
+}
+
+
+
+/* =========================
+   선택한 증상
+========================= */
+
+function getSelectedSymptoms() {
+
+  return Array.from(
+    document.querySelectorAll(
+      'input[name="symptom"]:checked'
+    )
+  ).map(
+    function(input) {
+
+      return input.value;
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   선택한 상태
+========================= */
+
+function getSelectedCondition() {
+
+  const selected =
+    document.querySelector(
+      'input[name="condition"]:checked'
+    );
+
+
+  return selected
+    ? selected.value
+    : null;
+
+}
+
+
+
+/* =========================
+   상태 안내
+========================= */
+
+function showGuide() {
+
+  const symptoms =
+    getSelectedSymptoms();
+
+
+  const condition =
+    getSelectedCondition();
+
+
+  const glucoseInput =
+    document.getElementById(
+      "glucoseInput"
+    ).value;
+
+
+  const glucose =
+    glucoseInput
+      ? Number(glucoseInput)
+      : null;
+
+
+  if (
+    !condition
+  ) {
+
+    alert(
+      "먼저 의식과 삼킴 상태를 선택해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const guideCard =
+    document.getElementById(
+      "guideCard"
+    );
+
+
+  const guideTitle =
+    document.getElementById(
+      "guideTitle"
+    );
+
+
+  const guideText =
+    document.getElementById(
+      "guideText"
+    );
+
+
+  /*
+    의식 저하 / 삼킴 불가
+  */
+
+  if (
+    condition === "danger"
+  ) {
+
+    guideCard.className =
+      "guide-card danger";
+
+
+    guideTitle.textContent =
+      "🚨 즉시 성인의 도움이 필요해요";
+
+
+    guideText.innerHTML =
+
+      "음식이나 음료를 입으로 주지 마세요.<br>" +
+
+      "학생을 혼자 두지 말고 학교의 응급대응 절차를 시작해주세요.<br>" +
+
+      "처방된 글루카곤이 있고 교육받은 담당자가 있다면 개인별 관리계획에 따라 사용하고, 필요한 경우 즉시 119에 도움을 요청하세요.";
+
+
+    document.getElementById(
+      "timerCard"
+    ).style.display =
+      "none";
+
+
+    return;
+
+  }
+
+
+  /*
+    혈당 < 70
+  */
+
+  if (
+    glucose !== null &&
+    glucose < 70
+  ) {
+
+    guideCard.className =
+      "guide-card low";
+
+
+    guideTitle.textContent =
+      "🟡 낮은 혈당이 확인됐어요";
+
+
+    guideText.innerHTML =
+
+      "의식이 있고 안전하게 삼킬 수 있는 상태예요.<br>" +
+
+      "학생의 개별 관리계획에 따라 빠르게 흡수되는 탄수화물 등의 저혈당 대응을 시행하고, 계획에 정해진 시간에 혈당을 다시 확인해주세요.";
+
+
+    document.getElementById(
+      "timerCard"
+    ).style.display =
+      "block";
+
+
+    resetTimer();
+
+
+    return;
+
+  }
+
+
+  /*
+    혈당 >= 250
+  */
+
+  if (
+    glucose !== null &&
+    glucose >= 250
+  ) {
+
+    guideCard.className =
+      "guide-card high";
+
+
+    guideTitle.textContent =
+      "🔴 높은 혈당이 확인됐어요";
+
+
+    guideText.innerHTML =
+
+      "학생의 개별 관리계획에 따라 혈당을 다시 확인하고 필요한 조치를 확인해주세요.<br>" +
+
+      "구토가 있거나 상태가 악화되면 교직원 또는 보호자에게 즉시 알리고 개별 응급계획에 따라 대응해주세요.";
+
+
+    document.getElementById(
+      "timerCard"
+    ).style.display =
+      "none";
+
+
+    return;
+
+  }
+
+
+  /*
+    구토
+  */
+
+  if (
+    symptoms.includes(
+      "구토"
+    )
+  ) {
+
+    guideCard.className =
+      "guide-card high";
+
+
+    guideTitle.textContent =
+      "⚠️ 구토 증상을 확인했어요";
+
+
+    guideText.innerHTML =
+
+      "구토는 추가 확인이 필요한 증상이에요.<br>" +
+
+      "학생을 관찰하면서 혈당을 확인하고, 개별 관리계획에 따라 교직원·보호자·의료진에게 연락해주세요.";
+
+
+    document.getElementById(
+      "timerCard"
+    ).style.display =
+      "none";
+
+
+    return;
+
+  }
+
+
+  /*
+    그 외
+  */
+
+  guideCard.className =
+    "guide-card normal";
+
+
+  guideTitle.textContent =
+    "🔎 현재 상태를 계속 확인해주세요";
+
+
+  guideText.innerHTML =
+
+    "입력된 내용만으로 특정 상태를 판단하지 않아요.<br>" +
+
+    "학생의 증상과 혈당을 관찰하면서 개인별 관리계획에 따라 필요한 대응을 확인해주세요.";
+
+
+  document.getElementById(
+    "timerCard"
+  ).style.display =
+    "none";
+
+}
+
+
+
+/* =========================
+   증상 기록 저장
+========================= */
+
+async function saveSymptomRecord() {
+
+  const symptoms =
+    getSelectedSymptoms();
+
+
+  const condition =
+    getSelectedCondition();
+
+
+  const glucoseInput =
+    document.getElementById(
+      "glucoseInput"
+    ).value;
+
+
+  let glucoseValue =
+    null;
+
+
+  if (
+    glucoseInput !== ""
+  ) {
+
+    glucoseValue =
+      Number(
+        glucoseInput
+      );
+
+
+    if (
+      !Number.isFinite(
+        glucoseValue
+      )
+      ||
+      glucoseValue < 20
+      ||
+      glucoseValue > 600
+    ) {
+
+      showSaveMessage(
+        "error",
+        "혈당 수치를 다시 확인해주세요."
+      );
+
+
+      return;
+
+    }
+
+  }
+
+
+  if (
+    symptoms.length === 0
+    &&
+    !condition
+    &&
+    glucoseValue === null
+  ) {
+
+    showSaveMessage(
+      "error",
+      "증상, 현재 상태 또는 혈당 중 하나 이상을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    !condition
+  ) {
+
+    showSaveMessage(
+      "error",
+      "의식과 삼킴 상태를 선택해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const conditionLabel =
+    condition === "danger"
+      ? "의식이 흐리거나 삼키기 어려움"
+      : "의식이 있고 삼킬 수 있음";
+
+
+  /*
+    note 칸 안에 증상 정보를 JSON으로 저장
+  */
+
+  const symptomData = {
+
+    symptoms:
+      symptoms,
+
+    condition:
+      condition,
+
+    conditionLabel:
+      conditionLabel,
+
+    recordedBy:
+      isTeacherView
+        ? "teacher"
+        : "student"
+
+  };
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  clearSaveMessage();
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("records")
+      .insert({
+
+        user_id:
+          targetUserId,
+
+        record_type:
+          "symptom",
+
+        glucose_value:
+          glucoseValue,
+
+        meal_type:
+          null,
+
+        planned_carbs:
+          null,
+
+        intake_ratio:
+          null,
+
+        estimated_carbs:
+          null,
+
+        note:
+          JSON.stringify(
+            symptomData
+          ),
+
+        created_at:
+          new Date()
+            .toISOString()
+
+      });
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "💾 오늘 상태 기록 저장";
+
+
+  if (error) {
+
+    console.error(
+      "Symptom save error:",
+      error
+    );
+
+
+    showSaveMessage(
+      "error",
+      "상태 기록을 저장하지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  showSaveMessage(
+    "success",
+    isTeacherView
+      ? "✅ " +
+        targetStudentName +
+        " 학생의 상태가 저장되었어요."
+      : "✅ 오늘 상태가 저장되었어요."
+  );
+
+
+  /*
+    교직원이 저장한 경우
+    잠시 후 학생 관리 화면으로
+  */
+
+  if (
+    isTeacherView
+  ) {
+
+    setTimeout(
+      function() {
+
+        location.href =
+          "teacher.html";
+
+      },
+      1200
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   저장 메시지
+========================= */
+
+function showSaveMessage(
+  type,
+  text
+) {
+
+  const box =
+    document.getElementById(
+      "saveMessage"
+    );
+
+
+  box.className =
+    "save-message " +
+    type;
+
+
+  box.textContent =
+    text;
+
+}
+
+
+
+function clearSaveMessage() {
+
+  const box =
+    document.getElementById(
+      "saveMessage"
+    );
+
+
+  box.className =
+    "save-message";
+
+
+  box.textContent =
+    "";
+
+}
+
+
+
+/* =========================
+   15분 타이머
+========================= */
+
+function resetTimer() {
+
+  if (
+    timerInterval
+  ) {
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    timerInterval =
+      null;
+
+  }
+
+
+  remainingSeconds =
+    15 * 60;
+
+
+  updateTimerDisplay();
+
+
+  document.getElementById(
+    "timerButton"
+  ).disabled =
+    false;
+
+
+  document.getElementById(
+    "timerButton"
+  ).textContent =
+    "15분 타이머 시작";
+
+}
+
+
+
+function startTimer() {
+
+  if (
+    timerInterval
+  ) {
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "timerButton"
+  ).disabled =
+    true;
+
+
+  document.getElementById(
+    "timerButton"
+  ).textContent =
+    "타이머 진행 중";
+
+
+  timerInterval =
+    setInterval(
+      function() {
+
+        remainingSeconds--;
+
+
+        updateTimerDisplay();
+
+
+        if (
+          remainingSeconds <= 0
+        ) {
+
+          clearInterval(
+            timerInterval
+          );
+
+
+          timerInterval =
+            null;
+
+
+          playAlarm();
+
+
+          speakRecheckMessage();
+
+
+          alert(
+            "재확인 시간입니다.\n혈당 또는 CGM 수치를 다시 확인해주세요."
+          );
+
+
+          document.getElementById(
+            "timerButton"
+          ).disabled =
+            false;
+
+
+          document.getElementById(
+            "timerButton"
+          ).textContent =
+            "15분 타이머 다시 시작";
+
+
+          remainingSeconds =
+            15 * 60;
+
+
+          updateTimerDisplay();
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+
+function updateTimerDisplay() {
+
+  const minutes =
+    Math.floor(
+      remainingSeconds /
+      60
+    );
+
+
+  const seconds =
+    remainingSeconds %
+    60;
+
+
+  document.getElementById(
+    "timerDisplay"
+  ).textContent =
+    String(
+      minutes
+    ).padStart(
+      2,
+      "0"
+    )
+    +
+    ":"
+    +
+    String(
+      seconds
+    ).padStart(
+      2,
+      "0"
+    );
+
+}
+
+
+
+/* =========================
+   알림음
+========================= */
+
+function playAlarm() {
+
+  try {
+
+    const AudioContextClass =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+
+    const audioContext =
+      new AudioContextClass();
+
+
+    const oscillator =
+      audioContext
+        .createOscillator();
+
+
+    const gain =
+      audioContext
+        .createGain();
+
+
+    oscillator.connect(
+      gain
+    );
+
+
+    gain.connect(
+      audioContext.destination
+    );
+
+
+    oscillator.frequency.value =
+      880;
+
+
+    gain.gain.value =
+      0.15;
+
+
+    oscillator.start();
+
+
+    setTimeout(
+      function() {
+
+        oscillator.stop();
+
+      },
+      900
+    );
+
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   음성 안내
+========================= */
+
+function speakRecheckMessage() {
+
+  if (
+    !("speechSynthesis" in window)
+  ) {
+
+    return;
+
+  }
+
+
+  const speech =
+    new SpeechSynthesisUtterance(
+      "재확인 시간입니다. 혈당 또는 씨지엠 수치를 다시 확인해 주세요."
+    );
+
+
+  speech.lang =
+    "ko-KR";
+
+
+  window.speechSynthesis
+    .speak(
+      speech
+    );
+
+}
+
+
+
+/* =========================
+   뒤로가기
+========================= */
+
+function goBack() {
+
+  if (
+    isTeacherView
+  ) {
+
+    location.href =
+      "teacher.html";
+
+
+    return;
+
+  }
+
+
+  location.href =
+    "index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

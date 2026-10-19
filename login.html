@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>GlucoGuard 로그인</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 430px;
+
+      padding: 30px 20px;
+    }
+
+
+    /* 로고 */
+
+    .login-header {
+      text-align: center;
+
+      margin-bottom: 24px;
+    }
+
+    .logo-circle {
+      width: 66px;
+      height: 66px;
+
+      margin: 0 auto 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: white;
+
+      border-radius: 50%;
+
+      font-size: 34px;
+
+      box-shadow:
+        0 6px 18px rgba(60,90,110,.12);
+    }
+
+    .login-header h1 {
+      margin: 0;
+
+      font-size: 32px;
+
+      color: #245978;
+    }
+
+    .login-header p {
+      margin: 8px 0 0;
+
+      color: #78909c;
+
+      font-size: 14px;
+    }
+
+
+    /* 로그인 카드 */
+
+    .login-card {
+      background: white;
+
+      border-radius: 26px;
+
+      padding: 24px;
+
+      box-shadow:
+        0 8px 24px rgba(60,90,110,.10);
+    }
+
+
+    /* 탭 */
+
+    .tab-buttons {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+
+      padding: 5px;
+
+      margin-bottom: 22px;
+
+      background: #f3f6f8;
+
+      border-radius: 15px;
+    }
+
+    .tab-button {
+      border: none;
+
+      padding: 11px;
+
+      border-radius: 11px;
+
+      background: transparent;
+
+      color: #78909c;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background: white;
+
+      color: #245978;
+
+      box-shadow:
+        0 2px 8px rgba(60,90,110,.08);
+    }
+
+
+    /* 폼 */
+
+    .form-title {
+      margin: 0 0 5px;
+
+      font-size: 21px;
+    }
+
+    .form-description {
+      margin: 0 0 20px;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      color: #78909c;
+    }
+
+    .input-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      color: #455a64;
+    }
+
+    .login-input {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 15px;
+
+      border: 1px solid #d8e2e8;
+
+      border-radius: 14px;
+
+      background: #fbfdff;
+
+      font-size: 16px;
+
+      outline: none;
+    }
+
+    .login-input:focus {
+      border-color: #6ca5ce;
+
+      box-shadow:
+        0 0 0 3px rgba(108,165,206,.12);
+    }
+
+
+    /* 메인 버튼 */
+
+    .main-button {
+      width: 100%;
+
+      padding: 15px;
+
+      margin-top: 4px;
+
+      border: none;
+
+      border-radius: 15px;
+
+      background: #428fbd;
+
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .main-button:disabled {
+      opacity: .6;
+
+      cursor: not-allowed;
+    }
+
+
+    /* 메시지 */
+
+    .message-box {
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 13px;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .message-success {
+      display: block;
+
+      background: #eef9ef;
+
+      color: #36734d;
+    }
+
+    .message-error {
+      display: block;
+
+      background: #fff0f0;
+
+      color: #a33b37;
+    }
+
+
+    /* 안내 */
+
+    .login-notice {
+      margin-top: 18px;
+
+      padding: 14px;
+
+      background: #eef5ff;
+
+      border-radius: 15px;
+
+      font-size: 12px;
+      line-height: 1.7;
+
+      color: #607d8b;
+    }
+
+    .login-notice strong {
+      color: #3974a2;
+    }
+
+
+    .signup-only {
+      display: none;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="login-container">
+
+
+  <!-- 로고 -->
+
+  <div class="login-header">
+
+    <div class="logo-circle">
+      🌈
+    </div>
+
+    <h1>
+      GlucoGuard
+    </h1>
+
+    <p>
+      학교에서 함께 돌보는 1형 당뇨 관리 💙
+    </p>
+
+  </div>
+
+
+
+  <div class="login-card">
+
+
+    <!-- 로그인 / 회원가입 -->
+
+    <div class="tab-buttons">
+
+
+      <button
+        id="loginTab"
+        class="tab-button active"
+        onclick="showLogin()">
+
+        로그인
+
+      </button>
+
+
+      <button
+        id="signupTab"
+        class="tab-button"
+        onclick="showSignup()">
+
+        처음 시작하기
+
+      </button>
+
+
+    </div>
+
+
+
+    <h2
+      id="formTitle"
+      class="form-title">
+
+      다시 만났어요! 👋
+
+    </h2>
+
+
+    <p
+      id="formDescription"
+      class="form-description">
+
+      계정으로 로그인해주세요.
+
+    </p>
+
+
+
+    <label class="input-label">
+      이메일
+    </label>
+
+
+    <input
+      id="email"
+      class="login-input"
+      type="email"
+      autocomplete="email"
+      placeholder="이메일을 입력해주세요">
+
+
+
+    <label class="input-label">
+      비밀번호
+    </label>
+
+
+    <input
+      id="password"
+      class="login-input"
+      type="password"
+      autocomplete="current-password"
+      placeholder="비밀번호를 입력해주세요">
+
+
+
+    <!-- 회원가입 때만 보임 -->
+
+    <div
+      id="passwordConfirmArea"
+      class="signup-only">
+
+
+      <label class="input-label">
+        비밀번호 다시 입력
+      </label>
+
+
+      <input
+        id="passwordConfirm"
+        class="login-input"
+        type="password"
+        autocomplete="new-password"
+        placeholder="비밀번호를 한 번 더 입력해주세요">
+
+
+    </div>
+
+
+
+    <button
+      id="actionButton"
+      class="main-button"
+      onclick="login()">
+
+      로그인하기
+
+    </button>
+
+
+
+    <div
+      id="messageBox"
+      class="message-box">
+    </div>
+
+
+
+    <div class="login-notice">
+
+      👧 <strong>학생 계정</strong>은 자신의 기록 화면으로 이동하고,
+      <br>
+      👩‍🏫 <strong>교직원 계정</strong>은 담당 학생 관리 화면으로 이동해요.
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentMode =
+  "login";
+
+
+
+/* =========================
+   페이지 시작
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .getSession();
+
+
+    if (error) {
+
+      console.error(
+        error
+      );
+
+      return;
+
+    }
+
+
+    /*
+      이미 로그인된 계정이 있으면
+      역할 확인 후 자동 이동
+    */
+
+    if (
+      data.session
+    ) {
+
+      showSuccess(
+        "로그인 정보를 확인하고 있어요..."
+      );
+
+
+      await redirectByRole(
+        data.session.user
+      );
+
+    }
+
+  }
+);
+
+
+
+/* =========================
+   역할에 따라 이동
+========================= */
+
+async function redirectByRole(
+  user
+) {
+
+  if (!user) {
+
+    return;
+
+  }
+
+
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "profiles"
+      )
+      .select(
+        "role"
+      )
+      .eq(
+        "id",
+        user.id
+      )
+      .maybeSingle();
+
+
+  if (error) {
+
+    console.error(
+      "role 확인 오류:",
+      error
+    );
+
+
+    showError(
+      "계정 정보를 확인하지 못했어요. 다시 시도해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    프로필이 아직 없는 신규 계정은
+    학생 계정으로 처리
+  */
+
+  if (!profile) {
+
+    location.href =
+      "index.html";
+
+    return;
+
+  }
+
+
+  /*
+    교사 / 보건교사
+  */
+
+  if (
+    profile.role ===
+      "teacher"
+    ||
+    profile.role ===
+      "nurse"
+  ) {
+
+    location.href =
+      "teacher.html";
+
+    return;
+
+  }
+
+
+  /*
+    기본 = 학생
+  */
+
+  location.href =
+    "index.html";
+
+}
+
+
+
+/* =========================
+   로그인 탭
+========================= */
+
+function showLogin() {
+
+  currentMode =
+    "login";
+
+
+  document
+    .getElementById(
+      "loginTab"
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  document
+    .getElementById(
+      "signupTab"
+    )
+    .classList.remove(
+      "active"
+    );
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "다시 만났어요! 👋";
+
+
+  document.getElementById(
+    "formDescription"
+  ).textContent =
+    "계정으로 로그인해주세요.";
+
+
+  document.getElementById(
+    "passwordConfirmArea"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "password"
+  ).autocomplete =
+    "current-password";
+
+
+  const button =
+    document.getElementById(
+      "actionButton"
+    );
+
+
+  button.textContent =
+    "로그인하기";
+
+
+  button.onclick =
+    login;
+
+
+  clearMessage();
+
+}
+
+
+
+/* =========================
+   회원가입 탭
+========================= */
+
+function showSignup() {
+
+  currentMode =
+    "signup";
+
+
+  document
+    .getElementById(
+      "signupTab"
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  document
+    .getElementById(
+      "loginTab"
+    )
+    .classList.remove(
+      "active"
+    );
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "처음 왔어요! 🌱";
+
+
+  document.getElementById(
+    "formDescription"
+  ).textContent =
+    "학생 계정을 만들고 나만의 Gluco 친구를 만들어보세요.";
+
+
+  document.getElementById(
+    "passwordConfirmArea"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "password"
+  ).autocomplete =
+    "new-password";
+
+
+  const button =
+    document.getElementById(
+      "actionButton"
+    );
+
+
+  button.textContent =
+    "학생 계정 만들기";
+
+
+  button.onclick =
+    signup;
+
+
+  clearMessage();
+
+}
+
+
+
+/* =========================
+   로그인
+========================= */
+
+async function login() {
+
+  const email =
+    document.getElementById(
+      "email"
+    ).value.trim();
+
+
+  const password =
+    document.getElementById(
+      "password"
+    ).value;
+
+
+  if (
+    !email ||
+    !password
+  ) {
+
+    showError(
+      "이메일과 비밀번호를 모두 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  setLoading(
+    true,
+    "로그인 중..."
+  );
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .signInWithPassword({
+
+        email:
+          email,
+
+        password:
+          password
+
+      });
+
+
+  if (error) {
+
+    setLoading(
+      false,
+      "로그인하기"
+    );
+
+
+    showError(
+      translateError(
+        error.message
+      )
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    data.user
+  ) {
+
+    showSuccess(
+      "🌟 로그인했어요! 계정을 확인하고 있어요."
+    );
+
+
+    await redirectByRole(
+      data.user
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   학생 회원가입
+========================= */
+
+async function signup() {
+
+  const email =
+    document.getElementById(
+      "email"
+    ).value.trim();
+
+
+  const password =
+    document.getElementById(
+      "password"
+    ).value;
+
+
+  const passwordConfirm =
+    document.getElementById(
+      "passwordConfirm"
+    ).value;
+
+
+  if (
+    !email ||
+    !password ||
+    !passwordConfirm
+  ) {
+
+    showError(
+      "모든 내용을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    password.length < 6
+  ) {
+
+    showError(
+      "비밀번호는 6자 이상으로 만들어주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    password !==
+    passwordConfirm
+  ) {
+
+    showError(
+      "비밀번호가 서로 달라요. 다시 확인해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  setLoading(
+    true,
+    "계정 만드는 중..."
+  );
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .signUp({
+
+        email:
+          email,
+
+        password:
+          password
+
+      });
+
+
+  if (error) {
+
+    setLoading(
+      false,
+      "학생 계정 만들기"
+    );
+
+
+    showError(
+      translateError(
+        error.message
+      )
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    이메일 확인 없이
+    즉시 로그인되는 설정
+  */
+
+  if (
+    data.session &&
+    data.user
+  ) {
+
+    showSuccess(
+      "🎉 학생 계정이 만들어졌어요! 캐릭터를 만들러 갈게요."
+    );
+
+
+    setTimeout(
+      function() {
+
+        location.href =
+          "index.html";
+
+      },
+      700
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+    이메일 인증이 필요한 설정
+  */
+
+  setLoading(
+    false,
+    "학생 계정 만들기"
+  );
+
+
+  showSuccess(
+    "계정이 만들어졌어요. 이메일로 전송된 인증 링크를 확인해주세요."
+  );
+
+}
+
+
+
+/* =========================
+   로딩
+========================= */
+
+function setLoading(
+  loading,
+  text
+) {
+
+  const button =
+    document.getElementById(
+      "actionButton"
+    );
+
+
+  button.disabled =
+    loading;
+
+
+  button.textContent =
+    text;
+
+}
+
+
+
+/* =========================
+   성공 메시지
+========================= */
+
+function showSuccess(
+  message
+) {
+
+  const box =
+    document.getElementById(
+      "messageBox"
+    );
+
+
+  box.className =
+    "message-box message-success";
+
+
+  box.textContent =
+    message;
+
+}
+
+
+
+/* =========================
+   오류 메시지
+========================= */
+
+function showError(
+  message
+) {
+
+  const box =
+    document.getElementById(
+      "messageBox"
+    );
+
+
+  box.className =
+    "message-box message-error";
+
+
+  box.textContent =
+    "⚠️ " + message;
+
+}
+
+
+
+/* =========================
+   메시지 초기화
+========================= */
+
+function clearMessage() {
+
+  const box =
+    document.getElementById(
+      "messageBox"
+    );
+
+
+  box.className =
+    "message-box";
+
+
+  box.textContent =
+    "";
+
+}
+
+
+
+/* =========================
+   오류 한글 표시
+========================= */
+
+function translateError(
+  message
+) {
+
+  if (
+    message.includes(
+      "Invalid login credentials"
+    )
+  ) {
+
+    return "이메일 또는 비밀번호가 맞지 않아요.";
+
+  }
+
+
+  if (
+    message.includes(
+      "User already registered"
+    )
+  ) {
+
+    return "이미 가입된 이메일이에요. 로그인해주세요.";
+
+  }
+
+
+  if (
+    message.toLowerCase()
+      .includes(
+        "email not confirmed"
+      )
+  ) {
+
+    return "이메일 인증을 먼저 완료해주세요.";
+
+  }
+
+
+  return message;
+
+}
+
+</script>
+
+</body>
+
+</html>
