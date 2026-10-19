@@ -8,11 +8,9 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0">
 
-  <title>도움 요청 - GlucoGuard</title>
+  <title>다른 연락처 - GlucoGuard</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css">
+  <link rel="stylesheet" href="style.css">
 
   <style>
 
@@ -45,10 +43,9 @@
     .top-bar {
       display: flex;
       align-items: center;
-
       gap: 12px;
 
-      margin-bottom: 19px;
+      margin-bottom: 22px;
     }
 
     .back-button {
@@ -93,57 +90,8 @@
       font-size: 12px;
     }
 
-    .help-hero {
-      background: #fff3f1;
-
-      border: 2px solid #ffd7d2;
-
-      border-radius: 24px;
-
-      padding: 20px;
-
-      margin-bottom: 18px;
-
-      text-align: center;
-    }
-
-    .help-icon {
-      width: 65px;
-      height: 65px;
-
-      margin: 0 auto 10px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 21px;
-
-      background: white;
-
-      font-size: 34px;
-    }
-
-    .help-hero h2 {
-      margin: 0 0 7px;
-
-      color: #c95850;
-
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    .help-hero p {
-      margin: 0;
-
-      color: #806f6d;
-
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
     .section-title {
-      margin: 0 0 10px;
+      margin: 0 0 11px;
 
       color: #455a64;
 
@@ -151,33 +99,126 @@
       font-weight: 900;
     }
 
-    .contacts-area {
-      margin-bottom: 18px;
+    .guardian-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+
+      margin-bottom: 19px;
     }
 
-    .contact-card {
+    .guardian-card {
+      min-height: 180px;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 15px;
+
       background: white;
 
-      border-radius: 19px;
-
-      padding: 14px;
-
-      margin-bottom: 10px;
+      border-radius: 21px;
 
       box-shadow:
         0 5px 15px rgba(60,90,110,.06);
     }
 
-    .contact-top {
+    .guardian-icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 10px;
+
+      border-radius: 16px;
+
+      background: #eef6ff;
+
+      font-size: 27px;
+    }
+
+    .guardian-role {
+      color: #344e5e;
+
+      font-size: 16px;
+      font-weight: 900;
+
+      margin-bottom: 4px;
+    }
+
+    .guardian-name {
+      color: #607d8b;
+
+      font-size: 12px;
+
+      margin-bottom: 4px;
+    }
+
+    .guardian-phone {
+      color: #81939e;
+
+      font-size: 10px;
+      line-height: 1.4;
+
+      margin-bottom: 12px;
+
+      word-break: break-all;
+    }
+
+    .guardian-spacer {
+      flex: 1;
+    }
+
+    .call-button {
+      width: 100%;
+
+      padding: 12px 8px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #e7f3ff;
+
+      color: #28658e;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .call-button:disabled {
+      background: #f1f4f6;
+      color: #a0adb4;
+      cursor: default;
+    }
+
+    .nurse-card {
+      background: white;
+
+      border-radius: 21px;
+
+      padding: 15px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 5px 15px rgba(60,90,110,.06);
+    }
+
+    .nurse-top {
       display: flex;
       align-items: center;
 
       gap: 12px;
     }
 
-    .contact-icon {
-      width: 48px;
-      height: 48px;
+    .nurse-icon {
+      width: 50px;
+      height: 50px;
 
       flex-shrink: 0;
 
@@ -185,34 +226,42 @@
       align-items: center;
       justify-content: center;
 
-      border-radius: 15px;
+      border-radius: 16px;
 
-      background: #eef6ff;
+      background: #edf9f1;
 
-      font-size: 25px;
+      font-size: 26px;
     }
 
-    .contact-info {
+    .nurse-info {
       flex: 1;
       min-width: 0;
     }
 
-    .contact-name {
-      margin-bottom: 3px;
-
+    .nurse-role {
       color: #344e5e;
 
       font-size: 15px;
       font-weight: 900;
+
+      margin-bottom: 3px;
     }
 
-    .contact-meta {
-      color: #81939e;
+    .nurse-name {
+      color: #607d8b;
 
       font-size: 11px;
+
+      margin-bottom: 3px;
     }
 
-    .call-button {
+    .nurse-phone {
+      color: #81939e;
+
+      font-size: 10px;
+    }
+
+    .nurse-call-button {
       width: 100%;
 
       margin-top: 11px;
@@ -222,29 +271,20 @@
       border: none;
       border-radius: 13px;
 
-      background: #e7f3ff;
+      background: #eaf8ef;
 
-      color: #28658e;
+      color: #3f7c56;
 
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 900;
 
       cursor: pointer;
     }
 
-    .empty-card {
-      padding: 21px 15px;
-
-      background: white;
-
-      border-radius: 18px;
-
-      text-align: center;
-
-      color: #8498a4;
-
-      font-size: 12px;
-      line-height: 1.65;
+    .nurse-call-button:disabled {
+      background: #f1f4f6;
+      color: #a0adb4;
+      cursor: default;
     }
 
     .managed-note {
@@ -273,6 +313,18 @@
       line-height: 1.6;
     }
 
+    @media (max-width: 360px) {
+
+      .guardian-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .guardian-card {
+        min-height: 160px;
+      }
+
+    }
+
   </style>
 
 </head>
@@ -297,11 +349,11 @@
     <div class="title-area">
 
       <h1>
-        도움이 필요해요
+        다른 연락처
       </h1>
 
       <p>
-        혼자 있지 말고 가까운 어른에게 알려요.
+        보호자나 보건실에 바로 전화할 수 있어요.
       </p>
 
     </div>
@@ -310,37 +362,150 @@
 
 
 
-  <div class="help-hero">
+  <div class="section-title">
+    👨‍👩‍👧 보호자
+  </div>
 
-    <div class="help-icon">
-      📞
+
+  <div class="guardian-grid">
+
+
+    <div class="guardian-card">
+
+      <div class="guardian-icon">
+        👩
+      </div>
+
+      <div class="guardian-role">
+        엄마
+      </div>
+
+      <div
+        id="motherName"
+        class="guardian-name">
+
+        등록된 이름 없음
+
+      </div>
+
+      <div
+        id="motherPhone"
+        class="guardian-phone">
+
+        등록된 번호 없음
+
+      </div>
+
+      <div class="guardian-spacer"></div>
+
+      <button
+        id="motherCallButton"
+        class="call-button"
+        disabled
+        onclick="callContact('mother')">
+
+        📞 엄마에게 전화
+
+      </button>
+
     </div>
 
-    <h2>
-      보호자에게 연락해요
-    </h2>
 
-    <p>
-      선생님에게 바로 연락하기 어려우면<br>
-      엄마·아빠·보건실에 전화해요.
-    </p>
+
+    <div class="guardian-card">
+
+      <div class="guardian-icon">
+        👨
+      </div>
+
+      <div class="guardian-role">
+        아빠
+      </div>
+
+      <div
+        id="fatherName"
+        class="guardian-name">
+
+        등록된 이름 없음
+
+      </div>
+
+      <div
+        id="fatherPhone"
+        class="guardian-phone">
+
+        등록된 번호 없음
+
+      </div>
+
+      <div class="guardian-spacer"></div>
+
+      <button
+        id="fatherCallButton"
+        class="call-button"
+        disabled
+        onclick="callContact('father')">
+
+        📞 아빠에게 전화
+
+      </button>
+
+    </div>
+
 
   </div>
 
 
 
   <div class="section-title">
-    📞 연락할 사람
+    🏥 학교 연락처
   </div>
 
 
-  <div
-    id="contactList"
-    class="contacts-area">
+  <div class="nurse-card">
 
-    <div class="empty-card">
-      연락처를 불러오는 중이에요.
+    <div class="nurse-top">
+
+      <div class="nurse-icon">
+        🏥
+      </div>
+
+      <div class="nurse-info">
+
+        <div class="nurse-role">
+          보건실
+        </div>
+
+        <div
+          id="nurseName"
+          class="nurse-name">
+
+          등록된 이름 없음
+
+        </div>
+
+        <div
+          id="nursePhone"
+          class="nurse-phone">
+
+          등록된 번호 없음
+
+        </div>
+
+      </div>
+
     </div>
+
+
+    <button
+      id="nurseCallButton"
+      class="nurse-call-button"
+      disabled
+      onclick="callContact('nurse')">
+
+      📞 보건실에 전화하기
+
+    </button>
 
   </div>
 
@@ -348,8 +513,8 @@
 
   <div class="managed-note">
 
-    🔒 보호자와 보건실 연락처는 보호자 또는 교직원이 등록·관리해요.<br>
-    학생은 등록된 연락처를 눌러 전화할 수 있어요.
+    🔒 연락처는 보호자 또는 교직원이 등록·관리해요.<br>
+    학생은 등록된 번호로 전화만 할 수 있어요.
 
   </div>
 
@@ -391,8 +556,12 @@ let currentUser =
   null;
 
 
-let currentContacts =
-  [];
+let contactMap =
+  {
+    mother: null,
+    father: null,
+    nurse: null
+  };
 
 
 
@@ -523,240 +692,195 @@ async function loadContacts() {
     );
 
 
-    document.getElementById(
-      "contactList"
-    ).innerHTML =
-      `
-        <div class="empty-card">
-          연락처를 불러오지 못했어요.
-        </div>
-      `;
-
-
     return;
 
   }
 
 
-  currentContacts =
+  const contacts =
     data || [];
 
 
-  renderContacts();
+  contactMap.mother =
+    contacts.find(
+      contact =>
+        contact.relationship ===
+        "엄마"
+    ) || null;
 
-}
 
+  contactMap.father =
+    contacts.find(
+      contact =>
+        contact.relationship ===
+        "아빠"
+    ) || null;
 
 
-function renderContacts() {
+  contactMap.nurse =
+    contacts.find(
+      contact =>
+        contact.relationship ===
+        "보건실"
+    ) || null;
 
-  const contactList =
-    document.getElementById(
-      "contactList"
-    );
 
+  renderContact(
+    "mother",
+    contactMap.mother
+  );
 
-  contactList.innerHTML =
-    "";
 
+  renderContact(
+    "father",
+    contactMap.father
+  );
 
-  if (
-    currentContacts.length === 0
-  ) {
 
-    contactList.innerHTML =
-      `
-        <div class="empty-card">
-          아직 등록된 보호자 또는 보건실 연락처가 없어요.<br>
-          가까운 선생님이나 어른에게 도움을 요청해주세요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  currentContacts.forEach(
-    function(contact) {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "contact-card";
-
-
-      let icon =
-        "📞";
-
-
-      if (
-        contact.relationship === "엄마"
-        ||
-        contact.relationship === "아빠"
-        ||
-        contact.relationship === "보호자"
-      ) {
-
-        icon =
-          "👨‍👩‍👧";
-
-      }
-
-
-      if (
-        contact.relationship === "보건실"
-      ) {
-
-        icon =
-          "🏥";
-
-      }
-
-
-      const top =
-        document.createElement(
-          "div"
-        );
-
-
-      top.className =
-        "contact-top";
-
-
-      const iconBox =
-        document.createElement(
-          "div"
-        );
-
-
-      iconBox.className =
-        "contact-icon";
-
-
-      iconBox.textContent =
-        icon;
-
-
-      const info =
-        document.createElement(
-          "div"
-        );
-
-
-      info.className =
-        "contact-info";
-
-
-      const name =
-        document.createElement(
-          "div"
-        );
-
-
-      name.className =
-        "contact-name";
-
-
-      name.textContent =
-        contact.relationship
-        +
-        " · "
-        +
-        contact.contact_name;
-
-
-      const meta =
-        document.createElement(
-          "div"
-        );
-
-
-      meta.className =
-        "contact-meta";
-
-
-      meta.textContent =
-        contact.phone_number;
-
-
-      info.appendChild(
-        name
-      );
-
-
-      info.appendChild(
-        meta
-      );
-
-
-      top.appendChild(
-        iconBox
-      );
-
-
-      top.appendChild(
-        info
-      );
-
-
-      const callButton =
-        document.createElement(
-          "button"
-        );
-
-
-      callButton.className =
-        "call-button";
-
-
-      callButton.textContent =
-        "📞 "
-        +
-        contact.relationship
-        +
-        "에게 전화하기";
-
-
-      callButton.onclick =
-        function() {
-
-          confirmContactCall(
-            contact
-          );
-
-        };
-
-
-      card.appendChild(
-        top
-      );
-
-
-      card.appendChild(
-        callButton
-      );
-
-
-      contactList.appendChild(
-        card
-      );
-
-    }
+  renderContact(
+    "nurse",
+    contactMap.nurse
   );
 
 }
 
 
 
-function confirmContactCall(
+function renderContact(
+  type,
   contact
 ) {
+
+  let nameElement;
+  let phoneElement;
+  let buttonElement;
+
+
+  if (
+    type === "mother"
+  ) {
+
+    nameElement =
+      document.getElementById(
+        "motherName"
+      );
+
+
+    phoneElement =
+      document.getElementById(
+        "motherPhone"
+      );
+
+
+    buttonElement =
+      document.getElementById(
+        "motherCallButton"
+      );
+
+  }
+
+
+  if (
+    type === "father"
+  ) {
+
+    nameElement =
+      document.getElementById(
+        "fatherName"
+      );
+
+
+    phoneElement =
+      document.getElementById(
+        "fatherPhone"
+      );
+
+
+    buttonElement =
+      document.getElementById(
+        "fatherCallButton"
+      );
+
+  }
+
+
+  if (
+    type === "nurse"
+  ) {
+
+    nameElement =
+      document.getElementById(
+        "nurseName"
+      );
+
+
+    phoneElement =
+      document.getElementById(
+        "nursePhone"
+      );
+
+
+    buttonElement =
+      document.getElementById(
+        "nurseCallButton"
+      );
+
+  }
+
+
+  if (!contact) {
+
+    nameElement.textContent =
+      "등록된 이름 없음";
+
+
+    phoneElement.textContent =
+      "등록된 번호 없음";
+
+
+    buttonElement.disabled =
+      true;
+
+
+    return;
+
+  }
+
+
+  nameElement.textContent =
+    contact.contact_name;
+
+
+  phoneElement.textContent =
+    contact.phone_number;
+
+
+  buttonElement.disabled =
+    false;
+
+}
+
+
+
+function callContact(
+  type
+) {
+
+  const contact =
+    contactMap[type];
+
+
+  if (!contact) {
+
+    alert(
+      "등록된 전화번호가 없어요."
+    );
+
+
+    return;
+
+  }
+
 
   const confirmed =
     confirm(
