@@ -10,269 +10,261 @@
 
   <title>GlucoGuard 로그인</title>
 
-  <link rel="stylesheet" href="style.css">
-
   <style>
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      background:
+        linear-gradient(
+          180deg,
+          #eef7ff 0%,
+          #f5fbf8 100%
+        );
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: #334e5d;
+    }
+
+    button,
+    input {
+      font-family: inherit;
     }
 
     .login-container {
       width: 100%;
       max-width: 430px;
-
-      padding: 30px 20px;
     }
 
-
-    /* 로고 */
-
-    .login-header {
+    .logo-area {
       text-align: center;
-
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .logo-circle {
-      width: 66px;
-      height: 66px;
-
-      margin: 0 auto 12px;
-
+    .logo-icon {
+      width: 78px;
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: center;
-
+      margin: 0 auto 14px;
+      border-radius: 25px;
       background: white;
-
-      border-radius: 50%;
-
-      font-size: 34px;
-
-      box-shadow:
-        0 6px 18px rgba(60,90,110,.12);
+      box-shadow: 0 8px 24px rgba(68, 101, 120, .10);
+      font-size: 42px;
     }
 
-    .login-header h1 {
+    .logo-title {
       margin: 0;
-
-      font-size: 32px;
-
-      color: #245978;
+      color: #315b75;
+      font-size: 28px;
+      font-weight: 900;
     }
 
-    .login-header p {
-      margin: 8px 0 0;
-
-      color: #78909c;
-
-      font-size: 14px;
+    .logo-subtitle {
+      margin-top: 7px;
+      color: #7b919e;
+      font-size: 12px;
+      line-height: 1.6;
     }
-
-
-    /* 로그인 카드 */
 
     .login-card {
-      background: white;
-
-      border-radius: 26px;
-
       padding: 24px;
-
-      box-shadow:
-        0 8px 24px rgba(60,90,110,.10);
-    }
-
-
-    /* 탭 */
-
-    .tab-buttons {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 8px;
-
-      padding: 5px;
-
-      margin-bottom: 22px;
-
-      background: #f3f6f8;
-
-      border-radius: 15px;
-    }
-
-    .tab-button {
-      border: none;
-
-      padding: 11px;
-
-      border-radius: 11px;
-
-      background: transparent;
-
-      color: #78909c;
-
-      font-size: 15px;
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    .tab-button.active {
+      border-radius: 25px;
       background: white;
-
-      color: #245978;
-
-      box-shadow:
-        0 2px 8px rgba(60,90,110,.08);
+      box-shadow: 0 12px 35px rgba(53, 80, 96, .09);
     }
 
-
-    /* 폼 */
-
-    .form-title {
-      margin: 0 0 5px;
-
-      font-size: 21px;
-    }
-
-    .form-description {
-      margin: 0 0 20px;
-
-      font-size: 13px;
-      line-height: 1.5;
-
-      color: #78909c;
+    .login-title {
+      margin: 0 0 18px;
+      color: #405f70;
+      font-size: 18px;
+      font-weight: 900;
     }
 
     .input-label {
       display: block;
-
-      margin-bottom: 7px;
-
-      font-size: 13px;
-      font-weight: bold;
-
-      color: #455a64;
+      margin: 0 0 6px 2px;
+      color: #6d828e;
+      font-size: 11px;
+      font-weight: 800;
     }
 
     .login-input {
       width: 100%;
-
-      padding: 14px;
-
-      margin-bottom: 15px;
-
-      border: 1px solid #d8e2e8;
-
-      border-radius: 14px;
-
-      background: #fbfdff;
-
-      font-size: 16px;
-
+      padding: 13px 14px;
+      margin-bottom: 14px;
+      border: 1px solid #d9e3e8;
+      border-radius: 13px;
       outline: none;
+      background: #fbfcfd;
+      color: #405a68;
+      font-size: 14px;
     }
 
     .login-input:focus {
-      border-color: #6ca5ce;
-
-      box-shadow:
-        0 0 0 3px rgba(108,165,206,.12);
+      border-color: #75afd1;
+      background: white;
     }
 
-
-    /* 메인 버튼 */
-
-    .main-button {
+    .login-button {
       width: 100%;
-
-      padding: 15px;
-
-      margin-top: 4px;
-
+      margin-top: 3px;
+      padding: 14px;
       border: none;
-
-      border-radius: 15px;
-
-      background: #428fbd;
-
+      border-radius: 14px;
+      background: #4285b4;
       color: white;
-
-      font-size: 16px;
-      font-weight: bold;
-
+      font-size: 14px;
+      font-weight: 900;
       cursor: pointer;
     }
 
-    .main-button:disabled {
+    .login-button:disabled {
       opacity: .6;
-
-      cursor: not-allowed;
+      cursor: default;
     }
 
-
-    /* 메시지 */
-
-    .message-box {
-      display: none;
-
-      margin-top: 15px;
-
-      padding: 13px;
-
-      border-radius: 13px;
-
-      font-size: 13px;
+    .login-message {
+      min-height: 18px;
+      margin-top: 12px;
+      color: #c05851;
+      font-size: 11px;
+      text-align: center;
       line-height: 1.5;
     }
 
-    .message-success {
-      display: block;
-
-      background: #eef9ef;
-
-      color: #36734d;
-    }
-
-    .message-error {
-      display: block;
-
-      background: #fff0f0;
-
-      color: #a33b37;
-    }
-
-
-    /* 안내 */
-
-    .login-notice {
-      margin-top: 18px;
-
-      padding: 14px;
-
-      background: #eef5ff;
-
-      border-radius: 15px;
-
-      font-size: 12px;
-      line-height: 1.7;
-
-      color: #607d8b;
-    }
-
-    .login-notice strong {
-      color: #3974a2;
-    }
-
-
-    .signup-only {
+    .demo-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
       display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(36, 52, 62, .45);
+    }
+
+    .demo-modal {
+      width: 100%;
+      max-width: 430px;
+      padding: 23px;
+      border-radius: 26px;
+      background: white;
+      box-shadow: 0 20px 50px rgba(0,0,0,.18);
+    }
+
+    .demo-icon {
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      border-radius: 20px;
+      background: #fff4cf;
+      font-size: 35px;
+    }
+
+    .demo-title {
+      margin: 0;
+      color: #3c5c6f;
+      font-size: 21px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .demo-description {
+      margin: 7px 0 20px;
+      color: #80929c;
+      font-size: 11px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .demo-role-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .demo-role-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 15px;
+      border: none;
+      border-radius: 17px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .demo-role-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      background: rgba(255,255,255,.8);
+      font-size: 27px;
+    }
+
+    .demo-role-text {
+      flex: 1;
+    }
+
+    .demo-role-title {
+      margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .demo-role-description {
+      font-size: 10px;
+      line-height: 1.5;
+      opacity: .8;
+    }
+
+    .demo-role-arrow {
+      font-size: 22px;
+      opacity: .5;
+    }
+
+    .student-role {
+      background: #e9f8f2;
+      color: #397762;
+    }
+
+    .teacher-role {
+      background: #e9f3ff;
+      color: #356b91;
+    }
+
+    .demo-logout {
+      width: 100%;
+      margin-top: 13px;
+      padding: 11px;
+      border: none;
+      border-radius: 12px;
+      background: #f3f5f6;
+      color: #72848e;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
     }
 
   </style>
@@ -284,82 +276,38 @@
 
 <div class="login-container">
 
+  <div class="logo-area">
 
-  <!-- 로고 -->
-
-  <div class="login-header">
-
-    <div class="logo-circle">
-      🌈
+    <div class="logo-icon">
+      💙
     </div>
 
-    <h1>
+    <h1 class="logo-title">
       GlucoGuard
     </h1>
 
-    <p>
-      학교에서 함께 돌보는 1형 당뇨 관리 💙
-    </p>
+    <div class="logo-subtitle">
+      학교에서 함께 관리하는<br>
+      학생 혈당·건강 지원 서비스
+    </div>
 
   </div>
 
 
-
   <div class="login-card">
 
-
-    <!-- 로그인 / 회원가입 -->
-
-    <div class="tab-buttons">
-
-
-      <button
-        id="loginTab"
-        class="tab-button active"
-        onclick="showLogin()">
-
-        로그인
-
-      </button>
-
-
-      <button
-        id="signupTab"
-        class="tab-button"
-        onclick="showSignup()">
-
-        처음 시작하기
-
-      </button>
-
-
-    </div>
-
-
-
-    <h2
-      id="formTitle"
-      class="form-title">
-
-      다시 만났어요! 👋
-
+    <h2 class="login-title">
+      로그인
     </h2>
 
 
-    <p
-      id="formDescription"
-      class="form-description">
+    <label
+      class="input-label"
+      for="email">
 
-      계정으로 로그인해주세요.
-
-    </p>
-
-
-
-    <label class="input-label">
       이메일
-    </label>
 
+    </label>
 
     <input
       id="email"
@@ -369,11 +317,13 @@
       placeholder="이메일을 입력해주세요">
 
 
+    <label
+      class="input-label"
+      for="password">
 
-    <label class="input-label">
       비밀번호
-    </label>
 
+    </label>
 
     <input
       id="password"
@@ -383,57 +333,114 @@
       placeholder="비밀번호를 입력해주세요">
 
 
-
-    <!-- 회원가입 때만 보임 -->
-
-    <div
-      id="passwordConfirmArea"
-      class="signup-only">
-
-
-      <label class="input-label">
-        비밀번호 다시 입력
-      </label>
-
-
-      <input
-        id="passwordConfirm"
-        class="login-input"
-        type="password"
-        autocomplete="new-password"
-        placeholder="비밀번호를 한 번 더 입력해주세요">
-
-
-    </div>
-
-
-
     <button
-      id="actionButton"
-      class="main-button"
+      id="loginButton"
+      class="login-button"
       onclick="login()">
 
-      로그인하기
+      로그인
 
     </button>
 
 
-
     <div
-      id="messageBox"
-      class="message-box">
+      id="loginMessage"
+      class="login-message">
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- 데모 역할 선택 -->
+
+<div
+  id="demoOverlay"
+  class="demo-overlay">
+
+  <div class="demo-modal">
+
+    <div class="demo-icon">
+      ⭐
+    </div>
+
+    <h2 class="demo-title">
+      GlucoGuard 체험 모드
+    </h2>
+
+    <div class="demo-description">
+      하나의 데모계정으로 학생 화면과<br>
+      교직원 화면을 모두 체험할 수 있습니다.
     </div>
 
 
+    <div class="demo-role-list">
 
-    <div class="login-notice">
+      <button
+        class="demo-role-button student-role"
+        onclick="enterDemoStudent()">
 
-      👧 <strong>학생 계정</strong>은 자신의 기록 화면으로 이동하고,
-      <br>
-      👩‍🏫 <strong>교직원 계정</strong>은 담당 학생 관리 화면으로 이동해요.
+        <div class="demo-role-icon">
+          👧
+        </div>
+
+        <div class="demo-role-text">
+
+          <div class="demo-role-title">
+            학생으로 보기
+          </div>
+
+          <div class="demo-role-description">
+            혈당, 식사, 몸 상태 기록과 학생용 화면을 체험합니다.
+          </div>
+
+        </div>
+
+        <div class="demo-role-arrow">
+          ›
+        </div>
+
+      </button>
+
+
+      <button
+        class="demo-role-button teacher-role"
+        onclick="enterDemoTeacher()">
+
+        <div class="demo-role-icon">
+          👩‍🏫
+        </div>
+
+        <div class="demo-role-text">
+
+          <div class="demo-role-title">
+            교직원으로 보기
+          </div>
+
+          <div class="demo-role-description">
+            학생 관리, 안전카드, 알림, 교육 기능을 체험합니다.
+          </div>
+
+        </div>
+
+        <div class="demo-role-arrow">
+          ›
+        </div>
+
+      </button>
 
     </div>
 
+
+    <button
+      class="demo-logout"
+      onclick="demoLogout()">
+
+      다른 계정으로 로그인
+
+    </button>
 
   </div>
 
@@ -449,7 +456,6 @@
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
 
@@ -461,53 +467,23 @@ const supabaseClient =
   );
 
 
-let currentMode =
-  "login";
-
-
-
-/* =========================
-   페이지 시작
-========================= */
 
 window.addEventListener(
   "load",
   async function() {
 
     const {
-      data,
-      error
+      data
     } =
       await supabaseClient.auth
         .getSession();
 
 
-    if (error) {
-
-      console.error(
-        error
-      );
-
-      return;
-
-    }
-
-
-    /*
-      이미 로그인된 계정이 있으면
-      역할 확인 후 자동 이동
-    */
-
     if (
       data.session
     ) {
 
-      showSuccess(
-        "로그인 정보를 확인하고 있어요..."
-      );
-
-
-      await redirectByRole(
+      await routeLoggedInUser(
         data.session.user
       );
 
@@ -518,250 +494,24 @@ window.addEventListener(
 
 
 
-/* =========================
-   역할에 따라 이동
-========================= */
+document.getElementById(
+  "password"
+).addEventListener(
+  "keydown",
+  function(event) {
 
-async function redirectByRole(
-  user
-) {
+    if (
+      event.key === "Enter"
+    ) {
 
-  if (!user) {
+      login();
 
-    return;
-
-  }
-
-
-  const {
-    data: profile,
-    error
-  } =
-    await supabaseClient
-      .from(
-        "profiles"
-      )
-      .select(
-        "role"
-      )
-      .eq(
-        "id",
-        user.id
-      )
-      .maybeSingle();
-
-
-  if (error) {
-
-    console.error(
-      "role 확인 오류:",
-      error
-    );
-
-
-    showError(
-      "계정 정보를 확인하지 못했어요. 다시 시도해주세요."
-    );
-
-
-    return;
+    }
 
   }
+);
 
 
-  /*
-    프로필이 아직 없는 신규 계정은
-    학생 계정으로 처리
-  */
-
-  if (!profile) {
-
-    location.href =
-      "index.html";
-
-    return;
-
-  }
-
-
-  /*
-    교사 / 보건교사
-  */
-
-  if (
-    profile.role ===
-      "teacher"
-    ||
-    profile.role ===
-      "nurse"
-  ) {
-
-    location.href =
-      "teacher.html";
-
-    return;
-
-  }
-
-
-  /*
-    기본 = 학생
-  */
-
-  location.href =
-    "index.html";
-
-}
-
-
-
-/* =========================
-   로그인 탭
-========================= */
-
-function showLogin() {
-
-  currentMode =
-    "login";
-
-
-  document
-    .getElementById(
-      "loginTab"
-    )
-    .classList.add(
-      "active"
-    );
-
-
-  document
-    .getElementById(
-      "signupTab"
-    )
-    .classList.remove(
-      "active"
-    );
-
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-    "다시 만났어요! 👋";
-
-
-  document.getElementById(
-    "formDescription"
-  ).textContent =
-    "계정으로 로그인해주세요.";
-
-
-  document.getElementById(
-    "passwordConfirmArea"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "password"
-  ).autocomplete =
-    "current-password";
-
-
-  const button =
-    document.getElementById(
-      "actionButton"
-    );
-
-
-  button.textContent =
-    "로그인하기";
-
-
-  button.onclick =
-    login;
-
-
-  clearMessage();
-
-}
-
-
-
-/* =========================
-   회원가입 탭
-========================= */
-
-function showSignup() {
-
-  currentMode =
-    "signup";
-
-
-  document
-    .getElementById(
-      "signupTab"
-    )
-    .classList.add(
-      "active"
-    );
-
-
-  document
-    .getElementById(
-      "loginTab"
-    )
-    .classList.remove(
-      "active"
-    );
-
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-    "처음 왔어요! 🌱";
-
-
-  document.getElementById(
-    "formDescription"
-  ).textContent =
-    "학생 계정을 만들고 나만의 Gluco 친구를 만들어보세요.";
-
-
-  document.getElementById(
-    "passwordConfirmArea"
-  ).style.display =
-    "block";
-
-
-  document.getElementById(
-    "password"
-  ).autocomplete =
-    "new-password";
-
-
-  const button =
-    document.getElementById(
-      "actionButton"
-    );
-
-
-  button.textContent =
-    "학생 계정 만들기";
-
-
-  button.onclick =
-    signup;
-
-
-  clearMessage();
-
-}
-
-
-
-/* =========================
-   로그인
-========================= */
 
 async function login() {
 
@@ -777,25 +527,42 @@ async function login() {
     ).value;
 
 
+  const button =
+    document.getElementById(
+      "loginButton"
+    );
+
+
+  const message =
+    document.getElementById(
+      "loginMessage"
+    );
+
+
+  message.textContent =
+    "";
+
+
   if (
-    !email ||
+    !email
+    ||
     !password
   ) {
 
-    showError(
-      "이메일과 비밀번호를 모두 입력해주세요."
-    );
-
+    message.textContent =
+      "이메일과 비밀번호를 입력해주세요.";
 
     return;
 
   }
 
 
-  setLoading(
-    true,
-    "로그인 중..."
-  );
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "로그인 중...";
 
 
   const {
@@ -805,189 +572,28 @@ async function login() {
     await supabaseClient.auth
       .signInWithPassword({
 
-        email:
-          email,
-
-        password:
-          password
+        email,
+        password
 
       });
 
 
-  if (error) {
-
-    setLoading(
-      false,
-      "로그인하기"
-    );
-
-
-    showError(
-      translateError(
-        error.message
-      )
-    );
-
-
-    return;
-
-  }
-
-
   if (
-    data.user
-  ) {
-
-    showSuccess(
-      "🌟 로그인했어요! 계정을 확인하고 있어요."
-    );
-
-
-    await redirectByRole(
-      data.user
-    );
-
-  }
-
-}
-
-
-
-/* =========================
-   학생 회원가입
-========================= */
-
-async function signup() {
-
-  const email =
-    document.getElementById(
-      "email"
-    ).value.trim();
-
-
-  const password =
-    document.getElementById(
-      "password"
-    ).value;
-
-
-  const passwordConfirm =
-    document.getElementById(
-      "passwordConfirm"
-    ).value;
-
-
-  if (
-    !email ||
-    !password ||
-    !passwordConfirm
-  ) {
-
-    showError(
-      "모든 내용을 입력해주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    password.length < 6
-  ) {
-
-    showError(
-      "비밀번호는 6자 이상으로 만들어주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    password !==
-    passwordConfirm
-  ) {
-
-    showError(
-      "비밀번호가 서로 달라요. 다시 확인해주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  setLoading(
-    true,
-    "계정 만드는 중..."
-  );
-
-
-  const {
-    data,
     error
-  } =
-    await supabaseClient.auth
-      .signUp({
-
-        email:
-          email,
-
-        password:
-          password
-
-      });
-
-
-  if (error) {
-
-    setLoading(
-      false,
-      "학생 계정 만들기"
-    );
-
-
-    showError(
-      translateError(
-        error.message
-      )
-    );
-
-
-    return;
-
-  }
-
-
-  /*
-    이메일 확인 없이
-    즉시 로그인되는 설정
-  */
-
-  if (
-    data.session &&
-    data.user
+    ||
+    !data.user
   ) {
 
-    showSuccess(
-      "🎉 학생 계정이 만들어졌어요! 캐릭터를 만들러 갈게요."
-    );
+    message.textContent =
+      "이메일 또는 비밀번호를 확인해주세요.";
 
 
-    setTimeout(
-      function() {
+    button.disabled =
+      false;
 
-        location.href =
-          "index.html";
 
-      },
-      700
-    );
+    button.textContent =
+      "로그인";
 
 
     return;
@@ -995,166 +601,169 @@ async function signup() {
   }
 
 
-  /*
-    이메일 인증이 필요한 설정
-  */
-
-  setLoading(
-    false,
-    "학생 계정 만들기"
+  sessionStorage.removeItem(
+    "demoMode"
   );
 
 
-  showSuccess(
-    "계정이 만들어졌어요. 이메일로 전송된 인증 링크를 확인해주세요."
+  await routeLoggedInUser(
+    data.user
   );
-
-}
-
-
-
-/* =========================
-   로딩
-========================= */
-
-function setLoading(
-  loading,
-  text
-) {
-
-  const button =
-    document.getElementById(
-      "actionButton"
-    );
 
 
   button.disabled =
-    loading;
+    false;
 
 
   button.textContent =
-    text;
+    "로그인";
 
 }
 
 
 
-/* =========================
-   성공 메시지
-========================= */
-
-function showSuccess(
-  message
+async function routeLoggedInUser(
+  user
 ) {
 
-  const box =
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "role"
+      )
+      .eq(
+        "id",
+        user.id
+      )
+      .maybeSingle();
+
+
+  if (
+    error
+    ||
+    !profile
+  ) {
+
     document.getElementById(
-      "messageBox"
-    );
+      "loginMessage"
+    ).textContent =
+      "사용자 정보를 불러오지 못했습니다.";
+
+    return;
+
+  }
 
 
-  box.className =
-    "message-box message-success";
+  if (
+    profile.role === "demo"
+  ) {
+
+    document.getElementById(
+      "demoOverlay"
+    ).style.display =
+      "flex";
+
+    return;
+
+  }
 
 
-  box.textContent =
-    message;
+  if (
+    profile.role === "student"
+  ) {
+
+    window.location.href =
+      "./index.html";
+
+    return;
+
+  }
+
+
+  if (
+    profile.role === "teacher"
+    ||
+    profile.role === "nurse"
+  ) {
+
+    window.location.href =
+      "./teacher.html";
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "loginMessage"
+  ).textContent =
+    "등록되지 않은 사용자 유형입니다.";
 
 }
 
 
 
-/* =========================
-   오류 메시지
-========================= */
+function enterDemoStudent() {
 
-function showError(
-  message
-) {
-
-  const box =
-    document.getElementById(
-      "messageBox"
-    );
+  sessionStorage.setItem(
+    "demoMode",
+    "student"
+  );
 
 
-  box.className =
-    "message-box message-error";
-
-
-  box.textContent =
-    "⚠️ " + message;
+  window.location.href =
+    "./index.html";
 
 }
 
 
 
-/* =========================
-   메시지 초기화
-========================= */
+function enterDemoTeacher() {
 
-function clearMessage() {
-
-  const box =
-    document.getElementById(
-      "messageBox"
-    );
+  sessionStorage.setItem(
+    "demoMode",
+    "teacher"
+  );
 
 
-  box.className =
-    "message-box";
+  window.location.href =
+    "./teacher.html";
+
+}
 
 
-  box.textContent =
+
+async function demoLogout() {
+
+  sessionStorage.removeItem(
+    "demoMode"
+  );
+
+
+  await supabaseClient.auth
+    .signOut();
+
+
+  document.getElementById(
+    "demoOverlay"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "email"
+  ).value =
     "";
 
-}
 
-
-
-/* =========================
-   오류 한글 표시
-========================= */
-
-function translateError(
-  message
-) {
-
-  if (
-    message.includes(
-      "Invalid login credentials"
-    )
-  ) {
-
-    return "이메일 또는 비밀번호가 맞지 않아요.";
-
-  }
-
-
-  if (
-    message.includes(
-      "User already registered"
-    )
-  ) {
-
-    return "이미 가입된 이메일이에요. 로그인해주세요.";
-
-  }
-
-
-  if (
-    message.toLowerCase()
-      .includes(
-        "email not confirmed"
-      )
-  ) {
-
-    return "이메일 인증을 먼저 완료해주세요.";
-
-  }
-
-
-  return message;
+  document.getElementById(
+    "password"
+  ).value =
+    "";
 
 }
 
