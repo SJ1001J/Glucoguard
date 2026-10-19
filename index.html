@@ -37,36 +37,24 @@
     .page {
       width: 100%;
       max-width: 600px;
-
       margin: 0 auto;
-
-      padding:
-        20px
-        18px
-        40px;
+      padding: 20px 18px 40px;
     }
 
-
-    /* =========================
-       데모 모드
-    ========================= */
+    /* 데모 */
 
     .demo-banner {
       display: none;
-
       align-items: center;
       justify-content: space-between;
-
       gap: 10px;
 
       margin-bottom: 12px;
-
       padding: 11px 13px;
 
       border-radius: 15px;
 
       background: #fff4ce;
-
       color: #896b24;
 
       font-size: 11px;
@@ -77,21 +65,13 @@
       display: flex;
     }
 
-    .demo-left {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
     .demo-switch-button {
       border: none;
-
       border-radius: 10px;
 
       padding: 9px 11px;
 
       background: white;
-
       color: #356b91;
 
       font-size: 10px;
@@ -100,14 +80,10 @@
       cursor: pointer;
     }
 
-
-    /* =========================
-       상단 학생 정보
-    ========================= */
+    /* 프로필 */
 
     .header-card {
       padding: 20px;
-
       margin-bottom: 15px;
 
       border-radius: 24px;
@@ -115,24 +91,19 @@
       background: white;
 
       box-shadow:
-        0 6px 20px
-        rgba(56,83,99,.06);
+        0 6px 20px rgba(56,83,99,.06);
     }
 
     .header-top {
       display: flex;
-
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
     }
 
     .profile {
       display: flex;
-
       align-items: center;
-
       gap: 12px;
     }
 
@@ -141,7 +112,6 @@
       height: 60px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -179,13 +149,11 @@
 
     .logout-button {
       border: none;
-
       border-radius: 11px;
 
       padding: 9px 10px;
 
       background: #f4f6f7;
-
       color: #778992;
 
       font-size: 10px;
@@ -194,20 +162,15 @@
       cursor: pointer;
     }
 
-
-    /* =========================
-       상태 카드
-    ========================= */
+    /* 상태 */
 
     .status-card {
       margin-bottom: 15px;
-
       padding: 17px;
 
       border-radius: 21px;
 
       background: #e8f8f2;
-
       color: #407565;
     }
 
@@ -223,30 +186,22 @@
       line-height: 1.6;
     }
 
-
-    /* =========================
-       도움 요청
-    ========================= */
+    /* 도움요청 */
 
     .help-button {
       width: 100%;
 
       display: flex;
-
       align-items: center;
-
       gap: 14px;
 
       margin-bottom: 14px;
-
       padding: 17px;
 
       border: none;
-
       border-radius: 20px;
 
       background: #ffe5e1;
-
       color: #a64b44;
 
       text-align: left;
@@ -259,7 +214,6 @@
       height: 52px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -267,8 +221,7 @@
 
       border-radius: 16px;
 
-      background:
-        rgba(255,255,255,.75);
+      background: rgba(255,255,255,.75);
 
       font-size: 28px;
     }
@@ -293,21 +246,13 @@
 
     .arrow {
       font-size: 22px;
-
       opacity: .5;
     }
 
-
-    /* =========================
-       기록 메뉴
-    ========================= */
+    /* 기록 메뉴 */
 
     .menu-title {
-      margin:
-        21px
-        0
-        10px
-        3px;
+      margin: 21px 0 10px 3px;
 
       color: #607986;
 
@@ -317,11 +262,7 @@
 
     .menu-grid {
       display: grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
@@ -329,17 +270,13 @@
       min-height: 145px;
 
       display: flex;
-
       flex-direction: column;
-
       align-items: flex-start;
-
       justify-content: space-between;
 
       padding: 17px;
 
       border: none;
-
       border-radius: 21px;
 
       text-align: left;
@@ -347,8 +284,7 @@
       cursor: pointer;
 
       box-shadow:
-        0 5px 15px
-        rgba(56,83,99,.05);
+        0 5px 15px rgba(56,83,99,.05);
     }
 
     .menu-icon {
@@ -356,14 +292,12 @@
       height: 50px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       border-radius: 15px;
 
-      background:
-        rgba(255,255,255,.82);
+      background: rgba(255,255,255,.82);
 
       font-size: 27px;
     }
@@ -386,52 +320,121 @@
 
     .meal-menu {
       background: #fff3d9;
-
       color: #806327;
     }
 
     .glucose-menu {
       background: #e7f2ff;
-
       color: #376b91;
     }
 
     .symptom-menu {
       background: #e5f7ef;
-
       color: #397361;
     }
 
     .records-menu {
       background: #f0edff;
-
       color: #635b91;
     }
 
+    /* 인슐린 */
 
-    /* =========================
-       다른 연락처
-    ========================= */
+    .insulin-button {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-top: 10px;
+      padding: 16px;
+
+      border: none;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eeeaff,
+          #f4efff
+        );
+
+      color: #655b98;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 15px rgba(56,83,99,.05);
+    }
+
+    .insulin-icon {
+      width: 54px;
+      height: 54px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 16px;
+
+      background: white;
+
+      font-size: 29px;
+    }
+
+    .insulin-content {
+      flex: 1;
+    }
+
+    .insulin-title {
+      margin-bottom: 4px;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .insulin-description {
+      font-size: 10px;
+      line-height: 1.5;
+
+      opacity: .82;
+    }
+
+    .insulin-badge {
+      display: inline-block;
+
+      margin-top: 7px;
+      padding: 4px 7px;
+
+      border-radius: 8px;
+
+      background: rgba(255,255,255,.75);
+
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    /* 연락처 */
 
     .other-contact-button {
       width: 100%;
 
       display: flex;
-
       align-items: center;
-
       gap: 12px;
 
       margin-top: 11px;
-
       padding: 14px;
 
       border: none;
-
       border-radius: 17px;
 
       background: white;
-
       color: #607783;
 
       text-align: left;
@@ -439,8 +442,7 @@
       cursor: pointer;
 
       box-shadow:
-        0 4px 14px
-        rgba(56,83,99,.04);
+        0 4px 14px rgba(56,83,99,.04);
     }
 
     .contact-icon {
@@ -448,7 +450,6 @@
       height: 42px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -478,25 +479,6 @@
       font-size: 9px;
     }
 
-
-    @media (max-width: 420px) {
-
-      .demo-banner {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .demo-switch-button {
-        width: 100%;
-      }
-
-      .menu-button {
-        min-height: 135px;
-        padding: 15px;
-      }
-
-    }
-
   </style>
 
 </head>
@@ -506,16 +488,11 @@
 
 <div class="page">
 
-
-  <!-- =========================
-       데모 모드
-  ========================== -->
-
   <div
     id="demoBanner"
     class="demo-banner">
 
-    <div class="demo-left">
+    <div>
       ⭐ 체험 모드 · 👧 학생 화면
     </div>
 
@@ -530,11 +507,6 @@
   </div>
 
 
-
-  <!-- =========================
-       학생 프로필
-  ========================== -->
-
   <div class="header-card">
 
     <div class="header-top">
@@ -548,7 +520,6 @@
           🐻
 
         </div>
-
 
         <div>
 
@@ -590,11 +561,6 @@
   </div>
 
 
-
-  <!-- =========================
-       오늘 몸 상태
-  ========================== -->
-
   <div class="status-card">
 
     <div class="status-title">
@@ -602,19 +568,12 @@
     </div>
 
     <div class="status-description">
-
       몸이 평소와 다르거나 이상한 느낌이 들면
       선생님에게 알려주고 몸 상태를 기록해줘.
-
     </div>
 
   </div>
 
-
-
-  <!-- =========================
-       도움 요청
-  ========================== -->
 
   <button
     class="help-button"
@@ -643,18 +602,12 @@
   </button>
 
 
-
-  <!-- =========================
-       기록 메뉴
-  ========================== -->
-
   <div class="menu-title">
     내가 기록하기
   </div>
 
 
   <div class="menu-grid">
-
 
     <button
       class="menu-button meal-menu"
@@ -677,7 +630,6 @@
       </div>
 
     </button>
-
 
 
     <button
@@ -703,7 +655,6 @@
     </button>
 
 
-
     <button
       class="menu-button symptom-menu"
       onclick="goSymptom()">
@@ -725,7 +676,6 @@
       </div>
 
     </button>
-
 
 
     <button
@@ -753,10 +703,36 @@
   </div>
 
 
+  <button
+    class="insulin-button"
+    onclick="goInsulin()">
 
-  <!-- =========================
-       다른 연락처
-  ========================== -->
+    <div class="insulin-icon">
+      💉
+    </div>
+
+    <div class="insulin-content">
+
+      <div class="insulin-title">
+        인슐린 기록
+      </div>
+
+      <div class="insulin-description">
+        실제로 투여한 시간, 종류, Unit과 투여 위치를 기록해요.
+      </div>
+
+      <div class="insulin-badge">
+        💉 투여 기록
+      </div>
+
+    </div>
+
+    <div class="arrow">
+      ›
+    </div>
+
+  </button>
+
 
   <button
     class="other-contact-button"
@@ -784,14 +760,11 @@
 
   </button>
 
-
 </div>
 
 
 
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
@@ -811,22 +784,10 @@ const supabaseClient =
   );
 
 
-let currentUser =
-  null;
+let currentUser = null;
+let currentProfile = null;
+let isDemoStudent = false;
 
-
-let currentProfile =
-  null;
-
-
-let isDemoStudent =
-  false;
-
-
-
-/* =========================
-   시작
-========================= */
 
 window.addEventListener(
   "load",
@@ -838,11 +799,6 @@ window.addEventListener(
 );
 
 
-
-/* =========================
-   사용자 확인
-========================= */
-
 async function loadStudent() {
 
   const {
@@ -852,15 +808,12 @@ async function loadStudent() {
       .getSession();
 
 
-  if (
-    !data.session
-  ) {
+  if (!data.session) {
 
     window.location.href =
       "./login.html";
 
     return;
-
   }
 
 
@@ -897,16 +850,12 @@ async function loadStudent() {
     await logout();
 
     return;
-
   }
 
 
   currentProfile =
     profile;
 
-
-
-  /* 일반 학생 */
 
   if (
     profile.role === "student"
@@ -915,16 +864,11 @@ async function loadStudent() {
     isDemoStudent =
       false;
 
-
     showStudentProfile();
 
     return;
-
   }
 
-
-
-  /* 데모계정 + 학생화면 */
 
   if (
     profile.role === "demo"
@@ -941,10 +885,9 @@ async function loadStudent() {
     ) {
 
       window.location.href =
-        "./login.html";
+        "./teacher.html";
 
       return;
-
     }
 
 
@@ -962,12 +905,8 @@ async function loadStudent() {
     showStudentProfile();
 
     return;
-
   }
 
-
-
-  /* 교직원 계정 */
 
   if (
     profile.role === "teacher"
@@ -979,7 +918,6 @@ async function loadStudent() {
       "./teacher.html";
 
     return;
-
   }
 
 
@@ -988,11 +926,6 @@ async function loadStudent() {
 
 }
 
-
-
-/* =========================
-   학생 프로필
-========================= */
 
 function showStudentProfile() {
 
@@ -1028,54 +961,6 @@ function showStudentProfile() {
 }
 
 
-
-/* =========================
-   데모 → 교직원 바로 전환
-========================= */
-
-function switchToDemoTeacher() {
-
-  if (
-    !isDemoStudent
-  ) {
-
-    return;
-
-  }
-
-
-  /*
-    로그아웃하지 않습니다.
-    Supabase 로그인 세션 그대로 유지합니다.
-  */
-
-  sessionStorage.setItem(
-    "demoMode",
-    "teacher"
-  );
-
-
-  /*
-    학생 기록 화면에서 사용하던
-    선택값이 남지 않도록 정리합니다.
-  */
-
-  sessionStorage.removeItem(
-    "teacherSelectedStudent"
-  );
-
-
-  window.location.href =
-    "./teacher.html";
-
-}
-
-
-
-/* =========================
-   메뉴 이동
-========================= */
-
 function goMeal() {
 
   window.location.href =
@@ -1100,12 +985,19 @@ function goSymptom() {
 }
 
 
+function goInsulin() {
+
+  window.location.href =
+    "./insulin.html";
+
+}
+
+
 function goRecords() {
 
   sessionStorage.removeItem(
     "teacherSelectedStudent"
   );
-
 
   window.location.href =
     "./records.html";
@@ -1121,17 +1013,34 @@ function goEmergencyContacts() {
 }
 
 
+function switchToDemoTeacher() {
 
-/* =========================
-   선생님 도움 요청
-========================= */
+  if (
+    !isDemoStudent
+  ) {
+
+    return;
+  }
+
+
+  sessionStorage.setItem(
+    "demoMode",
+    "teacher"
+  );
+
+
+  sessionStorage.removeItem(
+    "teacherSelectedStudent"
+  );
+
+
+  window.location.href =
+    "./teacher.html";
+
+}
+
 
 async function callTeacher() {
-
-  /*
-    데모 모드에서는
-    실제 교직원에게 전화를 걸지 않습니다.
-  */
 
   if (
     isDemoStudent
@@ -1141,7 +1050,6 @@ async function callTeacher() {
       "./emergency.html";
 
     return;
-
   }
 
 
@@ -1173,7 +1081,6 @@ async function callTeacher() {
       "./emergency.html";
 
     return;
-
   }
 
 
@@ -1206,7 +1113,6 @@ async function callTeacher() {
       "./emergency.html";
 
     return;
-
   }
 
 
@@ -1221,7 +1127,6 @@ async function callTeacher() {
   ) {
 
     return;
-
   }
 
 
@@ -1235,11 +1140,6 @@ async function callTeacher() {
 
 }
 
-
-
-/* =========================
-   로그아웃
-========================= */
 
 async function logout() {
 
