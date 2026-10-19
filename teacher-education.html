@@ -2,12 +2,15 @@
 <html lang="ko">
 
 <head>
+
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
 
   <title>교직원 교육 - GlucoGuard</title>
+
 
   <style>
 
@@ -17,6 +20,7 @@
 
     body {
       margin: 0;
+
       background: #f6f9fc;
 
       font-family:
@@ -240,7 +244,6 @@
       background: white;
 
       border: none;
-
       border-radius: 18px;
 
       padding: 15px;
@@ -719,8 +722,10 @@
     </div>
 
     <div class="intro-text">
+
       학생의 혈당 확인, 식사, 활동, 응급상황 대응은
       학생별 개별 관리계획과 의료진·보호자 지침을 우선하여 지원해주세요.
+
     </div>
 
   </div>
@@ -751,7 +756,7 @@
           </div>
 
           <div class="section-toggle-subtitle">
-            저혈당, 고혈당, 급식, 활동 등 기본 내용을 확인해요.
+            저혈당, 고혈당, 급식, 활동, 인슐린 등 기본 내용을 확인해요.
           </div>
 
         </div>
@@ -765,12 +770,15 @@
     </button>
 
 
+
     <div
       id="educationSection"
       class="section-content">
 
       <div class="education-list">
 
+
+        <!-- 제1형 당뇨 -->
 
         <button
           class="education-card"
@@ -807,8 +815,10 @@
             외부에서 인슐린을 공급해야 하는 질환입니다.
 
             <div class="highlight-box">
+
               혈당 확인이나 필요한 간식 섭취는
               학생의 안전을 위한 건강관리입니다.
+
             </div>
 
           </div>
@@ -816,6 +826,8 @@
         </button>
 
 
+
+        <!-- 저혈당 -->
 
         <button
           class="education-card"
@@ -853,8 +865,10 @@
             평소와 다른 행동 등이 나타날 수 있습니다.
 
             <div class="warning-box">
+
               의식이 흐리거나 안전하게 삼키기 어렵다면
               음식이나 음료를 입으로 주지 않습니다.
+
             </div>
 
           </div>
@@ -862,6 +876,8 @@
         </button>
 
 
+
+        <!-- 고혈당 -->
 
         <button
           class="education-card"
@@ -903,8 +919,10 @@
             더 빠른 확인이 필요할 수 있습니다.
 
             <div class="highlight-box">
+
               교직원이 임의로 인슐린 용량을 계산하거나
               변경하지 않습니다.
+
             </div>
 
           </div>
@@ -912,6 +930,8 @@
         </button>
 
 
+
+        <!-- 급식 -->
 
         <button
           class="education-card"
@@ -957,6 +977,8 @@
 
 
 
+        <!-- 활동 -->
+
         <button
           class="education-card"
           onclick="toggleEducation(this)">
@@ -997,8 +1019,10 @@
             간식, 필요한 응급약품 등을 준비해야 할 수 있습니다.
 
             <div class="warning-box">
+
               몸이 이상하다고 말하면
               활동을 계속하도록 강요하지 않습니다.
+
             </div>
 
           </div>
@@ -1006,6 +1030,8 @@
         </button>
 
 
+
+        <!-- 도움 요청 -->
 
         <button
           class="education-card"
@@ -1042,8 +1068,174 @@
             학생의 말을 가볍게 넘기지 않습니다.
 
             <div class="highlight-box">
+
               저혈당이 의심되는 학생을
               혼자 보건실로 보내지 않습니다.
+
+            </div>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- 추가: 가까운 선생님 -->
+
+        <button
+          class="education-card"
+          onclick="toggleEducation(this)">
+
+          <div class="education-card-top">
+
+            <div class="education-icon">
+              🙋
+            </div>
+
+            <div class="education-info">
+
+              <div class="education-title">
+                저혈당 신호를 느끼면 가까운 선생님께 알리기
+              </div>
+
+              <div class="education-subtitle">
+                학생이 이상 신호를 알아차리고 즉시 도움을 요청하도록 교육해요.
+              </div>
+
+            </div>
+
+            <div class="education-arrow">
+              ›
+            </div>
+
+          </div>
+
+
+          <div class="education-content">
+
+            학생에게 식은땀, 손 떨림, 어지러움, 창백함,
+            갑자기 힘이 빠지는 느낌, 평소와 다른 졸림이나 이상한 느낌이
+            저혈당 신호일 수 있음을 알려주세요.
+
+            <div class="highlight-box">
+
+              증상이 느껴지면 담당 선생님을 찾으러 혼자 이동하지 말고,
+              지금 가장 가까이에 있는 선생님이나 교직원에게
+              <strong>“선생님, 몸이 이상해요.”</strong>라고
+              바로 도움을 요청하도록 교육합니다.
+
+            </div>
+
+            <div class="warning-box">
+
+              저혈당이 의심되는 학생을 혼자 보건실이나
+              다른 장소로 보내지 않습니다.
+
+              <br><br>
+
+              가까운 교직원이 학생 곁에서 상태를 확인하고
+              학생의 개별 관리계획에 따라 대응합니다.
+
+            </div>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- 추가: 인슐린 SC -->
+
+        <button
+          class="education-card"
+          onclick="toggleEducation(this)">
+
+          <div class="education-card-top">
+
+            <div class="education-icon">
+              💉
+            </div>
+
+            <div class="education-info">
+
+              <div class="education-title">
+                인슐린 피하주사(SC) 기본 원칙
+              </div>
+
+              <div class="education-subtitle">
+                투여 전 확인, 피하 투여, 기록과 폐기 원칙을 확인해요.
+              </div>
+
+            </div>
+
+            <div class="education-arrow">
+              ›
+            </div>
+
+          </div>
+
+
+          <div class="education-content">
+
+            인슐린 투여는 학생의 처방과
+            개별 당뇨병 관리계획을 우선하여 시행합니다.
+
+            <br><br>
+
+            <strong>① 투여 전 확인</strong>
+
+            <br>
+
+            · 학생이 맞는지 확인합니다.<br>
+            · 처방된 인슐린 이름을 확인합니다.<br>
+            · 처방된 투여량(Unit)과 시간을 확인합니다.<br>
+            · 손 위생을 시행합니다.<br>
+            · 개별 관리계획에 따른 투여 부위를 확인합니다.
+
+            <br><br>
+
+            <strong>② 투여 시</strong>
+
+            <br>
+
+            · 학생에게 처방된 인슐린 기구를 사용합니다.<br>
+            · 교육받은 방법에 따라 피하조직(SC)에 투여합니다.<br>
+            · 같은 부위만 반복하지 않도록 최근 투여 위치를 확인합니다.
+
+            <br><br>
+
+            <strong>③ 투여 후</strong>
+
+            <br>
+
+            · 사용한 바늘은 즉시 지정된 샤프스 용기에 폐기합니다.<br>
+            · 투여 시간, Unit, 투여 부위를 기록합니다.<br>
+            · 이후 학생 상태를 관찰합니다.
+
+            <div class="warning-box">
+
+              <strong>
+                GlucoGuard는 인슐린 용량을 계산하거나 추천하지 않습니다.
+              </strong>
+
+              <br>
+
+              실제 투여는 교육받고 권한이 있는 교직원이
+              학생의 처방과 학교 지침에 따라 시행해야 합니다.
+
+            </div>
+
+            <div class="highlight-box">
+
+              주사 각도나 피부 집기 여부 등 세부 술기는
+              펜니들 길이, 학생의 체형, 사용 기구와
+              교육받은 방법에 따라 달라질 수 있습니다.
+
+              <br><br>
+
+              학생의 처방, 의료진 교육 및
+              학교 프로토콜을 우선합니다.
+
             </div>
 
           </div>
@@ -1118,6 +1310,8 @@
       <div class="scenario-list">
 
 
+        <!-- SCENE 1 -->
+
         <div
           class="scenario-card"
           data-correct="2">
@@ -1131,9 +1325,11 @@
           </div>
 
           <div class="scenario-text">
+
             학생이 식은땀을 흘리며
             “선생님, 어지러워요.”라고 말합니다.
             혈당은 62 mg/dL입니다.
+
           </div>
 
           <div class="scenario-question">
@@ -1175,6 +1371,8 @@
 
 
 
+        <!-- SCENE 2 -->
+
         <div
           class="scenario-card"
           data-correct="3">
@@ -1188,8 +1386,10 @@
           </div>
 
           <div class="scenario-text">
+
             학생이 제대로 대답하지 못하고
             안전하게 삼키기 어려워 보입니다.
+
           </div>
 
           <div class="scenario-question">
@@ -1231,6 +1431,8 @@
 
 
 
+        <!-- SCENE 3 -->
+
         <div
           class="scenario-card"
           data-correct="1">
@@ -1244,9 +1446,11 @@
           </div>
 
           <div class="scenario-text">
+
             학생이 심하게 목이 마르고
             여러 번 화장실에 갔습니다.
             이후 구토까지 시작했습니다.
+
           </div>
 
           <div class="scenario-question">
@@ -1288,6 +1492,8 @@
 
 
 
+        <!-- SCENE 4 -->
+
         <div
           class="scenario-card"
           data-correct="2">
@@ -1301,8 +1507,10 @@
           </div>
 
           <div class="scenario-text">
+
             겉으로 보기에는 크게 아파 보이지 않지만,
             학생이 몸이 이상하다고 이야기합니다.
+
           </div>
 
           <div class="scenario-question">
@@ -1332,6 +1540,67 @@
               onclick="answerScenario(this, 3)">
 
               ③ 쉬는 시간까지 기다리게 한다.
+
+            </button>
+
+          </div>
+
+          <div class="scenario-feedback">
+          </div>
+
+        </div>
+
+
+
+        <!-- 추가 SCENE 5 -->
+
+        <div
+          class="scenario-card"
+          data-correct="2">
+
+          <div class="scenario-number">
+            SCENE 5
+          </div>
+
+          <div class="scenario-title">
+            🙋 쉬는 시간, 학생이 먼저 도움을 요청해요
+          </div>
+
+          <div class="scenario-text">
+
+            복도에서 학생이 손이 떨리고 어지럽다며
+            가까이 있던 선생님에게
+            “선생님, 몸이 이상해요.”라고 말합니다.
+
+          </div>
+
+          <div class="scenario-question">
+            가장 적절한 대응은?
+          </div>
+
+          <div class="scenario-options">
+
+            <button
+              class="scenario-option"
+              onclick="answerScenario(this, 1)">
+
+              ① 담당 담임선생님을 찾아 혼자 교실로 돌아가게 한다.
+
+            </button>
+
+            <button
+              class="scenario-option"
+              onclick="answerScenario(this, 2)">
+
+              ② 그 자리에서 학생과 함께 있으면서 상태를 확인하고 개별 관리계획에 따라 대응한다.
+
+            </button>
+
+            <button
+              class="scenario-option"
+              onclick="answerScenario(this, 3)">
+
+              ③ 다음 수업까지 기다려 본 뒤 계속 불편하면 알리라고 한다.
 
             </button>
 
@@ -1396,12 +1665,16 @@
       <div class="quiz-card">
 
 
+        <!-- 1 -->
+
         <div
           class="quiz-question"
           data-answer="X">
 
           <div class="quiz-question-text">
+
             1. 저혈당이 의심되는 학생은 혼자 보건실에 보내도 된다.
+
           </div>
 
           <div class="quiz-buttons">
@@ -1424,12 +1697,16 @@
 
 
 
+        <!-- 2 -->
+
         <div
           class="quiz-question"
           data-answer="X">
 
           <div class="quiz-question-text">
+
             2. 의식이 없거나 안전하게 삼키기 어려운 학생에게 주스를 먹인다.
+
           </div>
 
           <div class="quiz-buttons">
@@ -1451,13 +1728,17 @@
         </div>
 
 
+
+        <!-- 3 -->
 
         <div
           class="quiz-question"
           data-answer="O">
 
           <div class="quiz-question-text">
+
             3. 학생이 몸이 이상하다고 말하면 먼저 상태를 확인해야 한다.
+
           </div>
 
           <div class="quiz-buttons">
@@ -1479,13 +1760,17 @@
         </div>
 
 
+
+        <!-- 4 -->
 
         <div
           class="quiz-question"
           data-answer="X">
 
           <div class="quiz-question-text">
+
             4. 교직원이 혈당 수치만 보고 인슐린 용량을 임의로 정해도 된다.
+
           </div>
 
           <div class="quiz-buttons">
@@ -1508,12 +1793,80 @@
 
 
 
+        <!-- 5 -->
+
         <div
           class="quiz-question"
           data-answer="O">
 
           <div class="quiz-question-text">
+
             5. 체육이나 현장학습에서는 학생에 따라 추가 혈당 확인이나 준비가 필요할 수 있다.
+
+          </div>
+
+          <div class="quiz-buttons">
+
+            <button
+              class="quiz-button"
+              onclick="selectQuiz(this, 'O')">
+              O
+            </button>
+
+            <button
+              class="quiz-button"
+              onclick="selectQuiz(this, 'X')">
+              X
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 추가 6 -->
+
+        <div
+          class="quiz-question"
+          data-answer="X">
+
+          <div class="quiz-question-text">
+
+            6. 저혈당 신호가 느껴지면 담당 선생님을 찾기 위해 학생 혼자 학교 안을 이동해도 된다.
+
+          </div>
+
+          <div class="quiz-buttons">
+
+            <button
+              class="quiz-button"
+              onclick="selectQuiz(this, 'O')">
+              O
+            </button>
+
+            <button
+              class="quiz-button"
+              onclick="selectQuiz(this, 'X')">
+              X
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 추가 7 -->
+
+        <div
+          class="quiz-question"
+          data-answer="X">
+
+          <div class="quiz-question-text">
+
+            7. 인슐린 투여량은 GlucoGuard가 자동으로 계산한 값을 그대로 사용하면 된다.
+
           </div>
 
           <div class="quiz-buttons">
@@ -1559,10 +1912,14 @@
 
 
 
+  <!-- 하단 -->
+
   <div class="footer-note">
 
     GlucoGuard는 교육용 지원 도구입니다.<br>
-    실제 치료와 처치는 학생의 개별 관리계획과 의료진·학교 지침이 우선합니다.
+
+    실제 치료와 처치는 학생의 개별 관리계획과
+    의료진·학교 지침이 우선합니다.
 
   </div>
 
@@ -1572,6 +1929,7 @@
 
 
 <script>
+
 
 /* =========================
    큰 섹션 펼치기
@@ -1613,6 +1971,7 @@ function toggleMainSection(
 }
 
 
+
 /* =========================
    교육 내부 카드
 ========================= */
@@ -1626,6 +1985,7 @@ function toggleEducation(
   );
 
 }
+
 
 
 /* =========================
@@ -1693,7 +2053,8 @@ function answerScenario(
         학생의 개별 관리계획에 따라 대응하는 것이 중요합니다.
       `;
 
-  } else {
+  }
+  else {
 
     button.classList.add(
       "wrong"
@@ -1723,7 +2084,8 @@ function answerScenario(
           학생을 혼자 두지 않고 즉시 도움을 요청해야 합니다.
         `;
 
-    } else {
+    }
+    else {
 
       feedback.innerHTML =
         `
@@ -1737,6 +2099,7 @@ function answerScenario(
   }
 
 }
+
 
 
 /* =========================
@@ -1778,6 +2141,11 @@ function selectQuiz(
 }
 
 
+
+/* =========================
+   퀴즈 결과
+========================= */
+
 function submitQuiz() {
 
   const questions =
@@ -1805,15 +2173,21 @@ function submitQuiz() {
         question.dataset.answer;
 
 
-      if (selected) {
+      if (
+        selected
+      ) {
+
         answered++;
+
       }
 
 
       if (
         selected === answer
       ) {
+
         correct++;
+
       }
 
     }
@@ -1821,12 +2195,14 @@ function submitQuiz() {
 
 
   if (
-    answered < questions.length
+    answered <
+    questions.length
   ) {
 
     alert(
       "모든 문제에 답해주세요."
     );
+
 
     return;
 
@@ -1845,7 +2221,8 @@ function submitQuiz() {
 
 
   if (
-    correct === questions.length
+    correct ===
+    questions.length
   ) {
 
     result.innerHTML =
@@ -1854,8 +2231,10 @@ function submitQuiz() {
         핵심 내용을 잘 이해하고 있어요.
       `;
 
-  } else if (
-    correct >= 4
+  }
+  else if (
+    correct >=
+    questions.length - 1
   ) {
 
     result.innerHTML =
@@ -1864,7 +2243,8 @@ function submitQuiz() {
         거의 다 이해했어요. 헷갈린 내용을 한 번 더 확인해보세요.
       `;
 
-  } else {
+  }
+  else {
 
     result.innerHTML =
       `
@@ -1875,6 +2255,7 @@ function submitQuiz() {
   }
 
 }
+
 
 
 /* =========================
@@ -1889,6 +2270,7 @@ function goBack() {
 }
 
 </script>
+
 
 </body>
 
