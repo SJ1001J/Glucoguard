@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
@@ -127,12 +126,12 @@
 
 
     /* =========================
-       교육 메뉴
+       공통 제목
     ========================= */
 
     .section-title {
       margin:
-        0 0 9px 3px;
+        20px 0 9px 3px;
 
       color: #607580;
 
@@ -140,13 +139,26 @@
       font-weight: 900;
     }
 
+    .section-description {
+      margin:
+        -3px 0 11px 3px;
+
+      color: #8a9aa4;
+
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+
+    /* =========================
+       교육 카드
+    ========================= */
+
     .education-list {
       display: flex;
       flex-direction: column;
 
       gap: 9px;
-
-      margin-bottom: 18px;
     }
 
     .education-card {
@@ -214,6 +226,13 @@
       color: #9aabb4;
 
       font-size: 21px;
+
+      transition: transform .2s ease;
+    }
+
+    .education-card.open
+    .education-arrow {
+      transform: rotate(90deg);
     }
 
     .education-content {
@@ -269,7 +288,188 @@
 
 
     /* =========================
-       퀴즈
+       상황 연습
+    ========================= */
+
+    .simulation-intro {
+      padding: 15px;
+
+      margin-bottom: 10px;
+
+      border-radius: 18px;
+
+      background: #fff4dd;
+
+      color: #78602f;
+    }
+
+    .simulation-intro-title {
+      margin-bottom: 5px;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .simulation-intro-text {
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .scenario-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .scenario-card {
+      padding: 16px;
+
+      border-radius: 20px;
+
+      background: white;
+
+      box-shadow:
+        0 5px 15px rgba(60,80,95,.06);
+    }
+
+    .scenario-number {
+      display: inline-block;
+
+      margin-bottom: 9px;
+
+      padding: 5px 8px;
+
+      border-radius: 8px;
+
+      background: #edf4ff;
+
+      color: #4c7090;
+
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .scenario-title {
+      margin-bottom: 6px;
+
+      color: #405e70;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .scenario-text {
+      margin-bottom: 13px;
+
+      padding: 12px;
+
+      border-radius: 14px;
+
+      background: #f7f9fb;
+
+      color: #586f7b;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .scenario-question {
+      margin-bottom: 9px;
+
+      color: #4d6572;
+
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .scenario-options {
+      display: flex;
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+    .scenario-option {
+      width: 100%;
+
+      padding: 11px 12px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 12px;
+
+      background: #f6f8fa;
+
+      color: #58717e;
+
+      text-align: left;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      line-height: 1.5;
+
+      cursor: pointer;
+    }
+
+    .scenario-option.correct {
+      border-color: #83c5a8;
+
+      background: #eaf8f2;
+
+      color: #39715e;
+    }
+
+    .scenario-option.wrong {
+      border-color: #efaaa3;
+
+      background: #fff0ee;
+
+      color: #9f4f49;
+    }
+
+    .scenario-feedback {
+      display: none;
+
+      margin-top: 11px;
+
+      padding: 12px;
+
+      border-radius: 13px;
+
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .scenario-feedback.show {
+      display: block;
+    }
+
+    .scenario-feedback.good {
+      background: #eaf8f2;
+
+      color: #407463;
+    }
+
+    .scenario-feedback.bad {
+      background: #fff0ee;
+
+      color: #98514b;
+    }
+
+    .scenario-feedback strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       OX 퀴즈
     ========================= */
 
     .quiz-card {
@@ -446,7 +646,7 @@
       </h1>
 
       <p>
-        학교에서 제1형 당뇨 학생을 안전하게 지원하기 위한 핵심 내용
+        제1형 당뇨 학생을 안전하게 지원하기 위한 핵심 교육
       </p>
 
     </div>
@@ -473,17 +673,15 @@
 
 
 
-  <!-- 교육 -->
+  <!-- 핵심 교육 -->
 
   <div class="section-title">
-    핵심 교육
+    📚 핵심 교육
   </div>
 
 
   <div class="education-list">
 
-
-    <!-- 1 -->
 
     <button
       class="education-card"
@@ -521,14 +719,13 @@
 
         <br><br>
 
-        학생은 하루 중 여러 번 혈당을 확인하거나
+        학생은 여러 번 혈당을 확인하거나
         연속혈당측정기(CGM)를 사용할 수 있으며,
-        식사·운동·스트레스·질병 등에 따라 혈당이 변할 수 있습니다.
+        식사·운동·스트레스·질병 등에 따라 혈당이 달라질 수 있습니다.
 
         <div class="highlight-box">
-          학생이 혈당을 확인하거나 간식을 먹는 행동은
-          학교생활을 방해하는 행동이 아니라
-          안전을 위한 건강관리입니다.
+          혈당을 확인하거나 필요한 간식을 먹는 행동은
+          수업 방해가 아니라 학생의 안전을 위한 건강관리입니다.
         </div>
 
       </div>
@@ -536,8 +733,6 @@
     </button>
 
 
-
-    <!-- 2 -->
 
     <button
       class="education-card"
@@ -570,17 +765,12 @@
 
       <div class="education-content">
 
-        저혈당은 혈당이 너무 낮아진 상태입니다.
-        학생마다 증상이 다를 수 있습니다.
-
-        <br><br>
-
-        식은땀, 손 떨림, 어지러움, 창백함,
-        심한 배고픔, 졸림, 집중력 저하,
+        저혈당에서는 식은땀, 손 떨림, 어지러움,
+        창백함, 졸림, 집중력 저하,
         평소와 다른 행동 등이 나타날 수 있습니다.
 
         <div class="warning-box">
-          의식이 흐리거나 안전하게 삼키기 어려운 학생에게
+          의식이 흐리거나 안전하게 삼키기 어려운 학생에게는
           음식이나 음료를 입으로 주지 않습니다.
         </div>
 
@@ -589,8 +779,6 @@
     </button>
 
 
-
-    <!-- 3 -->
 
     <button
       class="education-card"
@@ -623,20 +811,18 @@
 
       <div class="education-content">
 
-        고혈당은 혈당이 높은 상태입니다.
-        심한 갈증, 잦은 소변, 피로,
-        집중력 저하 등이 나타날 수 있습니다.
+        고혈당에서는 심한 갈증, 잦은 소변,
+        피로, 집중력 저하 등이 나타날 수 있습니다.
 
         <br><br>
 
         구토, 심한 복통, 호흡 이상,
-        심한 졸림이나 의식 변화가 함께 나타나면
-        더 빠른 확인과 대응이 필요할 수 있습니다.
+        심한 졸림이나 의식 변화가 동반되면
+        더 빠른 확인이 필요할 수 있습니다.
 
         <div class="highlight-box">
-          교직원이 임의로 인슐린 용량을 계산하거나
-          변경하지 않습니다.
-          학생의 개별 계획과 의료진 지침을 따릅니다.
+          교직원이 임의로 인슐린 용량을 계산하거나 변경하지 않고
+          학생의 개별 관리계획을 따릅니다.
         </div>
 
       </div>
@@ -644,8 +830,6 @@
     </button>
 
 
-
-    <!-- 4 -->
 
     <button
       class="education-card"
@@ -664,7 +848,7 @@
           </div>
 
           <div class="education-subtitle">
-            실제 섭취량과 간식이 왜 중요한지 확인해요.
+            실제 섭취량과 필요한 간식을 확인해요.
           </div>
 
         </div>
@@ -679,15 +863,15 @@
       <div class="education-content">
 
         식사량은 혈당과 인슐린 관리에 영향을 줄 수 있습니다.
-        학교에서는 학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
+        학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
 
         <br><br>
 
-        저혈당 예방이나 처치를 위해
-        학생이 정해진 시간 외에 간식을 먹어야 할 수도 있습니다.
+        학생에 따라 저혈당 예방 또는 처치를 위해
+        정해진 시간 외에 간식을 먹어야 할 수도 있습니다.
 
         <div class="highlight-box">
-          간식을 먹는 것을 벌이나 규칙 위반으로 보지 않고
+          필요한 간식 섭취를 규칙 위반으로 보기보다
           건강관리를 위한 행동으로 이해해주세요.
         </div>
 
@@ -696,8 +880,6 @@
     </button>
 
 
-
-    <!-- 5 -->
 
     <button
       class="education-card"
@@ -716,7 +898,7 @@
           </div>
 
           <div class="education-subtitle">
-            운동과 외부 활동에서 확인할 점을 알아봐요.
+            활동량이 많을 때 확인해야 할 점을 알아봐요.
           </div>
 
         </div>
@@ -730,14 +912,14 @@
 
       <div class="education-content">
 
-        운동은 혈당을 낮출 수 있기 때문에
+        운동은 혈당에 영향을 줄 수 있으므로
         학생에 따라 운동 전후 혈당 확인이나 간식이 필요할 수 있습니다.
 
         <br><br>
 
         현장학습이나 운동회처럼
         평소보다 활동량이 많은 날에는
-        혈당 측정기, 간식, 응급약품 등을 준비해야 할 수 있습니다.
+        혈당 측정 도구, 간식, 응급약품 등을 준비해야 할 수 있습니다.
 
         <div class="warning-box">
           학생이 몸이 이상하다고 말하면
@@ -749,8 +931,6 @@
     </button>
 
 
-
-    <!-- 6 -->
 
     <button
       class="education-card"
@@ -769,7 +949,7 @@
           </div>
 
           <div class="education-subtitle">
-            학생의 말을 가볍게 넘기지 않는 것이 중요해요.
+            학생의 말을 먼저 듣고 상태를 확인해요.
           </div>
 
         </div>
@@ -783,13 +963,14 @@
 
       <div class="education-content">
 
-        학생이 “어지러워요”, “이상해요”, “혈당 확인하고 싶어요”라고 말하면
-        먼저 학생의 말을 믿고 상태를 확인해주세요.
+        학생이 “어지러워요”, “몸이 이상해요”,
+        “혈당을 확인하고 싶어요”라고 말하면
+        학생의 말을 가볍게 넘기지 않습니다.
 
         <br><br>
 
-        필요하면 보건교사 또는 보호자에게 연락하고,
-        학생의 개별 관리계획과 학교 응급절차에 따라 대응합니다.
+        학생 곁에서 상태를 확인하고
+        필요한 경우 보건교사·보호자에게 알립니다.
 
         <div class="highlight-box">
           저혈당이 의심되는 학생을 혼자 보건실로 보내지 않는 것이 중요합니다.
@@ -804,18 +985,265 @@
 
 
 
-  <!-- 퀴즈 -->
+  <!-- 상황 시뮬레이션 -->
+
+  <div class="section-title">
+    🎯 상황 연습
+  </div>
+
+  <div class="section-description">
+    실제 학교에서 일어날 수 있는 상황을 보고 가장 적절한 행동을 선택해보세요.
+  </div>
+
+
+  <div class="simulation-intro">
+
+    <div class="simulation-intro-title">
+      선생님이라면 어떻게 하시겠어요?
+    </div>
+
+    <div class="simulation-intro-text">
+      정답을 외우기보다 학생의 안전,
+      개별 관리계획, 도움 요청이라는 원칙을 익히는 연습입니다.
+    </div>
+
+  </div>
+
+
+  <div class="scenario-list">
+
+
+    <!-- 상황 1 -->
+
+    <div
+      class="scenario-card"
+      data-correct="2">
+
+      <div class="scenario-number">
+        SCENE 1
+      </div>
+
+      <div class="scenario-title">
+        🏃 체육 수업 후
+      </div>
+
+      <div class="scenario-text">
+        체육 수업을 마친 학생이 식은땀을 흘리며
+        “선생님, 어지러워요.”라고 말합니다.
+        확인한 혈당은 62 mg/dL입니다.
+      </div>
+
+      <div class="scenario-question">
+        가장 먼저 할 행동은?
+      </div>
+
+      <div class="scenario-options">
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 1)">
+          ① 혼자 보건실에 다녀오라고 한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 2)">
+          ② 학생 곁에 있으면서 개별 저혈당 계획에 따라 대응한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 3)">
+          ③ 조금 쉬면 괜찮을 수 있으니 수업을 계속한다.
+        </button>
+
+      </div>
+
+      <div class="scenario-feedback">
+      </div>
+
+    </div>
+
+
+
+    <!-- 상황 2 -->
+
+    <div
+      class="scenario-card"
+      data-correct="3">
+
+      <div class="scenario-number">
+        SCENE 2
+      </div>
+
+      <div class="scenario-title">
+        🚨 반응이 이상한 학생
+      </div>
+
+      <div class="scenario-text">
+        학생이 갑자기 제대로 대답하지 못하고
+        안전하게 삼키기 어려워 보입니다.
+      </div>
+
+      <div class="scenario-question">
+        적절한 행동은?
+      </div>
+
+      <div class="scenario-options">
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 1)">
+          ① 주스를 조금씩 먹여본다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 2)">
+          ② 혼자 눕혀두고 보호자에게 먼저 전화한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 3)">
+          ③ 입으로 먹이지 않고 학생 곁에서 즉시 응급 대응을 시작한다.
+        </button>
+
+      </div>
+
+      <div class="scenario-feedback">
+      </div>
+
+    </div>
+
+
+
+    <!-- 상황 3 -->
+
+    <div
+      class="scenario-card"
+      data-correct="1">
+
+      <div class="scenario-number">
+        SCENE 3
+      </div>
+
+      <div class="scenario-title">
+        🚌 현장학습 중
+      </div>
+
+      <div class="scenario-text">
+        학생이 심하게 목이 마르다고 하고
+        여러 번 화장실에 갔습니다.
+        이후 구토까지 시작했습니다.
+      </div>
+
+      <div class="scenario-question">
+        가장 적절한 대응은?
+      </div>
+
+      <div class="scenario-options">
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 1)">
+          ① 학생을 혼자 두지 않고 상태와 개별 계획을 확인하며 도움을 요청한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 2)">
+          ② 멀미일 수 있으므로 버스에서 쉬게 한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 3)">
+          ③ 교직원이 인슐린 용량을 계산해 추가 투여하도록 한다.
+        </button>
+
+      </div>
+
+      <div class="scenario-feedback">
+      </div>
+
+    </div>
+
+
+
+    <!-- 상황 4 -->
+
+    <div
+      class="scenario-card"
+      data-correct="2">
+
+      <div class="scenario-number">
+        SCENE 4
+      </div>
+
+      <div class="scenario-title">
+        🙂 “선생님, 몸이 이상해요”
+      </div>
+
+      <div class="scenario-text">
+        수업 중 학생이 조용히 와서
+        “선생님, 몸이 좀 이상한 것 같아요.”라고 말합니다.
+        겉으로 보기에는 크게 아파 보이지 않습니다.
+      </div>
+
+      <div class="scenario-question">
+        어떻게 하는 것이 좋을까요?
+      </div>
+
+      <div class="scenario-options">
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 1)">
+          ① 겉으로 괜찮아 보이므로 자리로 돌아가게 한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 2)">
+          ② 학생의 말을 듣고 상태를 확인할 기회를 제공한다.
+        </button>
+
+        <button
+          class="scenario-option"
+          onclick="answerScenario(this, 3)">
+          ③ 다음 쉬는 시간까지 기다려보라고 한다.
+        </button>
+
+      </div>
+
+      <div class="scenario-feedback">
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- OX 퀴즈 -->
+
+  <div class="section-title">
+    ✅ 마무리 O/X 퀴즈
+  </div>
+
 
   <div class="quiz-card">
 
     <div class="quiz-header">
 
       <div class="quiz-title">
-        ✅ 교직원 O/X 퀴즈
+        교직원 O/X 퀴즈
       </div>
 
       <div class="quiz-subtitle">
-        핵심 내용을 잘 이해했는지 간단히 확인해보세요.
+        핵심 내용을 잘 이해했는지 마지막으로 확인해보세요.
       </div>
 
     </div>
@@ -855,7 +1283,7 @@
       data-answer="X">
 
       <div class="quiz-question-text">
-        2. 의식이 없는 학생에게 주스나 사탕을 먹여야 한다.
+        2. 의식이 없거나 안전하게 삼키기 어려운 학생에게 주스를 먹인다.
       </div>
 
       <div class="quiz-buttons">
@@ -911,7 +1339,7 @@
       data-answer="X">
 
       <div class="quiz-question-text">
-        4. 교직원이 혈당 수치를 보고 인슐린 용량을 임의로 정해도 된다.
+        4. 교직원이 혈당 수치만 보고 인슐린 용량을 임의로 정해도 된다.
       </div>
 
       <div class="quiz-buttons">
@@ -939,7 +1367,7 @@
       data-answer="O">
 
       <div class="quiz-question-text">
-        5. 체육이나 현장학습 전후에는 학생에 따라 추가 혈당 확인이 필요할 수 있다.
+        5. 체육이나 현장학습에서는 학생에 따라 추가 혈당 확인이나 준비가 필요할 수 있다.
       </div>
 
       <div class="quiz-buttons">
@@ -981,10 +1409,8 @@
 
 
   <div class="footer-note">
-
     GlucoGuard는 교육용 지원 도구입니다.<br>
-    실제 치료와 처치는 학생의 개별 관리계획과 의료진 지침이 우선합니다.
-
+    실제 치료와 처치는 학생의 개별 관리계획과 의료진·학교 지침이 우선합니다.
   </div>
 
 
@@ -993,6 +1419,10 @@
 
 
 <script>
+
+/* =========================
+   교육 카드
+========================= */
 
 function toggleEducation(
   card
@@ -1005,6 +1435,126 @@ function toggleEducation(
 }
 
 
+
+/* =========================
+   상황 연습
+========================= */
+
+function answerScenario(
+  button,
+  selected
+) {
+
+  const card =
+    button.closest(
+      ".scenario-card"
+    );
+
+
+  const correct =
+    Number(
+      card.dataset.correct
+    );
+
+
+  const buttons =
+    card.querySelectorAll(
+      ".scenario-option"
+    );
+
+
+  const feedback =
+    card.querySelector(
+      ".scenario-feedback"
+    );
+
+
+  buttons.forEach(
+    item => {
+
+      item.classList.remove(
+        "correct",
+        "wrong"
+      );
+
+    }
+  );
+
+
+  if (
+    selected === correct
+  ) {
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    feedback.className =
+      "scenario-feedback show good";
+
+
+    feedback.innerHTML =
+      `
+        <strong>✅ 적절한 선택입니다.</strong>
+        학생의 상태를 가볍게 넘기지 않고
+        학생 곁에서 안전을 확인하며
+        개별 관리계획에 따라 대응하는 것이 핵심입니다.
+      `;
+
+  } else {
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    buttons[
+      correct - 1
+    ].classList.add(
+      "correct"
+    );
+
+
+    feedback.className =
+      "scenario-feedback show bad";
+
+
+    if (
+      card.dataset.correct === "3"
+    ) {
+
+      feedback.innerHTML =
+        `
+          <strong>⚠️ 다시 확인해보세요.</strong>
+          의식이 흐리거나 안전하게 삼키기 어려우면
+          음식이나 음료를 입으로 주지 않습니다.
+          학생을 혼자 두지 않고 개별 응급계획과 학교 응급 절차에 따라
+          즉시 도움을 요청해야 합니다.
+        `;
+
+    } else {
+
+      feedback.innerHTML =
+        `
+          <strong>💡 다시 생각해볼 포인트</strong>
+          학생의 증상이나 도움 요청을 가볍게 넘기거나
+          혼자 보내기보다,
+          학생 곁에서 상태를 확인하고
+          개별 관리계획에 따라 대응하는 것이 중요합니다.
+        `;
+
+    }
+
+  }
+
+}
+
+
+
+/* =========================
+   OX 퀴즈
+========================= */
 
 function selectQuiz(
   button,
@@ -1114,12 +1664,12 @@ function submitQuiz() {
 
 
   if (
-    correct === 5
+    correct === questions.length
   ) {
 
     result.innerHTML =
       `
-        🎉 <strong>5문제 모두 맞았습니다!</strong><br>
+        🎉 <strong>${correct}/${questions.length} 정답!</strong><br>
         제1형 당뇨 학생의 학교생활 지원 핵심 내용을 잘 이해하고 있어요.
       `;
 
@@ -1129,23 +1679,36 @@ function submitQuiz() {
 
     result.innerHTML =
       `
-        👍 <strong>${correct}/5 정답</strong><br>
-        거의 다 이해했어요. 틀린 내용을 교육 카드에서 한 번 더 확인해보세요.
+        👍 <strong>${correct}/${questions.length} 정답</strong><br>
+        거의 다 이해했어요. 헷갈린 내용을 위 교육 카드에서 다시 확인해보세요.
       `;
 
   } else {
 
     result.innerHTML =
       `
-        📘 <strong>${correct}/5 정답</strong><br>
-        위의 교육 내용을 다시 읽어본 뒤 한 번 더 풀어보세요.
+        📘 <strong>${correct}/${questions.length} 정답</strong><br>
+        핵심 교육과 상황 연습을 한 번 더 확인해보세요.
       `;
 
   }
 
+
+  result.scrollIntoView({
+    behavior:
+      "smooth",
+
+    block:
+      "center"
+  });
+
 }
 
 
+
+/* =========================
+   뒤로
+========================= */
 
 function goBack() {
 
