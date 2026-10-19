@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>인슐린 기록 - GlucoGuard</title>
-
+  <link rel="stylesheet" href="style.css" />
   <style>
+    :root {
+      --bg: #f5f9fc;
+      --card: #ffffff;
+      --text: #244b67;
+      --sub: #7a95a8;
+      --line: #dbe7f0;
+
+      --mint: #dff2ea;
+      --pink: #fde8e5;
+      --blue: #e3efff;
+      --yellow: #fff4d7;
+      --purple: #efe8ff;
+      --gray: #f3f7fa;
+
+      --accent: #4a92c7;
+      --accent-dark: #2f688f;
+      --danger: #e86f5c;
+      --shadow: 0 10px 30px rgba(58, 102, 134, 0.08);
+      --radius: 24px;
+    }
 
     * {
       box-sizing: border-box;
@@ -17,2313 +33,673 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-
-      background: #f4f8fb;
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-      color: #3e5969;
-    }
-
-    button,
-    input,
-    textarea {
-      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
     }
 
     .page {
-      width: 100%;
-      max-width: 600px;
-
+      max-width: 760px;
       margin: 0 auto;
-
-      padding: 20px 18px 40px;
+      padding: 24px 18px 48px;
     }
 
-
-    /* 상단 */
-
-    .top-row {
+    .topbar {
       display: flex;
       align-items: center;
-
-      gap: 10px;
-
-      margin-bottom: 15px;
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
-    .back-button {
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      flex-shrink: 0;
-
+    .back-btn {
+      width: 46px;
+      height: 46px;
       border: none;
-      border-radius: 13px;
-
+      border-radius: 16px;
       background: white;
-      color: #607d8b;
-
-      font-size: 20px;
-
+      box-shadow: var(--shadow);
+      font-size: 22px;
       cursor: pointer;
-
-      box-shadow:
-        0 4px 14px rgba(57,79,94,.05);
+      color: var(--text);
     }
 
-    .page-title {
-      color: #a85349;
-
-      font-size: 21px;
-      font-weight: 900;
+    .top-title {
+      flex: 1;
     }
 
-    .page-subtitle {
-      margin-top: 3px;
-
-      color: #899ba5;
-
-      font-size: 10px;
+    .top-title h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: #2a648d;
     }
 
-
-    /* 안내 */
-
-    .friendly-guide {
-      padding: 16px;
-
-      margin-bottom: 14px;
-
-      border-radius: 20px;
-
-      background: #fff0ec;
-
-      color: #92574e;
+    .top-title p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      color: var(--sub);
     }
 
-    .friendly-title {
-      margin-bottom: 5px;
-
-      font-size: 14px;
-      font-weight: 900;
+    .hero-card {
+      background: linear-gradient(180deg, #efe7ff 0%, #f6f1ff 100%);
+      border-radius: 28px;
+      padding: 24px;
+      margin: 20px 0 22px;
+      box-shadow: var(--shadow);
     }
 
-    .friendly-text {
-      font-size: 10px;
-      line-height: 1.6;
-    }
-
-
-    /* 카드 */
-
-    .step-card {
-      padding: 20px;
-
-      margin-bottom: 13px;
-
-      border-radius: 23px;
-
+    .hero-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 24px;
       background: white;
-
-      box-shadow:
-        0 6px 20px rgba(57,79,94,.05);
-    }
-
-    .step-number {
-      display: inline-flex;
-
+      display: flex;
       align-items: center;
       justify-content: center;
-
-      width: 28px;
-      height: 28px;
-
-      margin-bottom: 9px;
-
-      border-radius: 9px;
-
-      background: #ffe8e2;
-      color: #a95449;
-
-      font-size: 12px;
-      font-weight: 900;
+      font-size: 36px;
+      margin-bottom: 14px;
     }
 
-    .question {
-      margin-bottom: 5px;
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      color: #5f58a9;
+      font-weight: 800;
+    }
 
-      color: #3d5969;
-
+    .hero-card p {
+      margin: 0;
+      line-height: 1.65;
+      color: #6f7f92;
       font-size: 16px;
-      font-weight: 900;
     }
 
-    .question-help {
-      margin-bottom: 13px;
+    .section-card {
+      background: var(--card);
+      border-radius: 26px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
 
-      color: #8b9ca5;
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #ffe6de;
+      color: #b1604b;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
 
-      font-size: 10px;
+    .section-title {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .section-desc {
+      margin: 8px 0 0;
+      color: var(--sub);
+      font-size: 15px;
       line-height: 1.5;
     }
 
-
-    /* 인풋 */
-
-    .input {
-      width: 100%;
-      height: 52px;
-
-      padding: 0 14px;
-
-      border: 2px solid #e1e7eb;
-      border-radius: 15px;
-
-      background: #fafcfd;
-      color: #405e6d;
-
-      outline: none;
-
-      font-size: 13px;
+    .site-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .input:focus {
-      border-color: #e5a399;
-
-      background: white;
-    }
-
-    .unknown-button {
-      width: 100%;
-
-      margin-top: 8px;
-
-      padding: 12px;
-
-      border: none;
-      border-radius: 13px;
-
-      background: #f4f6f7;
-      color: #748892;
-
-      font-size: 11px;
-      font-weight: 900;
-
+    .site-card {
+      border: 2px solid transparent;
+      border-radius: 22px;
+      padding: 18px 16px;
+      background: var(--gray);
+      text-align: center;
       cursor: pointer;
+      transition: 0.2s ease;
     }
 
-    .unknown-button.selected {
-      background: #fff0ec;
-      color: #a85349;
-
-      outline:
-        2px solid #e5a399;
+    .site-card:hover {
+      transform: translateY(-1px);
     }
 
+    .site-card.selected {
+      border-color: #7f6ff0;
+      background: #f1eeff;
+      box-shadow: 0 0 0 4px rgba(127, 111, 240, 0.08);
+    }
 
-    /* Unit */
+    .site-emoji {
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
 
-    .unit-box {
+    .site-name {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .site-sub {
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    .units-wrap {
+      margin-top: 18px;
+    }
+
+    .unit-input-row {
       position: relative;
+      margin-bottom: 14px;
     }
 
     .unit-input {
       width: 100%;
-      height: 70px;
-
-      padding:
-        0
-        80px
-        0
-        18px;
-
-      border: 3px solid #e1e7eb;
-      border-radius: 19px;
-
-      background: #fafcfd;
-      color: #3b5868;
-
+      height: 82px;
+      border-radius: 22px;
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 0 110px 0 24px;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text);
       outline: none;
-
-      font-size: 30px;
-      font-weight: 900;
     }
 
-    .unit-input:focus {
-      border-color: #e0a093;
-      background: white;
-    }
-
-    .unit-text {
+    .unit-label {
       position: absolute;
-
-      right: 20px;
+      right: 24px;
       top: 50%;
-
       transform: translateY(-50%);
-
-      color: #788a94;
-
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 22px;
+      font-weight: 800;
+      color: #678197;
     }
 
-
-    /* 부위 큰 버튼 */
-
-    .site-main-grid {
+    .quick-grid {
       display: grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      gap: 9px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .site-main-button {
-      min-height: 85px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 5px;
-
-      border: 2px solid transparent;
-      border-radius: 18px;
-
-      background: #f5f7f8;
-      color: #647984;
-
-      cursor: pointer;
-    }
-
-    .site-main-button.selected {
-      border-color: #e5a196;
-
-      background: #fff0ec;
-      color: #a85349;
-    }
-
-    .site-main-icon {
-      font-size: 27px;
-    }
-
-    .site-main-name {
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-
-    /* 좌우 선택 */
-
-    .side-area {
-      display: none;
-
-      margin-top: 14px;
-
-      padding-top: 14px;
-
-      border-top: 1px solid #edf0f2;
-    }
-
-    .side-area.show {
-      display: block;
-    }
-
-    .side-title {
-      margin-bottom: 8px;
-
-      text-align: center;
-
-      color: #647a86;
-
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .side-grid {
-      display: grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      gap: 8px;
-    }
-
-    .side-button {
-      padding: 13px;
-
-      border: 2px solid transparent;
-      border-radius: 14px;
-
-      background: #f5f7f8;
-      color: #657a85;
-
-      font-size: 11px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-    .side-button.selected {
-      border-color: #e3a095;
-
-      background: #fff0ec;
-      color: #a85349;
-    }
-
-
-    /* 몸 그림 */
-
-    .body-card {
-      display: none;
-
-      margin-top: 16px;
-
-      padding: 13px;
-
-      border-radius: 17px;
-
-      background: #fafcfd;
-    }
-
-    .body-card.show {
-      display: block;
-    }
-
-    .body-title {
-      margin-bottom: 8px;
-
-      text-align: center;
-
-      color: #7f919a;
-
-      font-size: 9px;
-    }
-
-    .body-area {
-      position: relative;
-
-      width: 180px;
-      height: 285px;
-
-      margin: 0 auto;
-    }
-
-    .head {
-      position: absolute;
-
-      top: 2px;
-      left: 67px;
-
-      width: 46px;
-      height: 46px;
-
-      border-radius: 50%;
-
-      background: #e3e8ec;
-    }
-
-    .torso {
-      position: absolute;
-
-      top: 51px;
-      left: 54px;
-
-      width: 72px;
-      height: 113px;
-
-      border-radius: 30px 30px 24px 24px;
-
-      background: #e3e8ec;
-    }
-
-    .arm {
-      position: absolute;
-
-      top: 61px;
-
-      width: 28px;
-      height: 105px;
-
-      border-radius: 16px;
-
-      background: #e3e8ec;
-    }
-
-    .arm.left {
-      left: 23px;
-    }
-
-    .arm.right {
-      right: 23px;
-    }
-
-    .leg {
-      position: absolute;
-
-      top: 155px;
-
-      width: 31px;
-      height: 125px;
-
-      border-radius: 18px;
-
-      background: #e3e8ec;
-    }
-
-    .leg.left {
-      left: 54px;
-    }
-
-    .leg.right {
-      right: 54px;
-    }
-
-    .check-dot {
-      position: absolute;
-
-      width: 34px;
-      height: 34px;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      border: 3px solid white;
-      border-radius: 50%;
-
-      background: #dc7668;
-      color: white;
-
-      font-size: 17px;
-      font-weight: 900;
-
-      box-shadow:
-        0 4px 10px rgba(0,0,0,.13);
-    }
-
-
-    /* 위치별 체크 좌표 */
-
-    .check-abdomen-left {
-      top: 87px;
-      left: 58px;
-    }
-
-    .check-abdomen-right {
-      top: 87px;
-      right: 58px;
-    }
-
-    .check-arm-left {
-      top: 81px;
-      left: 19px;
-    }
-
-    .check-arm-right {
-      top: 81px;
-      right: 19px;
-    }
-
-    .check-thigh-left {
-      top: 190px;
-      left: 52px;
-    }
-
-    .check-thigh-right {
-      top: 190px;
-      right: 52px;
-    }
-
-    .check-hip-left {
-      top: 143px;
-      left: 55px;
-    }
-
-    .check-hip-right {
-      top: 143px;
-      right: 55px;
-    }
-
-
-    /* 선택 결과 */
-
-    .selected-result {
-      margin-top: 13px;
-
-      padding: 13px;
-
-      border-radius: 14px;
-
-      background: #fff0ec;
-      color: #a85349;
-
-      text-align: center;
-
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-
-    /* 시간 */
-
-    .time-input {
-      width: 100%;
+    .quick-btn {
       height: 52px;
-
-      padding: 0 13px;
-
-      border: 2px solid #e1e7eb;
-      border-radius: 15px;
-
-      background: #fafcfd;
-      color: #405e6d;
-
-      outline: none;
-
-      font-size: 12px;
+      border: none;
+      border-radius: 16px;
+      background: #eef4f8;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
     }
 
+    .quick-btn.active {
+      background: var(--blue);
+      color: #245881;
+    }
 
-    /* 최종 확인 */
+    .time-input,
+    .text-input {
+      width: 100%;
+      height: 68px;
+      border-radius: 20px;
+      border: 2px solid var(--line);
+      padding: 0 18px;
+      font-size: 19px;
+      color: var(--text);
+      outline: none;
+      background: white;
+      margin-top: 16px;
+    }
+
+    .optional-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: #fafcff;
+      border: 1px solid #e6eef5;
+    }
+
+    .optional-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+
+    .optional-desc {
+      font-size: 14px;
+      color: var(--sub);
+      margin: 0 0 14px;
+      line-height: 1.5;
+    }
+
+    .ghost-btn {
+      margin-top: 12px;
+      border: none;
+      background: #eef4f8;
+      color: #5f7891;
+      font-weight: 700;
+      height: 46px;
+      border-radius: 14px;
+      padding: 0 16px;
+      cursor: pointer;
+    }
 
     .summary-card {
-      padding: 18px;
-
-      margin-bottom: 13px;
-
-      border-radius: 22px;
-
-      background: #fff9f7;
-
-      border: 2px solid #ffe0d8;
+      background: #fff7f4;
+      border: 1.5px solid #f3cfc6;
+      border-radius: 24px;
+      padding: 20px;
+      margin-top: 6px;
+      box-shadow: var(--shadow);
     }
 
     .summary-title {
-      margin-bottom: 11px;
-
-      color: #9f5147;
-
-      font-size: 14px;
-      font-weight: 900;
+      margin: 0 0 14px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #ba5a4c;
     }
 
-    .summary-line {
+    .summary-row {
       display: flex;
-
       justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 8px 0;
-
-      border-bottom: 1px solid #f3e3df;
-
-      font-size: 11px;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1ddd7;
+      font-size: 17px;
     }
 
-    .summary-line:last-child {
+    .summary-row:last-child {
       border-bottom: none;
     }
 
     .summary-label {
-      color: #8a9ca5;
+      color: #8f7c76;
+      font-weight: 700;
     }
 
     .summary-value {
-      color: #4c6572;
-
+      color: var(--text);
+      font-weight: 800;
       text-align: right;
-
-      font-weight: 900;
     }
 
-
-    /* 안전 */
-
-    .safety-note {
-      margin-bottom: 14px;
-
-      padding: 13px;
-
-      border-radius: 15px;
-
-      background: #fff5e5;
-      color: #8a692e;
-
-      font-size: 10px;
-      line-height: 1.65;
+    .bottom-actions {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
-    .safety-note strong {
-      color: #765620;
-    }
-
-
-    /* 저장 */
-
-    .save-button {
-      width: 100%;
-
-      padding: 16px;
-
+    .save-btn {
+      height: 68px;
       border: none;
-      border-radius: 17px;
-
-      background: #d96f62;
+      border-radius: 20px;
+      background: #5a9fd3;
       color: white;
-
-      font-size: 14px;
-      font-weight: 900;
-
+      font-size: 22px;
+      font-weight: 800;
       cursor: pointer;
-
-      box-shadow:
-        0 5px 15px rgba(169,82,73,.15);
+      box-shadow: 0 12px 20px rgba(90, 159, 211, 0.24);
     }
 
-    .save-button:disabled {
-      opacity: .55;
-      cursor: default;
+    .sub-btn {
+      height: 60px;
+      border: none;
+      border-radius: 18px;
+      background: #eef4f8;
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
-
-    /* 저장 완료 */
-
-    .success-overlay {
-      position: fixed;
-      inset: 0;
-
-      z-index: 1000;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      background: rgba(37,52,62,.45);
-    }
-
-    .success-card {
-      width: 100%;
-      max-width: 390px;
-
-      padding: 26px;
-
-      border-radius: 26px;
-
-      background: white;
-
-      text-align: center;
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.18);
-    }
-
-    .success-icon {
-      width: 70px;
-      height: 70px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin: 0 auto 14px;
-
-      border-radius: 22px;
-
-      background: #eaf7f1;
-
-      font-size: 37px;
-    }
-
-    .success-title {
-      color: #3e6658;
-
-      font-size: 19px;
-      font-weight: 900;
-    }
-
-    .success-text {
-      margin-top: 7px;
-
-      color: #83959f;
-
-      font-size: 11px;
+    .notice {
+      margin-top: 18px;
+      background: #fff6db;
+      border-radius: 20px;
+      padding: 16px 18px;
+      color: #8c7443;
+      font-size: 14px;
       line-height: 1.6;
     }
 
-    .success-button {
-      width: 100%;
+    @media (max-width: 640px) {
+      .top-title h1 {
+        font-size: 28px;
+      }
 
-      margin-top: 18px;
+      .section-title {
+        font-size: 22px;
+      }
 
-      padding: 13px;
+      .site-grid {
+        grid-template-columns: 1fr 1fr;
+      }
 
-      border: none;
-      border-radius: 14px;
+      .quick-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
 
-      background: #4d9d82;
-      color: white;
-
-      font-size: 12px;
-      font-weight: 900;
-
-      cursor: pointer;
+      .unit-input {
+        font-size: 34px;
+      }
     }
-
   </style>
-
 </head>
-
-
 <body>
-
-<div class="page">
-
-
-  <!-- 상단 -->
-
-  <div class="top-row">
-
-    <button
-      class="back-button"
-      onclick="goBack()">
-
-      ‹
-
-    </button>
-
-    <div>
-
-      <div class="page-title">
-        💉 인슐린 기록
+  <div class="page">
+    <div class="topbar">
+      <button class="back-btn" onclick="goBack()">←</button>
+      <div class="top-title">
+        <h1>인슐린 기록</h1>
+        <p>맞은 내용을 간단하게 남겨요.</p>
       </div>
+    </div>
 
-      <div class="page-subtitle">
-        맞은 내용을 하나씩 기록해봐요.
+    <div class="hero-card">
+      <div class="hero-icon">💉</div>
+      <h2>쉽게 기록해요</h2>
+      <p>
+        어려운 내용은 빼고, <b>어디에</b> 맞았는지, <b>얼마나</b> 맞았는지,
+        <b>언제</b> 맞았는지만 간단히 적으면 돼요.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="step-badge">1</div>
+      <h3 class="section-title">어디에 맞았나요?</h3>
+      <p class="section-desc">맞은 곳을 눌러주세요.</p>
+
+      <div class="site-grid">
+        <button class="site-card" type="button" data-site="배" onclick="selectSite('배', this)">
+          <div class="site-emoji">🫃</div>
+          <div class="site-name">배</div>
+          <div class="site-sub">배 쪽에 맞았어요</div>
+        </button>
+
+        <button class="site-card" type="button" data-site="팔" onclick="selectSite('팔', this)">
+          <div class="site-emoji">💪</div>
+          <div class="site-name">팔</div>
+          <div class="site-sub">팔에 맞았어요</div>
+        </button>
+
+        <button class="site-card" type="button" data-site="허벅지" onclick="selectSite('허벅지', this)">
+          <div class="site-emoji">🦵</div>
+          <div class="site-name">허벅지</div>
+          <div class="site-sub">다리에 맞았어요</div>
+        </button>
+
+        <button class="site-card" type="button" data-site="엉덩이" onclick="selectSite('엉덩이', this)">
+          <div class="site-emoji">⭕</div>
+          <div class="site-name">엉덩이</div>
+          <div class="site-sub">엉덩이에 맞았어요</div>
+        </button>
       </div>
-
     </div>
 
-  </div>
+    <div class="section-card">
+      <div class="step-badge">2</div>
+      <h3 class="section-title">몇 Unit 맞았나요?</h3>
+      <p class="section-desc">맞은 양을 적어주세요.</p>
 
+      <div class="units-wrap">
+        <div class="unit-input-row">
+          <input
+            id="insulinUnits"
+            class="unit-input"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            step="0.5"
+            placeholder="0"
+            oninput="updateSummary()"
+          />
+          <span class="unit-label">Unit</span>
+        </div>
 
-
-  <!-- 친절한 안내 -->
-
-  <div class="friendly-guide">
-
-    <div class="friendly-title">
-      🙂 천천히 하나씩 선택하면 돼요!
+        <div class="quick-grid">
+          <button class="quick-btn" type="button" onclick="setUnits(1, this)">1</button>
+          <button class="quick-btn" type="button" onclick="setUnits(2, this)">2</button>
+          <button class="quick-btn" type="button" onclick="setUnits(3, this)">3</button>
+          <button class="quick-btn" type="button" onclick="setUnits(4, this)">4</button>
+          <button class="quick-btn" type="button" onclick="setUnits(5, this)">5</button>
+          <button class="quick-btn" type="button" onclick="focusUnits()">직접 입력</button>
+        </div>
+      </div>
     </div>
 
-    <div class="friendly-text">
-      잘 모르겠으면 혼자 고르지 말고 선생님과 같이 기록해요.
-    </div>
-
-  </div>
-
-
-
-  <!-- 1. 인슐린 이름 -->
-
-  <div class="step-card">
-
-    <div class="step-number">
-      1
-    </div>
-
-    <div class="question">
-      💉 어떤 인슐린을 맞았나요?
-    </div>
-
-    <div class="question-help">
-      알고 있는 인슐린 이름을 적어주세요.
-    </div>
-
-    <input
-      id="insulinName"
-      class="input"
-      type="text"
-      maxlength="50"
-      placeholder="예: 내가 맞은 인슐린 이름">
-
-    <button
-      id="unknownInsulinButton"
-      type="button"
-      class="unknown-button"
-      onclick="toggleUnknownInsulin()">
-
-      🤷 이름을 모르겠어요
-
-    </button>
-
-  </div>
-
-
-
-  <!-- 2. Unit -->
-
-  <div class="step-card">
-
-    <div class="step-number">
-      2
-    </div>
-
-    <div class="question">
-      🔢 몇 Unit 맞았나요?
-    </div>
-
-    <div class="question-help">
-      실제로 맞은 숫자를 적어주세요.
-    </div>
-
-    <div class="unit-box">
+    <div class="section-card">
+      <div class="step-badge">3</div>
+      <h3 class="section-title">언제 맞았나요?</h3>
+      <p class="section-desc">지금 맞았다면 그대로 두면 돼요.</p>
 
       <input
-        id="insulinUnits"
-        class="unit-input"
-        type="number"
-        min="0.1"
-        max="200"
-        step="0.1"
-        inputmode="decimal"
-        placeholder="0">
-
-      <div class="unit-text">
-        Unit
-      </div>
-
+        id="administeredAt"
+        class="time-input"
+        type="datetime-local"
+        onchange="updateSummary()"
+      />
     </div>
 
-  </div>
+    <div class="section-card">
+      <div class="step-badge">선택</div>
+      <div class="optional-box">
+        <h4 class="optional-title">어떤 인슐린인가요?</h4>
+        <p class="optional-desc">
+          이름을 알면 적어주세요. 몰라도 괜찮아요.
+        </p>
 
+        <input
+          id="insulinName"
+          class="text-input"
+          type="text"
+          placeholder="예: 내가 맞은 인슐린 이름"
+          oninput="updateSummary()"
+        />
 
-
-  <!-- 3. 부위 -->
-
-  <div class="step-card">
-
-    <div class="step-number">
-      3
-    </div>
-
-    <div class="question">
-      📍 어디에 맞았나요?
-    </div>
-
-    <div class="question-help">
-      먼저 맞은 곳을 선택해주세요.
-    </div>
-
-
-    <div class="site-main-grid">
-
-
-      <button
-        type="button"
-        class="site-main-button"
-        data-part="배"
-        onclick="selectBodyPart('배')">
-
-        <div class="site-main-icon">
-          👕
-        </div>
-
-        <div class="site-main-name">
-          배
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="site-main-button"
-        data-part="팔"
-        onclick="selectBodyPart('팔')">
-
-        <div class="site-main-icon">
-          💪
-        </div>
-
-        <div class="site-main-name">
-          팔
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="site-main-button"
-        data-part="허벅지"
-        onclick="selectBodyPart('허벅지')">
-
-        <div class="site-main-icon">
-          🦵
-        </div>
-
-        <div class="site-main-name">
-          허벅지
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="site-main-button"
-        data-part="엉덩이"
-        onclick="selectBodyPart('엉덩이')">
-
-        <div class="site-main-icon">
-          ⭕
-        </div>
-
-        <div class="site-main-name">
-          엉덩이
-        </div>
-
-      </button>
-
-    </div>
-
-
-
-    <!-- 좌우 -->
-
-    <div
-      id="sideArea"
-      class="side-area">
-
-      <div class="side-title">
-        어느 쪽인가요?
-      </div>
-
-      <div class="side-grid">
-
-        <button
-          type="button"
-          class="side-button"
-          data-side="왼쪽"
-          onclick="selectSide('왼쪽')">
-
-          👈 왼쪽
-
+        <button class="ghost-btn" type="button" onclick="setUnknownInsulin()">
+          🙌 이름을 모르겠어요
         </button>
-
-        <button
-          type="button"
-          class="side-button"
-          data-side="오른쪽"
-          onclick="selectSide('오른쪽')">
-
-          오른쪽 👉
-
-        </button>
-
       </div>
-
     </div>
 
+    <div class="summary-card">
+      <h3 class="summary-title">이렇게 기록할까요?</h3>
 
-
-    <!-- 몸 그림 -->
-
-    <div
-      id="bodyCard"
-      class="body-card">
-
-      <div class="body-title">
-        선택한 곳을 그림에서도 확인해요.
+      <div class="summary-row">
+        <div class="summary-label">맞은 곳</div>
+        <div class="summary-value" id="summarySite">아직 선택하지 않았어요</div>
       </div>
 
-      <div class="body-area">
-
-        <div class="head"></div>
-
-        <div class="torso"></div>
-
-        <div class="arm left"></div>
-        <div class="arm right"></div>
-
-        <div class="leg left"></div>
-        <div class="leg right"></div>
-
-
-        <div
-          id="checkAbdomenLeft"
-          class="check-dot check-abdomen-left">
-          ✓
-        </div>
-
-        <div
-          id="checkAbdomenRight"
-          class="check-dot check-abdomen-right">
-          ✓
-        </div>
-
-        <div
-          id="checkArmLeft"
-          class="check-dot check-arm-left">
-          ✓
-        </div>
-
-        <div
-          id="checkArmRight"
-          class="check-dot check-arm-right">
-          ✓
-        </div>
-
-        <div
-          id="checkThighLeft"
-          class="check-dot check-thigh-left">
-          ✓
-        </div>
-
-        <div
-          id="checkThighRight"
-          class="check-dot check-thigh-right">
-          ✓
-        </div>
-
-        <div
-          id="checkHipLeft"
-          class="check-dot check-hip-left">
-          ✓
-        </div>
-
-        <div
-          id="checkHipRight"
-          class="check-dot check-hip-right">
-          ✓
-        </div>
-
+      <div class="summary-row">
+        <div class="summary-label">맞은 양</div>
+        <div class="summary-value" id="summaryUnits">-</div>
       </div>
 
+      <div class="summary-row">
+        <div class="summary-label">시간</div>
+        <div class="summary-value" id="summaryTime">-</div>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-label">인슐린 이름</div>
+        <div class="summary-value" id="summaryName">이름을 적지 않았어요</div>
+      </div>
     </div>
 
-
-
-    <div
-      id="selectedSiteResult"
-      class="selected-result">
-
-      아직 위치를 선택하지 않았어요.
-
+    <div class="bottom-actions">
+      <button class="save-btn" type="button" onclick="saveInsulinRecord()">
+        💉 인슐린 기록하기
+      </button>
+      <button class="sub-btn" type="button" onclick="window.location.href='index.html'">
+        홈으로 돌아가기
+      </button>
     </div>
 
+    <div class="notice">
+      ※ GlucoGuard는 진단이나 처방을 대신하지 않아요.<br />
+      실제 투여와 치료는 학생의 개인 관리계획과 의료진 지침을 따라주세요.
+    </div>
   </div>
 
-
-
-  <!-- 4. 시간 -->
-
-  <div class="step-card">
-
-    <div class="step-number">
-      4
-    </div>
-
-    <div class="question">
-      🕐 언제 맞았나요?
-    </div>
-
-    <div class="question-help">
-      지금 맞았다면 그대로 두면 돼요.
-    </div>
-
-    <input
-      id="administeredAt"
-      class="time-input"
-      type="datetime-local">
-
-  </div>
-
-
-
-  <!-- 최종 확인 -->
-
-  <div class="summary-card">
-
-    <div class="summary-title">
-      ✅ 이렇게 기록할까요?
-    </div>
-
-    <div class="summary-line">
-
-      <div class="summary-label">
-        인슐린
-      </div>
-
-      <div
-        id="summaryInsulin"
-        class="summary-value">
-        아직 입력하지 않았어요
-      </div>
-
-    </div>
-
-
-    <div class="summary-line">
-
-      <div class="summary-label">
-        투여량
-      </div>
-
-      <div
-        id="summaryUnits"
-        class="summary-value">
-        -
-      </div>
-
-    </div>
-
-
-    <div class="summary-line">
-
-      <div class="summary-label">
-        맞은 곳
-      </div>
-
-      <div
-        id="summarySite"
-        class="summary-value">
-        -
-      </div>
-
-    </div>
-
-
-    <div class="summary-line">
-
-      <div class="summary-label">
-        시간
-      </div>
-
-      <div
-        id="summaryTime"
-        class="summary-value">
-        -
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="safety-note">
-
-    <strong>
-      ※ GlucoGuard는 인슐린 양을 계산하거나 추천하지 않아요.
-    </strong>
-
-    <br>
-
-    실제로 투여한 내용만 기록합니다.
-    잘 모르겠으면 선생님과 함께 확인해주세요.
-
-  </div>
-
-
-
-  <button
-    id="saveButton"
-    class="save-button"
-    onclick="saveInsulinRecord()">
-
-    💉 이대로 기록하기
-
-  </button>
-
-</div>
-
-
-
-<!-- 저장 완료 -->
-
-<div
-  id="successOverlay"
-  class="success-overlay">
-
-  <div class="success-card">
-
-    <div class="success-icon">
-      ✅
-    </div>
-
-    <div class="success-title">
-      잘 기록했어요!
-    </div>
-
-    <div
-      id="successText"
-      class="success-text">
-    </div>
-
-    <button
-      class="success-button"
-      onclick="finishRecord()">
-
-      확인
-
-    </button>
-
-  </div>
-
-</div>
-
-
-
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
-
-<script>
-
-const SUPABASE_URL =
-  "https://zvksfkslavrqagytswco.supabase.co";
-
-
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
-
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
-
-
-let currentUser =
-  null;
-
-
-let currentProfile =
-  null;
-
-
-let recordUserId =
-  null;
-
-
-let isTeacherRecording =
-  false;
-
-
-let unknownInsulin =
-  false;
-
-
-let selectedBodyPart =
-  "";
-
-
-let selectedSide =
-  "";
-
-
-let selectedSite =
-  "";
-
-
-
-window.addEventListener(
-  "load",
-  async function() {
-
-    setCurrentTime();
-
-    setupLiveSummary();
-
-    await checkLogin();
-
-  }
-);
-
-
-
-/* =========================
-   시간 기본값
-========================= */
-
-function setCurrentTime() {
-
-  const now =
-    new Date();
-
-
-  const local =
-    new Date(
-      now.getTime()
-      -
-      now.getTimezoneOffset()
-      * 60000
-    );
-
-
-  document.getElementById(
-    "administeredAt"
-  ).value =
-    local
-      .toISOString()
-      .slice(0,16);
-
-
-  updateSummary();
-
-}
-
-
-
-/* =========================
-   실시간 요약
-========================= */
-
-function setupLiveSummary() {
-
-  document.getElementById(
-    "insulinName"
-  ).addEventListener(
-    "input",
-    function() {
-
-      unknownInsulin =
-        false;
-
-
-      document.getElementById(
-        "unknownInsulinButton"
-      ).classList.remove(
-        "selected"
-      );
-
-
+  <script>
+    let selectedSite = "";
+
+    function goBack() {
+      if (document.referrer) {
+        history.back();
+      } else {
+        window.location.href = "index.html";
+      }
+    }
+
+    function setDefaultDateTime() {
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+
+      const yyyy = now.getFullYear();
+      const mm = pad(now.getMonth() + 1);
+      const dd = pad(now.getDate());
+      const hh = pad(now.getHours());
+      const mi = pad(now.getMinutes());
+
+      document.getElementById("administeredAt").value = `${yyyy}-${mm}-${dd}T${hh}:${mi}`;
       updateSummary();
-
-    }
-  );
-
-
-  document.getElementById(
-    "insulinUnits"
-  ).addEventListener(
-    "input",
-    updateSummary
-  );
-
-
-  document.getElementById(
-    "administeredAt"
-  ).addEventListener(
-    "change",
-    updateSummary
-  );
-
-}
-
-
-
-/* =========================
-   사용자 확인
-========================= */
-
-async function checkLogin() {
-
-  const {
-    data
-  } =
-    await supabaseClient.auth
-      .getSession();
-
-
-  if (
-    !data.session
-  ) {
-
-    window.location.href =
-      "./login.html";
-
-    return;
-
-  }
-
-
-  currentUser =
-    data.session.user;
-
-
-  const {
-    data: profile,
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,role,nickname"
-      )
-      .eq(
-        "id",
-        currentUser.id
-      )
-      .maybeSingle();
-
-
-  if (
-    error
-    ||
-    !profile
-  ) {
-
-    alert(
-      "사용자 정보를 불러오지 못했습니다."
-    );
-
-
-    window.location.href =
-      "./login.html";
-
-
-    return;
-
-  }
-
-
-  currentProfile =
-    profile;
-
-
-
-  /* 학생 */
-
-  if (
-    profile.role === "student"
-  ) {
-
-    recordUserId =
-      currentUser.id;
-
-
-    return;
-
-  }
-
-
-
-  /* 데모 학생 */
-
-  if (
-    profile.role === "demo"
-  ) {
-
-    const mode =
-      sessionStorage.getItem(
-        "demoMode"
-      );
-
-
-    if (
-      mode !== "student"
-    ) {
-
-      sessionStorage.setItem(
-        "demoMode",
-        "student"
-      );
-
     }
 
-
-    recordUserId =
-      currentUser.id;
-
-
-    return;
-
-  }
-
-
-
-  /* 교직원 대신 입력 */
-
-  if (
-    profile.role === "teacher"
-    ||
-    profile.role === "nurse"
-  ) {
-
-    const selectedStudent =
-      sessionStorage.getItem(
-        "teacherSelectedStudent"
-      );
-
-
-    if (
-      !selectedStudent
-    ) {
-
-      alert(
-        "기록할 학생을 먼저 선택해주세요."
-      );
-
-
-      window.location.href =
-        "./teacher.html";
-
-
-      return;
-
-    }
-
-
-    recordUserId =
-      selectedStudent;
-
-
-    isTeacherRecording =
-      true;
-
-
-    return;
-
-  }
-
-
-  window.location.href =
-    "./login.html";
-
-}
-
-
-
-/* =========================
-   인슐린 이름 모름
-========================= */
-
-function toggleUnknownInsulin() {
-
-  unknownInsulin =
-    !unknownInsulin;
-
-
-  const button =
-    document.getElementById(
-      "unknownInsulinButton"
-    );
-
-
-  const input =
-    document.getElementById(
-      "insulinName"
-    );
-
-
-  if (
-    unknownInsulin
-  ) {
-
-    button.classList.add(
-      "selected"
-    );
-
-
-    input.value =
-      "";
-
-
-    input.disabled =
-      true;
-
-
-    input.placeholder =
-      "선생님과 함께 확인해요";
-
-  }
-  else {
-
-    button.classList.remove(
-      "selected"
-    );
-
-
-    input.disabled =
-      false;
-
-
-    input.placeholder =
-      "예: 내가 맞은 인슐린 이름";
-
-  }
-
-
-  updateSummary();
-
-}
-
-
-
-/* =========================
-   큰 부위 선택
-========================= */
-
-function selectBodyPart(
-  part
-) {
-
-  selectedBodyPart =
-    part;
-
-
-  selectedSide =
-    "";
-
-
-  selectedSite =
-    "";
-
-
-  document
-    .querySelectorAll(
-      ".site-main-button"
-    )
-    .forEach(
-      item =>
-        item.classList.toggle(
-          "selected",
-          item.dataset.part === part
-        )
-    );
-
-
-  document
-    .querySelectorAll(
-      ".side-button"
-    )
-    .forEach(
-      item =>
-        item.classList.remove(
-          "selected"
-        )
-    );
-
-
-  document.getElementById(
-    "sideArea"
-  ).classList.add(
-    "show"
-  );
-
-
-  document.getElementById(
-    "bodyCard"
-  ).classList.remove(
-    "show"
-  );
-
-
-  hideAllChecks();
-
-
-  document.getElementById(
-    "selectedSiteResult"
-  ).textContent =
-    `${part}을 선택했어요. 왼쪽인지 오른쪽인지 골라주세요.`;
-
-
-  updateSummary();
-
-}
-
-
-
-/* =========================
-   좌우
-========================= */
-
-function selectSide(
-  side
-) {
-
-  if (
-    !selectedBodyPart
-  ) {
-
-    return;
-
-  }
-
-
-  selectedSide =
-    side;
-
-
-  selectedSite =
-    `${selectedBodyPart} ${side}`;
-
-
-  document
-    .querySelectorAll(
-      ".side-button"
-    )
-    .forEach(
-      item =>
-        item.classList.toggle(
-          "selected",
-          item.dataset.side === side
-        )
-    );
-
-
-  document.getElementById(
-    "selectedSiteResult"
-  ).textContent =
-    `✅ ${selectedBodyPart} ${side}을 선택했어요.`;
-
-
-  document.getElementById(
-    "bodyCard"
-  ).classList.add(
-    "show"
-  );
-
-
-  showBodyCheck();
-
-
-  updateSummary();
-
-}
-
-
-
-/* =========================
-   몸 그림 체크
-========================= */
-
-function hideAllChecks() {
-
-  document
-    .querySelectorAll(
-      ".check-dot"
-    )
-    .forEach(
-      item =>
-        item.style.display =
-          "none"
-    );
-
-}
-
-
-function showBodyCheck() {
-
-  hideAllChecks();
-
-
-  let target =
-    null;
-
-
-  if (
-    selectedBodyPart === "배"
-    &&
-    selectedSide === "왼쪽"
-  ) {
-
-    target =
-      "checkAbdomenLeft";
-
-  }
-
-
-  if (
-    selectedBodyPart === "배"
-    &&
-    selectedSide === "오른쪽"
-  ) {
-
-    target =
-      "checkAbdomenRight";
-
-  }
-
-
-  if (
-    selectedBodyPart === "팔"
-    &&
-    selectedSide === "왼쪽"
-  ) {
-
-    target =
-      "checkArmLeft";
-
-  }
-
-
-  if (
-    selectedBodyPart === "팔"
-    &&
-    selectedSide === "오른쪽"
-  ) {
-
-    target =
-      "checkArmRight";
-
-  }
-
-
-  if (
-    selectedBodyPart === "허벅지"
-    &&
-    selectedSide === "왼쪽"
-  ) {
-
-    target =
-      "checkThighLeft";
-
-  }
-
-
-  if (
-    selectedBodyPart === "허벅지"
-    &&
-    selectedSide === "오른쪽"
-  ) {
-
-    target =
-      "checkThighRight";
-
-  }
-
-
-  if (
-    selectedBodyPart === "엉덩이"
-    &&
-    selectedSide === "왼쪽"
-  ) {
-
-    target =
-      "checkHipLeft";
-
-  }
-
-
-  if (
-    selectedBodyPart === "엉덩이"
-    &&
-    selectedSide === "오른쪽"
-  ) {
-
-    target =
-      "checkHipRight";
-
-  }
-
-
-  if (
-    target
-  ) {
-
-    document.getElementById(
-      target
-    ).style.display =
-      "flex";
-
-  }
-
-}
-
-
-
-/* =========================
-   요약
-========================= */
-
-function updateSummary() {
-
-  const name =
-    document.getElementById(
-      "insulinName"
-    ).value.trim();
-
-
-  const units =
-    document.getElementById(
-      "insulinUnits"
-    ).value;
-
-
-  const time =
-    document.getElementById(
-      "administeredAt"
-    ).value;
-
-
-  document.getElementById(
-    "summaryInsulin"
-  ).textContent =
-    unknownInsulin
-    ?
-    "이름 모름"
-    :
-    (
-      name
-      ||
-      "아직 입력하지 않았어요"
-    );
-
-
-  document.getElementById(
-    "summaryUnits"
-  ).textContent =
-    units
-    ?
-    `${units} Unit`
-    :
-    "-";
-
-
-  document.getElementById(
-    "summarySite"
-  ).textContent =
-    selectedSite
-    ||
-    "-";
-
-
-  if (
-    time
-  ) {
-
-    const date =
-      new Date(
-        time
-      );
-
-
-    document.getElementById(
-      "summaryTime"
-    ).textContent =
-      date.toLocaleString(
-        "ko-KR",
-        {
-          month: "numeric",
-          day: "numeric",
-          hour: "numeric",
-          minute: "2-digit"
-        }
-      );
-
-  }
-  else {
-
-    document.getElementById(
-      "summaryTime"
-    ).textContent =
-      "-";
-
-  }
-
-}
-
-
-
-/* =========================
-   저장
-========================= */
-
-async function saveInsulinRecord() {
-
-  const insulinName =
-    document.getElementById(
-      "insulinName"
-    ).value.trim();
-
-
-  const unitValue =
-    document.getElementById(
-      "insulinUnits"
-    ).value;
-
-
-  const administeredAt =
-    document.getElementById(
-      "administeredAt"
-    ).value;
-
-
-
-  if (
-    !unknownInsulin
-    &&
-    !insulinName
-  ) {
-
-    alert(
-      "인슐린 이름을 적거나 '이름을 모르겠어요'를 눌러주세요."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    unitValue === ""
-  ) {
-
-    alert(
-      "몇 Unit 맞았는지 적어주세요."
-    );
-
-    return;
-
-  }
-
-
-  const insulinUnits =
-    Number(
-      unitValue
-    );
-
-
-  if (
-    !Number.isFinite(
-      insulinUnits
-    )
-    ||
-    insulinUnits <= 0
-  ) {
-
-    alert(
-      "맞은 Unit을 다시 확인해주세요."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    !selectedSite
-  ) {
-
-    alert(
-      "어디에 맞았는지 선택해주세요."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    !administeredAt
-  ) {
-
-    alert(
-      "맞은 시간을 확인해주세요."
-    );
-
-    return;
-
-  }
-
-
-  const savedName =
-    unknownInsulin
-    ?
-    null
-    :
-    insulinName;
-
-
-  const displayName =
-    unknownInsulin
-    ?
-    "이름 모름"
-    :
-    insulinName;
-
-
-  const confirmed =
-    confirm(
-      `${displayName}\n${insulinUnits} Unit\n${selectedSite}\n\n이대로 기록할까요?`
-    );
-
-
-  if (
-    !confirmed
-  ) {
-
-    return;
-
-  }
-
-
-  const saveButton =
-    document.getElementById(
-      "saveButton"
-    );
-
-
-  saveButton.disabled =
-    true;
-
-
-  saveButton.textContent =
-    "기록하는 중...";
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("records")
-      .insert({
-
-        user_id:
-          recordUserId,
-
-        record_type:
-          "insulin",
-
-        insulin_type:
-          "기록",
-
-        insulin_name:
-          savedName,
-
-        insulin_units:
-          insulinUnits,
-
-        injection_site:
-          selectedSite,
-
-        administered_at:
-          new Date(
-            administeredAt
-          ).toISOString(),
-
-        note:
-          unknownInsulin
-          ?
-          "학생이 인슐린 이름을 모름"
-          :
-          null
-
+    function selectSite(site, el) {
+      selectedSite = site;
+
+      document.querySelectorAll(".site-card").forEach((card) => {
+        card.classList.remove("selected");
       });
 
+      el.classList.add("selected");
+      updateSummary();
+    }
 
-  saveButton.disabled =
-    false;
+    function setUnits(value, el) {
+      document.getElementById("insulinUnits").value = value;
 
+      document.querySelectorAll(".quick-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
 
-  saveButton.textContent =
-    "💉 이대로 기록하기";
+      if (el) el.classList.add("active");
+      updateSummary();
+    }
 
+    function focusUnits() {
+      document.querySelectorAll(".quick-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      document.getElementById("insulinUnits").focus();
+    }
 
-  if (
-    error
-  ) {
+    function setUnknownInsulin() {
+      document.getElementById("insulinName").value = "이름 모름";
+      updateSummary();
+    }
 
-    console.error(
-      error
-    );
+    function formatKoreanDateTime(value) {
+      if (!value) return "-";
 
+      const d = new Date(value);
+      if (isNaN(d.getTime())) return value;
 
-    alert(
-      "인슐린 기록을 저장하지 못했습니다."
-    );
+      const yy = d.getFullYear();
+      const mm = d.getMonth() + 1;
+      const dd = d.getDate();
 
+      let hour = d.getHours();
+      const minute = String(d.getMinutes()).padStart(2, "0");
+      const ap = hour >= 12 ? "오후" : "오전";
 
-    return;
+      hour = hour % 12;
+      if (hour === 0) hour = 12;
 
-  }
+      return `${yy}-${String(mm).padStart(2, "0")}-${String(dd).padStart(2, "0")} ${ap} ${hour}:${minute}`;
+    }
 
+    function updateSummary() {
+      const units = document.getElementById("insulinUnits").value.trim();
+      const time = document.getElementById("administeredAt").value;
+      const insulinName = document.getElementById("insulinName").value.trim();
 
-  document.getElementById(
-    "successText"
-  ).textContent =
-    `${displayName} · ${insulinUnits} Unit · ${selectedSite}으로 저장했어요.`;
+      document.getElementById("summarySite").textContent =
+        selectedSite || "아직 선택하지 않았어요";
 
+      document.getElementById("summaryUnits").textContent =
+        units ? `${units} Unit` : "-";
 
-  document.getElementById(
-    "successOverlay"
-  ).style.display =
-    "flex";
+      document.getElementById("summaryTime").textContent =
+        formatKoreanDateTime(time);
 
-}
+      document.getElementById("summaryName").textContent =
+        insulinName || "이름을 적지 않았어요";
+    }
 
+    function saveInsulinRecord() {
+      const units = document.getElementById("insulinUnits").value.trim();
+      const time = document.getElementById("administeredAt").value;
+      const insulinName = document.getElementById("insulinName").value.trim();
 
+      if (!selectedSite) {
+        alert("어디에 맞았는지 먼저 선택해주세요.");
+        return;
+      }
 
-/* =========================
-   완료
-========================= */
+      if (!units || Number(units) <= 0) {
+        alert("몇 Unit 맞았는지 적어주세요.");
+        return;
+      }
 
-function finishRecord() {
+      if (!time) {
+        alert("언제 맞았는지 확인해주세요.");
+        return;
+      }
 
-  document.getElementById(
-    "successOverlay"
-  ).style.display =
-    "none";
+      const record = {
+        type: "insulin",
+        insulin_site: selectedSite,
+        insulin_units: Number(units),
+        insulin_name: insulinName || null,
+        administered_at: time,
+        created_at: new Date().toISOString()
+      };
 
+      const saved = JSON.parse(localStorage.getItem("glucoguard_insulin_records") || "[]");
+      saved.unshift(record);
+      localStorage.setItem("glucoguard_insulin_records", JSON.stringify(saved));
 
-  goBack();
+      alert("인슐린 기록이 저장되었어요!");
 
-}
+      // 입력 초기화
+      selectedSite = "";
+      document.querySelectorAll(".site-card").forEach((card) => card.classList.remove("selected"));
+      document.querySelectorAll(".quick-btn").forEach((btn) => btn.classList.remove("active"));
 
+      document.getElementById("insulinUnits").value = "";
+      document.getElementById("insulinName").value = "";
+      setDefaultDateTime();
+      updateSummary();
+    }
 
-
-/* =========================
-   뒤로
-========================= */
-
-function goBack() {
-
-  if (
-    isTeacherRecording
-  ) {
-
-    window.location.href =
-      "./teacher.html";
-
-    return;
-
-  }
-
-
-  window.location.href =
-    "./index.html";
-
-}
-
-</script>
-
+    setDefaultDateTime();
+  </script>
 </body>
-
 </html>
