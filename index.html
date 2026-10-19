@@ -303,13 +303,13 @@ a {
 
   margin-bottom: 15px;
 
-  padding: 17px;
-
   border-radius: 21px;
 
   background: #fff1ef;
 
   color: #8f4b45;
+
+  overflow: hidden;
 
   box-shadow:
     0 5px 15px rgba(56,83,99,.04);
@@ -319,7 +319,9 @@ a {
   display: block;
 }
 
-.emergency-info-head {
+.emergency-info-toggle {
+  width: 100%;
+
   display: flex;
 
   align-items: center;
@@ -327,7 +329,21 @@ a {
 
   gap: 10px;
 
-  margin-bottom: 12px;
+  padding: 16px 17px;
+
+  border: none;
+
+  background: transparent;
+
+  color: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.emergency-info-heading {
+  flex: 1;
 }
 
 .emergency-info-title {
@@ -344,9 +360,17 @@ a {
   line-height: 1.5;
 }
 
-.emergency-info-badge {
-  flex-shrink: 0;
+.emergency-info-right {
+  display: flex;
 
+  align-items: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.emergency-info-badge {
   padding: 5px 8px;
 
   border-radius: 9px;
@@ -357,6 +381,38 @@ a {
 
   font-size: 8px;
   font-weight: 900;
+}
+
+.emergency-info-arrow {
+  width: 20px;
+
+  color: #ad7771;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  text-align: center;
+
+  transition: transform .2s ease;
+}
+
+.emergency-info-card.open
+.emergency-info-arrow {
+  transform: rotate(180deg);
+}
+
+.emergency-info-body {
+  display: none;
+
+  padding:
+    0
+    17px
+    17px;
+}
+
+.emergency-info-card.open
+.emergency-info-body {
+  display: block;
 }
 
 .emergency-info-list {
@@ -387,6 +443,7 @@ a {
 
   font-size: 11px;
   font-weight: 800;
+
   line-height: 1.55;
 
   word-break: keep-all;
@@ -836,34 +893,51 @@ a {
     id="emergencyInfoCard"
     class="emergency-info-card">
 
-    <div class="emergency-info-head">
+    <button
+      class="emergency-info-toggle"
+      onclick="toggleEmergencyInfo()"
+      aria-expanded="false"
+      id="emergencyInfoToggle">
 
-      <div>
+      <div class="emergency-info-heading">
 
         <div class="emergency-info-title">
           🚨 나의 응급정보
         </div>
 
         <div class="emergency-info-sub">
-          응급상황에서 나와 선생님이 빠르게 확인하는 정보예요.
+          필요할 때 눌러서 확인해요.
         </div>
 
       </div>
 
-      <div
-        id="emergencyInfoBadge"
-        class="emergency-info-badge">
 
-        확인용
+      <div class="emergency-info-right">
+
+        <div
+          id="emergencyInfoBadge"
+          class="emergency-info-badge">
+
+          확인용
+
+        </div>
+
+        <div class="emergency-info-arrow">
+          ▼
+        </div>
 
       </div>
 
-    </div>
+    </button>
 
 
-    <div
-      id="emergencyInfoContent"
-      class="emergency-info-list">
+    <div class="emergency-info-body">
+
+      <div
+        id="emergencyInfoContent"
+        class="emergency-info-list">
+      </div>
+
     </div>
 
   </div>
@@ -1076,6 +1150,10 @@ let currentProfile =
 
 
 let isDemoStudent =
+  false;
+
+
+let emergencyInfoOpen =
   false;
 
 
@@ -1297,6 +1375,47 @@ function showStudentProfile() {
 
 
 /* =========================
+   응급정보 접기 / 펼치기
+========================= */
+
+function toggleEmergencyInfo() {
+
+  emergencyInfoOpen =
+    !emergencyInfoOpen;
+
+
+  const card =
+    document.getElementById(
+      "emergencyInfoCard"
+    );
+
+
+  const button =
+    document.getElementById(
+      "emergencyInfoToggle"
+    );
+
+
+  card.classList.toggle(
+    "open",
+    emergencyInfoOpen
+  );
+
+
+  button.setAttribute(
+    "aria-expanded",
+    emergencyInfoOpen
+    ?
+    "true"
+    :
+    "false"
+  );
+
+}
+
+
+
+/* =========================
    나의 응급정보
 ========================= */
 
@@ -1322,6 +1441,27 @@ async function loadEmergencyInfo() {
 
   card.classList.add(
     "show"
+  );
+
+
+  /*
+    항상 처음에는 접힌 상태
+  */
+
+  emergencyInfoOpen =
+    false;
+
+
+  card.classList.remove(
+    "open"
+  );
+
+
+  document.getElementById(
+    "emergencyInfoToggle"
+  ).setAttribute(
+    "aria-expanded",
+    "false"
   );
 
 
