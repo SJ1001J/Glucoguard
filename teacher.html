@@ -436,18 +436,6 @@
 
     .summary-card.alert {
       cursor: pointer;
-
-      transition:
-        transform .15s ease,
-        box-shadow .15s ease;
-    }
-
-    .summary-card.alert:hover {
-      transform:
-        translateY(-1px);
-
-      box-shadow:
-        0 7px 18px rgba(57,79,94,.09);
     }
 
     .summary-card.alert .summary-value {
@@ -595,8 +583,6 @@
 
     .student-main {
       flex: 1;
-
-      min-width: 0;
     }
 
     .student-name {
@@ -764,7 +750,7 @@
 
 
     /* =========================
-       모달 공통
+       모달
     ========================= */
 
     .modal-overlay {
@@ -871,7 +857,7 @@
 
 
     /* =========================
-       확인 필요 모달
+       확인 필요
     ========================= */
 
     .attention-list {
@@ -908,8 +894,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      flex-shrink: 0;
 
       border-radius: 13px;
 
@@ -1047,8 +1031,6 @@
       align-items: center;
       justify-content: center;
 
-      flex-shrink: 0;
-
       border-radius: 13px;
 
       background: white;
@@ -1085,100 +1067,6 @@
       background: #eef8f4;
 
       color: #547567;
-
-      font-size: 10px;
-      line-height: 1.6;
-    }
-
-
-    /* =========================
-       응급상황
-    ========================= */
-
-    .emergency-option-grid {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 8px;
-
-      margin-bottom: 14px;
-    }
-
-    .emergency-option {
-      min-height: 70px;
-
-      padding: 11px;
-
-      border:
-        2px solid transparent;
-
-      border-radius: 14px;
-
-      background: #f6f8fa;
-
-      color: #526b79;
-
-      font-size: 11px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-    .emergency-option.selected {
-      border-color: #ef9f98;
-
-      background: #fff0ee;
-
-      color: #a84942;
-    }
-
-    .response-guide {
-      display: none;
-
-      padding: 15px;
-
-      border-radius: 17px;
-
-      background: #fff5f3;
-
-      color: #624f4d;
-
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    .response-guide h3 {
-      margin:
-        0 0 9px;
-
-      color: #a54a43;
-
-      font-size: 15px;
-    }
-
-    .response-step {
-      padding: 9px 0;
-
-      border-bottom:
-        1px solid #f1ddda;
-    }
-
-    .response-step:last-child {
-      border-bottom: none;
-    }
-
-    .emergency-warning {
-      margin-top: 12px;
-
-      padding: 11px;
-
-      border-radius: 12px;
-
-      background: #fff0d9;
-
-      color: #735c2e;
 
       font-size: 10px;
       line-height: 1.6;
@@ -1450,7 +1338,7 @@
 
     <button
       class="main-tool-button emergency-tool"
-      onclick="openEmergencyGuide()">
+      onclick="location.href='emergency-guide.html'">
 
       <div class="main-tool-icon">
         🚨
@@ -1647,9 +1535,7 @@
 
 
 
-<!-- =================================================
-     확인 필요
-================================================= -->
+<!-- 확인 필요 -->
 
 <div
   id="attentionOverlay"
@@ -1694,9 +1580,7 @@
 
 
 
-<!-- =================================================
-     담당 학생 설정
-================================================= -->
+<!-- 담당 학생 설정 -->
 
 <div
   id="studentSettingOverlay"
@@ -1760,109 +1644,7 @@
 
 
 
-<!-- =================================================
-     응급상황
-================================================= -->
-
-<div
-  id="emergencyGuideOverlay"
-  class="modal-overlay">
-
-  <div class="modal">
-
-    <div class="modal-header">
-
-      <div>
-
-        <h2 class="modal-title">
-          🚨 응급상황 대처
-        </h2>
-
-        <p class="modal-subtitle">
-          학생 상태에 가장 가까운 항목을 선택하세요.
-        </p>
-
-      </div>
-
-
-      <button
-        class="close-button"
-        onclick="closeEmergencyGuide()">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <div class="emergency-option-grid">
-
-      <button
-        class="emergency-option"
-        onclick="showEmergencyResponse('low', this)">
-
-        🩸 저혈당 의심
-
-      </button>
-
-
-      <button
-        class="emergency-option"
-        onclick="showEmergencyResponse('high', this)">
-
-        🔺 고혈당 의심
-
-      </button>
-
-
-      <button
-        class="emergency-option"
-        onclick="showEmergencyResponse('unconscious', this)">
-
-        🚨 의식 저하<br>
-        삼키기 어려움
-
-      </button>
-
-
-      <button
-        class="emergency-option"
-        onclick="showEmergencyResponse('vomit', this)">
-
-        🤢 구토·심한 이상증상
-
-      </button>
-
-    </div>
-
-
-    <div
-      id="responseGuide"
-      class="response-guide">
-
-      <h3 id="responseTitle">
-      </h3>
-
-      <div id="responseContent">
-      </div>
-
-    </div>
-
-
-    <div class="emergency-warning">
-      ⚠️ 학생의 개별 당뇨 관리계획, 의료진 지침 및 학교 응급대응 절차가 항상 우선합니다.
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- =================================================
-     교육
-================================================= -->
+<!-- 교직원 교육 -->
 
 <div
   id="educationOverlay"
@@ -1905,7 +1687,9 @@
         </div>
 
         <div class="education-text">
-          인슐린이 필요한 질환으로, 학교에서도 학생별 관리계획에 따라 안전하게 지원하는 것이 중요합니다.
+          췌장에서 인슐린을 충분히 만들지 못해
+          지속적인 인슐린 관리가 필요한 질환입니다.
+          학교에서도 학생의 개별 관리계획에 따라 지원해야 합니다.
         </div>
 
       </div>
@@ -1919,7 +1703,7 @@
 
         <div class="education-text">
           식은땀, 손 떨림, 어지러움, 창백함, 졸림,
-          집중력이나 행동 변화 등이 나타날 수 있습니다.
+          집중력 저하 또는 평소와 다른 행동 등이 나타날 수 있습니다.
         </div>
 
       </div>
@@ -1933,7 +1717,7 @@
 
         <div class="education-text">
           심한 갈증, 잦은 소변, 피로 등이 나타날 수 있습니다.
-          구토나 심한 이상 증상이 있으면 빠른 확인이 필요합니다.
+          구토, 호흡 이상, 의식 변화 등이 있으면 빠른 확인이 필요합니다.
         </div>
 
       </div>
@@ -1946,8 +1730,9 @@
         </div>
 
         <div class="education-text">
-          운동 전후 혈당 확인이나 간식이 필요할 수 있습니다.
-          몸이 이상하다고 하면 활동을 계속하도록 강요하지 않습니다.
+          운동 전후에는 학생의 개별 계획에 따라
+          혈당 확인이나 간식이 필요할 수 있습니다.
+          몸이 이상하다고 말하면 활동을 계속하도록 강요하지 않습니다.
         </div>
 
       </div>
@@ -1975,7 +1760,8 @@
 
         <div class="education-text">
           증상을 가볍게 넘기지 말고 학생과 함께 있어 주세요.
-          필요하면 보건교사와 보호자에게 연락하고 학교 응급 절차를 따릅니다.
+          필요하면 보건교사와 보호자에게 연락하고
+          학교의 응급 절차를 따릅니다.
         </div>
 
       </div>
@@ -1994,9 +1780,7 @@
 
 
 
-<!-- =================================================
-     연락처
-================================================= -->
+<!-- 비상연락처 -->
 
 <div
   id="contactModalOverlay"
@@ -2039,11 +1823,25 @@
       id="contactRelationship"
       class="modal-select">
 
-      <option value="엄마">엄마</option>
-      <option value="아빠">아빠</option>
-      <option value="보호자">보호자</option>
-      <option value="보건실">보건실</option>
-      <option value="기타">기타</option>
+      <option value="엄마">
+        엄마
+      </option>
+
+      <option value="아빠">
+        아빠
+      </option>
+
+      <option value="보호자">
+        보호자
+      </option>
+
+      <option value="보건실">
+        보건실
+      </option>
+
+      <option value="기타">
+        기타
+      </option>
 
     </select>
 
@@ -2088,9 +1886,7 @@
 
 
 
-<!-- =================================================
-     비밀번호
-================================================= -->
+<!-- 비밀번호 -->
 
 <div
   id="passwordModalOverlay"
@@ -2205,7 +2001,7 @@ window.addEventListener(
 
 
 /* =========================
-   로그인
+   로그인 확인
 ========================= */
 
 async function checkTeacherLogin() {
@@ -2305,7 +2101,7 @@ async function checkTeacherLogin() {
 
 
 /* =========================
-   전화번호
+   연락처 저장
 ========================= */
 
 async function saveTeacherPhone() {
@@ -2363,7 +2159,7 @@ async function saveTeacherPhone() {
 
 
 /* =========================
-   확인 필요 팝업
+   확인 필요
 ========================= */
 
 function openAttentionModal() {
@@ -2425,17 +2221,17 @@ function renderAttentionList() {
         item.status;
 
 
-      const latestRelevantRecord =
+      const latestRecord =
         getLatestRelevantAttentionRecord(
           status
         );
 
 
       const timeText =
-        latestRelevantRecord
+        latestRecord
         ?
         formatRecordTime(
-          latestRelevantRecord.created_at
+          latestRecord.created_at
         )
         :
         "시간 정보 없음";
@@ -2565,7 +2361,7 @@ function getLatestRelevantAttentionRecord(
     status.latestSymptom
   ) {
 
-    const hasAbnormalGlucose =
+    const abnormal =
       status.latestSymptom.glucose_value !== null
       &&
       (
@@ -2575,7 +2371,7 @@ function getLatestRelevantAttentionRecord(
       );
 
 
-    const hasVomiting =
+    const vomiting =
       Array.isArray(
         status.symptomData.symptoms
       )
@@ -2586,9 +2382,8 @@ function getLatestRelevantAttentionRecord(
 
 
     if (
-      hasAbnormalGlucose
-      ||
-      hasVomiting
+      abnormal ||
+      vomiting
     ) {
 
       candidates.push(
@@ -2610,13 +2405,9 @@ function getLatestRelevantAttentionRecord(
 
   candidates.sort(
     (a, b) =>
-      new Date(
-        b.created_at
-      )
+      new Date(b.created_at)
       -
-      new Date(
-        a.created_at
-      )
+      new Date(a.created_at)
   );
 
 
@@ -2634,17 +2425,6 @@ function formatRecordTime(
     );
 
 
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
-
-    return "시간 정보 없음";
-
-  }
-
-
   return date.toLocaleString(
     "ko-KR",
     {
@@ -2658,7 +2438,7 @@ function formatRecordTime(
 
 
 /* =========================
-   학생 목록 펼치기
+   학생 목록
 ========================= */
 
 function toggleStudentList() {
@@ -2754,8 +2534,6 @@ async function openStudentSetting() {
 
 
   if (error) {
-
-    console.error(error);
 
     container.innerHTML =
       `
@@ -2944,6 +2722,7 @@ async function saveStudentSelection() {
   button.disabled =
     true;
 
+
   button.textContent =
     "저장 중...";
 
@@ -3010,7 +2789,9 @@ async function saveStudentSelection() {
 
     closeStudentSetting();
 
+
     await loadDashboard();
+
 
     alert(
       "담당 학생 설정을 저장했습니다."
@@ -3021,6 +2802,7 @@ async function saveStudentSelection() {
 
     console.error(error);
 
+
     alert(
       "담당 학생 설정을 저장하지 못했습니다."
     );
@@ -3030,6 +2812,7 @@ async function saveStudentSelection() {
 
   button.disabled =
     false;
+
 
   button.textContent =
     "선택 저장";
@@ -3056,9 +2839,6 @@ async function loadDashboard() {
 
 
   if (linkError) {
-
-    console.error(linkError);
-
     return;
   }
 
@@ -3076,8 +2856,11 @@ async function loadDashboard() {
   ) {
 
     linkedStudents = [];
+
     allRecords = [];
+
     attentionStudents = [];
+
 
     renderDashboard();
 
@@ -3137,7 +2920,7 @@ async function loadDashboard() {
 
 
 /* =========================
-   학생 상태
+   상태 계산
 ========================= */
 
 function buildStudentStatus(
@@ -3178,7 +2961,8 @@ function buildStudentStatus(
     );
 
 
-  const reasons = [];
+  const reasons =
+    [];
 
 
   if (
@@ -3269,7 +3053,7 @@ function buildStudentStatus(
 
 
 /* =========================
-   대시보드 출력
+   출력
 ========================= */
 
 function renderDashboard() {
@@ -3344,11 +3128,13 @@ function renderDashboard() {
       ) {
 
         attentionStudents.push({
+
           student:
             student,
 
           status:
             status
+
         });
 
       }
@@ -3570,9 +3356,14 @@ function createStudentCard(
   ).onclick =
     function() {
 
-      openStudentRecords(
+      sessionStorage.setItem(
+        "teacherSelectedStudent",
         student.id
       );
+
+
+      location.href =
+        "records.html";
 
     };
 
@@ -3586,6 +3377,7 @@ function createStudentCard(
         "teacherSelectedStudent",
         student.id
       );
+
 
       location.href =
         "symptom.html";
@@ -3621,21 +3413,6 @@ function createStudentCard(
 }
 
 
-function openStudentRecords(
-  studentId
-) {
-
-  sessionStorage.setItem(
-    "teacherSelectedStudent",
-    studentId
-  );
-
-
-  location.href =
-    "records.html";
-}
-
-
 /* =========================
    기록 텍스트
 ========================= */
@@ -3649,7 +3426,8 @@ function getMealText(
   }
 
 
-  let amount = "";
+  let amount =
+    "";
 
 
   const ratio =
@@ -3699,7 +3477,8 @@ function getSymptomText(
   }
 
 
-  const parts = [];
+  const parts =
+    [];
 
 
   if (
@@ -3754,209 +3533,7 @@ function getSymptomText(
 
 
 /* =========================
-   응급상황
-========================= */
-
-function openEmergencyGuide() {
-
-  document.getElementById(
-    "emergencyGuideOverlay"
-  ).style.display =
-    "flex";
-
-
-  document.getElementById(
-    "responseGuide"
-  ).style.display =
-    "none";
-
-
-  document.querySelectorAll(
-    ".emergency-option"
-  ).forEach(
-    item =>
-      item.classList.remove(
-        "selected"
-      )
-  );
-}
-
-
-function closeEmergencyGuide() {
-
-  document.getElementById(
-    "emergencyGuideOverlay"
-  ).style.display =
-    "none";
-}
-
-
-function showEmergencyResponse(
-  type,
-  button
-) {
-
-  document.querySelectorAll(
-    ".emergency-option"
-  ).forEach(
-    item =>
-      item.classList.remove(
-        "selected"
-      )
-  );
-
-
-  button.classList.add(
-    "selected"
-  );
-
-
-  const guide =
-    document.getElementById(
-      "responseGuide"
-    );
-
-
-  const title =
-    document.getElementById(
-      "responseTitle"
-    );
-
-
-  const content =
-    document.getElementById(
-      "responseContent"
-    );
-
-
-  guide.style.display =
-    "block";
-
-
-  if (
-    type === "low"
-  ) {
-
-    title.textContent =
-      "🩸 저혈당이 의심될 때";
-
-
-    content.innerHTML =
-      `
-        <div class="response-step">
-          ① 학생과 함께 있고 혈당을 확인할 수 있다면 확인합니다.
-        </div>
-
-        <div class="response-step">
-          ② 학생이 의식이 있고 안전하게 삼킬 수 있는 경우에만 개별 저혈당 관리계획에 따라 대응합니다.
-        </div>
-
-        <div class="response-step">
-          ③ 정해진 시간 후 재확인이 필요한 경우 학생의 개별 계획을 따릅니다.
-        </div>
-
-        <div class="response-step">
-          ④ 상태가 악화되거나 의식이 흐려지면 즉시 중증 상황 대응으로 전환합니다.
-        </div>
-      `;
-
-  }
-
-
-  if (
-    type === "high"
-  ) {
-
-    title.textContent =
-      "🔺 고혈당이 의심될 때";
-
-
-    content.innerHTML =
-      `
-        <div class="response-step">
-          ① 혈당과 학생의 개별 고혈당 관리계획을 확인합니다.
-        </div>
-
-        <div class="response-step">
-          ② 케톤 확인, 수분 섭취, 인슐린 관련 대응은 개별 관리계획에 따릅니다.
-        </div>
-
-        <div class="response-step">
-          ③ 필요한 경우 보건교사와 보호자에게 알립니다.
-        </div>
-
-        <div class="response-step">
-          ④ 구토, 의식 변화, 호흡 이상 등이 있으면 학교 응급 절차를 따릅니다.
-        </div>
-      `;
-
-  }
-
-
-  if (
-    type === "unconscious"
-  ) {
-
-    title.textContent =
-      "🚨 의식이 흐리거나 삼키기 어려울 때";
-
-
-    content.innerHTML =
-      `
-        <div class="response-step">
-          ① 음식이나 음료를 입으로 먹이지 않습니다.
-        </div>
-
-        <div class="response-step">
-          ② 학생을 혼자 두지 않고 즉시 다른 교직원이나 보건교사에게 도움을 요청합니다.
-        </div>
-
-        <div class="response-step">
-          ③ 처방된 글루카곤이 있고 교육받은 경우 학생의 개별 응급계획에 따라 사용합니다.
-        </div>
-
-        <div class="response-step">
-          ④ 학교 응급계획에 따라 119 등 응급의료 도움을 요청하고 보호자에게 연락합니다.
-        </div>
-      `;
-
-  }
-
-
-  if (
-    type === "vomit"
-  ) {
-
-    title.textContent =
-      "🤢 구토나 심한 이상증상이 있을 때";
-
-
-    content.innerHTML =
-      `
-        <div class="response-step">
-          ① 학생을 혼자 두지 않고 상태를 관찰합니다.
-        </div>
-
-        <div class="response-step">
-          ② 혈당을 확인할 수 있다면 확인하고 학생의 개별 관리계획을 확인합니다.
-        </div>
-
-        <div class="response-step">
-          ③ 보건교사와 보호자에게 알립니다.
-        </div>
-
-        <div class="response-step">
-          ④ 의식 변화, 호흡 이상 등 응급 신호가 있으면 학교 응급 절차를 따릅니다.
-        </div>
-      `;
-
-  }
-
-}
-
-
-/* =========================
-   교육
+   교직원 교육
 ========================= */
 
 function openEducation() {
@@ -3978,7 +3555,7 @@ function closeEducation() {
 
 
 /* =========================
-   연락처
+   비상 연락처
 ========================= */
 
 async function openContactModal(
@@ -4203,7 +3780,7 @@ async function saveEmergencyContact() {
 
 
 /* =========================
-   비밀번호
+   비밀번호 재설정
 ========================= */
 
 function openPasswordModal(
@@ -4416,7 +3993,6 @@ async function logout() {
 [
   "attentionOverlay",
   "studentSettingOverlay",
-  "emergencyGuideOverlay",
   "educationOverlay",
   "contactModalOverlay",
   "passwordModalOverlay"
