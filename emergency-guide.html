@@ -20,7 +20,6 @@
 
     body {
       margin: 0;
-
       background: #f7f9fb;
 
       font-family:
@@ -99,7 +98,7 @@
 
 
     /* =========================
-       빨간 핵심 안내
+       핵심 안내
     ========================= */
 
     .emergency-header {
@@ -223,7 +222,7 @@
     }
 
     .situation-button {
-      min-height: 93px;
+      min-height: 103px;
 
       padding: 13px 9px;
 
@@ -238,8 +237,17 @@
 
       cursor: pointer;
 
+      transition:
+        transform .15s ease,
+        border-color .15s ease,
+        background .15s ease;
+
       box-shadow:
         0 4px 13px rgba(60,80,95,.05);
+    }
+
+    .situation-button:active {
+      transform: scale(.98);
     }
 
     .situation-icon {
@@ -372,7 +380,7 @@
 
 
     /* =========================
-       삼킴 여부 분기
+       저혈당 분기
     ========================= */
 
     .decision-card {
@@ -486,7 +494,7 @@
 
 
     /* =========================
-       지금 바로 할 일
+       행동 카드
     ========================= */
 
     .action-card {
@@ -583,7 +591,7 @@
 
 
     /* =========================
-       금지 행동
+       하지 말아야 할 일
     ========================= */
 
     .dont-card {
@@ -623,7 +631,7 @@
 
 
     /* =========================
-       경고 신호
+       경고
     ========================= */
 
     .warning-card {
@@ -654,7 +662,7 @@
 
 
     /* =========================
-       개별 계획 강조
+       관리계획
     ========================= */
 
     .plan-card {
@@ -681,7 +689,7 @@
 
 
     /* =========================
-       119 버튼
+       119
     ========================= */
 
     .emergency-call-area {
@@ -800,8 +808,11 @@
   <div class="emergency-header">
 
     <div class="emergency-header-title">
+
       응급상황에서는 학생을 혼자 두지 마세요
+
     </div>
+
 
     <div class="emergency-header-text">
 
@@ -810,6 +821,7 @@
       즉시 도움을 요청하세요.
 
     </div>
+
 
     <div class="important-line">
 
@@ -826,6 +838,7 @@
 
   <div class="core-rules">
 
+
     <div class="core-rule">
 
       <span class="core-rule-icon">
@@ -833,11 +846,14 @@
       </span>
 
       <div class="core-rule-title">
+
         학생을<br>
         혼자 두지 않기
+
       </div>
 
     </div>
+
 
 
     <div class="core-rule">
@@ -847,11 +863,14 @@
       </span>
 
       <div class="core-rule-title">
+
         가까운 교직원에게<br>
         즉시 도움 요청
+
       </div>
 
     </div>
+
 
 
     <div class="core-rule">
@@ -861,11 +880,14 @@
       </span>
 
       <div class="core-rule-title">
+
         학생별 응급계획<br>
         바로 확인
+
       </div>
 
     </div>
+
 
   </div>
 
@@ -954,7 +976,7 @@
 
 
 
-  <!-- 대응 내용 -->
+  <!-- 대응 영역 -->
 
   <div
     id="responseArea"
@@ -1023,7 +1045,7 @@
 
 
 
-    <!-- 저혈당 삼킴 분기 -->
+    <!-- 저혈당 분기 -->
 
     <div
       id="decisionCard"
@@ -1096,7 +1118,7 @@
 
 
 
-    <!-- 금지 -->
+    <!-- 하지 말아야 할 일 -->
 
     <div
       id="dontCard"
@@ -1113,7 +1135,7 @@
 
 
 
-    <!-- 위험신호 -->
+    <!-- 경고 -->
 
     <div
       id="warningCard"
@@ -1132,7 +1154,7 @@
 
 
 
-    <!-- 개별 계획 -->
+    <!-- 관리계획 -->
 
     <div class="plan-card">
 
@@ -1167,6 +1189,7 @@
 
       </button>
 
+
       <div class="call-note">
 
         의식 변화, 경련, 호흡 이상 등
@@ -1199,6 +1222,15 @@
 
 
 /* =========================
+   현재 열려 있는 상황
+========================= */
+
+let currentSituation =
+  null;
+
+
+
+/* =========================
    상황 선택
 ========================= */
 
@@ -1206,6 +1238,96 @@ function selectSituation(
   type,
   button
 ) {
+
+  const area =
+    document.getElementById(
+      "responseArea"
+    );
+
+
+  /*
+    같은 카드를 다시 누르면 닫기
+  */
+
+  if (
+    currentSituation === type
+  ) {
+
+    currentSituation =
+      null;
+
+
+    document.querySelectorAll(
+      ".situation-button"
+    ).forEach(
+      item => {
+
+        item.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+    area.classList.remove(
+      "show"
+    );
+
+
+    /*
+      내부 상태 초기화
+    */
+
+    const decisionCard =
+      document.getElementById(
+        "decisionCard"
+      );
+
+
+    const decisionResult =
+      document.getElementById(
+        "decisionResult"
+      );
+
+
+    const callArea =
+      document.getElementById(
+        "emergencyCallArea"
+      );
+
+
+    decisionCard.classList.remove(
+      "show"
+    );
+
+
+    decisionResult.className =
+      "decision-result";
+
+
+    decisionResult.innerHTML =
+      "";
+
+
+    callArea.classList.remove(
+      "show"
+    );
+
+
+    return;
+
+  }
+
+
+
+  /*
+    새로운 상황 열기
+  */
+
+  currentSituation =
+    type;
+
 
   document.querySelectorAll(
     ".situation-button"
@@ -1223,12 +1345,6 @@ function selectSituation(
   button.classList.add(
     "selected"
   );
-
-
-  const area =
-    document.getElementById(
-      "responseArea"
-    );
 
 
   const title =
@@ -1483,7 +1599,6 @@ function selectSituation(
   ) {
 
     title.textContent =
-
       "🚨 의식 저하 · 경련 · 삼키기 어려움";
 
 
@@ -1670,6 +1785,11 @@ function selectSituation(
   }
 
 
+
+  /*
+    선택한 대응 화면으로 이동
+  */
+
   area.scrollIntoView({
 
     behavior:
@@ -1714,7 +1834,7 @@ function showSwallowDecision(
           깨어 있고 안전하게 삼킬 수 있어요.
         </strong>
 
-        <br>
+        <br><br>
 
         학생의 개별 저혈당 관리계획에 따라
         빠르게 흡수되는 탄수화물 처치를 돕고,
@@ -1741,12 +1861,12 @@ function showSwallowDecision(
           입으로 음식이나 음료를 주지 마세요.
         </strong>
 
-        <br>
+        <br><br>
 
         학생을 혼자 두지 말고,
         즉시 ‘의식 저하 · 경련’ 대응으로 전환하세요.
 
-        <br>
+        <br><br>
 
         처방된 글루카곤과 학생의 응급계획을 확인하고
         119 등 응급의료 도움을 요청하세요.
