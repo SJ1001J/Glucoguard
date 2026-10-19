@@ -40,6 +40,11 @@
       padding: 22px 18px 40px;
     }
 
+
+    /* =========================
+       상단
+    ========================= */
+
     .top-card {
       background: white;
       border-radius: 24px;
@@ -108,6 +113,11 @@
       color: #3e6179;
     }
 
+
+    /* =========================
+       내 연락처
+    ========================= */
+
     .teacher-phone-box {
       margin-top: 13px;
       padding: 13px;
@@ -134,7 +144,6 @@
       border: 1px solid #d8e2e8;
       border-radius: 11px;
       font-size: 13px;
-      outline: none;
     }
 
     .teacher-phone-save {
@@ -153,6 +162,11 @@
       color: #8a9ba5;
       font-size: 10px;
     }
+
+
+    /* =========================
+       메인 기능
+    ========================= */
 
     .main-tools {
       display: flex;
@@ -218,6 +232,11 @@
       color: #35627f;
     }
 
+
+    /* =========================
+       담당학생 설정
+    ========================= */
+
     .management-row {
       margin-bottom: 14px;
     }
@@ -267,6 +286,11 @@
       opacity: .55;
     }
 
+
+    /* =========================
+       요약
+    ========================= */
+
     .summary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -310,12 +334,16 @@
       font-weight: 700;
     }
 
+
+    /* =========================
+       학생 목록
+    ========================= */
+
     .student-list-toggle {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
       padding: 15px 16px;
       margin-bottom: 11px;
       border: none;
@@ -362,6 +390,11 @@
     .student-list-wrapper.open {
       display: block;
     }
+
+
+    /* =========================
+       학생 카드
+    ========================= */
 
     .student-card {
       background: white;
@@ -430,15 +463,48 @@
       color: #4c8560;
     }
 
-    .alert-reason {
+
+    /* =========================
+       알림 종류
+    ========================= */
+
+    .alert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
       margin-bottom: 12px;
+    }
+
+    .alert-item {
       padding: 10px 11px;
       border-radius: 13px;
-      background: #fff0ee;
-      color: #b44e47;
       font-size: 11px;
+      font-weight: 800;
       line-height: 1.55;
     }
+
+    .alert-low {
+      background: #e9f3ff;
+      color: #356b96;
+      border: 1px solid #cfe4fa;
+    }
+
+    .alert-high {
+      background: #fff1df;
+      color: #a66528;
+      border: 1px solid #f5d4ad;
+    }
+
+    .alert-vomit {
+      background: #ffe8e6;
+      color: #b34842;
+      border: 1px solid #f7c5c1;
+    }
+
+
+    /* =========================
+       기록
+    ========================= */
 
     .record-grid {
       display: grid;
@@ -534,6 +600,11 @@
       line-height: 1.7;
     }
 
+
+    /* =========================
+       모달
+    ========================= */
+
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -575,7 +646,6 @@
       margin: 4px 0 0;
       color: #82939d;
       font-size: 11px;
-      line-height: 1.5;
     }
 
     .close-button {
@@ -600,6 +670,11 @@
       font-weight: 900;
       cursor: pointer;
     }
+
+
+    /* =========================
+       안전카드
+    ========================= */
 
     .safety-profile {
       display: flex;
@@ -635,28 +710,9 @@
       font-size: 10px;
     }
 
-    .safety-alert {
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      background: #fff0ee;
-      color: #aa5049;
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .safety-ok {
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      background: #edf8f4;
-      color: #447565;
-      font-size: 11px;
-    }
-
     .ack-button {
       width: 100%;
-      margin-bottom: 12px;
+      margin: 11px 0 12px;
       padding: 13px;
       border: none;
       border-radius: 14px;
@@ -665,6 +721,15 @@
       font-size: 12px;
       font-weight: 900;
       cursor: pointer;
+    }
+
+    .safety-ok {
+      margin-bottom: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #edf8f4;
+      color: #447565;
+      font-size: 11px;
     }
 
     .safety-grid {
@@ -761,7 +826,7 @@
     }
 
     .safety-action {
-      padding: 12px 8px;
+      padding: 12px;
       border: none;
       border-radius: 13px;
       font-size: 11px;
@@ -779,83 +844,10 @@
       color: #356b91;
     }
 
-    .attention-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
 
-    .attention-item {
-      padding: 14px;
-      border: 1px solid #ffd5d1;
-      border-radius: 17px;
-      background: #fff9f8;
-    }
-
-    .attention-item-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .attention-avatar {
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 13px;
-      background: #fff1c8;
-      font-size: 23px;
-    }
-
-    .attention-name-box {
-      flex: 1;
-    }
-
-    .attention-name {
-      color: #425d6c;
-      font-size: 14px;
-      font-weight: 900;
-    }
-
-    .attention-class {
-      color: #8b9aa3;
-      font-size: 10px;
-    }
-
-    .attention-reason-box {
-      padding: 10px;
-      margin-bottom: 9px;
-      border-radius: 12px;
-      background: #ffeceb;
-      color: #b44e47;
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .attention-status-box {
-      padding: 10px;
-      margin-bottom: 9px;
-      border-radius: 12px;
-      background: #edf8f4;
-      color: #467465;
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .attention-record-button {
-      width: 100%;
-      border: none;
-      border-radius: 11px;
-      padding: 11px;
-      background: #eaf3ff;
-      color: #356b91;
-      font-size: 11px;
-      font-weight: 900;
-      cursor: pointer;
-    }
+    /* =========================
+       담당 학생 선택
+    ========================= */
 
     .student-select-list {
       display: flex;
@@ -872,7 +864,6 @@
       border: 2px solid transparent;
       border-radius: 15px;
       background: #f6f8fa;
-      cursor: pointer;
     }
 
     .student-select-card.selected {
@@ -883,7 +874,6 @@
     .student-checkbox {
       width: 20px;
       height: 20px;
-      accent-color: #4d9d82;
     }
 
     .select-avatar {
@@ -923,6 +913,11 @@
       line-height: 1.6;
     }
 
+
+    /* =========================
+       입력
+    ========================= */
+
     .modal-input,
     .modal-select {
       width: 100%;
@@ -936,7 +931,7 @@
 
     .input-label {
       display: block;
-      margin: 0 0 5px 2px;
+      margin-bottom: 5px;
       color: #607d8b;
       font-size: 11px;
       font-weight: 800;
@@ -971,25 +966,39 @@
     .contact-delete-button {
       border: none;
       border-radius: 9px;
-      padding: 8px 9px;
+      padding: 8px;
       background: #fff0ee;
       color: #b6534d;
       font-size: 10px;
-      font-weight: 800;
-      cursor: pointer;
     }
+
+
+    /* =========================
+       반복 알림
+    ========================= */
 
     .repeat-alert {
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 2000;
-      width: min(340px, calc(100vw - 36px));
+
+      width: min(
+        350px,
+        calc(100vw - 36px)
+      );
+
       display: none;
+
       padding: 15px;
+
       border-radius: 18px;
-      background: #fff;
-      box-shadow: 0 14px 35px rgba(0,0,0,.18);
+
+      background: white;
+
+      box-shadow:
+        0 14px 35px rgba(0,0,0,.18);
+
       border: 2px solid #ffb1aa;
     }
 
@@ -997,11 +1006,37 @@
       display: block;
     }
 
+    .repeat-alert.low {
+      border-color: #92bee8;
+    }
+
+    .repeat-alert.high {
+      border-color: #efb46f;
+    }
+
+    .repeat-alert.vomit {
+      border-color: #ed8c84;
+    }
+
     .repeat-alert-title {
-      color: #b44841;
       font-size: 14px;
       font-weight: 900;
       margin-bottom: 5px;
+    }
+
+    .repeat-alert.low
+    .repeat-alert-title {
+      color: #356b96;
+    }
+
+    .repeat-alert.high
+    .repeat-alert-title {
+      color: #a66528;
+    }
+
+    .repeat-alert.vomit
+    .repeat-alert-title {
+      color: #b34842;
     }
 
     .repeat-alert-text {
@@ -1038,6 +1073,7 @@
       font-weight: 900;
       cursor: pointer;
     }
+
 
     @media (max-width: 520px) {
 
@@ -1095,6 +1131,7 @@
 
     </div>
 
+
     <div
       id="teacherInfo"
       class="teacher-info">
@@ -1102,6 +1139,7 @@
       교직원 정보를 불러오는 중...
 
     </div>
+
 
     <div class="teacher-phone-box">
 
@@ -1134,6 +1172,7 @@
     </div>
 
   </div>
+
 
 
   <div class="main-tools">
@@ -1194,6 +1233,7 @@
   </div>
 
 
+
   <div class="management-row">
 
     <button
@@ -1225,6 +1265,7 @@
   </div>
 
 
+
   <div class="summary-grid">
 
     <div class="summary-card">
@@ -1236,10 +1277,13 @@
       <div
         id="studentCount"
         class="summary-value">
+
         0
+
       </div>
 
     </div>
+
 
     <button
       class="summary-card alert"
@@ -1252,7 +1296,9 @@
       <div
         id="attentionCount"
         class="summary-value">
+
         0
+
       </div>
 
       <div class="summary-click-hint">
@@ -1262,6 +1308,7 @@
     </button>
 
   </div>
+
 
 
   <button
@@ -1280,7 +1327,9 @@
         <div
           id="studentListToggleTitle"
           class="student-list-toggle-title">
+
           담당 학생 0명
+
         </div>
 
         <div class="student-list-toggle-sub">
@@ -1309,6 +1358,9 @@
 </div>
 
 
+
+<!-- 학생 안전카드 -->
+
 <div
   id="safetyCardOverlay"
   class="modal-overlay">
@@ -1332,23 +1384,22 @@
       <button
         class="close-button"
         onclick="closeSafetyCard()">
+
         ×
+
       </button>
 
     </div>
 
-    <div id="safetyCardContent">
-
-      <div class="empty-state">
-        학생 정보를 불러오는 중입니다.
-      </div>
-
-    </div>
+    <div id="safetyCardContent"></div>
 
   </div>
 
 </div>
 
+
+
+<!-- 확인 필요 -->
 
 <div
   id="attentionOverlay"
@@ -1373,20 +1424,22 @@
       <button
         class="close-button"
         onclick="closeAttentionModal()">
+
         ×
+
       </button>
 
     </div>
 
-    <div
-      id="attentionList"
-      class="attention-list">
-    </div>
+    <div id="attentionList"></div>
 
   </div>
 
 </div>
 
+
+
+<!-- 담당학생 설정 -->
 
 <div
   id="studentSettingOverlay"
@@ -1402,23 +1455,20 @@
           👥 담당 학생 설정
         </h2>
 
-        <p class="modal-subtitle">
-          내가 담당할 학생을 선택해주세요.
-        </p>
-
       </div>
 
       <button
         class="close-button"
         onclick="closeStudentSetting()">
+
         ×
+
       </button>
 
     </div>
 
     <div class="selection-note">
       한 학생을 여러 선생님이 함께 담당할 수 있습니다.
-      변경 내용은 내 담당 학생 연결에만 적용됩니다.
     </div>
 
     <div
@@ -1438,6 +1488,9 @@
 
 </div>
 
+
+
+<!-- 비상 연락처 -->
 
 <div
   id="contactModalOverlay"
@@ -1463,7 +1516,9 @@
       <button
         class="close-button"
         onclick="closeContactModal()">
+
         ×
+
       </button>
 
     </div>
@@ -1476,11 +1531,11 @@
       id="contactRelationship"
       class="modal-select">
 
-      <option value="엄마">엄마</option>
-      <option value="아빠">아빠</option>
-      <option value="보호자">보호자</option>
-      <option value="보건실">보건실</option>
-      <option value="기타">기타</option>
+      <option>엄마</option>
+      <option>아빠</option>
+      <option>보호자</option>
+      <option>보건실</option>
+      <option>기타</option>
 
     </select>
 
@@ -1490,8 +1545,7 @@
 
     <input
       id="contactName"
-      class="modal-input"
-      type="text">
+      class="modal-input">
 
     <label class="input-label">
       전화번호
@@ -1499,8 +1553,7 @@
 
     <input
       id="contactPhone"
-      class="modal-input"
-      type="tel">
+      class="modal-input">
 
     <button
       class="primary-button"
@@ -1520,6 +1573,9 @@
 </div>
 
 
+
+<!-- 비밀번호 -->
+
 <div
   id="passwordModalOverlay"
   class="modal-overlay">
@@ -1528,30 +1584,24 @@
 
     <div class="modal-header">
 
-      <div>
-
-        <h2 class="modal-title">
-          🔑 학생 비밀번호 재설정
-        </h2>
-
-        <p
-          id="passwordModalStudent"
-          class="modal-subtitle">
-        </p>
-
-      </div>
+      <h2 class="modal-title">
+        🔑 학생 비밀번호 재설정
+      </h2>
 
       <button
         class="close-button"
         onclick="closePasswordModal()">
+
         ×
+
       </button>
 
     </div>
 
-    <label class="input-label">
-      새 임시 비밀번호
-    </label>
+    <p
+      id="passwordModalStudent"
+      class="modal-subtitle">
+    </p>
 
     <input
       id="newPassword"
@@ -1572,6 +1622,9 @@
 </div>
 
 
+
+<!-- 반복 알림 -->
+
 <div
   id="repeatAlert"
   class="repeat-alert">
@@ -1579,7 +1632,6 @@
   <div
     id="repeatAlertTitle"
     class="repeat-alert-title">
-    🚨 확인이 필요한 학생이 있습니다
   </div>
 
   <div
@@ -1610,6 +1662,7 @@
 </div>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
@@ -1620,6 +1673,7 @@ const SUPABASE_URL =
 
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
 
 const supabaseClient =
   window.supabase.createClient(
@@ -1638,15 +1692,20 @@ let attentionStudents = [];
 
 let selectedContactStudentId = null;
 let selectedPasswordStudentId = null;
+
 let selectedSafetyStudent = null;
 let selectedSafetyStatus = null;
+
 let repeatAlertStudent = null;
 
 let studentListOpen = false;
 let repeatAlertTimer = null;
 
 
-/* 이동 */
+
+/* =========================
+   이동
+========================= */
 
 function goEmergencyGuide() {
 
@@ -1664,7 +1723,10 @@ function goTeacherEducation() {
 }
 
 
-/* 시작 */
+
+/* =========================
+   시작
+========================= */
 
 window.addEventListener(
   "load",
@@ -1673,11 +1735,14 @@ window.addEventListener(
     const ready =
       await checkTeacherLogin();
 
+
     if (!ready) {
       return;
     }
 
+
     await loadDashboard();
+
 
     startRepeatAlertTimer();
 
@@ -1685,7 +1750,10 @@ window.addEventListener(
 );
 
 
-/* 로그인 */
+
+/* =========================
+   로그인
+========================= */
 
 async function checkTeacherLogin() {
 
@@ -1702,6 +1770,7 @@ async function checkTeacherLogin() {
       "./login.html";
 
     return false;
+
   }
 
 
@@ -1715,7 +1784,7 @@ async function checkTeacherLogin() {
     await supabaseClient
       .from("profiles")
       .select(
-        "nickname, class_name, role, phone_number"
+        "nickname,class_name,role,phone_number"
       )
       .eq(
         "id",
@@ -1725,7 +1794,8 @@ async function checkTeacherLogin() {
 
 
   if (
-    !profile ||
+    !profile
+    ||
     (
       profile.role !== "teacher"
       &&
@@ -1737,6 +1807,7 @@ async function checkTeacherLogin() {
       "./index.html";
 
     return false;
+
   }
 
 
@@ -1760,10 +1831,14 @@ async function checkTeacherLogin() {
 
 
   return true;
+
 }
 
 
-/* 연락처 */
+
+/* =========================
+   교직원 전화번호
+========================= */
 
 async function saveTeacherPhone() {
 
@@ -1780,46 +1855,33 @@ async function saveTeacherPhone() {
     );
 
     return;
+
   }
 
 
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .update({
-
-        phone_number:
-          phone,
-
-        updated_at:
-          new Date().toISOString()
-
-      })
-      .eq(
-        "id",
-        currentUser.id
-      );
-
-
-  if (error) {
-
-    alert(
-      "저장하지 못했습니다."
+  await supabaseClient
+    .from("profiles")
+    .update({
+      phone_number:
+        phone
+    })
+    .eq(
+      "id",
+      currentUser.id
     );
-
-    return;
-  }
 
 
   alert(
-    "내 연락처를 저장했습니다."
+    "저장했습니다."
   );
+
 }
 
 
-/* 담당 학생 설정 */
+
+/* =========================
+   담당학생
+========================= */
 
 async function openStudentSetting() {
 
@@ -1829,42 +1891,26 @@ async function openStudentSetting() {
     "flex";
 
 
-  const container =
-    document.getElementById(
-      "studentSelectList"
-    );
-
-
-  container.innerHTML =
-    `
-      <div class="empty-state">
-        학생 목록을 불러오는 중입니다.
-      </div>
-    `;
-
-
   const {
-    data: students
+    data
   } =
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar"
+        "id,nickname,class_name,avatar"
       )
       .eq(
         "role",
         "student"
-      )
-      .order(
-        "class_name"
       );
 
 
   allStudents =
-    students || [];
+    data || [];
 
 
   renderStudentSelection();
+
 }
 
 
@@ -1874,6 +1920,7 @@ function closeStudentSetting() {
     "studentSettingOverlay"
   ).style.display =
     "none";
+
 }
 
 
@@ -1891,14 +1938,15 @@ function renderStudentSelection() {
 
   const linkedIds =
     linkedStudents.map(
-      item => item.id
+      student =>
+        student.id
     );
 
 
   allStudents.forEach(
     student => {
 
-      const checked =
+      const selected =
         linkedIds.includes(
           student.id
         );
@@ -1914,7 +1962,7 @@ function renderStudentSelection() {
         "student-select-card"
         +
         (
-          checked
+          selected
           ?
           " selected"
           :
@@ -1928,7 +1976,7 @@ function renderStudentSelection() {
             type="checkbox"
             class="student-checkbox"
             value="${student.id}"
-            ${checked ? "checked" : ""}
+            ${selected ? "checked" : ""}
           >
 
           <div class="select-avatar">
@@ -1942,7 +1990,7 @@ function renderStudentSelection() {
             </div>
 
             <div class="select-class">
-              ${escapeHtml(student.class_name || "학급 미등록")}
+              ${escapeHtml(student.class_name || "")}
             </div>
 
           </div>
@@ -1951,7 +1999,7 @@ function renderStudentSelection() {
 
       const checkbox =
         label.querySelector(
-          ".student-checkbox"
+          "input"
         );
 
 
@@ -1972,6 +2020,7 @@ function renderStudentSelection() {
 
     }
   );
+
 }
 
 
@@ -1983,13 +2032,15 @@ async function saveStudentSelection() {
         ".student-checkbox:checked"
       )
     ).map(
-      item => item.value
+      item =>
+        item.value
     );
 
 
   const currentIds =
     linkedStudents.map(
-      item => item.id
+      item =>
+        item.id
     );
 
 
@@ -2008,7 +2059,7 @@ async function saveStudentSelection() {
 
 
   if (
-    addIds.length > 0
+    addIds.length
   ) {
 
     await supabaseClient
@@ -2016,13 +2067,11 @@ async function saveStudentSelection() {
       .insert(
         addIds.map(
           id => ({
-
             teacher_id:
               currentUser.id,
 
             student_id:
               id
-
           })
         )
       );
@@ -2031,7 +2080,7 @@ async function saveStudentSelection() {
 
 
   if (
-    removeIds.length > 0
+    removeIds.length
   ) {
 
     await supabaseClient
@@ -2051,15 +2100,16 @@ async function saveStudentSelection() {
 
   closeStudentSetting();
 
+
   await loadDashboard();
 
-  alert(
-    "담당 학생 설정을 저장했습니다."
-  );
 }
 
 
-/* 대시보드 */
+
+/* =========================
+   데이터
+========================= */
 
 async function loadDashboard() {
 
@@ -2068,7 +2118,9 @@ async function loadDashboard() {
   } =
     await supabaseClient
       .from("teacher_students")
-      .select("student_id")
+      .select(
+        "student_id"
+      )
       .eq(
         "teacher_id",
         currentUser.id
@@ -2094,6 +2146,7 @@ async function loadDashboard() {
     renderDashboard();
 
     return;
+
   }
 
 
@@ -2103,7 +2156,7 @@ async function loadDashboard() {
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar"
+        "id,nickname,class_name,avatar"
       )
       .in(
         "id",
@@ -2121,7 +2174,7 @@ async function loadDashboard() {
     await supabaseClient
       .from("records")
       .select(
-        "id, user_id, record_type, glucose_value, meal_type, intake_ratio, note, created_at"
+        "id,user_id,record_type,glucose_value,meal_type,intake_ratio,note,created_at"
       )
       .in(
         "user_id",
@@ -2140,12 +2193,14 @@ async function loadDashboard() {
 
 
   const {
-    data: ackData
+    data: ack
   } =
     await supabaseClient
-      .from("alert_acknowledgements")
+      .from(
+        "alert_acknowledgements"
+      )
       .select(
-        "id, student_id, record_id, acknowledged_at"
+        "record_id,student_id,acknowledged_at"
       )
       .eq(
         "teacher_id",
@@ -2154,7 +2209,7 @@ async function loadDashboard() {
 
 
   acknowledgements =
-    ackData || [];
+    ack || [];
 
 
   renderDashboard();
@@ -2162,7 +2217,180 @@ async function loadDashboard() {
 }
 
 
-/* 이상기록 판정 */
+
+/* =========================
+   알림 판정
+========================= */
+
+function getRecordAlert(
+  record
+) {
+
+  let type =
+    null;
+
+  let label =
+    null;
+
+  let reason =
+    null;
+
+
+  if (
+    record.record_type ===
+      "glucose"
+    &&
+    record.glucose_value !== null
+  ) {
+
+    if (
+      record.glucose_value < 70
+    ) {
+
+      type =
+        "low";
+
+      label =
+        "🩸 저혈당 확인 필요";
+
+      reason =
+        `혈당 ${record.glucose_value} mg/dL`;
+
+    }
+
+
+    if (
+      record.glucose_value >= 250
+    ) {
+
+      type =
+        "high";
+
+      label =
+        "🔺 고혈당 확인 필요";
+
+      reason =
+        `혈당 ${record.glucose_value} mg/dL`;
+
+    }
+
+  }
+
+
+  if (
+    record.record_type ===
+    "symptom"
+  ) {
+
+    const data =
+      parseNote(
+        record.note
+      );
+
+
+    const vomiting =
+      Array.isArray(
+        data.symptoms
+      )
+      &&
+      data.symptoms.includes(
+        "구토"
+      );
+
+
+    if (
+      record.glucose_value !== null
+      &&
+      record.glucose_value < 70
+    ) {
+
+      type =
+        vomiting
+        ?
+        "vomit"
+        :
+        "low";
+
+
+      label =
+        vomiting
+        ?
+        "🤢 구토 동반 · 저혈당 확인 필요"
+        :
+        "🩸 저혈당 확인 필요";
+
+
+      reason =
+        `상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
+
+    }
+
+
+    else if (
+      record.glucose_value !== null
+      &&
+      record.glucose_value >= 250
+    ) {
+
+      type =
+        vomiting
+        ?
+        "vomit"
+        :
+        "high";
+
+
+      label =
+        vomiting
+        ?
+        "🤢 구토 동반 · 고혈당 확인 필요"
+        :
+        "🔺 고혈당 확인 필요";
+
+
+      reason =
+        `상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
+
+    }
+
+
+    else if (
+      vomiting
+    ) {
+
+      type =
+        "vomit";
+
+      label =
+        "🤢 구토 증상 확인 필요";
+
+      reason =
+        "구토 증상 기록";
+
+    }
+
+  }
+
+
+  if (!type) {
+    return null;
+  }
+
+
+  return {
+    type,
+    label,
+    reason,
+    record
+  };
+
+}
+
+
+
+/* =========================
+   학생 상태
+========================= */
 
 function buildStudentStatus(
   records
@@ -2170,24 +2398,24 @@ function buildStudentStatus(
 
   const latestGlucose =
     records.find(
-      item =>
-        item.record_type ===
+      record =>
+        record.record_type ===
         "glucose"
     );
 
 
   const latestMeal =
     records.find(
-      item =>
-        item.record_type ===
+      record =>
+        record.record_type ===
         "meal"
     );
 
 
   const latestSymptom =
     records.find(
-      item =>
-        item.record_type ===
+      record =>
+        record.record_type ===
         "symptom"
     );
 
@@ -2202,166 +2430,60 @@ function buildStudentStatus(
     );
 
 
-  const alertRecords =
-    [];
-
-
-  records.forEach(
-    record => {
-
-      let reason =
-        null;
-
-
-      if (
-        record.record_type ===
-        "glucose"
-        &&
-        record.glucose_value !== null
-      ) {
-
-        if (
-          record.glucose_value < 70
-        ) {
-
-          reason =
-            `저혈당 기록 ${record.glucose_value} mg/dL`;
-
-        } else if (
-          record.glucose_value >= 250
-        ) {
-
-          reason =
-            `고혈당 기록 ${record.glucose_value} mg/dL`;
-
-        }
-
-      }
-
-
-      if (
-        record.record_type ===
-        "symptom"
-      ) {
-
-        const data =
-          parseNote(
-            record.note
-          );
-
-
-        if (
-          record.glucose_value !== null
-          &&
-          record.glucose_value < 70
-        ) {
-
-          reason =
-            `상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
-
-        } else if (
-          record.glucose_value !== null
-          &&
-          record.glucose_value >= 250
-        ) {
-
-          reason =
-            `상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
-
-        }
-
-
-        if (
-          Array.isArray(
-            data.symptoms
+  const alerts =
+    records
+      .map(
+        record =>
+          getRecordAlert(record)
+      )
+      .filter(Boolean)
+      .filter(
+        alert =>
+          !acknowledgements.some(
+            acknowledgement =>
+              Number(
+                acknowledgement.record_id
+              )
+              ===
+              Number(
+                alert.record.id
+              )
           )
-          &&
-          data.symptoms.includes(
-            "구토"
-          )
-        ) {
-
-          reason =
-            reason
-            ?
-            reason + " · 구토"
-            :
-            "구토 증상 기록";
-
-        }
-
-      }
-
-
-      if (
-        reason
-      ) {
-
-        alertRecords.push({
-
-          record:
-            record,
-
-          reason:
-            reason
-
-        });
-
-      }
-
-    }
-  );
-
-
-  const unacknowledgedAlerts =
-    alertRecords.filter(
-      item =>
-        !acknowledgements.some(
-          ack =>
-            Number(
-              ack.record_id
-            )
-            ===
-            Number(
-              item.record.id
-            )
-        )
-    );
+      );
 
 
   return {
 
     needsAttention:
-      unacknowledgedAlerts.length > 0,
+      alerts.length > 0,
 
-    alerts:
-      unacknowledgedAlerts,
+    alerts,
 
-    latestGlucose:
-      latestGlucose,
+    latestGlucose,
 
-    latestMeal:
-      latestMeal,
+    latestMeal,
 
-    latestSymptom:
-      latestSymptom,
+    latestSymptom,
 
-    symptomData:
-      symptomData,
+    symptomData,
 
     todayCount:
       records.filter(
-        item =>
+        record =>
           isToday(
-            item.created_at
+            record.created_at
           )
       ).length
 
   };
+
 }
 
 
-/* 렌더 */
+
+/* =========================
+   대시보드 출력
+========================= */
 
 function renderDashboard() {
 
@@ -2394,17 +2516,17 @@ function renderDashboard() {
   linkedStudents.forEach(
     student => {
 
-      const studentRecords =
+      const records =
         allRecords.filter(
-          item =>
-            item.user_id ===
+          record =>
+            record.user_id ===
             student.id
         );
 
 
       const status =
         buildStudentStatus(
-          studentRecords
+          records
         );
 
 
@@ -2413,13 +2535,8 @@ function renderDashboard() {
       ) {
 
         attentionStudents.push({
-
-          student:
-            student,
-
-          status:
-            status
-
+          student,
+          status
         });
 
       }
@@ -2449,8 +2566,7 @@ function renderDashboard() {
     container.innerHTML =
       `
         <div class="empty-state">
-          아직 담당 학생이 없습니다.<br><br>
-          담당 학생 설정에서 학생을 선택해주세요.
+          아직 담당 학생이 없습니다.
         </div>
       `;
 
@@ -2468,7 +2584,42 @@ function renderDashboard() {
 }
 
 
-/* 학생 카드 */
+
+/* =========================
+   알림 HTML
+========================= */
+
+function createAlertsHtml(
+  alerts
+) {
+
+  return alerts.map(
+    alert =>
+      `
+        <div class="alert-item alert-${alert.type}">
+
+          <div>
+            ${escapeHtml(alert.label)}
+          </div>
+
+          <div style="
+            margin-top:3px;
+            font-weight:600;
+          ">
+            ${escapeHtml(alert.reason)}
+          </div>
+
+        </div>
+      `
+  ).join("");
+
+}
+
+
+
+/* =========================
+   학생 카드
+========================= */
 
 function createStudentCard(
   student,
@@ -2503,28 +2654,6 @@ function createStudentCard(
     "기록 없음";
 
 
-  const mealText =
-    getMealText(
-      status.latestMeal
-    );
-
-
-  const symptomText =
-    getSymptomText(
-      status.latestSymptom,
-      status.symptomData
-    );
-
-
-  const alertText =
-    status.alerts
-      .map(
-        item =>
-          item.reason
-      )
-      .join(" · ");
-
-
   card.innerHTML =
     `
       <div class="student-head">
@@ -2540,7 +2669,7 @@ function createStudentCard(
           </div>
 
           <div class="student-class">
-            ${escapeHtml(student.class_name || "학급 미등록")}
+            ${escapeHtml(student.class_name || "")}
             · 오늘 기록 ${status.todayCount}건
           </div>
 
@@ -2561,9 +2690,8 @@ function createStudentCard(
         status.needsAttention
         ?
         `
-          <div class="alert-reason">
-            ⚠️
-            ${escapeHtml(alertText)}
+          <div class="alert-list">
+            ${createAlertsHtml(status.alerts)}
           </div>
         `
         :
@@ -2593,7 +2721,11 @@ function createStudentCard(
           </div>
 
           <div class="record-value">
-            ${escapeHtml(mealText)}
+            ${escapeHtml(
+              getMealText(
+                status.latestMeal
+              )
+            )}
           </div>
 
         </div>
@@ -2606,7 +2738,12 @@ function createStudentCard(
           </div>
 
           <div class="record-value">
-            ${escapeHtml(symptomText)}
+            ${escapeHtml(
+              getSymptomText(
+                status.latestSymptom,
+                status.symptomData
+              )
+            )}
           </div>
 
         </div>
@@ -2614,11 +2751,8 @@ function createStudentCard(
       </div>
 
 
-      <button
-        class="safety-card-button">
-
+      <button class="safety-card-button">
         🪪 학생 안전카드 보기
-
       </button>
 
 
@@ -2647,26 +2781,20 @@ function createStudentCard(
   card.querySelector(
     ".safety-card-button"
   ).onclick =
-    function() {
-
+    () =>
       openSafetyCard(
         student,
         status
       );
 
-    };
-
 
   card.querySelector(
     ".records-action"
   ).onclick =
-    function() {
-
+    () =>
       openStudentRecords(
         student.id
       );
-
-    };
 
 
   card.querySelector(
@@ -2689,32 +2817,30 @@ function createStudentCard(
   card.querySelector(
     ".contact-action"
   ).onclick =
-    function() {
-
+    () =>
       openContactModal(
         student
       );
-
-    };
 
 
   card.querySelector(
     ".password-action"
   ).onclick =
-    function() {
-
+    () =>
       openPasswordModal(
         student
       );
 
-    };
-
 
   return card;
+
 }
 
 
-/* 안전카드 */
+
+/* =========================
+   학생 안전카드
+========================= */
 
 async function openSafetyCard(
   student,
@@ -2723,6 +2849,7 @@ async function openSafetyCard(
 
   selectedSafetyStudent =
     student;
+
 
   selectedSafetyStatus =
     status;
@@ -2734,27 +2861,13 @@ async function openSafetyCard(
     "flex";
 
 
-  const container =
-    document.getElementById(
-      "safetyCardContent"
-    );
-
-
-  container.innerHTML =
-    `
-      <div class="empty-state">
-        안전카드를 불러오는 중입니다.
-      </div>
-    `;
-
-
   const {
     data: contacts
   } =
     await supabaseClient
       .from("emergency_contacts")
       .select(
-        "id, contact_name, relationship, phone_number"
+        "contact_name,relationship,phone_number"
       )
       .eq(
         "user_id",
@@ -2762,40 +2875,14 @@ async function openSafetyCard(
       );
 
 
-  const glucoseText =
-    status.latestGlucose
-    &&
-    status.latestGlucose.glucose_value !== null
-    ?
-    `${status.latestGlucose.glucose_value} mg/dL`
-    :
-    "기록 없음";
-
-
-  const symptomText =
-    getSymptomText(
-      status.latestSymptom,
-      status.symptomData
-    );
-
-
   let contactsHtml =
     "";
 
 
   if (
-    !contacts ||
-    contacts.length === 0
+    contacts &&
+    contacts.length
   ) {
-
-    contactsHtml =
-      `
-        <div class="empty-state">
-          등록된 비상연락처가 없습니다.
-        </div>
-      `;
-
-  } else {
 
     contacts.forEach(
       contact => {
@@ -2836,19 +2923,31 @@ async function openSafetyCard(
       }
     );
 
+  } else {
+
+    contactsHtml =
+      `
+        <div class="empty-state">
+          등록된 비상연락처가 없습니다.
+        </div>
+      `;
+
   }
 
 
-  const alertText =
-    status.alerts
-      .map(
-        item =>
-          item.reason
-      )
-      .join("<br>");
+  const glucoseText =
+    status.latestGlucose
+    &&
+    status.latestGlucose.glucose_value !== null
+    ?
+    `${status.latestGlucose.glucose_value} mg/dL`
+    :
+    "기록 없음";
 
 
-  container.innerHTML =
+  document.getElementById(
+    "safetyCardContent"
+  ).innerHTML =
     `
       <div class="safety-profile">
 
@@ -2863,7 +2962,7 @@ async function openSafetyCard(
           </div>
 
           <div class="safety-class">
-            ${escapeHtml(student.class_name || "학급 미등록")}
+            ${escapeHtml(student.class_name || "")}
             · 오늘 기록 ${status.todayCount}건
           </div>
 
@@ -2876,9 +2975,8 @@ async function openSafetyCard(
         status.needsAttention
         ?
         `
-          <div class="safety-alert">
-            ⚠️ <strong>현재 확인 필요</strong><br>
-            ${alertText}
+          <div class="alert-list">
+            ${createAlertsHtml(status.alerts)}
           </div>
 
           <button
@@ -2933,7 +3031,14 @@ async function openSafetyCard(
           </div>
 
           <div class="safety-value">
-            ${escapeHtml(symptomText)}
+
+            ${escapeHtml(
+              getSymptomText(
+                status.latestSymptom,
+                status.symptomData
+              )
+            )}
+
           </div>
 
         </div>
@@ -2952,12 +3057,11 @@ async function openSafetyCard(
 
         <button
           class="safety-action safety-emergency"
-          onclick="window.location.href='./emergency-guide.html'">
+          onclick="goEmergencyGuide()">
 
           🚨 응급상황 대처
 
         </button>
-
 
         <button
           class="safety-action safety-records"
@@ -2973,7 +3077,10 @@ async function openSafetyCard(
 }
 
 
-/* 확인 완료 */
+
+/* =========================
+   확인 완료
+========================= */
 
 async function acknowledgeCurrentAlerts() {
 
@@ -2981,19 +3088,14 @@ async function acknowledgeCurrentAlerts() {
     !selectedSafetyStudent
     ||
     !selectedSafetyStatus
-    ||
-    !selectedSafetyStatus.alerts
-    ||
-    selectedSafetyStatus.alerts.length === 0
   ) {
-
     return;
   }
 
 
   const rows =
     selectedSafetyStatus.alerts.map(
-      item => ({
+      alert => ({
 
         teacher_id:
           currentUser.id,
@@ -3002,7 +3104,7 @@ async function acknowledgeCurrentAlerts() {
           selectedSafetyStudent.id,
 
         record_id:
-          item.record.id
+          alert.record.id
 
       })
     );
@@ -3012,7 +3114,9 @@ async function acknowledgeCurrentAlerts() {
     error
   } =
     await supabaseClient
-      .from("alert_acknowledgements")
+      .from(
+        "alert_acknowledgements"
+      )
       .upsert(
         rows,
         {
@@ -3029,53 +3133,39 @@ async function acknowledgeCurrentAlerts() {
     );
 
     return;
+
   }
+
+
+  closeSafetyCard();
+
+
+  await loadDashboard();
 
 
   alert(
     "확인 완료 처리했습니다."
   );
 
-
-  closeSafetyCard();
-
-  await loadDashboard();
-
 }
 
 
-/* 반복 알림 */
+
+/* =========================
+   반복 알림
+========================= */
 
 function startRepeatAlertTimer() {
 
-  if (
-    repeatAlertTimer
-  ) {
-
-    clearInterval(
-      repeatAlertTimer
-    );
-
-  }
-
-
   setTimeout(
-    function() {
-
-      showRepeatAlertIfNeeded();
-
-    },
+    showRepeatAlertIfNeeded,
     3000
   );
 
 
   repeatAlertTimer =
     setInterval(
-      function() {
-
-        showRepeatAlertIfNeeded();
-
-      },
+      showRepeatAlertIfNeeded,
       60000
     );
 
@@ -3091,39 +3181,44 @@ function showRepeatAlertIfNeeded() {
     hideRepeatAlert();
 
     return;
+
   }
 
 
-  const first =
+  const item =
     attentionStudents[0];
 
 
   repeatAlertStudent =
-    first;
+    item;
+
+
+  const alertItem =
+    item.status.alerts[0];
+
+
+  const box =
+    document.getElementById(
+      "repeatAlert"
+    );
+
+
+  box.className =
+    "repeat-alert show "
+    +
+    alertItem.type;
 
 
   document.getElementById(
     "repeatAlertTitle"
   ).textContent =
-    `🚨 ${first.student.nickname || "학생"} 확인이 필요합니다`;
+    `${alertItem.label} · ${item.student.nickname}`;
 
 
   document.getElementById(
     "repeatAlertText"
   ).textContent =
-    first.status.alerts
-      .map(
-        item =>
-          item.reason
-      )
-      .join(" · ");
-
-
-  document.getElementById(
-    "repeatAlert"
-  ).classList.add(
-    "show"
-  );
+    alertItem.reason;
 
 }
 
@@ -3132,19 +3227,15 @@ function hideRepeatAlert() {
 
   document.getElementById(
     "repeatAlert"
-  ).classList.remove(
-    "show"
-  );
+  ).className =
+    "repeat-alert";
 
 }
 
 
 function openRepeatAlertStudent() {
 
-  if (
-    !repeatAlertStudent
-  ) {
-
+  if (!repeatAlertStudent) {
     return;
   }
 
@@ -3160,13 +3251,20 @@ function openRepeatAlertStudent() {
 }
 
 
-/* 확인 필요 모달 */
+
+/* =========================
+   확인 필요 목록
+========================= */
 
 function openAttentionModal() {
 
-  document.getElementById(
-    "attentionOverlay"
-  ).style.display =
+  const overlay =
+    document.getElementById(
+      "attentionOverlay"
+    );
+
+
+  overlay.style.display =
     "flex";
 
 
@@ -3192,46 +3290,38 @@ function openAttentionModal() {
       `;
 
     return;
+
   }
 
 
   attentionStudents.forEach(
     item => {
 
-      const card =
+      const div =
         document.createElement(
           "div"
         );
 
 
-      card.className =
-        "attention-item";
+      div.style.marginBottom =
+        "14px";
 
 
-      const alertText =
-        item.status.alerts
-          .map(
-            alert =>
-              alert.reason
-          )
-          .join("<br>");
-
-
-      card.innerHTML =
+      div.innerHTML =
         `
-          <div class="attention-item-head">
+          <div class="safety-profile">
 
-            <div class="attention-avatar">
+            <div class="safety-avatar">
               ${escapeHtml(item.student.avatar || "🐻")}
             </div>
 
-            <div class="attention-name-box">
+            <div>
 
-              <div class="attention-name">
-                ${escapeHtml(item.student.nickname || "학생")}
+              <div class="safety-name">
+                ${escapeHtml(item.student.nickname)}
               </div>
 
-              <div class="attention-class">
+              <div class="safety-class">
                 ${escapeHtml(item.student.class_name || "")}
               </div>
 
@@ -3239,32 +3329,18 @@ function openAttentionModal() {
 
           </div>
 
-
-          <div class="attention-reason-box">
-            ⚠️
-            ${alertText}
+          <div class="alert-list">
+            ${createAlertsHtml(item.status.alerts)}
           </div>
 
-
-          <div class="attention-status-box">
-            🙂
-            ${escapeHtml(
-              getSymptomText(
-                item.status.latestSymptom,
-                item.status.symptomData
-              )
-            )}
-          </div>
-
-
-          <button class="attention-record-button">
-            🪪 학생 안전카드 확인
+          <button class="primary-button">
+            🪪 학생 안전카드 열기
           </button>
         `;
 
 
-      card.querySelector(
-        ".attention-record-button"
+      div.querySelector(
+        "button"
       ).onclick =
         function() {
 
@@ -3280,11 +3356,12 @@ function openAttentionModal() {
 
 
       container.appendChild(
-        card
+        div
       );
 
     }
   );
+
 }
 
 
@@ -3294,10 +3371,14 @@ function closeAttentionModal() {
     "attentionOverlay"
   ).style.display =
     "none";
+
 }
 
 
-/* 학생 목록 */
+
+/* =========================
+   학생 목록 펼치기
+========================= */
 
 function toggleStudentList() {
 
@@ -3333,90 +3414,10 @@ function toggleStudentList() {
 }
 
 
-function openStudentRecords(
-  studentId
-) {
 
-  sessionStorage.setItem(
-    "teacherSelectedStudent",
-    studentId
-  );
-
-
-  window.location.href =
-    "./records.html";
-
-}
-
-
-/* 안전카드 공통 */
-
-function closeSafetyCard() {
-
-  document.getElementById(
-    "safetyCardOverlay"
-  ).style.display =
-    "none";
-
-
-  selectedSafetyStudent =
-    null;
-
-  selectedSafetyStatus =
-    null;
-
-}
-
-
-function openSafetyStudentRecords() {
-
-  if (
-    !selectedSafetyStudent
-  ) {
-
-    return;
-  }
-
-
-  openStudentRecords(
-    selectedSafetyStudent.id
-  );
-
-}
-
-
-function callContact(
-  phone
-) {
-
-  if (!phone) {
-    return;
-  }
-
-
-  const confirmed =
-    confirm(
-      "이 연락처로 전화할까요?"
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  window.location.href =
-    "tel:"
-    +
-    phone.replace(
-      /[^0-9+]/g,
-      ""
-    );
-
-}
-
-
-/* 비상연락처 */
+/* =========================
+   비상연락처
+========================= */
 
 async function openContactModal(
   student
@@ -3431,19 +3432,7 @@ async function openContactModal(
   ).textContent =
     student.nickname
     +
-    " 학생의 비상연락처";
-
-
-  document.getElementById(
-    "contactName"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "contactPhone"
-  ).value =
-    "";
+    " 학생";
 
 
   document.getElementById(
@@ -3475,7 +3464,7 @@ async function loadEmergencyContacts() {
     await supabaseClient
       .from("emergency_contacts")
       .select(
-        "id, contact_name, relationship, phone_number"
+        "id,contact_name,relationship,phone_number"
       )
       .eq(
         "user_id",
@@ -3493,36 +3482,20 @@ async function loadEmergencyContacts() {
     "";
 
 
-  if (
-    !data ||
-    data.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          등록된 연락처가 없습니다.
-        </div>
-      `;
-
-    return;
-  }
-
-
-  data.forEach(
+  (data || []).forEach(
     contact => {
 
-      const item =
+      const div =
         document.createElement(
           "div"
         );
 
 
-      item.className =
+      div.className =
         "modal-contact-card";
 
 
-      item.innerHTML =
+      div.innerHTML =
         `
           <div class="modal-contact-info">
 
@@ -3544,13 +3517,15 @@ async function loadEmergencyContacts() {
         `;
 
 
-      item.querySelector(
+      div.querySelector(
         "button"
       ).onclick =
         async function() {
 
           await supabaseClient
-            .from("emergency_contacts")
+            .from(
+              "emergency_contacts"
+            )
             .delete()
             .eq(
               "id",
@@ -3558,13 +3533,13 @@ async function loadEmergencyContacts() {
             );
 
 
-          await loadEmergencyContacts();
+          loadEmergencyContacts();
 
         };
 
 
       container.appendChild(
-        item
+        div
       );
 
     }
@@ -3581,7 +3556,7 @@ async function saveEmergencyContact() {
     ).value;
 
 
-  const name =
+  const contactName =
     document.getElementById(
       "contactName"
     ).value.trim();
@@ -3594,7 +3569,8 @@ async function saveEmergencyContact() {
 
 
   if (
-    !name ||
+    !contactName
+    ||
     !phone
   ) {
 
@@ -3603,39 +3579,28 @@ async function saveEmergencyContact() {
     );
 
     return;
+
   }
 
 
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("emergency_contacts")
-      .insert({
+  await supabaseClient
+    .from(
+      "emergency_contacts"
+    )
+    .insert({
 
-        user_id:
-          selectedContactStudentId,
+      user_id:
+        selectedContactStudentId,
 
-        relationship:
-          relationship,
+      relationship,
 
-        contact_name:
-          name,
+      contact_name:
+        contactName,
 
-        phone_number:
-          phone
+      phone_number:
+        phone
 
-      });
-
-
-  if (error) {
-
-    alert(
-      "연락처를 저장하지 못했습니다."
-    );
-
-    return;
-  }
+    });
 
 
   document.getElementById(
@@ -3650,12 +3615,15 @@ async function saveEmergencyContact() {
     "";
 
 
-  await loadEmergencyContacts();
+  loadEmergencyContacts();
 
 }
 
 
-/* 비밀번호 */
+
+/* =========================
+   비밀번호
+========================= */
 
 function openPasswordModal(
   student
@@ -3671,12 +3639,6 @@ function openPasswordModal(
     student.nickname
     +
     " 학생";
-
-
-  document.getElementById(
-    "newPassword"
-  ).value =
-    "";
 
 
   document.getElementById(
@@ -3714,6 +3676,7 @@ async function resetStudentPassword() {
     );
 
     return;
+
   }
 
 
@@ -3762,28 +3725,113 @@ async function resetStudentPassword() {
 
 
   if (
-    !response.ok
+    response.ok
   ) {
 
     alert(
-      "비밀번호 변경에 실패했습니다."
+      "비밀번호를 변경했습니다."
     );
 
-    return;
+
+    closePasswordModal();
+
+  } else {
+
+    alert(
+      "변경에 실패했습니다."
+    );
+
   }
-
-
-  alert(
-    "비밀번호를 변경했습니다."
-  );
-
-
-  closePasswordModal();
 
 }
 
 
-/* 기록 표현 */
+
+/* =========================
+   기록 이동
+========================= */
+
+function openStudentRecords(
+  id
+) {
+
+  sessionStorage.setItem(
+    "teacherSelectedStudent",
+    id
+  );
+
+
+  window.location.href =
+    "./records.html";
+
+}
+
+
+function openSafetyStudentRecords() {
+
+  if (
+    selectedSafetyStudent
+  ) {
+
+    openStudentRecords(
+      selectedSafetyStudent.id
+    );
+
+  }
+
+}
+
+
+function closeSafetyCard() {
+
+  document.getElementById(
+    "safetyCardOverlay"
+  ).style.display =
+    "none";
+
+
+  selectedSafetyStudent =
+    null;
+
+
+  selectedSafetyStatus =
+    null;
+
+}
+
+
+
+/* =========================
+   전화
+========================= */
+
+function callContact(
+  phone
+) {
+
+  if (
+    confirm(
+      "이 연락처로 전화할까요?"
+    )
+  ) {
+
+    window.location.href =
+      "tel:"
+      +
+      phone.replace(
+        /[^0-9+]/g,
+        ""
+      );
+
+  }
+
+}
+
+
+
+/* =========================
+   기록 표시
+========================= */
 
 function getMealText(
   record
@@ -3804,20 +3852,43 @@ function getMealText(
     "";
 
 
-  if (ratio === 1) {
-    text = "다 먹었어요";
+  if (
+    ratio === 1
+  ) {
+
+    text =
+      "다 먹었어요";
+
   }
 
-  if (ratio === 0.5) {
-    text = "반 정도 먹었어요";
+
+  if (
+    ratio === .5
+  ) {
+
+    text =
+      "반 정도 먹었어요";
+
   }
 
-  if (ratio === 0.25) {
-    text = "조금 먹었어요";
+
+  if (
+    ratio === .25
+  ) {
+
+    text =
+      "조금 먹었어요";
+
   }
 
-  if (ratio === 0) {
-    text = "안 먹었어요";
+
+  if (
+    ratio === 0
+  ) {
+
+    text =
+      "안 먹었어요";
+
   }
 
 
@@ -3846,7 +3917,7 @@ function getSymptomText(
   }
 
 
-  const result =
+  const values =
     [];
 
 
@@ -3854,7 +3925,7 @@ function getSymptomText(
     data.context
   ) {
 
-    result.push(
+    values.push(
       data.context
     );
 
@@ -3865,11 +3936,9 @@ function getSymptomText(
     Array.isArray(
       data.symptoms
     )
-    &&
-    data.symptoms.length > 0
   ) {
 
-    result.push(
+    values.push(
       data.symptoms.join(", ")
     );
 
@@ -3880,29 +3949,26 @@ function getSymptomText(
     record.glucose_value !== null
   ) {
 
-    result.push(
-      "혈당 "
-      +
-      record.glucose_value
-      +
-      " mg/dL"
+    values.push(
+      `혈당 ${record.glucose_value} mg/dL`
     );
 
   }
 
 
   return (
-    result.length > 0
-    ?
-    result.join(" · ")
-    :
+    values.join(" · ")
+    ||
     "몸 상태 기록"
   );
 
 }
 
 
-/* 공통 */
+
+/* =========================
+   공통
+========================= */
 
 function parseNote(
   note
@@ -3928,9 +3994,7 @@ function isToday(
 ) {
 
   const date =
-    new Date(
-      value
-    );
+    new Date(value);
 
 
   const now =
@@ -3938,14 +4002,9 @@ function isToday(
 
 
   return (
-    date.getFullYear() ===
-      now.getFullYear()
-    &&
-    date.getMonth() ===
-      now.getMonth()
-    &&
-    date.getDate() ===
-      now.getDate()
+    date.toDateString()
+    ===
+    now.toDateString()
   );
 
 }
@@ -3992,7 +4051,10 @@ async function logout() {
 }
 
 
-/* 모달 바깥 클릭 */
+
+/* =========================
+   모달 외부 클릭
+========================= */
 
 [
   "safetyCardOverlay",
