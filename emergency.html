@@ -8,7 +8,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0">
 
-  <title>비상연락처 - GlucoGuard</title>
+  <title>도움 요청 - GlucoGuard</title>
 
   <link
     rel="stylesheet"
@@ -16,238 +16,523 @@
 
   <style>
 
-    body {
-      background: #f5f9fc;
+    * {
+      box-sizing: border-box;
     }
 
-    .page-wrap {
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 18px;
+    body {
+      margin: 0;
+      background: #f5faff;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: #263238;
     }
+
+
+    .page-wrap {
+      width: 100%;
+      max-width: 460px;
+
+      margin: 0 auto;
+
+      padding:
+        20px 18px 38px;
+    }
+
+
+    /* =========================
+       상단
+    ========================= */
 
     .top-bar {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
+
+      gap: 12px;
+
+      margin-bottom: 19px;
     }
+
 
     .back-button {
+      width: 43px;
+      height: 43px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       border: none;
+      border-radius: 14px;
+
       background: white;
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      font-size: 20px;
+
+      color: #526b7b;
+
+      font-size: 27px;
+
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+
+      box-shadow:
+        0 4px 13px rgba(60,90,110,.07);
     }
 
-    .title-area {
-      flex: 1;
-    }
 
     .title-area h1 {
       margin: 0;
+
+      color: #344e5e;
+
       font-size: 22px;
-      color: #37474f;
+      font-weight: 900;
     }
+
 
     .title-area p {
-      margin: 4px 0 0;
+      margin:
+        4px 0 0;
+
+      color: #8295a1;
+
       font-size: 12px;
-      color: #78909c;
     }
 
 
-    /* 안내 */
 
-    .info-card {
-      background: #eef6ff;
-      border-radius: 18px;
-      padding: 15px;
-      margin-bottom: 16px;
-      color: #456b82;
+    /* =========================
+       큰 안내
+    ========================= */
+
+    .help-hero {
+      background:
+        #fff0ee;
+
+      border:
+        2px solid #ffd2cd;
+
+      border-radius: 24px;
+
+      padding: 20px;
+
+      margin-bottom: 17px;
+
+      text-align: center;
+    }
+
+
+    .help-icon {
+      width: 65px;
+      height: 65px;
+
+      margin:
+        0 auto 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 21px;
+
+      background: white;
+
+      font-size: 34px;
+    }
+
+
+    .help-hero h2 {
+      margin:
+        0 0 7px;
+
+      color: #c54c44;
+
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+
+    .help-hero p {
+      margin: 0;
+
+      color: #826d6b;
+
       font-size: 13px;
+      line-height: 1.65;
+    }
+
+
+
+    /* =========================
+       연락할 사람
+    ========================= */
+
+    .section-title {
+      margin:
+        0 0 10px;
+
+      color: #455a64;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+
+    .contacts-area {
+      margin-bottom: 19px;
+    }
+
+
+    .contact-card {
+      background: white;
+
+      border-radius: 19px;
+
+      padding: 14px;
+
+      margin-bottom: 10px;
+
+      box-shadow:
+        0 5px 15px rgba(60,90,110,.06);
+    }
+
+
+    .contact-top {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background: #eef6ff;
+
+      font-size: 25px;
+    }
+
+
+    .contact-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+
+    .contact-name {
+      margin-bottom: 3px;
+
+      color: #344e5e;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+
+    .contact-meta {
+      color: #81939e;
+
+      font-size: 11px;
+    }
+
+
+    .call-button {
+      width: 100%;
+
+      margin-top: 11px;
+
+      padding: 13px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #e7f3ff;
+
+      color: #28658e;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    .empty-card {
+      padding: 21px 15px;
+
+      background: white;
+
+      border-radius: 18px;
+
+      text-align: center;
+
+      color: #8498a4;
+
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+
+
+    /* =========================
+       119
+    ========================= */
+
+    .emergency-119 {
+      background: #fff;
+
+      border:
+        2px solid #ffbeb8;
+
+      border-radius: 21px;
+
+      padding: 16px;
+
+      margin-bottom: 21px;
+    }
+
+
+    .emergency-119-title {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 7px;
+
+      color: #c3443d;
+
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+
+    .emergency-119 p {
+      margin:
+        0 0 12px;
+
+      color: #7e6d6b;
+
+      font-size: 11px;
       line-height: 1.6;
     }
 
 
-    /* 119 */
-
-    .emergency-call-card {
-      background: #fff0ef;
-      border: 2px solid #ffc8c3;
-      border-radius: 20px;
-      padding: 16px;
-      margin-bottom: 18px;
-    }
-
-    .emergency-call-card strong {
-      display: block;
-      font-size: 17px;
-      color: #c4473f;
-      margin-bottom: 5px;
-    }
-
-    .emergency-call-card p {
-      margin: 0 0 12px;
-      font-size: 12px;
-      line-height: 1.5;
-      color: #855c59;
-    }
-
     .call-119-button {
       width: 100%;
+
       border: none;
       border-radius: 14px;
+
       padding: 14px;
-      background: #e9574f;
+
+      background: #e9564e;
+
       color: white;
-      font-size: 16px;
-      font-weight: 800;
+
+      font-size: 15px;
+      font-weight: 900;
+
       cursor: pointer;
     }
 
 
-    /* 등록 영역 */
 
-    .form-card {
+    /* =========================
+       연락처 관리
+    ========================= */
+
+    .manage-box {
       background: white;
+
       border-radius: 21px;
-      padding: 17px;
-      margin-bottom: 18px;
-      box-shadow: 0 5px 15px rgba(70,90,110,.07);
+
+      padding: 16px;
+
+      box-shadow:
+        0 5px 15px rgba(60,90,110,.06);
     }
 
-    .form-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #455a64;
-      margin-bottom: 13px;
+
+    .manage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      cursor: pointer;
     }
+
+
+    .manage-title {
+      color: #526b79;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+
+    .manage-arrow {
+      color: #94a7b2;
+
+      font-size: 18px;
+    }
+
+
+    #manageContent {
+      display: none;
+
+      margin-top: 16px;
+    }
+
 
     .input-label {
       display: block;
-      margin: 0 0 5px 2px;
-      font-size: 12px;
-      font-weight: 700;
+
+      margin:
+        0 0 5px 2px;
+
       color: #607d8b;
+
+      font-size: 11px;
+      font-weight: 800;
     }
+
 
     .form-input,
     .form-select {
       width: 100%;
-      box-sizing: border-box;
-      padding: 13px;
-      margin-bottom: 12px;
-      border: 1px solid #d8e2e8;
+
+      padding: 12px;
+
+      margin-bottom: 11px;
+
+      border:
+        1px solid #d8e2e8;
+
       border-radius: 13px;
+
       background: white;
-      font-size: 15px;
+
+      font-size: 14px;
+
       outline: none;
     }
 
+
     .form-input:focus,
     .form-select:focus {
-      border-color: #6ba6cf;
-      box-shadow: 0 0 0 3px rgba(107,166,207,.12);
+      border-color:
+        #72a9ce;
     }
+
 
     .save-button {
       width: 100%;
+
       border: none;
-      border-radius: 14px;
-      padding: 14px;
+      border-radius: 13px;
+
+      padding: 13px;
+
       background: #4285b4;
+
       color: white;
-      font-size: 15px;
-      font-weight: 800;
+
+      font-size: 14px;
+      font-weight: 900;
+
       cursor: pointer;
     }
 
 
-    /* 연락처 목록 */
-
-    .list-title {
-      margin: 4px 0 11px;
-      font-size: 16px;
-      font-weight: 800;
-      color: #455a64;
+    .manage-contact-list {
+      margin-top: 17px;
     }
 
-    .contact-card {
-      background: white;
-      border-radius: 18px;
-      padding: 15px;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 13px rgba(70,90,110,.06);
-    }
 
-    .contact-top {
+    .manage-contact-card {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      gap: 10px;
+
+      gap: 9px;
+
+      padding:
+        11px 0;
+
+      border-bottom:
+        1px solid #eef2f4;
     }
 
-    .contact-info {
-      min-width: 0;
+
+    .manage-contact-card:last-child {
+      border-bottom: none;
     }
 
-    .contact-name {
-      font-size: 16px;
+
+    .manage-name {
+      color: #526b79;
+
+      font-size: 12px;
       font-weight: 800;
-      color: #37474f;
-      margin-bottom: 3px;
     }
 
-    .contact-relationship {
-      display: inline-block;
-      padding: 3px 7px;
-      border-radius: 8px;
-      background: #eef5fa;
-      font-size: 11px;
-      color: #607d8b;
-      margin-bottom: 6px;
+
+    .manage-phone {
+      margin-top: 2px;
+
+      color: #8a9ba5;
+
+      font-size: 10px;
     }
 
-    .contact-phone {
-      font-size: 14px;
-      color: #607d8b;
-    }
 
     .delete-button {
       border: none;
-      background: #f7f7f7;
-      color: #9a6b6b;
-      border-radius: 10px;
-      padding: 8px 9px;
-      font-size: 11px;
-      cursor: pointer;
-    }
+      border-radius: 9px;
 
-    .call-button {
-      width: 100%;
-      margin-top: 12px;
-      border: none;
-      border-radius: 13px;
-      padding: 12px;
-      background: #eaf5ff;
-      color: #25648e;
-      font-size: 14px;
+      padding:
+        7px 9px;
+
+      background: #fff0ee;
+
+      color: #b15a53;
+
+      font-size: 10px;
       font-weight: 800;
+
       cursor: pointer;
     }
 
-    .empty-message {
-      background: white;
-      border-radius: 18px;
-      padding: 25px 15px;
+
+
+    /* =========================
+       하단
+    ========================= */
+
+    .bottom-message {
+      margin-top: 18px;
+
       text-align: center;
-      color: #90a4ae;
-      font-size: 13px;
+
+      color: #8da0ab;
+
+      font-size: 10px;
       line-height: 1.6;
     }
 
@@ -260,6 +545,8 @@
 
 <div class="page-wrap">
 
+
+  <!-- 상단 -->
 
   <div class="top-bar">
 
@@ -275,11 +562,11 @@
     <div class="title-area">
 
       <h1>
-        📞 비상연락처
+        도움이 필요해요
       </h1>
 
       <p>
-        필요할 때 바로 연락할 수 있도록 등록해요.
+        혼자 있지 말고 어른에게 바로 알려요.
       </p>
 
     </div>
@@ -288,23 +575,56 @@
 
 
 
-  <div class="info-card">
+  <!-- 도움 안내 -->
 
-    보호자나 학교 보건실의 연락처를 미리 등록해두면,
-    휴대폰에서 버튼을 눌러 바로 전화 앱을 열 수 있어요.
+  <div class="help-hero">
+
+    <div class="help-icon">
+      🚨
+    </div>
+
+    <h2>
+      선생님, 도와주세요!
+    </h2>
+
+    <p>
+      몸이 이상하거나 도움이 필요하면<br>
+      가까운 선생님이나 어른에게 먼저 알려주세요.
+    </p>
 
   </div>
 
 
 
-  <div class="emergency-call-card">
+  <!-- 연락할 사람 -->
 
-    <strong>
-      🚨 아주 위급한 상황인가요?
-    </strong>
+  <div class="section-title">
+    📞 누구에게 연락할까요?
+  </div>
+
+
+  <div
+    id="contactList"
+    class="contacts-area">
+
+    <div class="empty-card">
+      연락처를 불러오는 중이에요.
+    </div>
+
+  </div>
+
+
+
+  <!-- 119 -->
+
+  <div class="emergency-119">
+
+    <div class="emergency-119-title">
+      🚑 아주 위급한 상황이에요
+    </div>
 
     <p>
-      의식이 흐리거나, 반응이 없거나, 심각한 응급상황이라면
+      반응이 없거나 의식이 흐린 등 심각한 응급상황에서는
       주변 어른에게 즉시 알리고 학교의 응급대응 절차를 따라주세요.
     </p>
 
@@ -312,7 +632,7 @@
       class="call-119-button"
       onclick="confirmCall119()">
 
-      🚑 119에 전화하기
+      119에 전화하기
 
     </button>
 
@@ -320,96 +640,122 @@
 
 
 
-  <div class="form-card">
+  <!-- 연락처 관리 -->
 
-    <div class="form-title">
-      ➕ 연락처 등록
+  <div class="manage-box">
+
+    <div
+      class="manage-header"
+      onclick="toggleManage()">
+
+      <div class="manage-title">
+        ⚙️ 비상연락처 등록·관리
+      </div>
+
+      <div
+        id="manageArrow"
+        class="manage-arrow">
+
+        ▾
+
+      </div>
+
     </div>
 
 
-    <label class="input-label">
-      관계
-    </label>
-
-    <select
-      id="relationship"
-      class="form-select">
-
-      <option value="엄마">
-        엄마
-      </option>
-
-      <option value="아빠">
-        아빠
-      </option>
-
-      <option value="보호자">
-        보호자
-      </option>
-
-      <option value="보건실">
-        보건실
-      </option>
-
-      <option value="담임 선생님">
-        담임 선생님
-      </option>
-
-      <option value="기타">
-        기타
-      </option>
-
-    </select>
+    <div id="manageContent">
 
 
-    <label class="input-label">
-      이름
-    </label>
+      <label class="input-label">
+        누구인가요?
+      </label>
 
-    <input
-      id="contactName"
-      class="form-input"
-      type="text"
-      maxlength="30"
-      placeholder="예: 김OO">
+      <select
+        id="relationship"
+        class="form-select">
+
+        <option value="엄마">
+          엄마
+        </option>
+
+        <option value="아빠">
+          아빠
+        </option>
+
+        <option value="보호자">
+          보호자
+        </option>
+
+        <option value="보건실">
+          보건실
+        </option>
+
+        <option value="담임 선생님">
+          담임 선생님
+        </option>
+
+        <option value="기타">
+          기타
+        </option>
+
+      </select>
 
 
-    <label class="input-label">
-      전화번호
-    </label>
 
-    <input
-      id="phoneNumber"
-      class="form-input"
-      type="tel"
-      maxlength="20"
-      inputmode="tel"
-      placeholder="예: 010-1234-5678">
+      <label class="input-label">
+        이름
+      </label>
+
+      <input
+        id="contactName"
+        class="form-input"
+        type="text"
+        maxlength="30"
+        placeholder="예: 김OO">
 
 
-    <button
-      id="saveButton"
-      class="save-button"
-      onclick="saveContact()">
 
-      연락처 저장
+      <label class="input-label">
+        전화번호
+      </label>
 
-    </button>
+      <input
+        id="phoneNumber"
+        class="form-input"
+        type="tel"
+        inputmode="tel"
+        maxlength="20"
+        placeholder="예: 010-1234-5678">
+
+
+
+      <button
+        id="saveButton"
+        class="save-button"
+        onclick="saveContact()">
+
+        연락처 저장
+
+      </button>
+
+
+
+      <div
+        id="manageContactList"
+        class="manage-contact-list">
+      </div>
+
+
+    </div>
 
   </div>
 
 
 
-  <div class="list-title">
-    📱 등록된 연락처
-  </div>
+  <div class="bottom-message">
 
-
-  <div id="contactList">
-
-    <div class="empty-message">
-      연락처를 불러오는 중이에요.
-    </div>
+    전화 버튼을 누르면 휴대폰의 전화 기능이 열립니다.<br>
+    실제 대응은 학교의 응급계획과 학생의 개별 관리계획을 따라주세요.
 
   </div>
 
@@ -422,6 +768,7 @@
 
 
 <script>
+
 
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
@@ -440,6 +787,10 @@ const supabaseClient =
 
 let currentUser =
   null;
+
+
+let currentContacts =
+  [];
 
 
 
@@ -462,6 +813,10 @@ window.addEventListener(
 );
 
 
+
+/* =========================
+   로그인 확인
+========================= */
 
 async function checkLogin() {
 
@@ -538,6 +893,413 @@ async function checkLogin() {
 
 
 
+/* =========================
+   연락처 불러오기
+========================= */
+
+async function loadContacts() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "emergency_contacts"
+      )
+      .select(
+        "id, contact_name, relationship, phone_number, created_at"
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending: true
+        }
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    document.getElementById(
+      "contactList"
+    ).innerHTML =
+      `
+        <div class="empty-card">
+          연락처를 불러오지 못했어요.
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  currentContacts =
+    data || [];
+
+
+  renderContacts();
+
+}
+
+
+
+/* =========================
+   연락처 표시
+========================= */
+
+function renderContacts() {
+
+  const contactList =
+    document.getElementById(
+      "contactList"
+    );
+
+
+  const manageList =
+    document.getElementById(
+      "manageContactList"
+    );
+
+
+  contactList.innerHTML =
+    "";
+
+
+  manageList.innerHTML =
+    "";
+
+
+  if (
+    currentContacts.length === 0
+  ) {
+
+    contactList.innerHTML =
+      `
+        <div class="empty-card">
+
+          아직 등록된 연락처가 없어요.<br>
+
+          아래의
+          <strong>
+            비상연락처 등록·관리
+          </strong>
+          에서<br>
+
+          보호자나 보건실 연락처를 등록해주세요.
+
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  currentContacts.forEach(
+    function(contact) {
+
+      /* 메인 전화 카드 */
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "contact-card";
+
+
+      let icon =
+        "📞";
+
+
+      if (
+        contact.relationship === "엄마"
+        ||
+        contact.relationship === "아빠"
+        ||
+        contact.relationship === "보호자"
+      ) {
+
+        icon =
+          "👨‍👩‍👧";
+
+      }
+
+
+      if (
+        contact.relationship === "보건실"
+      ) {
+
+        icon =
+          "🏥";
+
+      }
+
+
+      if (
+        contact.relationship === "담임 선생님"
+      ) {
+
+        icon =
+          "👩‍🏫";
+
+      }
+
+
+      const top =
+        document.createElement(
+          "div"
+        );
+
+
+      top.className =
+        "contact-top";
+
+
+      const iconBox =
+        document.createElement(
+          "div"
+        );
+
+
+      iconBox.className =
+        "contact-icon";
+
+
+      iconBox.textContent =
+        icon;
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "contact-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "contact-name";
+
+
+      name.textContent =
+        contact.relationship
+        +
+        " · "
+        +
+        contact.contact_name;
+
+
+      const meta =
+        document.createElement(
+          "div"
+        );
+
+
+      meta.className =
+        "contact-meta";
+
+
+      meta.textContent =
+        contact.phone_number;
+
+
+      info.appendChild(
+        name
+      );
+
+
+      info.appendChild(
+        meta
+      );
+
+
+      top.appendChild(
+        iconBox
+      );
+
+
+      top.appendChild(
+        info
+      );
+
+
+      const callButton =
+        document.createElement(
+          "button"
+        );
+
+
+      callButton.className =
+        "call-button";
+
+
+      callButton.textContent =
+        "📞 "
+        +
+        contact.relationship
+        +
+        "에게 전화하기";
+
+
+      callButton.onclick =
+        function() {
+
+          confirmCall(
+            contact
+          );
+
+        };
+
+
+      card.appendChild(
+        top
+      );
+
+
+      card.appendChild(
+        callButton
+      );
+
+
+      contactList.appendChild(
+        card
+      );
+
+
+
+      /* 관리용 카드 */
+
+      const manageCard =
+        document.createElement(
+          "div"
+        );
+
+
+      manageCard.className =
+        "manage-contact-card";
+
+
+      const manageInfo =
+        document.createElement(
+          "div"
+        );
+
+
+      const manageName =
+        document.createElement(
+          "div"
+        );
+
+
+      manageName.className =
+        "manage-name";
+
+
+      manageName.textContent =
+        contact.relationship
+        +
+        " · "
+        +
+        contact.contact_name;
+
+
+      const managePhone =
+        document.createElement(
+          "div"
+        );
+
+
+      managePhone.className =
+        "manage-phone";
+
+
+      managePhone.textContent =
+        contact.phone_number;
+
+
+      manageInfo.appendChild(
+        manageName
+      );
+
+
+      manageInfo.appendChild(
+        managePhone
+      );
+
+
+      const deleteButton =
+        document.createElement(
+          "button"
+        );
+
+
+      deleteButton.className =
+        "delete-button";
+
+
+      deleteButton.textContent =
+        "삭제";
+
+
+      deleteButton.onclick =
+        function() {
+
+          deleteContact(
+            contact.id,
+            contact.contact_name
+          );
+
+        };
+
+
+      manageCard.appendChild(
+        manageInfo
+      );
+
+
+      manageCard.appendChild(
+        deleteButton
+      );
+
+
+      manageList.appendChild(
+        manageCard
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   연락처 저장
+========================= */
+
 async function saveContact() {
 
   const relationship =
@@ -561,7 +1323,7 @@ async function saveContact() {
   if (!contactName) {
 
     alert(
-      "연락할 사람의 이름을 입력해주세요."
+      "이름을 입력해주세요."
     );
 
 
@@ -684,284 +1446,25 @@ async function saveContact() {
 
 
 
-async function loadContacts() {
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from(
-        "emergency_contacts"
-      )
-      .select(
-        "id, contact_name, relationship, phone_number, created_at"
-      )
-      .eq(
-        "user_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending: true
-        }
-      );
-
-
-  if (error) {
-
-    console.error(
-      error
-    );
-
-
-    document.getElementById(
-      "contactList"
-    ).innerHTML =
-      `
-        <div class="empty-message">
-          연락처를 불러오지 못했어요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  renderContacts(
-    data || []
-  );
-
-}
-
-
-
-function renderContacts(
-  contacts
-) {
-
-  const container =
-    document.getElementById(
-      "contactList"
-    );
-
-
-  if (
-    contacts.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-message">
-          아직 등록된 연락처가 없어요.<br>
-          보호자나 보건실 연락처를 등록해주세요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    "";
-
-
-  contacts.forEach(
-    function(contact) {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "contact-card";
-
-
-      const top =
-        document.createElement(
-          "div"
-        );
-
-
-      top.className =
-        "contact-top";
-
-
-      const info =
-        document.createElement(
-          "div"
-        );
-
-
-      info.className =
-        "contact-info";
-
-
-      const name =
-        document.createElement(
-          "div"
-        );
-
-
-      name.className =
-        "contact-name";
-
-
-      name.textContent =
-        contact.contact_name;
-
-
-      const relationship =
-        document.createElement(
-          "div"
-        );
-
-
-      relationship.className =
-        "contact-relationship";
-
-
-      relationship.textContent =
-        contact.relationship ||
-        "연락처";
-
-
-      const phone =
-        document.createElement(
-          "div"
-        );
-
-
-      phone.className =
-        "contact-phone";
-
-
-      phone.textContent =
-        contact.phone_number;
-
-
-      info.appendChild(
-        name
-      );
-
-
-      info.appendChild(
-        relationship
-      );
-
-
-      info.appendChild(
-        phone
-      );
-
-
-      const deleteButton =
-        document.createElement(
-          "button"
-        );
-
-
-      deleteButton.className =
-        "delete-button";
-
-
-      deleteButton.textContent =
-        "삭제";
-
-
-      deleteButton.onclick =
-        function() {
-
-          deleteContact(
-            contact.id,
-            contact.contact_name
-          );
-
-        };
-
-
-      top.appendChild(
-        info
-      );
-
-
-      top.appendChild(
-        deleteButton
-      );
-
-
-      const callButton =
-        document.createElement(
-          "button"
-        );
-
-
-      callButton.className =
-        "call-button";
-
-
-      callButton.textContent =
-        "📞 "
-        +
-        (
-          contact.relationship ||
-          contact.contact_name
-        )
-        +
-        "에게 전화";
-
-
-      callButton.onclick =
-        function() {
-
-          confirmCall(
-            contact.contact_name,
-            contact.phone_number
-          );
-
-        };
-
-
-      card.appendChild(
-        top
-      );
-
-
-      card.appendChild(
-        callButton
-      );
-
-
-      container.appendChild(
-        card
-      );
-
-    }
-  );
-
-}
-
-
+/* =========================
+   전화
+========================= */
 
 function confirmCall(
-  name,
-  phone
+  contact
 ) {
 
   const confirmed =
     confirm(
-      name
+      contact.relationship
+      +
+      " "
+      +
+      contact.contact_name
       +
       "에게 전화할까요?\n\n"
       +
-      phone
+      contact.phone_number
     );
 
 
@@ -971,7 +1474,7 @@ function confirmCall(
 
 
   const cleanedPhone =
-    phone.replace(
+    contact.phone_number.replace(
       /[^0-9+]/g,
       ""
     );
@@ -985,6 +1488,10 @@ function confirmCall(
 }
 
 
+
+/* =========================
+   119
+========================= */
 
 function confirmCall119() {
 
@@ -1007,6 +1514,10 @@ function confirmCall119() {
 }
 
 
+
+/* =========================
+   삭제
+========================= */
 
 async function deleteContact(
   id,
@@ -1062,6 +1573,53 @@ async function deleteContact(
 
 
   await loadContacts();
+
+}
+
+
+
+/* =========================
+   관리 영역 열기/닫기
+========================= */
+
+function toggleManage() {
+
+  const content =
+    document.getElementById(
+      "manageContent"
+    );
+
+
+  const arrow =
+    document.getElementById(
+      "manageArrow"
+    );
+
+
+  const isOpen =
+    content.style.display ===
+    "block";
+
+
+  if (isOpen) {
+
+    content.style.display =
+      "none";
+
+
+    arrow.textContent =
+      "▾";
+
+  } else {
+
+    content.style.display =
+      "block";
+
+
+    arrow.textContent =
+      "▴";
+
+  }
 
 }
 
