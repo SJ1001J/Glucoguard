@@ -56,7 +56,7 @@
 
       padding: 20px;
 
-      margin-bottom: 14px;
+      margin-bottom: 16px;
 
       box-shadow:
         0 6px 20px rgba(57,79,94,.07);
@@ -189,6 +189,10 @@
       outline: none;
     }
 
+    .teacher-phone-input:focus {
+      border-color: #76a9cc;
+    }
+
     .teacher-phone-save {
       flex-shrink: 0;
 
@@ -219,45 +223,45 @@
 
 
     /* =========================
-       핵심 메뉴
+       주요 메뉴
     ========================= */
 
-    .teacher-tools {
-      display: grid;
+    .main-tools {
+      display: flex;
+      flex-direction: column;
 
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 10px;
+      gap: 11px;
 
       margin-bottom: 14px;
     }
 
-    .tool-button {
-      min-height: 96px;
+    .main-tool-button {
+      width: 100%;
+
+      min-height: 108px;
 
       display: flex;
       align-items: center;
 
-      gap: 12px;
+      gap: 15px;
 
-      padding: 15px;
+      padding: 18px;
 
       border: none;
 
-      border-radius: 20px;
+      border-radius: 22px;
 
       text-align: left;
 
       cursor: pointer;
 
       box-shadow:
-        0 4px 14px rgba(57,79,94,.05);
+        0 5px 16px rgba(57,79,94,.06);
     }
 
-    .tool-icon {
-      width: 45px;
-      height: 45px;
+    .main-tool-icon {
+      width: 58px;
+      height: 58px;
 
       flex-shrink: 0;
 
@@ -265,43 +269,123 @@
       align-items: center;
       justify-content: center;
 
-      border-radius: 14px;
+      border-radius: 17px;
 
       background:
-        rgba(255,255,255,.75);
+        rgba(255,255,255,.78);
 
-      font-size: 24px;
+      font-size: 31px;
     }
 
-    .tool-text {
+    .main-tool-text {
       flex: 1;
     }
 
-    .tool-title {
-      margin-bottom: 4px;
+    .main-tool-title {
+      margin-bottom: 6px;
 
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 900;
     }
 
-    .tool-description {
-      font-size: 10px;
-      line-height: 1.5;
+    .main-tool-description {
+      font-size: 11px;
+      line-height: 1.55;
     }
 
-    .student-setting-tool {
-      background: #e8f7f1;
-      color: #3b715f;
+    .main-tool-arrow {
+      flex-shrink: 0;
+
+      font-size: 25px;
+
+      opacity: .55;
     }
 
     .emergency-tool {
-      background: #ffe9e6;
-      color: #a94c45;
+      background: #ffe7e3;
+
+      color: #a7443d;
+
+      border:
+        1px solid #ffd0ca;
     }
 
     .education-tool {
-      background: #eaf4ff;
-      color: #3d6685;
+      background: #e8f2ff;
+
+      color: #35627f;
+    }
+
+
+    /* =========================
+       담당 학생 설정
+    ========================= */
+
+    .management-row {
+      margin-bottom: 14px;
+    }
+
+    .student-setting-button {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 17px;
+
+      background: #e8f7f1;
+
+      color: #3e7462;
+
+      text-align: left;
+
+      cursor: pointer;
+    }
+
+    .setting-icon {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 13px;
+
+      background: white;
+
+      font-size: 21px;
+    }
+
+    .setting-text {
+      flex: 1;
+    }
+
+    .setting-title {
+      margin-bottom: 3px;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .setting-description {
+      font-size: 10px;
+
+      opacity: .8;
+    }
+
+    .setting-arrow {
+      font-size: 22px;
+
+      opacity: .55;
     }
 
 
@@ -317,7 +401,7 @@
 
       gap: 10px;
 
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .summary-card {
@@ -350,14 +434,81 @@
       color: #d24f47;
     }
 
-    .section-title {
-      margin:
-        0 0 10px 2px;
 
-      color: #455a64;
+    /* =========================
+       학생 목록 토글
+    ========================= */
 
-      font-size: 15px;
+    .student-list-toggle {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding: 15px 16px;
+
+      margin-bottom: 11px;
+
+      border: none;
+
+      border-radius: 17px;
+
+      background: white;
+
+      color: #455f70;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 14px rgba(57,79,94,.05);
+    }
+
+    .student-list-toggle-left {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .student-list-toggle-title {
+      font-size: 14px;
       font-weight: 900;
+    }
+
+    .student-list-toggle-sub {
+      margin-top: 2px;
+
+      color: #8a9ba5;
+
+      font-size: 10px;
+      text-align: left;
+    }
+
+    .student-list-toggle-arrow {
+      color: #78909c;
+
+      font-size: 19px;
+      font-weight: 900;
+
+      transition:
+        transform .2s ease;
+    }
+
+    .student-list-toggle.open
+    .student-list-toggle-arrow {
+      transform:
+        rotate(180deg);
+    }
+
+    .student-list-wrapper {
+      display: none;
+    }
+
+    .student-list-wrapper.open {
+      display: block;
     }
 
 
@@ -383,6 +534,7 @@
 
     .student-card.needs-attention {
       border-color: #ffb7b1;
+
       background: #fffdfd;
     }
 
@@ -447,11 +599,13 @@
 
     .attention-badge {
       background: #ffe9e7;
+
       color: #c84d46;
     }
 
     .ok-badge {
       background: #edf7ef;
+
       color: #4c8560;
     }
 
@@ -542,21 +696,25 @@
 
     .records-action {
       background: #eaf3ff;
+
       color: #2d6893;
     }
 
     .symptom-action {
       background: #e8f7f1;
+
       color: #367662;
     }
 
     .contact-action {
       background: #eef0ff;
+
       color: #5669a4;
     }
 
     .password-action {
       background: #f3f5f6;
+
       color: #687d88;
     }
 
@@ -725,8 +883,6 @@
       height: 20px;
 
       accent-color: #4d9d82;
-
-      cursor: pointer;
     }
 
     .select-avatar {
@@ -1011,26 +1167,8 @@
       cursor: pointer;
     }
 
-    .modal-empty {
-      padding: 18px 12px;
 
-      border-radius: 14px;
-
-      background: #f7f9fa;
-
-      color: #889aa4;
-
-      text-align: center;
-
-      font-size: 11px;
-    }
-
-
-    @media (max-width: 620px) {
-
-      .teacher-tools {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 520px) {
 
       .teacher-phone-row {
         flex-direction: column;
@@ -1038,6 +1176,21 @@
 
       .student-actions {
         grid-template-columns: 1fr;
+      }
+
+      .main-tool-button {
+        min-height: 98px;
+      }
+
+      .main-tool-icon {
+        width: 52px;
+        height: 52px;
+
+        font-size: 28px;
+      }
+
+      .main-tool-title {
+        font-size: 16px;
       }
 
     }
@@ -1071,7 +1224,7 @@
           </h1>
 
           <p>
-            학생의 기록과 상태를 한눈에 확인해요.
+            학생의 기록과 상태를 안전하게 관리해요.
           </p>
 
         </div>
@@ -1136,53 +1289,33 @@
 
 
 
-  <!-- 핵심 메뉴 -->
+  <!-- 중요 기능 -->
 
-  <div class="teacher-tools">
-
-
-    <button
-      class="tool-button student-setting-tool"
-      onclick="openStudentSetting()">
-
-      <div class="tool-icon">
-        👥
-      </div>
-
-      <div class="tool-text">
-
-        <div class="tool-title">
-          담당 학생 설정
-        </div>
-
-        <div class="tool-description">
-          내가 담당할 학생을 직접 선택해요.
-        </div>
-
-      </div>
-
-    </button>
-
+  <div class="main-tools">
 
 
     <button
-      class="tool-button emergency-tool"
+      class="main-tool-button emergency-tool"
       onclick="openEmergencyGuide()">
 
-      <div class="tool-icon">
+      <div class="main-tool-icon">
         🚨
       </div>
 
-      <div class="tool-text">
+      <div class="main-tool-text">
 
-        <div class="tool-title">
+        <div class="main-tool-title">
           응급상황 대처
         </div>
 
-        <div class="tool-description">
-          증상별 대응 순서를 빠르게 확인해요.
+        <div class="main-tool-description">
+          저혈당, 고혈당, 의식 저하 등 상황별 대응 순서를 빠르게 확인합니다.
         </div>
 
+      </div>
+
+      <div class="main-tool-arrow">
+        ›
       </div>
 
     </button>
@@ -1190,23 +1323,62 @@
 
 
     <button
-      class="tool-button education-tool"
+      class="main-tool-button education-tool"
       onclick="openEducation()">
 
-      <div class="tool-icon">
+      <div class="main-tool-icon">
         📘
       </div>
 
-      <div class="tool-text">
+      <div class="main-tool-text">
 
-        <div class="tool-title">
+        <div class="main-tool-title">
           교직원 교육
         </div>
 
-        <div class="tool-description">
-          학교에서 꼭 알아야 할 내용을 확인해요.
+        <div class="main-tool-description">
+          제1형 당뇨 학생의 학교생활 지원에 필요한 핵심 내용을 확인합니다.
         </div>
 
+      </div>
+
+      <div class="main-tool-arrow">
+        ›
+      </div>
+
+    </button>
+
+
+  </div>
+
+
+
+  <!-- 담당 학생 설정 -->
+
+  <div class="management-row">
+
+    <button
+      class="student-setting-button"
+      onclick="openStudentSetting()">
+
+      <div class="setting-icon">
+        👥
+      </div>
+
+      <div class="setting-text">
+
+        <div class="setting-title">
+          담당 학생 설정
+        </div>
+
+        <div class="setting-description">
+          내가 담당할 학생을 선택하거나 변경해요.
+        </div>
+
+      </div>
+
+      <div class="setting-arrow">
+        ›
       </div>
 
     </button>
@@ -1256,15 +1428,56 @@
 
 
 
-  <div class="section-title">
-    👧 학생 목록
-  </div>
+  <!-- 학생 목록 펼치기 -->
+
+  <button
+    id="studentListToggle"
+    class="student-list-toggle"
+    onclick="toggleStudentList()">
+
+    <div class="student-list-toggle-left">
+
+      <div style="font-size:22px;">
+        👧
+      </div>
+
+      <div>
+
+        <div
+          id="studentListToggleTitle"
+          class="student-list-toggle-title">
+
+          담당 학생 0명
+
+        </div>
+
+        <div class="student-list-toggle-sub">
+          학생 목록 펼치기
+        </div>
+
+      </div>
+
+    </div>
 
 
-  <div id="studentList">
+    <div class="student-list-toggle-arrow">
+      ▼
+    </div>
 
-    <div class="empty-state">
-      학생 정보를 불러오는 중입니다.
+  </button>
+
+
+
+  <div
+    id="studentListWrapper"
+    class="student-list-wrapper">
+
+    <div id="studentList">
+
+      <div class="empty-state">
+        학생 정보를 불러오는 중입니다.
+      </div>
+
     </div>
 
   </div>
@@ -1318,9 +1531,7 @@
       id="studentSelectList"
       class="student-select-list">
 
-      <div class="modal-empty">
-        학생 목록을 불러오는 중입니다.
-      </div>
+      학생 목록을 불러오는 중입니다.
 
     </div>
 
@@ -1532,12 +1743,26 @@
       <div class="education-card">
 
         <div class="education-title">
+          🍱 급식과 간식
+        </div>
+
+        <div class="education-text">
+          학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
+          음식 섭취와 인슐린 사용은 학생의 개별 관리계획을 따릅니다.
+        </div>
+
+      </div>
+
+
+      <div class="education-card">
+
+        <div class="education-title">
           🚨 학생이 도움을 요청하면
         </div>
 
         <div class="education-text">
-          증상을 과소평가하지 말고 학생과 함께 있어 주세요.
-          필요하면 보건교사·보호자에게 연락하고 학교의 응급 절차를 따릅니다.
+          증상을 가볍게 넘기지 말고 학생과 함께 있어 주세요.
+          필요하면 보건교사와 보호자에게 연락하고 학교 응급 절차를 따릅니다.
         </div>
 
       </div>
@@ -1547,7 +1772,7 @@
 
     <div class="education-important">
       GlucoGuard는 진단이나 인슐린 용량을 결정하지 않습니다.
-      실제 치료는 학생별 관리계획과 의료진 지침이 우선합니다.
+      실제 치료와 처치는 학생별 개별 관리계획과 의료진 지침이 우선합니다.
     </div>
 
   </div>
@@ -1640,7 +1865,6 @@
     <div
       id="contactModalList"
       style="margin-top:16px;">
-
     </div>
 
   </div>
@@ -1736,6 +1960,8 @@ let allRecords = [];
 
 let selectedContactStudentId = null;
 let selectedPasswordStudentId = null;
+
+let studentListOpen = false;
 
 
 /* =========================
@@ -1918,6 +2144,55 @@ async function saveTeacherPhone() {
 
 
 /* =========================
+   학생 목록 접기 / 펼치기
+========================= */
+
+function toggleStudentList() {
+
+  studentListOpen =
+    !studentListOpen;
+
+
+  const wrapper =
+    document.getElementById(
+      "studentListWrapper"
+    );
+
+
+  const toggle =
+    document.getElementById(
+      "studentListToggle"
+    );
+
+
+  const sub =
+    toggle.querySelector(
+      ".student-list-toggle-sub"
+    );
+
+
+  wrapper.classList.toggle(
+    "open",
+    studentListOpen
+  );
+
+
+  toggle.classList.toggle(
+    "open",
+    studentListOpen
+  );
+
+
+  sub.textContent =
+    studentListOpen
+    ?
+    "학생 목록 접기"
+    :
+    "학생 목록 펼치기";
+}
+
+
+/* =========================
    담당 학생 설정
 ========================= */
 
@@ -1929,11 +2204,15 @@ async function openStudentSetting() {
     "flex";
 
 
-  document.getElementById(
-    "studentSelectList"
-  ).innerHTML =
+  const container =
+    document.getElementById(
+      "studentSelectList"
+    );
+
+
+  container.innerHTML =
     `
-      <div class="modal-empty">
+      <div class="empty-state">
         학생 목록을 불러오는 중입니다.
       </div>
     `;
@@ -1964,11 +2243,9 @@ async function openStudentSetting() {
 
     console.error(error);
 
-    document.getElementById(
-      "studentSelectList"
-    ).innerHTML =
+    container.innerHTML =
       `
-        <div class="modal-empty">
+        <div class="empty-state">
           학생 목록을 불러오지 못했습니다.
         </div>
       `;
@@ -2019,7 +2296,7 @@ function renderStudentSelection() {
 
     container.innerHTML =
       `
-        <div class="modal-empty">
+        <div class="empty-state">
           등록된 학생이 없습니다.
         </div>
       `;
@@ -2502,6 +2779,12 @@ function renderDashboard() {
     linkedStudents.length;
 
 
+  document.getElementById(
+    "studentListToggleTitle"
+  ).textContent =
+    `담당 학생 ${linkedStudents.length}명`;
+
+
   if (
     linkedStudents.length === 0
   ) {
@@ -2516,8 +2799,7 @@ function renderDashboard() {
       `
         <div class="empty-state">
           아직 담당 학생이 없습니다.<br><br>
-          위의 <strong>👥 담당 학생 설정</strong>에서<br>
-          학생을 선택해주세요.
+          <strong>👥 담당 학생 설정</strong>에서 학생을 선택해주세요.
         </div>
       `;
 
@@ -2823,7 +3105,7 @@ function createStudentCard(
 
 
 /* =========================
-   텍스트
+   기록 텍스트
 ========================= */
 
 function getMealText(
@@ -2903,6 +3185,8 @@ function getSymptomText(
     Array.isArray(
       data.symptoms
     )
+    &&
+    data.symptoms.length > 0
   ) {
 
     parts.push(
@@ -2938,7 +3222,7 @@ function getSymptomText(
 
 
 /* =========================
-   응급
+   응급상황
 ========================= */
 
 function openEmergencyGuide() {
@@ -2947,6 +3231,22 @@ function openEmergencyGuide() {
     "emergencyGuideOverlay"
   ).style.display =
     "flex";
+
+
+  document.getElementById(
+    "responseGuide"
+  ).style.display =
+    "none";
+
+
+  document.querySelectorAll(
+    ".emergency-option"
+  ).forEach(
+    item =>
+      item.classList.remove(
+        "selected"
+      )
+  );
 }
 
 
@@ -3006,20 +3306,25 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🩸 저혈당 의심";
+      "🩸 저혈당이 의심될 때";
+
 
     content.innerHTML =
       `
         <div class="response-step">
-          학생과 함께 있고 혈당을 확인합니다.
+          ① 학생과 함께 있고 혈당을 확인할 수 있다면 확인합니다.
         </div>
 
         <div class="response-step">
-          안전하게 삼킬 수 있는 경우에만 개별 저혈당 계획에 따라 대응합니다.
+          ② 학생이 의식이 있고 안전하게 삼킬 수 있는 경우에만 개별 저혈당 관리계획에 따라 대응합니다.
         </div>
 
         <div class="response-step">
-          상태가 악화되면 즉시 추가 도움을 요청합니다.
+          ③ 정해진 시간 후 재확인이 필요한 경우 학생의 개별 계획을 따릅니다.
+        </div>
+
+        <div class="response-step">
+          ④ 상태가 악화되거나 의식이 흐려지면 즉시 중증 상황 대응으로 전환합니다.
         </div>
       `;
 
@@ -3031,20 +3336,25 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🔺 고혈당 의심";
+      "🔺 고혈당이 의심될 때";
+
 
     content.innerHTML =
       `
         <div class="response-step">
-          혈당과 학생의 개별 관리계획을 확인합니다.
+          ① 혈당과 학생의 개별 고혈당 관리계획을 확인합니다.
         </div>
 
         <div class="response-step">
-          케톤, 수분, 인슐린 관련 대응은 개별 계획을 따릅니다.
+          ② 케톤 확인, 수분 섭취, 인슐린 관련 대응은 개별 관리계획에 따릅니다.
         </div>
 
         <div class="response-step">
-          구토나 의식 변화 등이 있으면 긴급 대응을 확인합니다.
+          ③ 필요한 경우 보건교사와 보호자에게 알립니다.
+        </div>
+
+        <div class="response-step">
+          ④ 구토, 의식 변화, 호흡 이상 등이 있으면 학교 응급 절차를 따릅니다.
         </div>
       `;
 
@@ -3056,24 +3366,25 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🚨 의식 저하·삼키기 어려움";
+      "🚨 의식이 흐리거나 삼키기 어려울 때";
+
 
     content.innerHTML =
       `
         <div class="response-step">
-          음식이나 음료를 입으로 먹이지 않습니다.
+          ① 음식이나 음료를 입으로 먹이지 않습니다.
         </div>
 
         <div class="response-step">
-          학생을 혼자 두지 않습니다.
+          ② 학생을 혼자 두지 않고 즉시 다른 교직원이나 보건교사에게 도움을 요청합니다.
         </div>
 
         <div class="response-step">
-          처방된 글루카곤이 있고 교육받은 경우 개별 응급계획에 따라 사용합니다.
+          ③ 처방된 글루카곤이 있고 교육받은 경우 학생의 개별 응급계획에 따라 사용합니다.
         </div>
 
         <div class="response-step">
-          학교 응급계획에 따라 응급의료 도움과 보호자 연락을 진행합니다.
+          ④ 학교 응급계획에 따라 119 등 응급의료 도움을 요청하고 보호자에게 연락합니다.
         </div>
       `;
 
@@ -3085,24 +3396,25 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🤢 구토·심한 이상증상";
+      "🤢 구토나 심한 이상증상이 있을 때";
+
 
     content.innerHTML =
       `
         <div class="response-step">
-          학생을 혼자 두지 않습니다.
+          ① 학생을 혼자 두지 않고 상태를 관찰합니다.
         </div>
 
         <div class="response-step">
-          혈당과 개별 관리계획을 확인합니다.
+          ② 혈당을 확인할 수 있다면 확인하고 학생의 개별 관리계획을 확인합니다.
         </div>
 
         <div class="response-step">
-          보건교사와 보호자에게 알립니다.
+          ③ 보건교사와 보호자에게 알립니다.
         </div>
 
         <div class="response-step">
-          의식 또는 호흡 이상이 있으면 학교 응급 절차를 따릅니다.
+          ④ 의식 변화, 호흡 이상 등 응급 신호가 있으면 학교 응급 절차를 따릅니다.
         </div>
       `;
 
@@ -3198,7 +3510,23 @@ async function loadEmergencyContacts() {
     "";
 
 
-  (data || []).forEach(
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+        <div class="empty-state">
+          등록된 연락처가 없습니다.
+        </div>
+      `;
+
+    return;
+  }
+
+
+  data.forEach(
     contact => {
 
       const item =
@@ -3294,23 +3622,36 @@ async function saveEmergencyContact() {
   }
 
 
-  await supabaseClient
-    .from("emergency_contacts")
-    .insert({
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("emergency_contacts")
+      .insert({
 
-      user_id:
-        selectedContactStudentId,
+        user_id:
+          selectedContactStudentId,
 
-      contact_name:
-        name,
+        contact_name:
+          name,
 
-      phone_number:
-        phone,
+        phone_number:
+          phone,
 
-      relationship:
-        relationship
+        relationship:
+          relationship
 
-    });
+      });
+
+
+  if (error) {
+
+    alert(
+      "연락처 등록에 실패했습니다."
+    );
+
+    return;
+  }
 
 
   document.getElementById(
@@ -3347,6 +3688,12 @@ function openPasswordModal(
     student.nickname
     +
     " 학생";
+
+
+  document.getElementById(
+    "newPassword"
+  ).value =
+    "";
 
 
   document.getElementById(
@@ -3458,10 +3805,15 @@ function parseNote(
   note
 ) {
 
+  if (!note) {
+    return {};
+  }
+
+
   try {
 
     return JSON.parse(
-      note || "{}"
+      note
     );
 
   } catch {
@@ -3525,7 +3877,9 @@ async function logout() {
 }
 
 
-/* 모달 바깥 클릭 */
+/* =========================
+   모달 바깥 클릭
+========================= */
 
 [
   "studentSettingOverlay",
@@ -3547,6 +3901,7 @@ async function logout() {
         ) {
           return;
         }
+
 
         this.style.display =
           "none";
