@@ -93,11 +93,6 @@
       font-size: 12px;
     }
 
-
-    /* =========================
-       도움 안내
-    ========================= */
-
     .help-hero {
       background: #fff0ee;
 
@@ -147,11 +142,6 @@
       line-height: 1.65;
     }
 
-
-    /* =========================
-       섹션
-    ========================= */
-
     .section-title {
       margin: 0 0 10px;
 
@@ -160,105 +150,6 @@
       font-size: 15px;
       font-weight: 900;
     }
-
-
-    /* =========================
-       담당 선생님
-    ========================= */
-
-    .teacher-area {
-      margin-bottom: 20px;
-    }
-
-    .teacher-card {
-      background: #eef4ff;
-
-      border: 2px solid #d9e7ff;
-
-      border-radius: 20px;
-
-      padding: 15px;
-
-      margin-bottom: 10px;
-    }
-
-    .teacher-top {
-      display: flex;
-      align-items: center;
-
-      gap: 12px;
-    }
-
-    .teacher-icon {
-      width: 50px;
-      height: 50px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 16px;
-
-      background: white;
-
-      font-size: 27px;
-    }
-
-    .teacher-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .teacher-label {
-      margin-bottom: 3px;
-
-      color: #6f83a4;
-
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .teacher-name {
-      margin-bottom: 3px;
-
-      color: #3f587d;
-
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    .teacher-phone {
-      color: #71849f;
-
-      font-size: 11px;
-    }
-
-    .teacher-call-button {
-      width: 100%;
-
-      margin-top: 12px;
-
-      padding: 13px;
-
-      border: none;
-      border-radius: 13px;
-
-      background: #5f83c4;
-
-      color: white;
-
-      font-size: 14px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-
-    /* =========================
-       기타 연락처
-    ========================= */
 
     .contacts-area {
       margin-bottom: 18px;
@@ -356,11 +247,6 @@
       line-height: 1.65;
     }
 
-
-    /* =========================
-       안내
-    ========================= */
-
     .teacher-managed-note {
       background: #eef5ff;
 
@@ -435,34 +321,13 @@
     </h2>
 
     <p>
-      몸이 이상하거나 도움이 필요하면<br>
-      가까운 선생님이나 어른에게 먼저 알려주세요.
+      담당 선생님에게 연락이 어렵거나<br>
+      다른 어른의 도움이 필요할 때 이용해요.
     </p>
 
   </div>
 
 
-
-  <!-- 담당 선생님 -->
-
-  <div class="section-title">
-    👩‍🏫 담당 선생님
-  </div>
-
-
-  <div
-    id="teacherList"
-    class="teacher-area">
-
-    <div class="empty-card">
-      담당 선생님을 확인하고 있어요.
-    </div>
-
-  </div>
-
-
-
-  <!-- 보호자 / 보건실 -->
 
   <div class="section-title">
     📞 다른 연락처
@@ -483,8 +348,8 @@
 
   <div class="teacher-managed-note">
 
-    🔒 담당 선생님은 학교에서 연결된 정보가 자동으로 표시돼요.<br>
-    보호자와 보건실 연락처는 보호자 또는 교직원이 관리합니다.
+    🔒 보호자와 보건실 연락처는 보호자 또는 교직원이 등록·관리합니다.<br>
+    학생은 등록된 연락처를 확인하고 전화할 수 있어요.
 
   </div>
 
@@ -530,10 +395,6 @@ let currentContacts =
   [];
 
 
-let currentTeachers =
-  [];
-
-
 
 window.addEventListener(
   "load",
@@ -548,19 +409,12 @@ window.addEventListener(
     }
 
 
-    await loadTeachers();
-
-
     await loadContacts();
 
   }
 );
 
 
-
-/* =========================
-   로그인
-========================= */
 
 async function checkLogin() {
 
@@ -636,339 +490,6 @@ async function checkLogin() {
 }
 
 
-
-/* =========================
-   담당 교직원 자동 불러오기
-========================= */
-
-async function loadTeachers() {
-
-  const teacherList =
-    document.getElementById(
-      "teacherList"
-    );
-
-
-  const {
-    data: links,
-    error: linkError
-  } =
-    await supabaseClient
-      .from("teacher_students")
-      .select("teacher_id")
-      .eq(
-        "student_id",
-        currentUser.id
-      );
-
-
-  if (linkError) {
-
-    console.error(
-      linkError
-    );
-
-
-    teacherList.innerHTML =
-      `
-        <div class="empty-card">
-          담당 선생님 정보를 불러오지 못했어요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  const teacherIds =
-    (links || [])
-      .map(
-        item =>
-          item.teacher_id
-      );
-
-
-  if (
-    teacherIds.length === 0
-  ) {
-
-    teacherList.innerHTML =
-      `
-        <div class="empty-card">
-          아직 연결된 담당 선생님이 없어요.<br>
-          가까운 선생님에게 직접 도움을 요청해주세요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  const {
-    data: teachers,
-    error: teacherError
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id, nickname, class_name, role, phone_number"
-      )
-      .in(
-        "id",
-        teacherIds
-      );
-
-
-  if (teacherError) {
-
-    console.error(
-      teacherError
-    );
-
-
-    teacherList.innerHTML =
-      `
-        <div class="empty-card">
-          담당 선생님 정보를 불러오지 못했어요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  currentTeachers =
-    teachers || [];
-
-
-  renderTeachers();
-
-}
-
-
-
-/* =========================
-   담당 교직원 표시
-========================= */
-
-function renderTeachers() {
-
-  const container =
-    document.getElementById(
-      "teacherList"
-    );
-
-
-  container.innerHTML =
-    "";
-
-
-  if (
-    currentTeachers.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-card">
-          아직 연결된 담당 선생님이 없어요.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  currentTeachers.forEach(
-    function(teacher) {
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "teacher-card";
-
-
-      const top =
-        document.createElement(
-          "div"
-        );
-
-
-      top.className =
-        "teacher-top";
-
-
-      const icon =
-        document.createElement(
-          "div"
-        );
-
-
-      icon.className =
-        "teacher-icon";
-
-
-      icon.textContent =
-        teacher.role === "nurse"
-        ?
-        "🧑‍⚕️"
-        :
-        "👩‍🏫";
-
-
-      const info =
-        document.createElement(
-          "div"
-        );
-
-
-      info.className =
-        "teacher-info";
-
-
-      const label =
-        document.createElement(
-          "div"
-        );
-
-
-      label.className =
-        "teacher-label";
-
-
-      label.textContent =
-        teacher.role === "nurse"
-        ?
-        "담당 보건교사"
-        :
-        "담당 선생님";
-
-
-      const name =
-        document.createElement(
-          "div"
-        );
-
-
-      name.className =
-        "teacher-name";
-
-
-      name.textContent =
-        teacher.nickname ||
-        "선생님";
-
-
-      const phone =
-        document.createElement(
-          "div"
-        );
-
-
-      phone.className =
-        "teacher-phone";
-
-
-      phone.textContent =
-        teacher.phone_number
-        ||
-        "전화번호가 아직 등록되지 않았어요";
-
-
-      info.appendChild(
-        label
-      );
-
-
-      info.appendChild(
-        name
-      );
-
-
-      info.appendChild(
-        phone
-      );
-
-
-      top.appendChild(
-        icon
-      );
-
-
-      top.appendChild(
-        info
-      );
-
-
-      card.appendChild(
-        top
-      );
-
-
-      if (
-        teacher.phone_number
-      ) {
-
-        const callButton =
-          document.createElement(
-            "button"
-          );
-
-
-        callButton.className =
-          "teacher-call-button";
-
-
-        callButton.textContent =
-          teacher.role === "nurse"
-          ?
-          "📞 보건 선생님에게 전화하기"
-          :
-          "📞 담당 선생님에게 전화하기";
-
-
-        callButton.onclick =
-          function() {
-
-            confirmTeacherCall(
-              teacher
-            );
-
-          };
-
-
-        card.appendChild(
-          callButton
-        );
-
-      }
-
-
-      container.appendChild(
-        card
-      );
-
-    }
-  );
-
-}
-
-
-
-/* =========================
-   보호자 등 연락처
-========================= */
 
 async function loadContacts() {
 
@@ -1046,7 +567,8 @@ function renderContacts() {
     contactList.innerHTML =
       `
         <div class="empty-card">
-          등록된 보호자 또는 보건실 연락처가 없어요.
+          등록된 보호자 또는 보건실 연락처가 없어요.<br>
+          가까운 선생님이나 어른에게 바로 도움을 요청해주세요.
         </div>
       `;
 
@@ -1231,65 +753,6 @@ function renderContacts() {
 }
 
 
-
-/* =========================
-   담당 선생님 전화
-========================= */
-
-function confirmTeacherCall(
-  teacher
-) {
-
-  const phone =
-    teacher.phone_number;
-
-
-  if (!phone) {
-
-    alert(
-      "담당 선생님의 전화번호가 등록되지 않았어요."
-    );
-
-
-    return;
-
-  }
-
-
-  const confirmed =
-    confirm(
-      (teacher.nickname || "담당 선생님")
-      +
-      "에게 전화할까요?\n\n"
-      +
-      phone
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  const cleanedPhone =
-    phone.replace(
-      /[^0-9+]/g,
-      ""
-    );
-
-
-  location.href =
-    "tel:"
-    +
-    cleanedPhone;
-
-}
-
-
-
-/* =========================
-   보호자 전화
-========================= */
 
 function confirmContactCall(
   contact
