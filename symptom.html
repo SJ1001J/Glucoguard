@@ -90,11 +90,6 @@
       font-size: 12px;
     }
 
-
-    /* =========================
-       공통 STEP
-    ========================= */
-
     .step-card {
       background: white;
 
@@ -143,11 +138,6 @@
       line-height: 1.5;
     }
 
-
-    /* =========================
-       상황
-    ========================= */
-
     .context-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -156,7 +146,7 @@
     }
 
     .context-button {
-      min-height: 58px;
+      min-height: 57px;
 
       border: 2px solid transparent;
       border-radius: 14px;
@@ -172,21 +162,16 @@
     }
 
     .context-button.selected {
-      border-color: #79aeda;
+      border-color: #74b9a4;
 
-      background: #eaf4ff;
+      background: #e5f6ef;
 
-      color: #2c6c98;
+      color: #2f6d5c;
     }
 
     .context-button.full {
       grid-column: 1 / -1;
     }
-
-
-    /* =========================
-       증상
-    ========================= */
 
     .symptom-grid {
       display: grid;
@@ -196,7 +181,7 @@
     }
 
     .symptom-button {
-      min-height: 61px;
+      min-height: 60px;
 
       display: flex;
       align-items: center;
@@ -221,91 +206,16 @@
     }
 
     .symptom-button.selected {
-      border-color: #ffaaa4;
+      border-color: #74b9a4;
 
-      background: #fff0ef;
+      background: #e5f6ef;
 
-      color: #ad4e48;
+      color: #2f6d5c;
     }
 
     .symptom-icon {
       font-size: 20px;
     }
-
-
-    /* =========================
-       상태
-    ========================= */
-
-    .condition-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 9px;
-    }
-
-    .condition-button {
-      width: 100%;
-
-      display: flex;
-      align-items: flex-start;
-
-      gap: 11px;
-
-      padding: 14px;
-
-      border: 2px solid transparent;
-      border-radius: 15px;
-
-      background: #f6f8fa;
-
-      text-align: left;
-
-      cursor: pointer;
-    }
-
-    .condition-button.selected {
-      border-color: #79aeda;
-
-      background: #eaf4ff;
-    }
-
-    .condition-button.danger.selected {
-      border-color: #ff9f98;
-
-      background: #fff0ef;
-    }
-
-    .condition-icon {
-      flex-shrink: 0;
-
-      font-size: 24px;
-    }
-
-    .condition-text {
-      flex: 1;
-    }
-
-    .condition-title {
-      margin-bottom: 3px;
-
-      color: #344e5e;
-
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .condition-description {
-      color: #8799a3;
-
-      font-size: 10px;
-      line-height: 1.5;
-    }
-
-
-    /* =========================
-       혈당
-    ========================= */
 
     .glucose-row {
       display: flex;
@@ -331,7 +241,7 @@
     }
 
     .glucose-input:focus {
-      border-color: #79aeda;
+      border-color: #74b9a4;
     }
 
     .unit {
@@ -341,11 +251,6 @@
 
       font-size: 12px;
     }
-
-
-    /* =========================
-       안내 결과
-    ========================= */
 
     .guidance {
       display: none;
@@ -362,34 +267,20 @@
 
     .guidance.low {
       background: #fff4d7;
-
       color: #795f20;
-
       border: 1px solid #f2d786;
     }
 
     .guidance.high {
       background: #fff0ee;
-
       color: #9d4e48;
-
       border: 1px solid #ffc4bf;
     }
 
-    .guidance.danger {
-      background: #ffe8e5;
-
-      color: #a33d36;
-
-      border: 2px solid #ffaaa3;
-    }
-
-    .guidance.normal {
-      background: #edf7ef;
-
-      color: #477359;
-
-      border: 1px solid #cce6d2;
+    .guidance.notice {
+      background: #e8f7f1;
+      color: #396d5e;
+      border: 1px solid #c4e8dc;
     }
 
     .guidance-title {
@@ -398,11 +289,6 @@
       font-size: 14px;
       font-weight: 900;
     }
-
-
-    /* =========================
-       타이머
-    ========================= */
 
     .timer-box {
       display: none;
@@ -413,7 +299,7 @@
 
       border-radius: 14px;
 
-      background: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.75);
 
       text-align: center;
     }
@@ -441,11 +327,6 @@
       cursor: pointer;
     }
 
-
-    /* =========================
-       저장
-    ========================= */
-
     .save-button {
       width: 100%;
 
@@ -454,7 +335,7 @@
       border: none;
       border-radius: 15px;
 
-      background: #428dbc;
+      background: #4c9d83;
 
       color: white;
 
@@ -464,12 +345,11 @@
       cursor: pointer;
 
       box-shadow:
-        0 6px 15px rgba(66,141,188,.18);
+        0 6px 15px rgba(76,157,131,.18);
     }
 
     .save-button:disabled {
       background: #b9c7d0;
-
       cursor: default;
     }
 
@@ -493,8 +373,6 @@
 
 <div class="page-wrap">
 
-
-  <!-- 상단 -->
 
   <div class="top-bar">
 
@@ -554,16 +432,6 @@
 
       <button
         class="context-button"
-        data-context="체육 전"
-        onclick="selectContext(this)">
-
-        🏃 체육 전
-
-      </button>
-
-
-      <button
-        class="context-button"
         data-context="체육 후"
         onclick="selectContext(this)">
 
@@ -583,7 +451,7 @@
 
 
       <button
-        class="context-button"
+        class="context-button full"
         data-context="현장학습"
         onclick="selectContext(this)">
 
@@ -615,7 +483,6 @@
 
 
     <div class="symptom-grid">
-
 
       <button
         class="symptom-button"
@@ -704,7 +571,6 @@
 
       </button>
 
-
     </div>
 
   </div>
@@ -716,80 +582,7 @@
   <div class="step-card">
 
     <div class="step-badge">
-      STEP 3
-    </div>
-
-    <div class="step-title">
-      지금 상태는 어떤가요?
-    </div>
-
-
-    <div class="condition-list">
-
-
-      <button
-        class="condition-button"
-        data-condition="conscious"
-        data-label="의식이 있고 삼킬 수 있음"
-        onclick="selectCondition(this)">
-
-        <div class="condition-icon">
-          🙂
-        </div>
-
-        <div class="condition-text">
-
-          <div class="condition-title">
-            말할 수 있고 삼킬 수 있어요
-          </div>
-
-          <div class="condition-description">
-            의식이 있고 음식이나 음료를 안전하게 삼킬 수 있어요.
-          </div>
-
-        </div>
-
-      </button>
-
-
-
-      <button
-        class="condition-button danger"
-        data-condition="danger"
-        data-label="의식이 흐리거나 삼키기 어려움"
-        onclick="selectCondition(this)">
-
-        <div class="condition-icon">
-          🚨
-        </div>
-
-        <div class="condition-text">
-
-          <div class="condition-title">
-            많이 힘들거나 삼키기 어려워요
-          </div>
-
-          <div class="condition-description">
-            의식이 흐리거나 반응이 이상하거나 안전하게 삼키기 어려워요.
-          </div>
-
-        </div>
-
-      </button>
-
-
-    </div>
-
-  </div>
-
-
-
-  <!-- STEP 4 -->
-
-  <div class="step-card">
-
-    <div class="step-badge">
-      STEP 4 · 선택
+      STEP 3 · 선택
     </div>
 
     <div class="step-title">
@@ -878,7 +671,7 @@
   <div class="bottom-note">
 
     GlucoGuard는 증상을 진단하지 않아요.<br>
-    실제 대응은 학생의 개별 관리계획과 학교·의료진 지침을 따라주세요.
+    몸이 많이 이상하면 혼자 있지 말고 가까운 선생님에게 바로 알려주세요.
 
   </div>
 
@@ -927,14 +720,6 @@ let selectedSymptoms =
   [];
 
 
-let selectedCondition =
-  null;
-
-
-let selectedConditionLabel =
-  null;
-
-
 let timerInterval =
   null;
 
@@ -943,10 +728,6 @@ let remainingSeconds =
   15 * 60;
 
 
-
-/* =========================
-   시작
-========================= */
 
 window.addEventListener(
   "load",
@@ -967,10 +748,6 @@ window.addEventListener(
 );
 
 
-
-/* =========================
-   로그인
-========================= */
 
 async function checkLogin() {
 
@@ -1040,10 +817,6 @@ async function checkLogin() {
 }
 
 
-
-/* =========================
-   기록 대상 결정
-========================= */
 
 async function determineTargetStudent() {
 
@@ -1125,9 +898,7 @@ async function determineTargetStudent() {
     } =
       await supabaseClient
         .from("profiles")
-        .select(
-          "nickname"
-        )
+        .select("nickname")
         .eq(
           "id",
           targetStudentId
@@ -1148,7 +919,7 @@ async function determineTargetStudent() {
         "학생"
       )
       +
-      " 학생의 상태를 기록해요.";
+      " 학생의 몸 상태를 기록해요.";
 
 
   } else {
@@ -1161,10 +932,6 @@ async function determineTargetStudent() {
 }
 
 
-
-/* =========================
-   상황 선택
-========================= */
 
 function selectContext(
   button
@@ -1190,10 +957,6 @@ function selectContext(
 }
 
 
-
-/* =========================
-   증상 여러 개 선택
-========================= */
 
 function toggleSymptom(
   button
@@ -1241,46 +1004,6 @@ function toggleSymptom(
 
 
 
-/* =========================
-   상태 선택
-========================= */
-
-function selectCondition(
-  button
-) {
-
-  selectedCondition =
-    button.dataset.condition;
-
-
-  selectedConditionLabel =
-    button.dataset.label;
-
-
-  document.querySelectorAll(
-    ".condition-button"
-  ).forEach(
-    item => {
-
-      item.classList.toggle(
-        "selected",
-        item === button
-      );
-
-    }
-  );
-
-
-  updateGuidance();
-
-}
-
-
-
-/* =========================
-   혈당 입력
-========================= */
-
 document.getElementById(
   "glucoseInput"
 ).addEventListener(
@@ -1289,10 +1012,6 @@ document.getElementById(
 );
 
 
-
-/* =========================
-   안내
-========================= */
 
 function updateGuidance() {
 
@@ -1348,45 +1067,6 @@ function updateGuidance() {
     "none";
 
 
-  /*
-    의식 저하 / 삼키기 어려움
-  */
-
-  if (
-    selectedCondition ===
-    "danger"
-  ) {
-
-    guidance.style.display =
-      "block";
-
-
-    guidance.classList.add(
-      "danger"
-    );
-
-
-    title.textContent =
-      "🚨 바로 어른의 도움이 필요해요";
-
-
-    text.innerHTML =
-      `
-        음식이나 음료를 억지로 먹이지 않아요.<br>
-        학생을 혼자 두지 말고 학교의 응급대응 계획을 따라주세요.<br>
-        처방된 글루카곤이 있고 교육받은 교직원이 있다면 개별 계획에 따라 대응해요.
-      `;
-
-
-    return;
-
-  }
-
-
-  /*
-    저혈당
-  */
-
   if (
     glucose !== null
     &&
@@ -1408,8 +1088,8 @@ function updateGuidance() {
 
     text.innerHTML =
       `
-        학생의 개별 저혈당 관리계획을 확인하고 가까운 어른에게 알려주세요.<br>
-        의식이 있고 안전하게 삼킬 수 있는 경우에만 개별 계획에 따른 대응을 해요.
+        가까운 선생님이나 보건교사에게 바로 알려주세요.<br>
+        실제 대응은 학생의 개별 저혈당 관리계획에 따라야 해요.
       `;
 
 
@@ -1421,10 +1101,6 @@ function updateGuidance() {
 
   }
 
-
-  /*
-    고혈당
-  */
 
   if (
     glucose !== null
@@ -1447,8 +1123,8 @@ function updateGuidance() {
 
     text.innerHTML =
       `
-        학생의 개별 고혈당 관리계획을 확인하고 선생님이나 보건교사에게 알려주세요.<br>
-        구토나 심한 이상 증상이 함께 있다면 더 빠른 확인이 필요해요.
+        선생님이나 보건교사에게 알려주세요.<br>
+        실제 대응은 학생의 개별 고혈당 관리계획에 따라야 해요.
       `;
 
 
@@ -1456,10 +1132,6 @@ function updateGuidance() {
 
   }
 
-
-  /*
-    구토
-  */
 
   if (
     selectedSymptoms.includes(
@@ -1477,13 +1149,12 @@ function updateGuidance() {
 
 
     title.textContent =
-      "🤢 구토가 기록됐어요";
+      "🤢 토했다고 기록했어요";
 
 
     text.innerHTML =
       `
-        구토가 있으면 가까운 선생님이나 보건교사에게 바로 알려주세요.<br>
-        학생의 개별 관리계획에 따라 상태를 확인해요.
+        가까운 선생님이나 보건교사에게 바로 알려주세요.
       `;
 
 
@@ -1492,14 +1163,8 @@ function updateGuidance() {
   }
 
 
-  /*
-    특별한 위험 경고 없음
-  */
-
   if (
     selectedSymptoms.length > 0
-    ||
-    selectedCondition
     ||
     glucose !== null
   ) {
@@ -1509,26 +1174,22 @@ function updateGuidance() {
 
 
     guidance.classList.add(
-      "normal"
+      "notice"
     );
 
 
     title.textContent =
-      "💙 상태를 기록하고 있어요";
+      "💚 몸 상태를 기록하고 있어요";
 
 
     text.textContent =
-      "몸이 더 이상해지거나 불편해지면 가까운 선생님에게 바로 알려주세요.";
+      "몸이 더 이상하거나 많이 불편해지면 선생님에게 바로 알려주세요.";
 
   }
 
 }
 
 
-
-/* =========================
-   15분 타이머
-========================= */
 
 function startTimer() {
 
@@ -1710,10 +1371,6 @@ function playAlarm() {
 
 
 
-/* =========================
-   저장
-========================= */
-
 async function saveSymptom() {
 
   if (!selectedContext) {
@@ -1733,19 +1390,7 @@ async function saveSymptom() {
   ) {
 
     alert(
-      "지금 느끼는 증상을 하나 이상 골라주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  if (!selectedCondition) {
-
-    alert(
-      "지금 상태를 골라주세요."
+      "지금 느끼는 것을 하나 이상 골라주세요."
     );
 
 
@@ -1812,12 +1457,6 @@ async function saveSymptom() {
 
       symptoms:
         selectedSymptoms,
-
-      condition:
-        selectedCondition,
-
-      conditionLabel:
-        selectedConditionLabel,
 
       recordedBy:
         (
@@ -1919,10 +1558,6 @@ async function saveSymptom() {
 }
 
 
-
-/* =========================
-   뒤로가기
-========================= */
 
 function goBack() {
 
