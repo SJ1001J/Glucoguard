@@ -14,50 +14,116 @@
 
   <style>
 
-    .top-login-card {
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5faff;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: #263238;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 24px 18px 38px;
+    }
+
+
+    /* =========================
+       상단 로고
+    ========================= */
+
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       background: white;
+      border-radius: 50%;
 
-      border-radius: 18px;
+      font-size: 38px;
 
+      box-shadow:
+        0 8px 22px rgba(64, 99, 120, .10);
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: #245978;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: #68869a;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       로그인 정보
+    ========================= */
+
+    .student-login-card {
+      background: white;
+      border-radius: 19px;
       padding: 12px 14px;
-
-      margin-bottom: 16px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 10px;
+      gap: 12px;
+
+      margin-bottom: 15px;
 
       box-shadow:
-        0 5px 14px rgba(60,90,110,.07);
+        0 5px 16px rgba(70, 95, 110, .06);
     }
 
-    .top-login-left {
+    .student-login-left {
       min-width: 0;
     }
 
-    .login-badge {
+    .student-login-badge {
       display: inline-block;
 
-      padding: 4px 8px;
-
+      padding: 5px 9px;
       margin-bottom: 4px;
 
       border-radius: 8px;
 
-      background: #eef5ff;
+      background: #edf5ff;
 
       color: #3974a2;
 
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 800;
     }
 
-    .login-email {
-      font-size: 12px;
-
-      color: #78909c;
+    .student-email {
+      color: #6e8797;
+      font-size: 11px;
 
       overflow: hidden;
       text-overflow: ellipsis;
@@ -65,18 +131,19 @@
     }
 
     .logout-button {
+      flex-shrink: 0;
+
       border: none;
-
-      padding: 9px 11px;
-
       border-radius: 11px;
 
-      background: #fff0f0;
+      padding: 10px 12px;
 
-      color: #98514d;
+      background: #fff0ee;
 
-      font-size: 12px;
-      font-weight: bold;
+      color: #ae554e;
+
+      font-size: 11px;
+      font-weight: 800;
 
       cursor: pointer;
     }
@@ -88,28 +155,25 @@
 
     .profile-card {
       background: white;
-
       border-radius: 24px;
 
-      padding: 18px;
+      padding: 17px;
 
       margin-bottom: 15px;
 
       box-shadow:
-        0 6px 18px rgba(60,90,110,.08);
+        0 6px 18px rgba(70, 95, 110, .07);
     }
 
     .profile-top {
       display: flex;
-
       align-items: center;
-
-      gap: 14px;
+      gap: 13px;
     }
 
     .profile-avatar {
-      width: 72px;
-      height: 72px;
+      width: 70px;
+      height: 70px;
 
       flex-shrink: 0;
 
@@ -119,9 +183,9 @@
 
       border-radius: 22px;
 
-      background: #fff4cf;
+      background: #fff1c8;
 
-      font-size: 40px;
+      font-size: 39px;
     }
 
     .profile-info {
@@ -130,53 +194,44 @@
     }
 
     .profile-label {
+      color: #718b9d;
+      font-size: 11px;
       margin-bottom: 5px;
-
-      font-size: 12px;
-
-      color: #78909c;
     }
 
     .profile-name {
-      margin-bottom: 4px;
-
+      color: #263f50;
       font-size: 21px;
-      font-weight: 800;
-
-      color: #37474f;
+      font-weight: 900;
+      margin-bottom: 4px;
     }
 
     .profile-class {
-      font-size: 13px;
-
-      color: #78909c;
+      color: #7b919e;
+      font-size: 12px;
     }
 
     .profile-edit-button {
       border: none;
+      border-radius: 10px;
 
       padding: 8px 10px;
 
-      border-radius: 11px;
-
       background: #f3f6f8;
 
-      color: #607d8b;
+      color: #5f7888;
 
-      font-size: 11px;
-      font-weight: bold;
+      font-size: 10px;
+      font-weight: 800;
 
       cursor: pointer;
     }
 
-
     .profile-bottom {
       display: grid;
+      grid-template-columns: 1fr 1.4fr;
 
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 9px;
+      gap: 8px;
 
       margin-top: 15px;
     }
@@ -190,284 +245,303 @@
     }
 
     .profile-stat-label {
+      color: #8196a3;
+      font-size: 10px;
       margin-bottom: 4px;
-
-      font-size: 11px;
-
-      color: #78909c;
     }
 
     .profile-stat-value {
-      font-size: 14px;
-      font-weight: 800;
-
-      color: #3974a2;
+      color: #316b94;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.35;
     }
 
 
     /* =========================
-       기록 보기 버튼
+       내 기록
     ========================= */
 
     .records-button {
       width: 100%;
 
+      border: none;
+      border-radius: 17px;
+
       padding: 14px;
 
       margin-bottom: 14px;
 
-      border: none;
-
-      border-radius: 17px;
-
-      background: #edf5ff;
+      background: #eaf3ff;
 
       color: #245978;
 
-      font-size: 15px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 900;
 
       cursor: pointer;
     }
 
 
     /* =========================
-       교직원 모드
+       메뉴
     ========================= */
 
-    .teacher-button {
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu-card {
       width: 100%;
+      min-height: 80px;
 
-      margin-top: 14px;
+      display: flex;
+      align-items: center;
 
-      padding: 13px;
+      gap: 13px;
 
-      border: 1px solid #dce5ea;
+      padding: 14px 15px;
 
-      border-radius: 15px;
+      border: none;
+      border-radius: 21px;
 
-      background: white;
-
-      color: #607d8b;
-
-      font-size: 13px;
-      font-weight: bold;
+      text-align: left;
 
       cursor: pointer;
     }
 
+    .menu-card .icon-box {
+      width: 48px;
+      height: 48px;
 
-    /* =========================
-       교직원 비밀번호 팝업
-    ========================= */
+      flex-shrink: 0;
 
-    .teacher-overlay {
-      display: none;
-
-      position: fixed;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      z-index: 9999;
-
-      padding: 20px;
-
+      display: flex;
       align-items: center;
       justify-content: center;
 
-      background:
-        rgba(39,55,66,.40);
+      background: rgba(255,255,255,.78);
+
+      border-radius: 15px;
+
+      font-size: 25px;
     }
 
-    .teacher-modal {
-      width: 100%;
-
-      max-width: 350px;
-
-      padding: 23px;
-
-      border-radius: 23px;
-
-      background: white;
-
-      box-shadow:
-        0 18px 40px rgba(40,60,70,.22);
+    .menu-text {
+      flex: 1;
+      min-width: 0;
     }
 
-    .teacher-modal h2 {
-      margin: 0 0 7px;
+    .menu-text strong {
+      display: block;
 
-      text-align: center;
+      color: #263238;
 
-      font-size: 20px;
+      font-size: 16px;
+      font-weight: 900;
 
-      color: #37474f;
+      margin-bottom: 5px;
     }
 
-    .teacher-modal p {
-      margin: 0 0 17px;
+    .menu-text span {
+      display: block;
 
-      text-align: center;
+      color: #708794;
 
-      font-size: 12px;
-      line-height: 1.6;
-
-      color: #78909c;
+      font-size: 11px;
+      line-height: 1.45;
     }
 
-    .teacher-password {
-      width: 100%;
-
-      padding: 14px;
-
-      margin-bottom: 12px;
-
-      border: 1px solid #d8e2e8;
-
-      border-radius: 14px;
-
-      font-size: 17px;
-
-      text-align: center;
-
-      outline: none;
+    .arrow {
+      color: #8aa7b7;
+      font-size: 29px;
+      font-weight: 300;
     }
 
-    .teacher-modal-actions {
-      display: grid;
 
-      grid-template-columns:
-        1fr 1fr;
+    /* 식사 */
 
-      gap: 9px;
+    .meal {
+      background: #fff4cf;
     }
 
-    .modal-cancel,
-    .modal-enter {
-      padding: 13px;
 
-      border-radius: 14px;
+    /* 혈당 */
 
-      font-weight: bold;
-
-      cursor: pointer;
+    .glucose {
+      background: #e8f2ff;
     }
 
-    .modal-cancel {
-      border: 1px solid #d8e2e8;
 
-      background: white;
+    /* 활동 */
 
-      color: #607d8b;
+    .exercise {
+      background: #eaf9ee;
     }
 
-    .modal-enter {
-      border: none;
 
-      background: #7562a7;
+    /* 상태 */
 
-      color: white;
+    .symptom {
+      background: #ffeded;
     }
 
+
+    /* 도움 요청 */
+
+    .help {
+      background: #ffe8e5;
+
+      border:
+        2px solid #ffd1cd;
+    }
+
+    .help .menu-text strong {
+      color: #c8443d;
+    }
+
+
+    /* 비상 연락 */
+
+    .emergency-contact {
+      background: #edf1ff;
+
+      border:
+        2px solid #dfe6ff;
+    }
+
+    .emergency-contact .menu-text strong {
+      color: #445fa7;
+    }
+
+
+    /* =========================
+       프로필 설정
+    ========================= */
 
     .profile-setup {
       display: none;
 
-      margin-bottom: 15px;
-
-      padding: 18px;
+      background: white;
 
       border-radius: 22px;
 
-      background: white;
+      padding: 18px;
+
+      margin-bottom: 15px;
 
       box-shadow:
-        0 5px 14px rgba(60,90,110,.07);
+        0 5px 16px rgba(70,95,110,.07);
     }
 
     .profile-setup h2 {
       margin: 0 0 7px;
 
-      font-size: 18px;
-
       color: #37474f;
+
+      font-size: 18px;
     }
 
     .profile-setup p {
-      margin: 0 0 14px;
-
-      font-size: 13px;
-      line-height: 1.5;
+      margin: 0 0 13px;
 
       color: #78909c;
+
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .setup-input {
       width: 100%;
 
-      padding: 13px;
-
-      margin-bottom: 10px;
-
-      border: 1px solid #d8e2e8;
+      border:
+        1px solid #d8e2e8;
 
       border-radius: 13px;
 
-      font-size: 15px;
+      padding: 12px;
+
+      margin-bottom: 9px;
+
+      font-size: 14px;
+
+      outline: none;
+    }
+
+    .setup-input:focus {
+      border-color:
+        #79aeda;
     }
 
     .avatar-grid {
       display: grid;
-
       grid-template-columns:
         repeat(4, 1fr);
 
       gap: 8px;
 
-      margin-bottom: 13px;
+      margin: 3px 0 12px;
     }
 
     .avatar-option {
-      border: 2px solid transparent;
+      border:
+        2px solid transparent;
 
-      padding: 10px;
+      border-radius: 13px;
 
-      border-radius: 14px;
+      padding: 9px;
 
-      background: #f7f9fb;
+      background: #f6f8fa;
 
-      font-size: 26px;
+      font-size: 25px;
 
       cursor: pointer;
     }
 
     .avatar-option.selected {
-      border-color: #79aeda;
+      border-color:
+        #79aeda;
 
-      background: #eaf4ff;
+      background:
+        #eaf4ff;
     }
 
     .setup-button {
       width: 100%;
 
-      padding: 14px;
-
       border: none;
+      border-radius: 13px;
 
-      border-radius: 14px;
+      padding: 13px;
 
       background: #4285b4;
 
       color: white;
 
-      font-size: 15px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 900;
 
       cursor: pointer;
+    }
+
+
+    /* =========================
+       하단 안내
+    ========================= */
+
+    .footer-note {
+      margin-top: 21px;
+
+      padding: 12px;
+
+      text-align: center;
+
+      color: #899da9;
+
+      font-size: 10px;
+      line-height: 1.6;
     }
 
   </style>
@@ -480,9 +554,7 @@
 <div class="container">
 
 
-  <!-- =========================
-       헤더
-  ========================= -->
+  <!-- 로고 -->
 
   <div class="hero">
 
@@ -503,21 +575,19 @@
 
 
 
-  <!-- =========================
-       로그인 정보
-  ========================= -->
+  <!-- 로그인 -->
 
-  <div class="top-login-card">
+  <div class="student-login-card">
 
-    <div class="top-login-left">
+    <div class="student-login-left">
 
-      <div class="login-badge">
+      <div class="student-login-badge">
         👧 학생 로그인
       </div>
 
       <div
         id="loginEmail"
-        class="login-email">
+        class="student-email">
 
         로그인 확인 중...
 
@@ -538,19 +608,19 @@
 
 
 
-  <!-- =========================
-       신규 프로필 설정
-  ========================= -->
+  <!-- 프로필 설정 -->
 
   <div
     id="profileSetup"
     class="profile-setup">
 
-    <h2>
+
+    <h2 id="profileSetupTitle">
       🌟 나의 Gluco 친구 만들기
     </h2>
 
-    <p>
+
+    <p id="profileSetupDescription">
       이름과 반, 함께할 친구를 골라주세요.
     </p>
 
@@ -573,7 +643,9 @@
 
     <div class="avatar-grid">
 
+
       <button
+        type="button"
         class="avatar-option selected"
         data-avatar="🐻"
         onclick="selectAvatar(this)">
@@ -582,7 +654,9 @@
 
       </button>
 
+
       <button
+        type="button"
         class="avatar-option"
         data-avatar="🐱"
         onclick="selectAvatar(this)">
@@ -591,7 +665,9 @@
 
       </button>
 
+
       <button
+        type="button"
         class="avatar-option"
         data-avatar="🐰"
         onclick="selectAvatar(this)">
@@ -600,7 +676,9 @@
 
       </button>
 
+
       <button
+        type="button"
         class="avatar-option"
         data-avatar="🐶"
         onclick="selectAvatar(this)">
@@ -609,24 +687,25 @@
 
       </button>
 
+
     </div>
 
 
     <button
+      id="profileSaveButton"
       class="setup-button"
-      onclick="saveNewProfile()">
+      onclick="saveProfile()">
 
       친구 만들기 ✨
 
     </button>
 
+
   </div>
 
 
 
-  <!-- =========================
-       프로필
-  ========================= -->
+  <!-- 프로필 -->
 
   <div
     id="profileCard"
@@ -724,9 +803,7 @@
 
 
 
-  <!-- =========================
-       기록 보기
-  ========================= -->
+  <!-- 기록 보기 -->
 
   <button
     id="recordsButton"
@@ -740,12 +817,12 @@
 
 
 
-  <!-- =========================
-       메뉴
-  ========================= -->
+  <!-- 메뉴 -->
 
   <div class="menu">
 
+
+    <!-- 먹은 거 -->
 
     <button
       class="menu-card meal"
@@ -775,6 +852,8 @@
 
 
 
+    <!-- 혈당 -->
+
     <button
       class="menu-card glucose"
       onclick="location.href='glucose.html'">
@@ -803,6 +882,8 @@
 
 
 
+    <!-- 활동 -->
+
     <button
       class="menu-card exercise"
       onclick="location.href='activity.html'">
@@ -814,7 +895,7 @@
       <div class="menu-text">
 
         <strong>
-          활동 기록
+          체육·활동 기록
         </strong>
 
         <span>
@@ -831,18 +912,20 @@
 
 
 
+    <!-- 상태 -->
+
     <button
       class="menu-card symptom"
       onclick="location.href='symptom.html'">
 
       <div class="icon-box">
-        🙂
+        🙂 
       </div>
 
       <div class="menu-text">
 
         <strong>
-          오늘 상태
+          몸 상태 기록
         </strong>
 
         <span>
@@ -859,8 +942,10 @@
 
 
 
+    <!-- 도움 요청 -->
+
     <button
-      class="menu-card emergency"
+      class="menu-card help"
       onclick="location.href='symptom.html'">
 
       <div class="icon-box">
@@ -886,85 +971,44 @@
     </button>
 
 
+
+    <!-- 비상연락처 -->
+
+    <button
+      class="menu-card emergency-contact"
+      onclick="location.href='emergency.html'">
+
+      <div class="icon-box">
+        📞
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          비상연락처
+        </strong>
+
+        <span>
+          보호자·보건실에 바로 전화할 수 있어요
+        </span>
+
+      </div>
+
+      <div class="arrow">
+        ›
+      </div>
+
+    </button>
+
+
   </div>
 
 
 
-  <button
-    class="teacher-button"
-    onclick="openTeacherMode()">
+  <div class="footer-note">
 
-    🔒 교직원 모드 열기
-
-  </button>
-
-
-
-  <p class="footer-text">
-
-    GlucoGuard는 학교생활을 돕기 위한 교육용 프로토타입이에요.<br>
-    실제 치료와 대응은 개인별 관리계획과 의료진 지침을 따라주세요.
-
-  </p>
-
-
-</div>
-
-
-
-<!-- =========================
-     교직원 데모 모드
-========================= -->
-
-<div
-  id="teacherOverlay"
-  class="teacher-overlay">
-
-
-  <div class="teacher-modal">
-
-
-    <h2>
-      🔒 교직원 모드
-    </h2>
-
-
-    <p>
-      데모용 교직원 비밀번호를 입력해주세요.
-    </p>
-
-
-    <input
-      id="teacherPassword"
-      class="teacher-password"
-      type="password"
-      maxlength="10"
-      placeholder="비밀번호">
-
-
-    <div class="teacher-modal-actions">
-
-
-      <button
-        class="modal-cancel"
-        onclick="closeTeacherMode()">
-
-        취소
-
-      </button>
-
-
-      <button
-        class="modal-enter"
-        onclick="enterTeacherMode()">
-
-        열기
-
-      </button>
-
-
-    </div>
-
+    GlucoGuard는 학교생활을 돕기 위한 교육용 프로토타입입니다.<br>
+    실제 치료와 응급대응은 학생의 개별 관리계획과 의료진의 지침을 따라주세요.
 
   </div>
 
@@ -978,8 +1022,9 @@
 
 <script>
 
+
 /* =========================
-   Supabase
+   Supabase 연결
 ========================= */
 
 const SUPABASE_URL =
@@ -1007,10 +1052,6 @@ let currentProfile =
 
 let selectedAvatar =
   "🐻";
-
-
-let isEditingProfile =
-  false;
 
 
 
@@ -1080,19 +1121,13 @@ async function checkLogin() {
     "학생 계정";
 
 
-  /*
-    역할 확인
-  */
-
   const {
     data: profile,
     error: profileError
   } =
     await supabaseClient
       .from("profiles")
-      .select(
-        "role"
-      )
+      .select("role")
       .eq(
         "id",
         currentUser.id
@@ -1110,8 +1145,8 @@ async function checkLogin() {
 
 
   /*
-    교직원이 index.html로 들어왔으면
-    자동으로 교직원 관리 화면으로 이동
+    교직원 계정이 학생 화면에 접근하면
+    관리 화면으로 이동
   */
 
   if (
@@ -1177,10 +1212,6 @@ async function loadProfile() {
   }
 
 
-  /*
-    프로필 없는 신규 학생
-  */
-
   if (!data) {
 
     currentProfile =
@@ -1206,7 +1237,7 @@ async function loadProfile() {
 
 
 /* =========================
-   프로필 표시
+   프로필 카드
 ========================= */
 
 function showProfileCard() {
@@ -1254,7 +1285,7 @@ function showProfileCard() {
 
 
 /* =========================
-   프로필 설정 화면
+   프로필 설정
 ========================= */
 
 function showProfileSetup() {
@@ -1277,12 +1308,24 @@ function showProfileSetup() {
     "block";
 
 
-  if (
-    currentProfile
-  ) {
+  if (currentProfile) {
 
-    isEditingProfile =
-      true;
+    document.getElementById(
+      "profileSetupTitle"
+    ).textContent =
+      "✏️ 내 정보 수정";
+
+
+    document.getElementById(
+      "profileSetupDescription"
+    ).textContent =
+      "이름, 반 또는 Gluco 친구를 바꿀 수 있어요.";
+
+
+    document.getElementById(
+      "profileSaveButton"
+    ).textContent =
+      "수정 완료";
 
 
     document.getElementById(
@@ -1304,12 +1347,24 @@ function showProfileSetup() {
       "🐻";
 
 
-    updateAvatarSelection();
-
   } else {
 
-    isEditingProfile =
-      false;
+    document.getElementById(
+      "profileSetupTitle"
+    ).textContent =
+      "🌟 나의 Gluco 친구 만들기";
+
+
+    document.getElementById(
+      "profileSetupDescription"
+    ).textContent =
+      "이름과 반, 함께할 친구를 골라주세요.";
+
+
+    document.getElementById(
+      "profileSaveButton"
+    ).textContent =
+      "친구 만들기 ✨";
 
 
     document.getElementById(
@@ -1327,17 +1382,17 @@ function showProfileSetup() {
     selectedAvatar =
       "🐻";
 
-
-    updateAvatarSelection();
-
   }
+
+
+  updateAvatarSelection();
 
 }
 
 
 
 /* =========================
-   프로필 수정
+   수정
 ========================= */
 
 function editProfile() {
@@ -1349,7 +1404,7 @@ function editProfile() {
 
 
 /* =========================
-   캐릭터 선택
+   아바타 선택
 ========================= */
 
 function selectAvatar(
@@ -1377,22 +1432,11 @@ function updateAvatarSelection() {
   buttons.forEach(
     function(button) {
 
-      if (
+      button.classList.toggle(
+        "selected",
         button.dataset.avatar ===
         selectedAvatar
-      ) {
-
-        button.classList.add(
-          "selected"
-        );
-
-      } else {
-
-        button.classList.remove(
-          "selected"
-        );
-
-      }
+      );
 
     }
   );
@@ -1405,7 +1449,7 @@ function updateAvatarSelection() {
    프로필 저장
 ========================= */
 
-async function saveNewProfile() {
+async function saveProfile() {
 
   const nickname =
     document.getElementById(
@@ -1443,13 +1487,7 @@ async function saveNewProfile() {
   }
 
 
-  /*
-    신규 프로필
-  */
-
-  if (
-    !currentProfile
-  ) {
+  if (!currentProfile) {
 
     const {
       error
@@ -1496,11 +1534,9 @@ async function saveNewProfile() {
 
     }
 
+
   } else {
 
-    /*
-      기존 프로필 수정
-    */
 
     const {
       error
@@ -1555,7 +1591,7 @@ async function saveNewProfile() {
 
 
 /* =========================
-   오늘 기록 개수
+   오늘 기록 수
 ========================= */
 
 async function loadTodayRecordCount() {
@@ -1638,86 +1674,9 @@ async function loadTodayRecordCount() {
   document.getElementById(
     "todayRecordCount"
   ).textContent =
-    (count || 0) +
+    (count || 0)
+    +
     "회";
-
-}
-
-
-
-/* =========================
-   교직원 데모 모드
-========================= */
-
-function openTeacherMode() {
-
-  document.getElementById(
-    "teacherPassword"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "teacherOverlay"
-  ).style.display =
-    "flex";
-
-
-  setTimeout(
-    function() {
-
-      document.getElementById(
-        "teacherPassword"
-      ).focus();
-
-    },
-    100
-  );
-
-}
-
-
-
-function closeTeacherMode() {
-
-  document.getElementById(
-    "teacherOverlay"
-  ).style.display =
-    "none";
-
-}
-
-
-
-function enterTeacherMode() {
-
-  const password =
-    document.getElementById(
-      "teacherPassword"
-    ).value;
-
-
-  /*
-    데모용
-    실제 보안은 Supabase role 기반으로 처리
-  */
-
-  if (
-    password !== "1001"
-  ) {
-
-    alert(
-      "교직원 비밀번호가 맞지 않아요."
-    );
-
-
-    return;
-
-  }
-
-
-  location.href =
-    "teacher.html";
 
 }
 
