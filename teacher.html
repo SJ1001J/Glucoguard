@@ -3,15 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>교직원 관리 - GlucoGuard</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -19,13 +15,11 @@
     body {
       margin: 0;
       background: #f4f8fb;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-
       color: #263238;
     }
 
@@ -38,104 +32,73 @@
     .page {
       width: 100%;
       max-width: 760px;
-
       margin: 0 auto;
-
       padding: 22px 18px 40px;
     }
 
-
-    /* =========================
-       상단
-    ========================= */
+    /* 상단 */
 
     .top-card {
       background: white;
-
       border-radius: 24px;
-
       padding: 20px;
-
       margin-bottom: 16px;
-
-      box-shadow:
-        0 6px 20px rgba(57,79,94,.07);
+      box-shadow: 0 6px 20px rgba(57,79,94,.07);
     }
 
     .top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-
       gap: 12px;
     }
 
     .brand-icon {
       width: 52px;
       height: 52px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 17px;
-
       background: #eef4ff;
-
       font-size: 27px;
     }
 
     .brand h1 {
       margin: 0;
-
       color: #314f68;
-
       font-size: 22px;
       font-weight: 900;
     }
 
     .brand p {
       margin: 4px 0 0;
-
       color: #8194a1;
-
       font-size: 11px;
     }
 
     .logout-button {
       border: none;
-
       border-radius: 11px;
-
       padding: 10px 12px;
-
       background: #f4f6f8;
-
       color: #657b88;
-
       font-size: 11px;
       font-weight: 800;
-
       cursor: pointer;
     }
 
     .teacher-info {
       margin-top: 15px;
-
       padding-top: 14px;
-
-      border-top:
-        1px solid #edf1f3;
-
+      border-top: 1px solid #edf1f3;
       color: #718793;
-
       font-size: 12px;
     }
 
@@ -143,137 +106,87 @@
       color: #3e6179;
     }
 
-
-    /* =========================
-       내 연락처
-    ========================= */
+    /* 연락처 */
 
     .teacher-phone-box {
       margin-top: 13px;
-
       padding: 13px;
-
       background: #f7f9fb;
-
       border-radius: 15px;
     }
 
     .teacher-phone-label {
       margin-bottom: 7px;
-
       color: #607d8b;
-
       font-size: 11px;
       font-weight: 800;
     }
 
     .teacher-phone-row {
       display: flex;
-
       gap: 8px;
     }
 
     .teacher-phone-input {
       flex: 1;
       min-width: 0;
-
       padding: 10px 11px;
-
-      border:
-        1px solid #d8e2e8;
-
+      border: 1px solid #d8e2e8;
       border-radius: 11px;
-
       font-size: 13px;
-
       outline: none;
-    }
-
-    .teacher-phone-input:focus {
-      border-color: #76a9cc;
     }
 
     .teacher-phone-save {
       flex-shrink: 0;
-
       border: none;
-
       border-radius: 11px;
-
       padding: 10px 13px;
-
       background: #4285b4;
-
       color: white;
-
       font-size: 11px;
       font-weight: 900;
-
       cursor: pointer;
     }
 
     .teacher-phone-help {
       margin-top: 6px;
-
       color: #8a9ba5;
-
       font-size: 10px;
-      line-height: 1.5;
     }
 
-
-    /* =========================
-       중요 기능
-    ========================= */
+    /* 핵심 기능 */
 
     .main-tools {
       display: flex;
       flex-direction: column;
-
       gap: 11px;
-
       margin-bottom: 14px;
     }
 
     .main-tool-button {
       width: 100%;
-
       min-height: 108px;
-
       display: flex;
       align-items: center;
-
       gap: 15px;
-
       padding: 18px;
-
       border: none;
-
       border-radius: 22px;
-
       text-align: left;
-
       cursor: pointer;
-
-      box-shadow:
-        0 5px 16px rgba(57,79,94,.06);
+      box-shadow: 0 5px 16px rgba(57,79,94,.06);
     }
 
     .main-tool-icon {
       width: 58px;
       height: 58px;
-
       flex-shrink: 0;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 17px;
-
-      background:
-        rgba(255,255,255,.78);
-
+      background: rgba(255,255,255,.78);
       font-size: 31px;
     }
 
@@ -283,7 +196,6 @@
 
     .main-tool-title {
       margin-bottom: 6px;
-
       font-size: 18px;
       font-weight: 900;
     }
@@ -294,32 +206,22 @@
     }
 
     .main-tool-arrow {
-      flex-shrink: 0;
-
       font-size: 25px;
-
       opacity: .55;
     }
 
     .emergency-tool {
       background: #ffe7e3;
-
       color: #a7443d;
-
-      border:
-        1px solid #ffd0ca;
+      border: 1px solid #ffd0ca;
     }
 
     .education-tool {
       background: #e8f2ff;
-
       color: #35627f;
     }
 
-
-    /* =========================
-       담당 학생 설정
-    ========================= */
+    /* 담당 학생 설정 */
 
     .management-row {
       margin-bottom: 14px;
@@ -327,41 +229,26 @@
 
     .student-setting-button {
       width: 100%;
-
       display: flex;
       align-items: center;
-
       gap: 12px;
-
       padding: 14px;
-
       border: none;
-
       border-radius: 17px;
-
       background: #e8f7f1;
-
       color: #3e7462;
-
       text-align: left;
-
       cursor: pointer;
     }
 
     .setting-icon {
       width: 42px;
       height: 42px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      flex-shrink: 0;
-
       border-radius: 13px;
-
       background: white;
-
       font-size: 21px;
     }
 
@@ -371,65 +258,46 @@
 
     .setting-title {
       margin-bottom: 3px;
-
       font-size: 13px;
       font-weight: 900;
     }
 
     .setting-description {
       font-size: 10px;
-
       opacity: .8;
     }
 
     .setting-arrow {
       font-size: 22px;
-
       opacity: .55;
     }
 
-
-    /* =========================
-       요약
-    ========================= */
+    /* 요약 */
 
     .summary-grid {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-
       margin-bottom: 16px;
     }
 
     .summary-card {
       background: white;
-
       border: none;
-
       border-radius: 19px;
-
       padding: 16px;
-
       text-align: left;
-
-      box-shadow:
-        0 4px 14px rgba(57,79,94,.05);
+      box-shadow: 0 4px 14px rgba(57,79,94,.05);
     }
 
     .summary-label {
       margin-bottom: 6px;
-
       color: #8295a0;
-
       font-size: 11px;
     }
 
     .summary-value {
       color: #365e78;
-
       font-size: 24px;
       font-weight: 900;
     }
@@ -444,49 +312,32 @@
 
     .summary-click-hint {
       margin-top: 5px;
-
       color: #c77a76;
-
       font-size: 9px;
       font-weight: 700;
     }
 
-
-    /* =========================
-       학생 목록 토글
-    ========================= */
+    /* 학생 목록 */
 
     .student-list-toggle {
       width: 100%;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
-
       padding: 15px 16px;
-
       margin-bottom: 11px;
-
       border: none;
-
       border-radius: 17px;
-
       background: white;
-
       color: #455f70;
-
       cursor: pointer;
-
-      box-shadow:
-        0 4px 14px rgba(57,79,94,.05);
+      box-shadow: 0 4px 14px rgba(57,79,94,.05);
     }
 
     .student-list-toggle-left {
       display: flex;
       align-items: center;
-
       gap: 9px;
     }
 
@@ -497,27 +348,20 @@
 
     .student-list-toggle-sub {
       margin-top: 2px;
-
       color: #8a9ba5;
-
       font-size: 10px;
       text-align: left;
     }
 
     .student-list-toggle-arrow {
       color: #78909c;
-
       font-size: 19px;
       font-weight: 900;
-
-      transition:
-        transform .2s ease;
+      transition: transform .2s ease;
     }
 
-    .student-list-toggle.open
-    .student-list-toggle-arrow {
-      transform:
-        rotate(180deg);
+    .student-list-toggle.open .student-list-toggle-arrow {
+      transform: rotate(180deg);
     }
 
     .student-list-wrapper {
@@ -528,56 +372,38 @@
       display: block;
     }
 
-
-    /* =========================
-       학생 카드
-    ========================= */
+    /* 학생 카드 */
 
     .student-card {
       background: white;
-
-      border:
-        2px solid transparent;
-
+      border: 2px solid transparent;
       border-radius: 23px;
-
       padding: 17px;
-
       margin-bottom: 13px;
-
-      box-shadow:
-        0 5px 17px rgba(57,79,94,.06);
+      box-shadow: 0 5px 17px rgba(57,79,94,.06);
     }
 
     .student-card.needs-attention {
       border-color: #ffb7b1;
-
       background: #fffdfd;
     }
 
     .student-head {
       display: flex;
       align-items: center;
-
       gap: 12px;
-
       margin-bottom: 13px;
     }
 
     .student-avatar {
       width: 56px;
       height: 56px;
-
       flex-shrink: 0;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 18px;
-
       background: #fff1c8;
-
       font-size: 31px;
     }
 
@@ -587,99 +413,73 @@
 
     .student-name {
       margin-bottom: 3px;
-
       color: #344e5e;
-
       font-size: 18px;
       font-weight: 900;
     }
 
     .student-class {
       color: #81939f;
-
       font-size: 11px;
     }
 
     .attention-badge,
     .ok-badge {
-      flex-shrink: 0;
-
       padding: 6px 9px;
-
       border-radius: 10px;
-
       font-size: 10px;
       font-weight: 900;
     }
 
     .attention-badge {
       background: #ffe9e7;
-
       color: #c84d46;
     }
 
     .ok-badge {
       background: #edf7ef;
-
       color: #4c8560;
     }
 
     .alert-reason {
       margin-bottom: 12px;
-
       padding: 10px 11px;
-
       border-radius: 13px;
-
       background: #fff0ee;
-
       color: #b44e47;
-
       font-size: 11px;
       line-height: 1.55;
     }
 
     .record-grid {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
-
       margin-bottom: 13px;
     }
 
     .record-box {
       min-height: 70px;
-
       padding: 11px;
-
       border-radius: 14px;
-
       background: #f6f8fa;
     }
 
     .record-box.status-box {
       grid-column: 1 / -1;
-
       background: #eaf8f2;
     }
 
     .record-label {
       margin-bottom: 5px;
-
       color: #8798a2;
-
       font-size: 10px;
     }
 
     .record-value {
       color: #496675;
-
       font-size: 12px;
       font-weight: 800;
-
       line-height: 1.5;
     }
 
@@ -689,216 +489,147 @@
 
     .student-actions {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
     }
 
     .action-button {
       border: none;
-
       border-radius: 13px;
-
       padding: 12px 8px;
-
       font-size: 11px;
       font-weight: 900;
-
       cursor: pointer;
     }
 
     .records-action {
       background: #eaf3ff;
-
       color: #2d6893;
     }
 
     .symptom-action {
       background: #e8f7f1;
-
       color: #367662;
     }
 
     .contact-action {
       background: #eef0ff;
-
       color: #5669a4;
     }
 
     .password-action {
       background: #f3f5f6;
-
       color: #687d88;
     }
 
     .empty-state {
       background: white;
-
       border-radius: 20px;
-
       padding: 28px 18px;
-
       text-align: center;
-
       color: #8396a1;
-
       font-size: 12px;
       line-height: 1.7;
     }
 
-
-    /* =========================
-       모달
-    ========================= */
+    /* 모달 */
 
     .modal-overlay {
       position: fixed;
-
       inset: 0;
-
       z-index: 1000;
-
       display: none;
-
       align-items: center;
       justify-content: center;
-
       padding: 18px;
-
-      background:
-        rgba(30,45,55,.46);
+      background: rgba(30,45,55,.46);
     }
 
     .modal {
       width: 100%;
       max-width: 500px;
-
       max-height: 88vh;
-
       overflow-y: auto;
-
       background: white;
-
       border-radius: 24px;
-
       padding: 19px;
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.18);
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
     }
 
     .modal-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-
       gap: 12px;
-
       margin-bottom: 16px;
     }
 
     .modal-title {
       margin: 0;
-
       color: #344e5e;
-
       font-size: 19px;
       font-weight: 900;
     }
 
     .modal-subtitle {
       margin: 4px 0 0;
-
       color: #82939d;
-
       font-size: 11px;
-      line-height: 1.5;
     }
 
     .close-button {
       width: 35px;
       height: 35px;
-
-      flex-shrink: 0;
-
       border: none;
-
       border-radius: 11px;
-
       background: #f4f6f7;
-
       color: #6b7e89;
-
       font-size: 18px;
-
       cursor: pointer;
     }
 
     .primary-button {
       width: 100%;
-
       border: none;
-
       border-radius: 13px;
-
       padding: 13px;
-
       background: #4285b4;
-
       color: white;
-
       font-size: 14px;
       font-weight: 900;
-
       cursor: pointer;
     }
 
-
-    /* =========================
-       확인 필요
-    ========================= */
+    /* 확인 필요 */
 
     .attention-list {
       display: flex;
       flex-direction: column;
-
       gap: 10px;
     }
 
     .attention-item {
       padding: 14px;
-
-      border:
-        1px solid #ffd5d1;
-
+      border: 1px solid #ffd5d1;
       border-radius: 17px;
-
       background: #fff9f8;
     }
 
     .attention-item-head {
       display: flex;
       align-items: center;
-
       gap: 10px;
-
       margin-bottom: 10px;
     }
 
     .attention-avatar {
       width: 42px;
       height: 42px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 13px;
-
       background: #fff1c8;
-
       font-size: 23px;
     }
 
@@ -908,133 +639,92 @@
 
     .attention-name {
       color: #425d6c;
-
       font-size: 14px;
       font-weight: 900;
     }
 
     .attention-class {
-      margin-top: 2px;
-
       color: #8b9aa3;
-
       font-size: 10px;
     }
 
     .attention-reason-box {
       padding: 10px;
-
       margin-bottom: 9px;
-
       border-radius: 12px;
-
       background: #ffeceb;
-
       color: #b44e47;
-
       font-size: 11px;
       line-height: 1.6;
     }
 
     .attention-status-box {
       padding: 10px;
-
       margin-bottom: 9px;
-
       border-radius: 12px;
-
       background: #edf8f4;
-
       color: #467465;
-
       font-size: 11px;
       line-height: 1.6;
     }
 
     .attention-time {
       margin-bottom: 10px;
-
       color: #8b9aa3;
-
       font-size: 10px;
     }
 
     .attention-record-button {
       width: 100%;
-
       border: none;
-
       border-radius: 11px;
-
       padding: 11px;
-
       background: #eaf3ff;
-
       color: #356b91;
-
       font-size: 11px;
       font-weight: 900;
-
       cursor: pointer;
     }
 
-
-    /* =========================
-       담당 학생 설정
-    ========================= */
+    /* 담당 학생 선택 */
 
     .student-select-list {
       display: flex;
       flex-direction: column;
-
       gap: 8px;
-
       margin-bottom: 15px;
     }
 
     .student-select-card {
       display: flex;
       align-items: center;
-
       gap: 11px;
-
       padding: 12px;
-
-      border:
-        2px solid transparent;
-
+      border: 2px solid transparent;
       border-radius: 15px;
-
       background: #f6f8fa;
-
       cursor: pointer;
     }
 
     .student-select-card.selected {
       border-color: #80c4ad;
-
       background: #eaf8f2;
     }
 
     .student-checkbox {
       width: 20px;
       height: 20px;
-
       accent-color: #4d9d82;
     }
 
     .select-avatar {
       width: 42px;
       height: 42px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 13px;
-
       background: white;
-
       font-size: 23px;
     }
 
@@ -1043,117 +733,80 @@
     }
 
     .select-name {
-      margin-bottom: 3px;
-
       color: #486370;
-
       font-size: 13px;
       font-weight: 900;
     }
 
     .select-class {
       color: #8598a3;
-
       font-size: 10px;
     }
 
     .selection-note {
       margin-bottom: 13px;
-
       padding: 11px;
-
       border-radius: 13px;
-
       background: #eef8f4;
-
       color: #547567;
-
       font-size: 10px;
       line-height: 1.6;
     }
 
-
-    /* =========================
-       교육
-    ========================= */
+    /* 교육 */
 
     .education-list {
       display: flex;
       flex-direction: column;
-
       gap: 9px;
     }
 
     .education-card {
       padding: 13px;
-
       border-radius: 15px;
-
       background: #f5f8fb;
     }
 
     .education-title {
       margin-bottom: 5px;
-
       color: #3e6179;
-
       font-size: 13px;
       font-weight: 900;
     }
 
     .education-text {
       color: #6e828e;
-
       font-size: 11px;
       line-height: 1.65;
     }
 
     .education-important {
       margin-top: 13px;
-
       padding: 12px;
-
       border-radius: 14px;
-
       background: #eaf3ff;
-
       color: #45677f;
-
       font-size: 10px;
       line-height: 1.6;
     }
 
-
-    /* =========================
-       연락처 / 비밀번호
-    ========================= */
+    /* 연락처 */
 
     .modal-input,
     .modal-select {
       width: 100%;
-
       padding: 12px;
-
       margin-bottom: 11px;
-
-      border:
-        1px solid #d8e2e8;
-
+      border: 1px solid #d8e2e8;
       border-radius: 13px;
-
       background: white;
-
       font-size: 14px;
     }
 
     .input-label {
       display: block;
-
-      margin:
-        0 0 5px 2px;
-
+      margin: 0 0 5px 2px;
       color: #607d8b;
-
       font-size: 11px;
       font-weight: 800;
     }
@@ -1161,15 +814,10 @@
     .modal-contact-card {
       display: flex;
       align-items: center;
-
       gap: 10px;
-
       padding: 11px;
-
       margin-bottom: 8px;
-
       border-radius: 14px;
-
       background: #f7f9fa;
     }
 
@@ -1178,40 +826,29 @@
     }
 
     .modal-contact-name {
+      color: #496574;
       font-size: 12px;
       font-weight: 900;
-
-      color: #496574;
     }
 
     .modal-contact-phone {
       margin-top: 3px;
-
       color: #8798a2;
-
       font-size: 10px;
     }
 
     .contact-delete-button {
       border: none;
-
       border-radius: 9px;
-
       padding: 8px 9px;
-
       background: #fff0ee;
-
       color: #b6534d;
-
       font-size: 10px;
       font-weight: 800;
-
       cursor: pointer;
     }
 
-
     @media (max-width: 520px) {
-
       .teacher-phone-row {
         flex-direction: column;
       }
@@ -1219,35 +856,15 @@
       .student-actions {
         grid-template-columns: 1fr;
       }
-
-      .main-tool-button {
-        min-height: 98px;
-      }
-
-      .main-tool-icon {
-        width: 52px;
-        height: 52px;
-
-        font-size: 28px;
-      }
-
-      .main-tool-title {
-        font-size: 16px;
-      }
-
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 <div class="page">
-
-
-  <!-- 상단 -->
 
   <div class="top-card">
 
@@ -1260,26 +877,16 @@
         </div>
 
         <div>
-
-          <h1>
-            GlucoGuard 관리
-          </h1>
-
-          <p>
-            학생의 기록과 상태를 안전하게 관리해요.
-          </p>
-
+          <h1>GlucoGuard 관리</h1>
+          <p>학생의 기록과 상태를 안전하게 관리해요.</p>
         </div>
 
       </div>
 
-
       <button
         class="logout-button"
         onclick="logout()">
-
         로그아웃
-
       </button>
 
     </div>
@@ -1288,9 +895,7 @@
     <div
       id="teacherInfo"
       class="teacher-info">
-
       교직원 정보를 불러오는 중...
-
     </div>
 
 
@@ -1300,7 +905,6 @@
         📞 내 연락처
       </div>
 
-
       <div class="teacher-phone-row">
 
         <input
@@ -1309,17 +913,13 @@
           type="tel"
           placeholder="예: 010-1234-5678">
 
-
         <button
           class="teacher-phone-save"
           onclick="saveTeacherPhone()">
-
           저장
-
         </button>
 
       </div>
-
 
       <div class="teacher-phone-help">
         담당 학생의 연락 화면에 이 번호가 표시됩니다.
@@ -1330,15 +930,13 @@
   </div>
 
 
-
-  <!-- 중요 기능 -->
+  <!-- 핵심 기능 -->
 
   <div class="main-tools">
 
-
     <button
       class="main-tool-button emergency-tool"
-      onclick="location.href='emergency-guide.html'">
+      onclick="goEmergencyGuide()">
 
       <div class="main-tool-icon">
         🚨
@@ -1361,7 +959,6 @@
       </div>
 
     </button>
-
 
 
     <button
@@ -1390,9 +987,7 @@
 
     </button>
 
-
   </div>
-
 
 
   <!-- 담당 학생 설정 -->
@@ -1428,7 +1023,6 @@
   </div>
 
 
-
   <!-- 요약 -->
 
   <div class="summary-grid">
@@ -1442,9 +1036,7 @@
       <div
         id="studentCount"
         class="summary-value">
-
         0
-
       </div>
 
     </div>
@@ -1461,9 +1053,7 @@
       <div
         id="attentionCount"
         class="summary-value">
-
         0
-
       </div>
 
       <div class="summary-click-hint">
@@ -1473,7 +1063,6 @@
     </button>
 
   </div>
-
 
 
   <!-- 학생 목록 -->
@@ -1494,9 +1083,7 @@
         <div
           id="studentListToggleTitle"
           class="student-list-toggle-title">
-
           담당 학생 0명
-
         </div>
 
         <div class="student-list-toggle-sub">
@@ -1507,7 +1094,6 @@
 
     </div>
 
-
     <div class="student-list-toggle-arrow">
       ▼
     </div>
@@ -1515,24 +1101,15 @@
   </button>
 
 
-
   <div
     id="studentListWrapper"
     class="student-list-wrapper">
 
-    <div id="studentList">
-
-      <div class="empty-state">
-        학생 정보를 불러오는 중입니다.
-      </div>
-
-    </div>
+    <div id="studentList"></div>
 
   </div>
 
-
 </div>
-
 
 
 <!-- 확인 필요 -->
@@ -1546,28 +1123,21 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           ⚠️ 확인 필요
         </h2>
-
         <p class="modal-subtitle">
           최근 기록에서 확인이 필요한 학생입니다.
         </p>
-
       </div>
-
 
       <button
         class="close-button"
         onclick="closeAttentionModal()">
-
         ×
-
       </button>
 
     </div>
-
 
     <div
       id="attentionList"
@@ -1579,8 +1149,7 @@
 </div>
 
 
-
-<!-- 담당 학생 설정 -->
+<!-- 담당 학생 -->
 
 <div
   id="studentSettingOverlay"
@@ -1591,24 +1160,18 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           👥 담당 학생 설정
         </h2>
-
         <p class="modal-subtitle">
           내가 담당할 학생을 선택해주세요.
         </p>
-
       </div>
-
 
       <button
         class="close-button"
         onclick="closeStudentSetting()">
-
         ×
-
       </button>
 
     </div>
@@ -1616,16 +1179,13 @@
 
     <div class="selection-note">
       한 학생을 여러 선생님이 함께 담당할 수 있습니다.
-      여기서 변경하는 내용은 내 담당 학생 연결에만 적용됩니다.
+      변경 내용은 내 담당 학생 연결에만 적용됩니다.
     </div>
 
 
     <div
       id="studentSelectList"
       class="student-select-list">
-
-      학생 목록을 불러오는 중입니다.
-
     </div>
 
 
@@ -1633,9 +1193,7 @@
       id="saveStudentSelectionButton"
       class="primary-button"
       onclick="saveStudentSelection()">
-
       선택 저장
-
     </button>
 
   </div>
@@ -1643,8 +1201,7 @@
 </div>
 
 
-
-<!-- 교직원 교육 -->
+<!-- 교육 -->
 
 <div
   id="educationOverlay"
@@ -1655,24 +1212,18 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           📘 교직원 교육
         </h2>
-
         <p class="modal-subtitle">
           학교에서 꼭 알아야 할 핵심 내용
         </p>
-
       </div>
-
 
       <button
         class="close-button"
         onclick="closeEducation()">
-
         ×
-
       </button>
 
     </div>
@@ -1681,89 +1232,68 @@
     <div class="education-list">
 
       <div class="education-card">
-
         <div class="education-title">
           💙 제1형 당뇨란?
         </div>
-
         <div class="education-text">
-          췌장에서 인슐린을 충분히 만들지 못해
-          지속적인 인슐린 관리가 필요한 질환입니다.
+          인슐린을 지속적으로 관리해야 하는 질환입니다.
           학교에서도 학생의 개별 관리계획에 따라 지원해야 합니다.
         </div>
-
       </div>
 
 
       <div class="education-card">
-
         <div class="education-title">
-          🩸 저혈당에서 볼 수 있는 모습
+          🩸 저혈당
         </div>
-
         <div class="education-text">
           식은땀, 손 떨림, 어지러움, 창백함, 졸림,
           집중력 저하 또는 평소와 다른 행동 등이 나타날 수 있습니다.
         </div>
-
       </div>
 
 
       <div class="education-card">
-
         <div class="education-title">
-          🔺 고혈당에서 볼 수 있는 모습
+          🔺 고혈당
         </div>
-
         <div class="education-text">
           심한 갈증, 잦은 소변, 피로 등이 나타날 수 있습니다.
-          구토, 호흡 이상, 의식 변화 등이 있으면 빠른 확인이 필요합니다.
+          구토나 의식 변화가 있으면 빠르게 확인해야 합니다.
         </div>
-
       </div>
 
 
       <div class="education-card">
-
         <div class="education-title">
           🏃 체육시간
         </div>
-
         <div class="education-text">
-          운동 전후에는 학생의 개별 계획에 따라
-          혈당 확인이나 간식이 필요할 수 있습니다.
-          몸이 이상하다고 말하면 활동을 계속하도록 강요하지 않습니다.
+          운동 전후에는 개별 계획에 따라 혈당 확인이나
+          간식이 필요할 수 있습니다.
         </div>
-
       </div>
 
 
       <div class="education-card">
-
         <div class="education-title">
           🍱 급식과 간식
         </div>
-
         <div class="education-text">
-          학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
-          음식 섭취와 인슐린 사용은 학생의 개별 관리계획을 따릅니다.
+          실제 섭취량을 확인하고,
+          음식과 인슐린 관리는 학생의 개별 계획을 따릅니다.
         </div>
-
       </div>
 
 
       <div class="education-card">
-
         <div class="education-title">
           🚨 학생이 도움을 요청하면
         </div>
-
         <div class="education-text">
           증상을 가볍게 넘기지 말고 학생과 함께 있어 주세요.
-          필요하면 보건교사와 보호자에게 연락하고
-          학교의 응급 절차를 따릅니다.
+          필요한 경우 보건교사와 보호자에게 알립니다.
         </div>
-
       </div>
 
     </div>
@@ -1771,7 +1301,7 @@
 
     <div class="education-important">
       GlucoGuard는 진단이나 인슐린 용량을 결정하지 않습니다.
-      실제 치료와 처치는 학생별 개별 관리계획과 의료진 지침이 우선합니다.
+      실제 치료와 처치는 학생별 관리계획과 의료진 지침이 우선합니다.
     </div>
 
   </div>
@@ -1779,8 +1309,7 @@
 </div>
 
 
-
-<!-- 비상연락처 -->
+<!-- 연락처 -->
 
 <div
   id="contactModalOverlay"
@@ -1791,25 +1320,19 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           📞 비상연락처 관리
         </h2>
-
         <p
           id="contactModalStudent"
           class="modal-subtitle">
         </p>
-
       </div>
-
 
       <button
         class="close-button"
         onclick="closeContactModal()">
-
         ×
-
       </button>
 
     </div>
@@ -1823,25 +1346,11 @@
       id="contactRelationship"
       class="modal-select">
 
-      <option value="엄마">
-        엄마
-      </option>
-
-      <option value="아빠">
-        아빠
-      </option>
-
-      <option value="보호자">
-        보호자
-      </option>
-
-      <option value="보건실">
-        보건실
-      </option>
-
-      <option value="기타">
-        기타
-      </option>
+      <option value="엄마">엄마</option>
+      <option value="아빠">아빠</option>
+      <option value="보호자">보호자</option>
+      <option value="보건실">보건실</option>
+      <option value="기타">기타</option>
 
     </select>
 
@@ -1869,9 +1378,7 @@
     <button
       class="primary-button"
       onclick="saveEmergencyContact()">
-
       연락처 등록
-
     </button>
 
 
@@ -1885,7 +1392,6 @@
 </div>
 
 
-
 <!-- 비밀번호 -->
 
 <div
@@ -1897,25 +1403,19 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           🔑 학생 비밀번호 재설정
         </h2>
-
         <p
           id="passwordModalStudent"
           class="modal-subtitle">
         </p>
-
       </div>
-
 
       <button
         class="close-button"
         onclick="closePasswordModal()">
-
         ×
-
       </button>
 
     </div>
@@ -1935,9 +1435,7 @@
     <button
       class="primary-button"
       onclick="resetStudentPassword()">
-
       비밀번호 변경
-
     </button>
 
   </div>
@@ -1945,9 +1443,7 @@
 </div>
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -1965,18 +1461,28 @@ const supabaseClient =
 
 
 let currentUser = null;
-let currentTeacherProfile = null;
 
 let linkedStudents = [];
 let allStudents = [];
 let allRecords = [];
-
 let attentionStudents = [];
 
 let selectedContactStudentId = null;
 let selectedPasswordStudentId = null;
 
 let studentListOpen = false;
+
+
+/* =========================
+   응급 화면 이동
+========================= */
+
+function goEmergencyGuide() {
+
+  window.location.href =
+    "./emergency-guide.html";
+
+}
 
 
 /* =========================
@@ -2000,27 +1506,19 @@ window.addEventListener(
 );
 
 
-/* =========================
-   로그인 확인
-========================= */
+/* 로그인 */
 
 async function checkTeacherLogin() {
 
-  const {
-    data,
-    error
-  } =
+  const { data } =
     await supabaseClient.auth
       .getSession();
 
 
-  if (
-    error ||
-    !data.session
-  ) {
+  if (!data.session) {
 
-    location.href =
-      "login.html";
+    window.location.href =
+      "./login.html";
 
     return false;
   }
@@ -2031,13 +1529,12 @@ async function checkTeacherLogin() {
 
 
   const {
-    data: profile,
-    error: profileError
+    data: profile
   } =
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar, role, phone_number"
+        "nickname, class_name, role, phone_number"
       )
       .eq(
         "id",
@@ -2047,33 +1544,19 @@ async function checkTeacherLogin() {
 
 
   if (
-    profileError ||
-    !profile
+    !profile ||
+    (
+      profile.role !== "teacher"
+      &&
+      profile.role !== "nurse"
+    )
   ) {
 
-    alert(
-      "교직원 정보를 확인할 수 없습니다."
-    );
+    window.location.href =
+      "./index.html";
 
     return false;
   }
-
-
-  if (
-    profile.role !== "teacher"
-    &&
-    profile.role !== "nurse"
-  ) {
-
-    location.href =
-      "index.html";
-
-    return false;
-  }
-
-
-  currentTeacherProfile =
-    profile;
 
 
   document.getElementById(
@@ -2085,8 +1568,7 @@ async function checkTeacherLogin() {
       </strong>
       ·
       ${escapeHtml(profile.class_name || "학급 정보 없음")}
-      ·
-      교직원
+      · 교직원
     `;
 
 
@@ -2100,9 +1582,7 @@ async function checkTeacherLogin() {
 }
 
 
-/* =========================
-   연락처 저장
-========================= */
+/* 내 연락처 */
 
 async function saveTeacherPhone() {
 
@@ -2128,13 +1608,9 @@ async function saveTeacherPhone() {
     await supabaseClient
       .from("profiles")
       .update({
-
-        phone_number:
-          phone,
-
+        phone_number: phone,
         updated_at:
           new Date().toISOString()
-
       })
       .eq(
         "id",
@@ -2145,7 +1621,7 @@ async function saveTeacherPhone() {
   if (error) {
 
     alert(
-      "전화번호 저장에 실패했습니다."
+      "저장하지 못했습니다."
     );
 
     return;
@@ -2158,337 +1634,7 @@ async function saveTeacherPhone() {
 }
 
 
-/* =========================
-   확인 필요
-========================= */
-
-function openAttentionModal() {
-
-  document.getElementById(
-    "attentionOverlay"
-  ).style.display =
-    "flex";
-
-
-  renderAttentionList();
-}
-
-
-function closeAttentionModal() {
-
-  document.getElementById(
-    "attentionOverlay"
-  ).style.display =
-    "none";
-}
-
-
-function renderAttentionList() {
-
-  const container =
-    document.getElementById(
-      "attentionList"
-    );
-
-
-  container.innerHTML =
-    "";
-
-
-  if (
-    attentionStudents.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          ✅ 현재 확인이 필요한 학생이 없습니다.
-        </div>
-      `;
-
-    return;
-  }
-
-
-  attentionStudents.forEach(
-    item => {
-
-      const student =
-        item.student;
-
-
-      const status =
-        item.status;
-
-
-      const latestRecord =
-        getLatestRelevantAttentionRecord(
-          status
-        );
-
-
-      const timeText =
-        latestRecord
-        ?
-        formatRecordTime(
-          latestRecord.created_at
-        )
-        :
-        "시간 정보 없음";
-
-
-      const symptomText =
-        getSymptomText(
-          status.latestSymptom,
-          status.symptomData
-        );
-
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "attention-item";
-
-
-      card.innerHTML =
-        `
-          <div class="attention-item-head">
-
-            <div class="attention-avatar">
-              ${escapeHtml(student.avatar || "🐻")}
-            </div>
-
-            <div class="attention-name-box">
-
-              <div class="attention-name">
-                ${escapeHtml(student.nickname || "학생")}
-              </div>
-
-              <div class="attention-class">
-                ${escapeHtml(student.class_name || "학급 미등록")}
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="attention-reason-box">
-            ⚠️
-            ${status.reasons
-              .map(escapeHtml)
-              .join("<br>")}
-          </div>
-
-
-          <div class="attention-status-box">
-            🙂 최근 몸 상태<br>
-            <strong>
-              ${escapeHtml(symptomText)}
-            </strong>
-          </div>
-
-
-          <div class="attention-time">
-            🕒 관련 기록: ${escapeHtml(timeText)}
-          </div>
-
-
-          <button class="attention-record-button">
-            📊 학생 기록 보기
-          </button>
-        `;
-
-
-      card.querySelector(
-        ".attention-record-button"
-      ).onclick =
-        function() {
-
-          sessionStorage.setItem(
-            "teacherSelectedStudent",
-            student.id
-          );
-
-
-          location.href =
-            "records.html";
-
-        };
-
-
-      container.appendChild(
-        card
-      );
-
-    }
-  );
-}
-
-
-function getLatestRelevantAttentionRecord(
-  status
-) {
-
-  const candidates =
-    [];
-
-
-  if (
-    status.latestGlucose
-    &&
-    status.latestGlucose.glucose_value !== null
-    &&
-    (
-      status.latestGlucose.glucose_value < 70
-      ||
-      status.latestGlucose.glucose_value >= 250
-    )
-  ) {
-
-    candidates.push(
-      status.latestGlucose
-    );
-
-  }
-
-
-  if (
-    status.latestSymptom
-  ) {
-
-    const abnormal =
-      status.latestSymptom.glucose_value !== null
-      &&
-      (
-        status.latestSymptom.glucose_value < 70
-        ||
-        status.latestSymptom.glucose_value >= 250
-      );
-
-
-    const vomiting =
-      Array.isArray(
-        status.symptomData.symptoms
-      )
-      &&
-      status.symptomData.symptoms.includes(
-        "구토"
-      );
-
-
-    if (
-      abnormal ||
-      vomiting
-    ) {
-
-      candidates.push(
-        status.latestSymptom
-      );
-
-    }
-
-  }
-
-
-  if (
-    candidates.length === 0
-  ) {
-
-    return null;
-  }
-
-
-  candidates.sort(
-    (a, b) =>
-      new Date(b.created_at)
-      -
-      new Date(a.created_at)
-  );
-
-
-  return candidates[0];
-}
-
-
-function formatRecordTime(
-  dateString
-) {
-
-  const date =
-    new Date(
-      dateString
-    );
-
-
-  return date.toLocaleString(
-    "ko-KR",
-    {
-      month: "numeric",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    }
-  );
-}
-
-
-/* =========================
-   학생 목록
-========================= */
-
-function toggleStudentList() {
-
-  studentListOpen =
-    !studentListOpen;
-
-
-  const wrapper =
-    document.getElementById(
-      "studentListWrapper"
-    );
-
-
-  const toggle =
-    document.getElementById(
-      "studentListToggle"
-    );
-
-
-  const sub =
-    toggle.querySelector(
-      ".student-list-toggle-sub"
-    );
-
-
-  wrapper.classList.toggle(
-    "open",
-    studentListOpen
-  );
-
-
-  toggle.classList.toggle(
-    "open",
-    studentListOpen
-  );
-
-
-  sub.textContent =
-    studentListOpen
-    ?
-    "학생 목록 접기"
-    :
-    "학생 목록 펼치기";
-}
-
-
-/* =========================
-   담당 학생 설정
-========================= */
+/* 담당 학생 */
 
 async function openStudentSetting() {
 
@@ -2498,52 +1644,21 @@ async function openStudentSetting() {
     "flex";
 
 
-  const container =
-    document.getElementById(
-      "studentSelectList"
-    );
-
-
-  container.innerHTML =
-    `
-      <div class="empty-state">
-        학생 목록을 불러오는 중입니다.
-      </div>
-    `;
-
-
   const {
-    data: students,
-    error
+    data: students
   } =
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar, role"
+        "id, nickname, class_name, avatar"
       )
       .eq(
         "role",
         "student"
       )
       .order(
-        "class_name",
-        {
-          ascending: true
-        }
+        "class_name"
       );
-
-
-  if (error) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          학생 목록을 불러오지 못했습니다.
-        </div>
-      `;
-
-    return;
-  }
 
 
   allStudents =
@@ -2577,38 +1692,22 @@ function renderStudentSelection() {
 
   const linkedIds =
     linkedStudents.map(
-      student =>
-        student.id
+      item => item.id
     );
-
-
-  if (
-    allStudents.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          등록된 학생이 없습니다.
-        </div>
-      `;
-
-    return;
-  }
 
 
   allStudents.forEach(
     student => {
 
-      const label =
-        document.createElement(
-          "label"
-        );
-
-
       const checked =
         linkedIds.includes(
           student.id
+        );
+
+
+      const label =
+        document.createElement(
+          "label"
         );
 
 
@@ -2657,8 +1756,7 @@ function renderStudentSelection() {
         );
 
 
-      checkbox.addEventListener(
-        "change",
+      checkbox.onchange =
         function() {
 
           label.classList.toggle(
@@ -2666,8 +1764,7 @@ function renderStudentSelection() {
             checkbox.checked
           );
 
-        }
-      );
+        };
 
 
       container.appendChild(
@@ -2681,153 +1778,93 @@ function renderStudentSelection() {
 
 async function saveStudentSelection() {
 
-  const button =
-    document.getElementById(
-      "saveStudentSelectionButton"
-    );
-
-
   const checkedIds =
     Array.from(
       document.querySelectorAll(
         ".student-checkbox:checked"
       )
     ).map(
-      checkbox =>
-        checkbox.value
+      item => item.value
     );
 
 
   const currentIds =
     linkedStudents.map(
-      student =>
-        student.id
+      item => item.id
     );
 
 
-  const idsToAdd =
+  const addIds =
     checkedIds.filter(
       id =>
         !currentIds.includes(id)
     );
 
 
-  const idsToRemove =
+  const removeIds =
     currentIds.filter(
       id =>
         !checkedIds.includes(id)
     );
 
 
-  button.disabled =
-    true;
+  if (
+    addIds.length > 0
+  ) {
 
-
-  button.textContent =
-    "저장 중...";
-
-
-  try {
-
-    if (
-      idsToAdd.length > 0
-    ) {
-
-      const rows =
-        idsToAdd.map(
-          studentId => ({
+    await supabaseClient
+      .from("teacher_students")
+      .insert(
+        addIds.map(
+          id => ({
             teacher_id:
               currentUser.id,
-
             student_id:
-              studentId
+              id
           })
-        );
-
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .from("teacher_students")
-          .insert(rows);
-
-
-      if (error) {
-        throw error;
-      }
-
-    }
-
-
-    if (
-      idsToRemove.length > 0
-    ) {
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .from("teacher_students")
-          .delete()
-          .eq(
-            "teacher_id",
-            currentUser.id
-          )
-          .in(
-            "student_id",
-            idsToRemove
-          );
-
-
-      if (error) {
-        throw error;
-      }
-
-    }
-
-
-    closeStudentSetting();
-
-
-    await loadDashboard();
-
-
-    alert(
-      "담당 학생 설정을 저장했습니다."
-    );
-
-
-  } catch (error) {
-
-    console.error(error);
-
-
-    alert(
-      "담당 학생 설정을 저장하지 못했습니다."
-    );
+        )
+      );
 
   }
 
 
-  button.disabled =
-    false;
+  if (
+    removeIds.length > 0
+  ) {
+
+    await supabaseClient
+      .from("teacher_students")
+      .delete()
+      .eq(
+        "teacher_id",
+        currentUser.id
+      )
+      .in(
+        "student_id",
+        removeIds
+      );
+
+  }
 
 
-  button.textContent =
-    "선택 저장";
+  closeStudentSetting();
+
+
+  await loadDashboard();
+
+
+  alert(
+    "담당 학생 설정을 저장했습니다."
+  );
 }
 
 
-/* =========================
-   대시보드
-========================= */
+/* 대시보드 */
 
 async function loadDashboard() {
 
   const {
-    data: links,
-    error: linkError
+    data: links
   } =
     await supabaseClient
       .from("teacher_students")
@@ -2838,12 +1875,7 @@ async function loadDashboard() {
       );
 
 
-  if (linkError) {
-    return;
-  }
-
-
-  const studentIds =
+  const ids =
     (links || [])
       .map(
         item =>
@@ -2852,15 +1884,11 @@ async function loadDashboard() {
 
 
   if (
-    studentIds.length === 0
+    ids.length === 0
   ) {
 
     linkedStudents = [];
-
     allRecords = [];
-
-    attentionStudents = [];
-
 
     renderDashboard();
 
@@ -2874,21 +1902,16 @@ async function loadDashboard() {
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar, role"
+        "id, nickname, class_name, avatar"
       )
       .in(
         "id",
-        studentIds
+        ids
       );
 
 
   linkedStudents =
-    (students || [])
-      .filter(
-        student =>
-          student.role ===
-          "student"
-      );
+    students || [];
 
 
   const {
@@ -2901,7 +1924,7 @@ async function loadDashboard() {
       )
       .in(
         "user_id",
-        studentIds
+        ids
       )
       .order(
         "created_at",
@@ -2919,34 +1942,30 @@ async function loadDashboard() {
 }
 
 
-/* =========================
-   상태 계산
-========================= */
-
 function buildStudentStatus(
   records
 ) {
 
   const latestGlucose =
     records.find(
-      record =>
-        record.record_type ===
+      item =>
+        item.record_type ===
         "glucose"
     );
 
 
   const latestMeal =
     records.find(
-      record =>
-        record.record_type ===
+      item =>
+        item.record_type ===
         "meal"
     );
 
 
   const latestSymptom =
     records.find(
-      record =>
-        record.record_type ===
+      item =>
+        item.record_type ===
         "symptom"
     );
 
@@ -2961,8 +1980,7 @@ function buildStudentStatus(
     );
 
 
-  const reasons =
-    [];
+  const reasons = [];
 
 
   if (
@@ -3025,36 +2043,24 @@ function buildStudentStatus(
     needsAttention:
       reasons.length > 0,
 
-    reasons:
-      reasons,
+    reasons,
 
-    latestGlucose:
-      latestGlucose,
-
-    latestMeal:
-      latestMeal,
-
-    latestSymptom:
-      latestSymptom,
-
-    symptomData:
-      symptomData,
+    latestGlucose,
+    latestMeal,
+    latestSymptom,
+    symptomData,
 
     todayCount:
       records.filter(
-        record =>
+        item =>
           isToday(
-            record.created_at
+            item.created_at
           )
       ).length
 
   };
 }
 
-
-/* =========================
-   출력
-========================= */
 
 function renderDashboard() {
 
@@ -3084,42 +2090,20 @@ function renderDashboard() {
     `담당 학생 ${linkedStudents.length}명`;
 
 
-  if (
-    linkedStudents.length === 0
-  ) {
-
-    document.getElementById(
-      "attentionCount"
-    ).textContent =
-      "0";
-
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          아직 담당 학생이 없습니다.<br><br>
-          <strong>👥 담당 학생 설정</strong>에서 학생을 선택해주세요.
-        </div>
-      `;
-
-    return;
-  }
-
-
   linkedStudents.forEach(
     student => {
 
-      const records =
+      const studentRecords =
         allRecords.filter(
-          record =>
-            record.user_id ===
+          item =>
+            item.user_id ===
             student.id
         );
 
 
       const status =
         buildStudentStatus(
-          records
+          studentRecords
         );
 
 
@@ -3128,13 +2112,8 @@ function renderDashboard() {
       ) {
 
         attentionStudents.push({
-
-          student:
-            student,
-
-          status:
-            status
-
+          student,
+          status
         });
 
       }
@@ -3155,12 +2134,24 @@ function renderDashboard() {
     "attentionCount"
   ).textContent =
     attentionStudents.length;
+
+
+  if (
+    linkedStudents.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+        <div class="empty-state">
+          아직 담당 학생이 없습니다.
+        </div>
+      `;
+
+  }
 }
 
 
-/* =========================
-   학생 카드
-========================= */
+/* 학생 카드 */
 
 function createStudentCard(
   student,
@@ -3190,9 +2181,7 @@ function createStudentCard(
     &&
     status.latestGlucose.glucose_value !== null
     ?
-    status.latestGlucose.glucose_value
-    +
-    " mg/dL"
+    `${status.latestGlucose.glucose_value} mg/dL`
     :
     "기록 없음";
 
@@ -3231,21 +2220,12 @@ function createStudentCard(
 
         </div>
 
-
         ${
           status.needsAttention
           ?
-          `
-            <div class="attention-badge">
-              확인 필요
-            </div>
-          `
+          `<div class="attention-badge">확인 필요</div>`
           :
-          `
-            <div class="ok-badge">
-              기록 확인
-            </div>
-          `
+          `<div class="ok-badge">기록 확인</div>`
         }
 
       </div>
@@ -3313,38 +2293,23 @@ function createStudentCard(
       <div class="student-actions">
 
         <button
-          class="action-button records-action"
-          data-action="records">
-
+          class="action-button records-action">
           📊 학생 기록 보기
-
         </button>
 
-
         <button
-          class="action-button symptom-action"
-          data-action="symptom">
-
+          class="action-button symptom-action">
           🙂 몸 상태 기록
-
         </button>
 
-
         <button
-          class="action-button contact-action"
-          data-action="contacts">
-
+          class="action-button contact-action">
           📞 비상연락처 관리
-
         </button>
 
-
         <button
-          class="action-button password-action"
-          data-action="password">
-
+          class="action-button password-action">
           🔑 비밀번호 재설정
-
         </button>
 
       </div>
@@ -3352,189 +2317,225 @@ function createStudentCard(
 
 
   card.querySelector(
-    '[data-action="records"]'
+    ".records-action"
   ).onclick =
-    function() {
+    () => {
 
       sessionStorage.setItem(
         "teacherSelectedStudent",
         student.id
       );
 
-
-      location.href =
-        "records.html";
+      window.location.href =
+        "./records.html";
 
     };
 
 
   card.querySelector(
-    '[data-action="symptom"]'
+    ".symptom-action"
   ).onclick =
-    function() {
+    () => {
 
       sessionStorage.setItem(
         "teacherSelectedStudent",
         student.id
       );
 
-
-      location.href =
-        "symptom.html";
+      window.location.href =
+        "./symptom.html";
 
     };
 
 
   card.querySelector(
-    '[data-action="contacts"]'
+    ".contact-action"
   ).onclick =
-    function() {
-
+    () =>
       openContactModal(
         student
       );
 
-    };
-
 
   card.querySelector(
-    '[data-action="password"]'
+    ".password-action"
   ).onclick =
-    function() {
-
+    () =>
       openPasswordModal(
         student
       );
-
-    };
 
 
   return card;
 }
 
 
-/* =========================
-   기록 텍스트
-========================= */
+/* 확인 필요 */
 
-function getMealText(
-  record
-) {
+function openAttentionModal() {
 
-  if (!record) {
-    return "기록 없음";
-  }
+  document.getElementById(
+    "attentionOverlay"
+  ).style.display =
+    "flex";
 
 
-  let amount =
+  const container =
+    document.getElementById(
+      "attentionList"
+    );
+
+
+  container.innerHTML =
     "";
 
 
-  const ratio =
-    Number(
-      record.intake_ratio
-    );
+  if (
+    attentionStudents.length === 0
+  ) {
 
+    container.innerHTML =
+      `
+        <div class="empty-state">
+          ✅ 현재 확인이 필요한 학생이 없습니다.
+        </div>
+      `;
 
-  if (ratio === 1) {
-    amount = "다 먹었어요";
-  }
-
-  if (ratio === 0.5) {
-    amount = "반 정도 먹었어요";
-  }
-
-  if (ratio === 0.25) {
-    amount = "조금 먹었어요";
-  }
-
-  if (ratio === 0) {
-    amount = "안 먹었어요";
+    return;
   }
 
 
-  return (
-    (record.meal_type || "식사")
-    +
-    (
-      amount
-      ?
-      " · " + amount
-      :
-      ""
-    )
+  attentionStudents.forEach(
+    item => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "attention-item";
+
+
+      card.innerHTML =
+        `
+          <div class="attention-item-head">
+
+            <div class="attention-avatar">
+              ${escapeHtml(item.student.avatar || "🐻")}
+            </div>
+
+            <div class="attention-name-box">
+
+              <div class="attention-name">
+                ${escapeHtml(item.student.nickname || "학생")}
+              </div>
+
+              <div class="attention-class">
+                ${escapeHtml(item.student.class_name || "")}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="attention-reason-box">
+            ⚠️
+            ${item.status.reasons
+              .map(escapeHtml)
+              .join("<br>")}
+          </div>
+
+
+          <div class="attention-status-box">
+            🙂
+            ${escapeHtml(
+              getSymptomText(
+                item.status.latestSymptom,
+                item.status.symptomData
+              )
+            )}
+          </div>
+
+
+          <button class="attention-record-button">
+            📊 학생 기록 보기
+          </button>
+        `;
+
+
+      card.querySelector(
+        ".attention-record-button"
+      ).onclick =
+        () => {
+
+          sessionStorage.setItem(
+            "teacherSelectedStudent",
+            item.student.id
+          );
+
+          window.location.href =
+            "./records.html";
+
+        };
+
+
+      container.appendChild(
+        card
+      );
+
+    }
   );
 }
 
 
-function getSymptomText(
-  record,
-  data
-) {
+function closeAttentionModal() {
 
-  if (!record) {
-    return "기록 없음";
-  }
-
-
-  const parts =
-    [];
+  document.getElementById(
+    "attentionOverlay"
+  ).style.display =
+    "none";
+}
 
 
-  if (
-    data.context
-  ) {
+/* 학생 목록 접기 */
 
-    parts.push(
-      data.context
-    );
+function toggleStudentList() {
 
-  }
+  studentListOpen =
+    !studentListOpen;
 
 
-  if (
-    Array.isArray(
-      data.symptoms
-    )
-    &&
-    data.symptoms.length > 0
-  ) {
-
-    parts.push(
-      data.symptoms.join(", ")
-    );
-
-  }
+  document.getElementById(
+    "studentListWrapper"
+  ).classList.toggle(
+    "open",
+    studentListOpen
+  );
 
 
-  if (
-    record.glucose_value !== null
-  ) {
-
-    parts.push(
-      "혈당 "
-      +
-      record.glucose_value
-      +
-      " mg/dL"
-    );
-
-  }
+  document.getElementById(
+    "studentListToggle"
+  ).classList.toggle(
+    "open",
+    studentListOpen
+  );
 
 
-  return (
-    parts.length > 0
+  document.querySelector(
+    ".student-list-toggle-sub"
+  ).textContent =
+    studentListOpen
     ?
-    parts.join(" · ")
+    "학생 목록 접기"
     :
-    "몸 상태 기록"
-  );
+    "학생 목록 펼치기";
 }
 
 
-/* =========================
-   교직원 교육
-========================= */
+/* 교육 */
 
 function openEducation() {
 
@@ -3554,9 +2555,7 @@ function closeEducation() {
 }
 
 
-/* =========================
-   비상 연락처
-========================= */
+/* 연락처 */
 
 async function openContactModal(
   student
@@ -3619,23 +2618,7 @@ async function loadEmergencyContacts() {
     "";
 
 
-  if (
-    !data ||
-    data.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          등록된 연락처가 없습니다.
-        </div>
-      `;
-
-    return;
-  }
-
-
-  data.forEach(
+  (data || []).forEach(
     contact => {
 
       const item =
@@ -3673,7 +2656,7 @@ async function loadEmergencyContacts() {
       item.querySelector(
         "button"
       ).onclick =
-        async function() {
+        async () => {
 
           await supabaseClient
             .from("emergency_contacts")
@@ -3700,6 +2683,12 @@ async function loadEmergencyContacts() {
 
 async function saveEmergencyContact() {
 
+  const relationship =
+    document.getElementById(
+      "contactRelationship"
+    ).value;
+
+
   const name =
     document.getElementById(
       "contactName"
@@ -3710,12 +2699,6 @@ async function saveEmergencyContact() {
     document.getElementById(
       "contactPhone"
     ).value.trim();
-
-
-  const relationship =
-    document.getElementById(
-      "contactRelationship"
-    ).value;
 
 
   if (
@@ -3731,36 +2714,21 @@ async function saveEmergencyContact() {
   }
 
 
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("emergency_contacts")
-      .insert({
+  await supabaseClient
+    .from("emergency_contacts")
+    .insert({
 
-        user_id:
-          selectedContactStudentId,
+      user_id:
+        selectedContactStudentId,
 
-        contact_name:
-          name,
+      relationship,
+      contact_name:
+        name,
 
-        phone_number:
-          phone,
+      phone_number:
+        phone
 
-        relationship:
-          relationship
-
-      });
-
-
-  if (error) {
-
-    alert(
-      "연락처 등록에 실패했습니다."
-    );
-
-    return;
-  }
+    });
 
 
   document.getElementById(
@@ -3779,9 +2747,7 @@ async function saveEmergencyContact() {
 }
 
 
-/* =========================
-   비밀번호 재설정
-========================= */
+/* 비밀번호 */
 
 function openPasswordModal(
   student
@@ -3797,12 +2763,6 @@ function openPasswordModal(
     student.nickname
     +
     " 학생";
-
-
-  document.getElementById(
-    "newPassword"
-  ).value =
-    "";
 
 
   document.getElementById(
@@ -3885,9 +2845,7 @@ async function resetStudentPassword() {
     );
 
 
-  if (
-    !response.ok
-  ) {
+  if (!response.ok) {
 
     alert(
       "비밀번호 변경에 실패했습니다."
@@ -3906,23 +2864,118 @@ async function resetStudentPassword() {
 }
 
 
-/* =========================
-   공통
-========================= */
+/* 기록 표현 */
+
+function getMealText(
+  record
+) {
+
+  if (!record) {
+    return "기록 없음";
+  }
+
+
+  const ratio =
+    Number(
+      record.intake_ratio
+    );
+
+
+  let text =
+    "";
+
+
+  if (ratio === 1) {
+    text = "다 먹었어요";
+  }
+
+  if (ratio === 0.5) {
+    text = "반 정도 먹었어요";
+  }
+
+  if (ratio === 0.25) {
+    text = "조금 먹었어요";
+  }
+
+  if (ratio === 0) {
+    text = "안 먹었어요";
+  }
+
+
+  return (
+    (record.meal_type || "식사")
+    +
+    (
+      text
+      ?
+      " · " + text
+      :
+      ""
+    )
+  );
+}
+
+
+function getSymptomText(
+  record,
+  data
+) {
+
+  if (!record) {
+    return "기록 없음";
+  }
+
+
+  const result = [];
+
+
+  if (data.context) {
+    result.push(data.context);
+  }
+
+
+  if (
+    Array.isArray(
+      data.symptoms
+    )
+  ) {
+
+    result.push(
+      data.symptoms.join(", ")
+    );
+
+  }
+
+
+  if (
+    record.glucose_value !== null
+  ) {
+
+    result.push(
+      "혈당 "
+      +
+      record.glucose_value
+      +
+      " mg/dL"
+    );
+
+  }
+
+
+  return result.join(
+    " · "
+  );
+}
+
 
 function parseNote(
   note
 ) {
 
-  if (!note) {
-    return {};
-  }
-
-
   try {
 
     return JSON.parse(
-      note
+      note || "{}"
     );
 
   } catch {
@@ -3934,28 +2987,25 @@ function parseNote(
 
 
 function isToday(
-  dateString
+  value
 ) {
 
   const date =
-    new Date(
-      dateString
-    );
+    new Date(value);
 
-
-  const today =
+  const now =
     new Date();
 
 
   return (
     date.getFullYear() ===
-      today.getFullYear()
+      now.getFullYear()
     &&
     date.getMonth() ===
-      today.getMonth()
+      now.getMonth()
     &&
     date.getDate() ===
-      today.getDate()
+      now.getDate()
   );
 }
 
@@ -3981,14 +3031,12 @@ async function logout() {
     .signOut();
 
 
-  location.href =
-    "login.html";
+  window.location.href =
+    "./login.html";
 }
 
 
-/* =========================
-   모달 바깥 클릭
-========================= */
+/* 모달 바깥 클릭 */
 
 [
   "attentionOverlay",
@@ -4006,14 +3054,13 @@ async function logout() {
       function(event) {
 
         if (
-          event.target !== this
+          event.target === this
         ) {
-          return;
+
+          this.style.display =
+            "none";
+
         }
-
-
-        this.style.display =
-          "none";
 
       }
     );
