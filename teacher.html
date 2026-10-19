@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
@@ -39,16 +38,12 @@
       padding: 22px 18px 40px;
     }
 
-    /* =========================
-       상단
-    ========================= */
-
     .top-card {
       background: white;
       border-radius: 24px;
       padding: 20px;
       margin-bottom: 15px;
-      box-shadow: 0 6px 20px rgba(57, 79, 94, .07);
+      box-shadow: 0 6px 20px rgba(57,79,94,.07);
     }
 
     .top-row {
@@ -111,9 +106,57 @@
       color: #3e6179;
     }
 
-    /* =========================
-       요약
-    ========================= */
+    .teacher-phone-box {
+      margin-top: 13px;
+      padding: 13px;
+      background: #f7f9fb;
+      border-radius: 15px;
+    }
+
+    .teacher-phone-label {
+      margin-bottom: 7px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #607d8b;
+    }
+
+    .teacher-phone-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .teacher-phone-input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #d8e2e8;
+      border-radius: 11px;
+      padding: 10px 11px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .teacher-phone-input:focus {
+      border-color: #76a9cc;
+    }
+
+    .teacher-phone-save {
+      flex-shrink: 0;
+      border: none;
+      border-radius: 11px;
+      padding: 10px 13px;
+      background: #4285b4;
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .teacher-phone-help {
+      margin-top: 6px;
+      color: #8a9ba5;
+      font-size: 10px;
+      line-height: 1.5;
+    }
 
     .summary-grid {
       display: grid;
@@ -151,10 +194,6 @@
       font-weight: 900;
       color: #455a64;
     }
-
-    /* =========================
-       학생 카드
-    ========================= */
 
     .student-card {
       background: white;
@@ -206,24 +245,23 @@
       font-size: 11px;
     }
 
-    .attention-badge {
-      flex-shrink: 0;
-      padding: 6px 9px;
-      border-radius: 10px;
-      background: #ffe9e7;
-      color: #c84d46;
-      font-size: 10px;
-      font-weight: 900;
-    }
-
+    .attention-badge,
     .ok-badge {
       flex-shrink: 0;
       padding: 6px 9px;
       border-radius: 10px;
-      background: #edf7ef;
-      color: #4c8560;
       font-size: 10px;
       font-weight: 900;
+    }
+
+    .attention-badge {
+      background: #ffe9e7;
+      color: #c84d46;
+    }
+
+    .ok-badge {
+      background: #edf7ef;
+      color: #4c8560;
     }
 
     .alert-reason {
@@ -309,10 +347,6 @@
       line-height: 1.7;
     }
 
-    /* =========================
-       모달 공통
-    ========================= */
-
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -388,11 +422,6 @@
       outline: none;
     }
 
-    .modal-input:focus,
-    .modal-select:focus {
-      border-color: #76a9cc;
-    }
-
     .primary-button {
       width: 100%;
       border: none;
@@ -405,10 +434,6 @@
       cursor: pointer;
     }
 
-    /* =========================
-       비상연락처 모달
-    ========================= */
-
     .contact-form-box {
       padding: 14px;
       margin-bottom: 16px;
@@ -416,18 +441,12 @@
       background: #f6f9fb;
     }
 
-    .contact-form-title {
+    .contact-form-title,
+    .contact-list-title {
       margin-bottom: 11px;
       color: #526b7a;
       font-size: 13px;
       font-weight: 900;
-    }
-
-    .contact-list-title {
-      margin-bottom: 9px;
-      font-size: 13px;
-      font-weight: 900;
-      color: #526b79;
     }
 
     .modal-contact-card {
@@ -491,21 +510,13 @@
       line-height: 1.6;
     }
 
-    /* =========================
-       모바일
-    ========================= */
-
     @media (max-width: 520px) {
       .student-actions {
         grid-template-columns: 1fr;
       }
 
-      .record-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .brand h1 {
-        font-size: 20px;
+      .teacher-phone-row {
+        flex-direction: column;
       }
     }
   </style>
@@ -548,6 +559,40 @@
       class="teacher-info">
 
       교직원 정보를 불러오는 중...
+
+    </div>
+
+
+    <div class="teacher-phone-box">
+
+      <div class="teacher-phone-label">
+        📞 내 연락처
+      </div>
+
+      <div class="teacher-phone-row">
+
+        <input
+          id="teacherPhone"
+          class="teacher-phone-input"
+          type="tel"
+          inputmode="tel"
+          maxlength="20"
+          placeholder="예: 010-1234-5678">
+
+        <button
+          id="teacherPhoneSaveButton"
+          class="teacher-phone-save"
+          onclick="saveTeacherPhone()">
+
+          저장
+
+        </button>
+
+      </div>
+
+      <div class="teacher-phone-help">
+        담당 학생의 도움 요청 화면에 이 번호가 자동으로 표시됩니다.
+      </div>
 
     </div>
 
@@ -611,10 +656,6 @@
 
 
 
-<!-- =========================
-     비상연락처 관리 모달
-========================= -->
-
 <div
   id="contactModalOverlay"
   class="modal-overlay">
@@ -663,29 +704,11 @@
         id="contactRelationship"
         class="modal-select">
 
-        <option value="엄마">
-          엄마
-        </option>
-
-        <option value="아빠">
-          아빠
-        </option>
-
-        <option value="보호자">
-          보호자
-        </option>
-
-        <option value="보건실">
-          보건실
-        </option>
-
-        <option value="담임 선생님">
-          담임 선생님
-        </option>
-
-        <option value="기타">
-          기타
-        </option>
+        <option value="엄마">엄마</option>
+        <option value="아빠">아빠</option>
+        <option value="보호자">보호자</option>
+        <option value="보건실">보건실</option>
+        <option value="기타">기타</option>
 
       </select>
 
@@ -745,10 +768,6 @@
 </div>
 
 
-
-<!-- =========================
-     비밀번호 재설정 모달
-========================= -->
 
 <div
   id="passwordModalOverlay"
@@ -817,17 +836,14 @@
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
-
 
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
-
 
 let currentUser = null;
 let currentTeacherProfile = null;
@@ -843,10 +859,6 @@ let selectedPasswordStudentName = "";
 
 
 
-/* =========================
-   시작
-========================= */
-
 window.addEventListener(
   "load",
   async function() {
@@ -854,11 +866,9 @@ window.addEventListener(
     const ready =
       await checkTeacherLogin();
 
-
     if (!ready) {
       return;
     }
-
 
     await loadDashboard();
 
@@ -866,10 +876,6 @@ window.addEventListener(
 );
 
 
-
-/* =========================
-   교직원 로그인 확인
-========================= */
 
 async function checkTeacherLogin() {
 
@@ -880,7 +886,6 @@ async function checkTeacherLogin() {
     await supabaseClient.auth
       .getSession();
 
-
   if (
     error ||
     !data.session
@@ -889,15 +894,11 @@ async function checkTeacherLogin() {
     location.href =
       "login.html";
 
-
     return false;
-
   }
-
 
   currentUser =
     data.session.user;
-
 
   const {
     data: profile,
@@ -906,14 +907,13 @@ async function checkTeacherLogin() {
     await supabaseClient
       .from("profiles")
       .select(
-        "id, nickname, class_name, avatar, role"
+        "id, nickname, class_name, avatar, role, phone_number"
       )
       .eq(
         "id",
         currentUser.id
       )
       .maybeSingle();
-
 
   if (
     profileError ||
@@ -924,20 +924,15 @@ async function checkTeacherLogin() {
       profileError
     );
 
-
     alert(
       "교직원 정보를 확인할 수 없습니다."
     );
 
-
     location.href =
       "login.html";
 
-
     return false;
-
   }
-
 
   if (
     profile.role !== "teacher"
@@ -948,15 +943,11 @@ async function checkTeacherLogin() {
     location.href =
       "index.html";
 
-
     return false;
-
   }
-
 
   currentTeacherProfile =
     profile;
-
 
   document.getElementById(
     "teacherInfo"
@@ -971,6 +962,11 @@ async function checkTeacherLogin() {
       ${profile.role === "nurse" ? "보건교사" : "교직원"}
     `;
 
+  document.getElementById(
+    "teacherPhone"
+  ).value =
+    profile.phone_number ||
+    "";
 
   return true;
 
@@ -978,9 +974,95 @@ async function checkTeacherLogin() {
 
 
 
-/* =========================
-   대시보드
-========================= */
+async function saveTeacherPhone() {
+
+  const phone =
+    document.getElementById(
+      "teacherPhone"
+    ).value.trim();
+
+  if (!phone) {
+
+    alert(
+      "전화번호를 입력해주세요."
+    );
+
+    return;
+  }
+
+  const cleanedPhone =
+    phone.replace(
+      /[^0-9+]/g,
+      ""
+    );
+
+  if (
+    cleanedPhone.length < 8
+  ) {
+
+    alert(
+      "전화번호를 다시 확인해주세요."
+    );
+
+    return;
+  }
+
+  const button =
+    document.getElementById(
+      "teacherPhoneSaveButton"
+    );
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "저장 중...";
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .update({
+        phone_number:
+          phone,
+        updated_at:
+          new Date().toISOString()
+      })
+      .eq(
+        "id",
+        currentUser.id
+      );
+
+  button.disabled =
+    false;
+
+  button.textContent =
+    "저장";
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+    alert(
+      "전화번호를 저장하지 못했습니다."
+    );
+
+    return;
+  }
+
+  currentTeacherProfile.phone_number =
+    phone;
+
+  alert(
+    "내 연락처를 저장했습니다."
+  );
+
+}
+
+
 
 async function loadDashboard() {
 
@@ -996,29 +1078,15 @@ async function loadDashboard() {
         currentUser.id
       );
 
-
   if (linkError) {
-
-    console.error(
-      linkError
-    );
-
-
     showDashboardError();
-
-
     return;
-
   }
 
-
   const studentIds =
-    (links || [])
-      .map(
-        item =>
-          item.student_id
-      );
-
+    (links || []).map(
+      item => item.student_id
+    );
 
   if (
     studentIds.length === 0
@@ -1030,9 +1098,7 @@ async function loadDashboard() {
     renderDashboard();
 
     return;
-
   }
-
 
   const {
     data: profiles,
@@ -1048,21 +1114,10 @@ async function loadDashboard() {
         studentIds
       );
 
-
   if (profileError) {
-
-    console.error(
-      profileError
-    );
-
-
     showDashboardError();
-
-
     return;
-
   }
-
 
   linkedStudents =
     (profiles || [])
@@ -1070,7 +1125,6 @@ async function loadDashboard() {
         profile =>
           profile.role === "student"
       );
-
 
   const {
     data: records,
@@ -1092,23 +1146,12 @@ async function loadDashboard() {
         }
       );
 
-
-  if (recordError) {
-
-    console.error(
-      recordError
-    );
-
-
-    allRecords = [];
-
-  } else {
-
-    allRecords =
-      records || [];
-
-  }
-
+  allRecords =
+    recordError
+      ?
+      []
+      :
+      (records || []);
 
   renderDashboard();
 
@@ -1132,10 +1175,6 @@ function showDashboardError() {
 
 
 
-/* =========================
-   학생 카드 렌더링
-========================= */
-
 function renderDashboard() {
 
   const studentsWithStatus =
@@ -1149,43 +1188,35 @@ function renderDashboard() {
               student.id
           );
 
-
         const status =
           buildStudentStatus(
             studentRecords
           );
 
-
         return {
           student,
-          studentRecords,
           status
         };
 
       }
     );
 
-
   studentsWithStatus.sort(
     (a, b) => {
 
       if (
-        a.status.needsAttention
-        &&
+        a.status.needsAttention &&
         !b.status.needsAttention
       ) {
         return -1;
       }
 
-
       if (
-        !a.status.needsAttention
-        &&
+        !a.status.needsAttention &&
         b.status.needsAttention
       ) {
         return 1;
       }
-
 
       return (
         a.student.nickname || ""
@@ -1196,12 +1227,10 @@ function renderDashboard() {
     }
   );
 
-
   document.getElementById(
     "studentCount"
   ).textContent =
     linkedStudents.length;
-
 
   document.getElementById(
     "attentionCount"
@@ -1211,16 +1240,13 @@ function renderDashboard() {
         item.status.needsAttention
     ).length;
 
-
   const container =
     document.getElementById(
       "studentList"
     );
 
-
   container.innerHTML =
     "";
-
 
   if (
     studentsWithStatus.length === 0
@@ -1233,11 +1259,8 @@ function renderDashboard() {
         </div>
       `;
 
-
     return;
-
   }
-
 
   studentsWithStatus.forEach(
     item => {
@@ -1256,10 +1279,6 @@ function renderDashboard() {
 
 
 
-/* =========================
-   학생 상태 계산
-========================= */
-
 function buildStudentStatus(
   records
 ) {
@@ -1271,14 +1290,12 @@ function buildStudentStatus(
         "glucose"
     );
 
-
   const latestMeal =
     records.find(
       r =>
         r.record_type ===
         "meal"
     );
-
 
   const latestSymptom =
     records.find(
@@ -1287,7 +1304,6 @@ function buildStudentStatus(
         "symptom"
     );
 
-
   const latestActivity =
     records.find(
       r =>
@@ -1295,9 +1311,7 @@ function buildStudentStatus(
         "activity"
     );
 
-
   const reasons = [];
-
 
   if (
     latestGlucose &&
@@ -1306,16 +1320,7 @@ function buildStudentStatus(
 
     if (
       latestGlucose.glucose_value < 70
-    ) {
-
-      reasons.push(
-        `최근 혈당 ${latestGlucose.glucose_value} mg/dL`
-      );
-
-    }
-
-
-    if (
+      ||
       latestGlucose.glucose_value >= 250
     ) {
 
@@ -1327,7 +1332,6 @@ function buildStudentStatus(
 
   }
 
-
   const symptomData =
     parseNote(
       latestSymptom
@@ -1336,7 +1340,6 @@ function buildStudentStatus(
         :
         null
     );
-
 
   if (latestSymptom) {
 
@@ -1350,7 +1353,6 @@ function buildStudentStatus(
       );
 
     }
-
 
     if (
       Array.isArray(
@@ -1367,7 +1369,6 @@ function buildStudentStatus(
       );
 
     }
-
 
     if (
       latestSymptom.glucose_value !== null
@@ -1387,7 +1388,6 @@ function buildStudentStatus(
 
   }
 
-
   const activityData =
     parseNote(
       latestActivity
@@ -1396,7 +1396,6 @@ function buildStudentStatus(
         :
         null
     );
-
 
   if (latestActivity) {
 
@@ -1410,7 +1409,6 @@ function buildStudentStatus(
       );
 
     }
-
 
     if (
       latestActivity.glucose_value !== null
@@ -1430,7 +1428,6 @@ function buildStudentStatus(
 
   }
 
-
   const todayCount =
     records.filter(
       record =>
@@ -1439,45 +1436,23 @@ function buildStudentStatus(
         )
     ).length;
 
-
   return {
-
     needsAttention:
       reasons.length > 0,
 
-    reasons:
-      reasons,
-
-    latestGlucose:
-      latestGlucose,
-
-    latestMeal:
-      latestMeal,
-
-    latestSymptom:
-      latestSymptom,
-
-    latestActivity:
-      latestActivity,
-
-    symptomData:
-      symptomData,
-
-    activityData:
-      activityData,
-
-    todayCount:
-      todayCount
-
+    reasons,
+    latestGlucose,
+    latestMeal,
+    latestSymptom,
+    latestActivity,
+    symptomData,
+    activityData,
+    todayCount
   };
 
 }
 
 
-
-/* =========================
-   학생 카드 생성
-========================= */
 
 function createStudentCard(
   student,
@@ -1488,7 +1463,6 @@ function createStudentCard(
     document.createElement(
       "div"
     );
-
 
   card.className =
     "student-card"
@@ -1501,13 +1475,11 @@ function createStudentCard(
         ""
     );
 
-
   const symptomText =
     getSymptomText(
       status.latestSymptom,
       status.symptomData
     );
-
 
   const activityText =
     getActivityText(
@@ -1515,17 +1487,15 @@ function createStudentCard(
       status.activityData
     );
 
-
   const mealText =
     getMealText(
       status.latestMeal
     );
 
-
   const glucoseText =
     status.latestGlucose
-      &&
-      status.latestGlucose.glucose_value !== null
+    &&
+    status.latestGlucose.glucose_value !== null
 
       ?
 
@@ -1536,7 +1506,6 @@ function createStudentCard(
       :
 
       "기록 없음";
-
 
   card.innerHTML =
     `
@@ -1581,7 +1550,6 @@ function createStudentCard(
 
       </div>
 
-
       ${
         status.needsAttention
 
@@ -1601,62 +1569,37 @@ function createStudentCard(
         ""
       }
 
-
       <div class="record-grid">
 
         <div class="record-box">
-
-          <div class="record-label">
-            🩸 최근 혈당
-          </div>
-
+          <div class="record-label">🩸 최근 혈당</div>
           <div class="record-value">
             ${escapeHtml(glucoseText)}
           </div>
-
         </div>
 
-
         <div class="record-box">
-
-          <div class="record-label">
-            🍱 최근 식사
-          </div>
-
+          <div class="record-label">🍱 최근 식사</div>
           <div class="record-value">
             ${escapeHtml(mealText)}
           </div>
-
         </div>
 
-
         <div class="record-box">
-
-          <div class="record-label">
-            🙂 최근 상태
-          </div>
-
+          <div class="record-label">🙂 최근 상태</div>
           <div class="record-value">
             ${escapeHtml(symptomText)}
           </div>
-
         </div>
 
-
         <div class="record-box">
-
-          <div class="record-label">
-            🏃 최근 활동
-          </div>
-
+          <div class="record-label">🏃 최근 활동</div>
           <div class="record-value">
             ${escapeHtml(activityText)}
           </div>
-
         </div>
 
       </div>
-
 
       <div class="student-actions">
 
@@ -1668,7 +1611,6 @@ function createStudentCard(
 
         </button>
 
-
         <button
           class="action-button symptom-action"
           data-action="symptom">
@@ -1677,7 +1619,6 @@ function createStudentCard(
 
         </button>
 
-
         <button
           class="action-button contact-action"
           data-action="contacts">
@@ -1685,7 +1626,6 @@ function createStudentCard(
           📞 비상연락처 관리
 
         </button>
-
 
         <button
           class="action-button password-action"
@@ -1698,30 +1638,35 @@ function createStudentCard(
       </div>
     `;
 
-
   card.querySelector(
     '[data-action="records"]'
   ).onclick =
     function() {
 
-      openStudentRecords(
+      sessionStorage.setItem(
+        "teacherSelectedStudent",
         student.id
       );
 
-    };
+      location.href =
+        "records.html";
 
+    };
 
   card.querySelector(
     '[data-action="symptom"]'
   ).onclick =
     function() {
 
-      openStudentSymptom(
+      sessionStorage.setItem(
+        "teacherSelectedStudent",
         student.id
       );
 
-    };
+      location.href =
+        "symptom.html";
 
+    };
 
   card.querySelector(
     '[data-action="contacts"]'
@@ -1734,7 +1679,6 @@ function createStudentCard(
 
     };
 
-
   card.querySelector(
     '[data-action="password"]'
   ).onclick =
@@ -1746,16 +1690,11 @@ function createStudentCard(
 
     };
 
-
   return card;
 
 }
 
 
-
-/* =========================
-   표시용 텍스트
-========================= */
 
 function getMealText(
   record
@@ -1765,14 +1704,11 @@ function getMealText(
     return "기록 없음";
   }
 
-
   const meal =
     record.meal_type ||
     "식사";
 
-
   let amount = "";
-
 
   if (
     record.intake_ratio !== null
@@ -1785,7 +1721,6 @@ function getMealText(
         record.intake_ratio
       );
 
-
     if (ratio === 1) {
       amount = "다 먹었어요";
     } else if (ratio === 0.5) {
@@ -1797,7 +1732,6 @@ function getMealText(
     }
 
   }
-
 
   return (
     meal
@@ -1824,7 +1758,6 @@ function getSymptomText(
     return "기록 없음";
   }
 
-
   let text =
     Array.isArray(
       data.symptoms
@@ -1840,7 +1773,6 @@ function getSymptomText(
 
       "상태 기록";
 
-
   if (
     record.glucose_value !== null
   ) {
@@ -1853,7 +1785,6 @@ function getSymptomText(
       " mg/dL";
 
   }
-
 
   return text;
 
@@ -1870,14 +1801,12 @@ function getActivityText(
     return "기록 없음";
   }
 
-
   let text =
     data.activityType
     ||
     record.meal_type
     ||
     "활동 기록";
-
 
   if (data.feeling) {
 
@@ -1887,7 +1816,6 @@ function getActivityText(
       data.feeling;
 
   }
-
 
   if (
     record.glucose_value !== null
@@ -1902,54 +1830,11 @@ function getActivityText(
 
   }
 
-
   return text;
 
 }
 
 
-
-/* =========================
-   학생 페이지 이동
-========================= */
-
-function openStudentRecords(
-  studentId
-) {
-
-  sessionStorage.setItem(
-    "teacherSelectedStudent",
-    studentId
-  );
-
-
-  location.href =
-    "records.html";
-
-}
-
-
-
-function openStudentSymptom(
-  studentId
-) {
-
-  sessionStorage.setItem(
-    "teacherSelectedStudent",
-    studentId
-  );
-
-
-  location.href =
-    "symptom.html";
-
-}
-
-
-
-/* =========================
-   비상연락처 관리
-========================= */
 
 async function openContactModal(
   student
@@ -1958,11 +1843,9 @@ async function openContactModal(
   selectedContactStudentId =
     student.id;
 
-
   selectedContactStudentName =
     student.nickname ||
     "학생";
-
 
   document.getElementById(
     "contactModalStudent"
@@ -1971,30 +1854,25 @@ async function openContactModal(
     +
     " 학생의 비상연락처";
 
-
   document.getElementById(
     "contactName"
   ).value =
     "";
-
 
   document.getElementById(
     "contactPhone"
   ).value =
     "";
 
-
   document.getElementById(
     "contactRelationship"
   ).value =
     "엄마";
 
-
   document.getElementById(
     "contactModalOverlay"
   ).style.display =
     "flex";
-
 
   await loadEmergencyContacts();
 
@@ -2009,13 +1887,8 @@ function closeContactModal() {
   ).style.display =
     "none";
 
-
   selectedContactStudentId =
     null;
-
-
-  selectedContactStudentName =
-    "";
 
 }
 
@@ -2026,17 +1899,6 @@ async function loadEmergencyContacts() {
   if (!selectedContactStudentId) {
     return;
   }
-
-
-  document.getElementById(
-    "contactModalList"
-  ).innerHTML =
-    `
-      <div class="modal-empty">
-        연락처를 불러오는 중입니다.
-      </div>
-    `;
-
 
   const {
     data,
@@ -2060,13 +1922,7 @@ async function loadEmergencyContacts() {
         }
       );
 
-
   if (error) {
-
-    console.error(
-      error
-    );
-
 
     document.getElementById(
       "contactModalList"
@@ -2077,11 +1933,8 @@ async function loadEmergencyContacts() {
         </div>
       `;
 
-
     return;
-
   }
-
 
   renderEmergencyContacts(
     data || []
@@ -2100,10 +1953,8 @@ function renderEmergencyContacts(
       "contactModalList"
     );
 
-
   container.innerHTML =
     "";
-
 
   if (
     contacts.length === 0
@@ -2116,11 +1967,8 @@ function renderEmergencyContacts(
         </div>
       `;
 
-
     return;
-
   }
-
 
   contacts.forEach(
     contact => {
@@ -2130,14 +1978,11 @@ function renderEmergencyContacts(
           "div"
         );
 
-
       card.className =
         "modal-contact-card";
 
-
       let icon =
         "📞";
-
 
       if (
         contact.relationship === "엄마"
@@ -2146,67 +1991,41 @@ function renderEmergencyContacts(
         ||
         contact.relationship === "보호자"
       ) {
-
-        icon =
-          "👨‍👩‍👧";
-
+        icon = "👨‍👩‍👧";
       }
-
 
       if (
         contact.relationship === "보건실"
       ) {
-
-        icon =
-          "🏥";
-
+        icon = "🏥";
       }
-
-
-      if (
-        contact.relationship ===
-        "담임 선생님"
-      ) {
-
-        icon =
-          "👩‍🏫";
-
-      }
-
 
       const iconBox =
         document.createElement(
           "div"
         );
 
-
       iconBox.className =
         "modal-contact-icon";
 
-
       iconBox.textContent =
         icon;
-
 
       const info =
         document.createElement(
           "div"
         );
 
-
       info.className =
         "modal-contact-info";
-
 
       const name =
         document.createElement(
           "div"
         );
 
-
       name.className =
         "modal-contact-name";
-
 
       name.textContent =
         contact.relationship
@@ -2215,44 +2034,35 @@ function renderEmergencyContacts(
         +
         contact.contact_name;
 
-
       const phone =
         document.createElement(
           "div"
         );
 
-
       phone.className =
         "modal-contact-phone";
 
-
       phone.textContent =
         contact.phone_number;
-
 
       info.appendChild(
         name
       );
 
-
       info.appendChild(
         phone
       );
-
 
       const deleteButton =
         document.createElement(
           "button"
         );
 
-
       deleteButton.className =
         "contact-delete-button";
 
-
       deleteButton.textContent =
         "삭제";
-
 
       deleteButton.onclick =
         function() {
@@ -2264,21 +2074,17 @@ function renderEmergencyContacts(
 
         };
 
-
       card.appendChild(
         iconBox
       );
-
 
       card.appendChild(
         info
       );
 
-
       card.appendChild(
         deleteButton
       );
-
 
       container.appendChild(
         card
@@ -2297,83 +2103,29 @@ async function saveEmergencyContact() {
     return;
   }
 
-
   const relationship =
     document.getElementById(
       "contactRelationship"
     ).value;
-
 
   const name =
     document.getElementById(
       "contactName"
     ).value.trim();
 
-
   const phone =
     document.getElementById(
       "contactPhone"
     ).value.trim();
 
-
-  if (!name) {
-
-    alert(
-      "연락처 이름을 입력해주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  if (!phone) {
+  if (!name || !phone) {
 
     alert(
-      "전화번호를 입력해주세요."
+      "이름과 전화번호를 입력해주세요."
     );
-
 
     return;
-
   }
-
-
-  const cleanedPhone =
-    phone.replace(
-      /[^0-9+]/g,
-      ""
-    );
-
-
-  if (
-    cleanedPhone.length < 8
-  ) {
-
-    alert(
-      "전화번호를 다시 확인해주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "contactSaveButton"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.textContent =
-    "등록 중...";
-
 
   const {
     error
@@ -2383,58 +2135,34 @@ async function saveEmergencyContact() {
         "emergency_contacts"
       )
       .insert({
-
         user_id:
           selectedContactStudentId,
-
         contact_name:
           name,
-
         relationship:
           relationship,
-
         phone_number:
           phone
-
       });
 
-
-  button.disabled =
-    false;
-
-
-  button.textContent =
-    "연락처 등록";
-
-
   if (error) {
-
-    console.error(
-      error
-    );
-
 
     alert(
       "비상연락처를 등록하지 못했습니다."
     );
 
-
     return;
-
   }
-
 
   document.getElementById(
     "contactName"
   ).value =
     "";
 
-
   document.getElementById(
     "contactPhone"
   ).value =
     "";
-
 
   await loadEmergencyContacts();
 
@@ -2454,56 +2182,29 @@ async function deleteEmergencyContact(
       " 연락처를 삭제할까요?"
     );
 
-
   if (!confirmed) {
     return;
   }
 
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from(
-        "emergency_contacts"
-      )
-      .delete()
-      .eq(
-        "id",
-        contactId
-      )
-      .eq(
-        "user_id",
-        selectedContactStudentId
-      );
-
-
-  if (error) {
-
-    console.error(
-      error
+  await supabaseClient
+    .from(
+      "emergency_contacts"
+    )
+    .delete()
+    .eq(
+      "id",
+      contactId
+    )
+    .eq(
+      "user_id",
+      selectedContactStudentId
     );
-
-
-    alert(
-      "연락처를 삭제하지 못했습니다."
-    );
-
-
-    return;
-
-  }
-
 
   await loadEmergencyContacts();
 
 }
 
 
-
-/* =========================
-   비밀번호 재설정
-========================= */
 
 function openPasswordModal(
   student
@@ -2512,11 +2213,9 @@ function openPasswordModal(
   selectedPasswordStudentId =
     student.id;
 
-
   selectedPasswordStudentName =
     student.nickname ||
     "학생";
-
 
   document.getElementById(
     "passwordModalStudent"
@@ -2525,12 +2224,10 @@ function openPasswordModal(
     +
     " 학생의 새 임시 비밀번호를 설정합니다.";
 
-
   document.getElementById(
     "newPassword"
   ).value =
     "";
-
 
   document.getElementById(
     "passwordModalOverlay"
@@ -2548,13 +2245,8 @@ function closePasswordModal() {
   ).style.display =
     "none";
 
-
   selectedPasswordStudentId =
     null;
-
-
-  selectedPasswordStudentName =
-    "";
 
 }
 
@@ -2562,16 +2254,10 @@ function closePasswordModal() {
 
 async function resetStudentPassword() {
 
-  if (!selectedPasswordStudentId) {
-    return;
-  }
-
-
   const password =
     document.getElementById(
       "newPassword"
     ).value;
-
 
   if (
     password.length < 6
@@ -2581,18 +2267,14 @@ async function resetStudentPassword() {
       "비밀번호는 6자 이상으로 입력해주세요."
     );
 
-
     return;
-
   }
-
 
   const {
     data: sessionData
   } =
     await supabaseClient.auth
       .getSession();
-
 
   const accessToken =
     sessionData.session
@@ -2601,140 +2283,54 @@ async function resetStudentPassword() {
       :
       null;
 
+  const response =
+    await fetch(
+      SUPABASE_URL
+      +
+      "/functions/v1/reset-student-password",
+      {
+        method:
+          "POST",
 
-  if (!accessToken) {
+        headers:
+          {
+            "Content-Type":
+              "application/json",
 
-    alert(
-      "로그인 세션을 확인할 수 없습니다."
+            "Authorization":
+              "Bearer "
+              +
+              accessToken
+          },
+
+        body:
+          JSON.stringify({
+            studentId:
+              selectedPasswordStudentId,
+            newPassword:
+              password
+          })
+      }
     );
 
+  if (!response.ok) {
+
+    alert(
+      "비밀번호 재설정에 실패했습니다."
+    );
 
     return;
-
   }
 
+  alert(
+    "학생 비밀번호를 변경했습니다."
+  );
 
-  const button =
-    document.getElementById(
-      "resetPasswordButton"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.textContent =
-    "변경 중...";
-
-
-  try {
-
-    const response =
-      await fetch(
-        SUPABASE_URL
-        +
-        "/functions/v1/reset-student-password",
-        {
-          method:
-            "POST",
-
-          headers:
-            {
-              "Content-Type":
-                "application/json",
-
-              "Authorization":
-                "Bearer "
-                +
-                accessToken
-            },
-
-          body:
-            JSON.stringify(
-              {
-                studentId:
-                  selectedPasswordStudentId,
-
-                newPassword:
-                  password
-              }
-            )
-        }
-      );
-
-
-    let result =
-      {};
-
-
-    try {
-
-      result =
-        await response.json();
-
-    } catch (e) {
-
-      result =
-        {};
-
-    }
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        result.error
-        ||
-        result.message
-        ||
-        "비밀번호 재설정에 실패했습니다."
-      );
-
-    }
-
-
-    alert(
-      selectedPasswordStudentName
-      +
-      " 학생의 비밀번호를 변경했습니다."
-    );
-
-
-    closePasswordModal();
-
-
-  } catch (error) {
-
-    console.error(
-      error
-    );
-
-
-    alert(
-      error.message
-      ||
-      "비밀번호 재설정 중 오류가 발생했습니다."
-    );
-
-  } finally {
-
-    button.disabled =
-      false;
-
-
-    button.textContent =
-      "비밀번호 변경";
-
-  }
+  closePasswordModal();
 
 }
 
 
-
-/* =========================
-   도우미 함수
-========================= */
 
 function parseNote(
   note
@@ -2744,27 +2340,19 @@ function parseNote(
     return {};
   }
 
-
   if (
     typeof note ===
     "object"
   ) {
-
     return note;
-
   }
 
-
   try {
-
     return JSON.parse(
       note
     );
-
-  } catch (error) {
-
+  } catch {
     return {};
-
   }
 
 }
@@ -2780,22 +2368,16 @@ function isToday(
       dateString
     );
 
-
   const today =
     new Date();
-
 
   return (
     date.getFullYear() ===
       today.getFullYear()
-
     &&
-
     date.getMonth() ===
       today.getMonth()
-
     &&
-
     date.getDate() ===
       today.getDate()
   );
@@ -2811,88 +2393,25 @@ function escapeHtml(
   return String(
     value ?? ""
   )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-
-/* =========================
-   로그아웃
-========================= */
 
 async function logout() {
 
   await supabaseClient.auth
     .signOut();
 
-
   location.href =
     "login.html";
 
 }
-
-
-
-/* =========================
-   바깥 클릭 시 모달 닫기
-========================= */
-
-document.getElementById(
-  "contactModalOverlay"
-).addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      event.target ===
-      this
-    ) {
-
-      closeContactModal();
-
-    }
-
-  }
-);
-
-
-document.getElementById(
-  "passwordModalOverlay"
-).addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      event.target ===
-      this
-    ) {
-
-      closePasswordModal();
-
-    }
-
-  }
-);
 
 </script>
 
