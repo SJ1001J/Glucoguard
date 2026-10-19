@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>인슐린 기록 - GlucoGuard</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      background: #f4f8fb;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: #3d5868;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 600px;
+
+      margin: 0 auto;
+
+      padding: 20px 18px 40px;
+    }
+
+
+    /* 상단 */
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 15px;
+    }
+
+    .back-button {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border: none;
+      border-radius: 13px;
+
+      background: white;
+      color: #607d8b;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 14px rgba(57,79,94,.05);
+    }
+
+    .page-title {
+      color: #395a6d;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .page-subtitle {
+      margin-top: 3px;
+
+      color: #8597a1;
+      font-size: 10px;
+    }
+
+
+    /* 안내 */
+
+    .guide-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      padding: 15px;
+      margin-bottom: 14px;
+
+      border-radius: 19px;
+
+      background: #eef0ff;
+
+      color: #596994;
+    }
+
+    .guide-icon {
+      width: 45px;
+      height: 45px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 14px;
+
+      background: white;
+
+      font-size: 24px;
+    }
+
+    .guide-title {
+      margin-bottom: 4px;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .guide-text {
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+
+    /* 입력 카드 */
+
+    .form-card {
+      padding: 20px;
+
+      border-radius: 23px;
+
+      background: white;
+
+      box-shadow:
+        0 6px 20px rgba(57,79,94,.06);
+    }
+
+    .section {
+      margin-bottom: 21px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #536f7e;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .required {
+      color: #d76159;
+    }
+
+    .optional {
+      color: #9aa8af;
+
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+
+      border: 1px solid #dbe4e9;
+      border-radius: 14px;
+
+      background: #fafcfd;
+
+      color: #405d6c;
+
+      outline: none;
+    }
+
+    .input,
+    .select {
+      height: 49px;
+      padding: 0 13px;
+
+      font-size: 13px;
+    }
+
+    .textarea {
+      min-height: 95px;
+
+      padding: 13px;
+
+      resize: vertical;
+
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: #9ba9db;
+
+      background: white;
+    }
+
+
+    /* 인슐린 종류 */
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 8px;
+    }
+
+    .type-button {
+      min-height: 63px;
+
+      padding: 10px;
+
+      border: 2px solid transparent;
+      border-radius: 15px;
+
+      background: #f5f6fb;
+
+      color: #6b7391;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    .type-button.selected {
+      border-color: #8f9fd5;
+
+      background: #eef0ff;
+
+      color: #53649a;
+    }
+
+
+    /* Unit */
+
+    .unit-wrap {
+      position: relative;
+    }
+
+    .unit-input {
+      width: 100%;
+
+      height: 58px;
+
+      padding:
+        0
+        65px
+        0
+        15px;
+
+      border: 2px solid #dfe5ea;
+      border-radius: 16px;
+
+      background: #fafcfd;
+
+      color: #395768;
+
+      outline: none;
+
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .unit-input:focus {
+      border-color: #8fa0d8;
+
+      background: white;
+    }
+
+    .unit-label {
+      position: absolute;
+
+      right: 17px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      color: #758894;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+
+    /* 경고 */
+
+    .safety-note {
+      margin-top: 17px;
+      padding: 13px;
+
+      border-radius: 15px;
+
+      background: #fff5e5;
+
+      color: #8a692e;
+
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .safety-note strong {
+      color: #765620;
+    }
+
+
+    /* 저장 */
+
+    .save-button {
+      width: 100%;
+
+      margin-top: 15px;
+
+      padding: 15px;
+
+      border: none;
+      border-radius: 16px;
+
+      background: #6779b5;
+      color: white;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .save-button:disabled {
+      opacity: .55;
+
+      cursor: default;
+    }
+
+
+    /* 완료 */
+
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(37,52,62,.45);
+    }
+
+    .success-card {
+      width: 100%;
+      max-width: 390px;
+
+      padding: 26px;
+
+      border-radius: 26px;
+
+      background: white;
+
+      text-align: center;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.18);
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 14px;
+
+      border-radius: 22px;
+
+      background: #eaf7f1;
+
+      font-size: 37px;
+    }
+
+    .success-title {
+      color: #3e6658;
+
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .success-text {
+      margin-top: 7px;
+
+      color: #83959f;
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .success-button {
+      width: 100%;
+
+      margin-top: 18px;
+
+      padding: 13px;
+
+      border: none;
+      border-radius: 14px;
+
+      background: #4d9d82;
+      color: white;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    @media (max-width: 420px) {
+
+      .type-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+  <!-- 상단 -->
+
+  <div class="top-row">
+
+    <button
+      class="back-button"
+      onclick="goBack()">
+
+      ‹
+
+    </button>
+
+
+    <div>
+
+      <div class="page-title">
+        💉 인슐린 기록
+      </div>
+
+      <div class="page-subtitle">
+        실제로 투여한 내용을 기록해요.
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 안내 -->
+
+  <div class="guide-card">
+
+    <div class="guide-icon">
+      💉
+    </div>
+
+    <div>
+
+      <div class="guide-title">
+        주사한 내용을 그대로 기록해주세요
+      </div>
+
+      <div class="guide-text">
+        언제, 어떤 인슐린을 몇 Unit 투여했는지 기록하면
+        이후 혈당 기록을 확인할 때 도움이 됩니다.
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 입력 -->
+
+  <div class="form-card">
+
+
+    <!-- 투여시간 -->
+
+    <div class="section">
+
+      <label class="label">
+        투여 시간
+        <span class="required">*</span>
+      </label>
+
+      <input
+        id="administeredAt"
+        class="input"
+        type="datetime-local">
+
+    </div>
+
+
+
+    <!-- 종류 -->
+
+    <div class="section">
+
+      <label class="label">
+        인슐린 종류
+        <span class="required">*</span>
+      </label>
+
+
+      <div class="type-grid">
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="초속효성"
+          onclick="selectType(this)">
+
+          ⚡ 초속효성
+
+        </button>
+
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="속효성"
+          onclick="selectType(this)">
+
+          💨 속효성
+
+        </button>
+
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="중간형"
+          onclick="selectType(this)">
+
+          🕐 중간형
+
+        </button>
+
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="지속형"
+          onclick="selectType(this)">
+
+          🌙 지속형
+
+        </button>
+
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="혼합형"
+          onclick="selectType(this)">
+
+          🔄 혼합형
+
+        </button>
+
+
+        <button
+          type="button"
+          class="type-button"
+          data-value="기타"
+          onclick="selectType(this)">
+
+          ➕ 기타
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- 제품명 -->
+
+    <div class="section">
+
+      <label class="label">
+
+        인슐린 이름
+
+        <span class="optional">
+          선택
+        </span>
+
+      </label>
+
+      <input
+        id="insulinName"
+        class="input"
+        type="text"
+        maxlength="50"
+        placeholder="예: 처방받은 인슐린 제품명">
+
+    </div>
+
+
+
+    <!-- 투여량 -->
+
+    <div class="section">
+
+      <label class="label">
+
+        투여량
+
+        <span class="required">*</span>
+
+      </label>
+
+
+      <div class="unit-wrap">
+
+        <input
+          id="insulinUnits"
+          class="unit-input"
+          type="number"
+          min="0.1"
+          max="200"
+          step="0.1"
+          inputmode="decimal"
+          placeholder="0">
+
+        <div class="unit-label">
+          Unit
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- 메모 -->
+
+    <div class="section">
+
+      <label class="label">
+
+        메모
+
+        <span class="optional">
+          선택
+        </span>
+
+      </label>
+
+      <textarea
+        id="note"
+        class="textarea"
+        maxlength="300"
+        placeholder="필요한 내용이 있다면 적어주세요."></textarea>
+
+    </div>
+
+
+
+    <!-- 안전 안내 -->
+
+    <div class="safety-note">
+
+      <strong>
+        ※ GlucoGuard는 인슐린 용량을 계산하거나 추천하지 않습니다.
+      </strong>
+
+      <br>
+
+      실제로 투여한 내용을 기록하는 기능이며,
+      인슐린 투여는 개인별 처방 및 학교의 개별 관리계획에 따라야 합니다.
+
+    </div>
+
+
+
+    <button
+      id="saveButton"
+      class="save-button"
+      onclick="saveInsulinRecord()">
+
+      💉 인슐린 기록 저장
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- 저장 완료 -->
+
+<div
+  id="successOverlay"
+  class="success-overlay">
+
+  <div class="success-card">
+
+    <div class="success-icon">
+      ✅
+    </div>
+
+    <div class="success-title">
+      기록했어요!
+    </div>
+
+    <div
+      id="successText"
+      class="success-text">
+
+      인슐린 기록이 저장되었습니다.
+
+    </div>
+
+    <button
+      class="success-button"
+      onclick="finishRecord()">
+
+      확인
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+let currentProfile =
+  null;
+
+
+let selectedType =
+  "";
+
+
+let recordUserId =
+  null;
+
+
+let isTeacherRecording =
+  false;
+
+
+
+/* =========================
+   시작
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    setCurrentTime();
+
+
+    await checkLogin();
+
+  }
+);
+
+
+
+/* =========================
+   시간 기본값
+========================= */
+
+function setCurrentTime() {
+
+  const now =
+    new Date();
+
+
+  const local =
+    new Date(
+      now.getTime()
+      -
+      now.getTimezoneOffset()
+      * 60000
+    );
+
+
+  document.getElementById(
+    "administeredAt"
+  ).value =
+    local
+      .toISOString()
+      .slice(0,16);
+
+}
+
+
+
+/* =========================
+   로그인 확인
+========================= */
+
+async function checkLogin() {
+
+  const {
+    data
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    !data.session
+  ) {
+
+    window.location.href =
+      "./login.html";
+
+    return;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,role,nickname"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (
+    error
+    ||
+    !profile
+  ) {
+
+    alert(
+      "사용자 정보를 불러오지 못했습니다."
+    );
+
+
+    window.location.href =
+      "./login.html";
+
+
+    return;
+
+  }
+
+
+  currentProfile =
+    profile;
+
+
+
+  /* 일반 학생 */
+
+  if (
+    profile.role === "student"
+  ) {
+
+    recordUserId =
+      currentUser.id;
+
+
+    return;
+
+  }
+
+
+
+  /* 데모 학생 */
+
+  if (
+    profile.role === "demo"
+  ) {
+
+    const mode =
+      sessionStorage.getItem(
+        "demoMode"
+      );
+
+
+    if (
+      mode !== "student"
+    ) {
+
+      sessionStorage.setItem(
+        "demoMode",
+        "student"
+      );
+
+    }
+
+
+    recordUserId =
+      currentUser.id;
+
+
+    return;
+
+  }
+
+
+
+  /* 교직원이 학생 기록을 대신 입력 */
+
+  if (
+    profile.role === "teacher"
+    ||
+    profile.role === "nurse"
+  ) {
+
+    const selectedStudent =
+      sessionStorage.getItem(
+        "teacherSelectedStudent"
+      );
+
+
+    if (
+      !selectedStudent
+    ) {
+
+      alert(
+        "기록할 학생을 먼저 선택해주세요."
+      );
+
+
+      window.location.href =
+        "./teacher.html";
+
+
+      return;
+
+    }
+
+
+    recordUserId =
+      selectedStudent;
+
+
+    isTeacherRecording =
+      true;
+
+
+    return;
+
+  }
+
+
+  window.location.href =
+    "./login.html";
+
+}
+
+
+
+/* =========================
+   인슐린 종류
+========================= */
+
+function selectType(
+  button
+) {
+
+  document
+    .querySelectorAll(
+      ".type-button"
+    )
+    .forEach(
+      item =>
+        item.classList.remove(
+          "selected"
+        )
+    );
+
+
+  button.classList.add(
+    "selected"
+  );
+
+
+  selectedType =
+    button.dataset.value;
+
+}
+
+
+
+/* =========================
+   저장
+========================= */
+
+async function saveInsulinRecord() {
+
+  const administeredAt =
+    document.getElementById(
+      "administeredAt"
+    ).value;
+
+
+  const insulinName =
+    document.getElementById(
+      "insulinName"
+    ).value.trim();
+
+
+  const unitsValue =
+    document.getElementById(
+      "insulinUnits"
+    ).value;
+
+
+  const note =
+    document.getElementById(
+      "note"
+    ).value.trim();
+
+
+  if (
+    !administeredAt
+  ) {
+
+    alert(
+      "투여 시간을 입력해주세요."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !selectedType
+  ) {
+
+    alert(
+      "인슐린 종류를 선택해주세요."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    unitsValue === ""
+  ) {
+
+    alert(
+      "실제로 투여한 Unit을 입력해주세요."
+    );
+
+    return;
+
+  }
+
+
+  const insulinUnits =
+    Number(
+      unitsValue
+    );
+
+
+  if (
+    !Number.isFinite(
+      insulinUnits
+    )
+    ||
+    insulinUnits <= 0
+  ) {
+
+    alert(
+      "투여량을 다시 확인해주세요."
+    );
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      `${selectedType} · ${insulinUnits} Unit\n\n실제로 투여한 내용이 맞나요?`
+    );
+
+
+  if (
+    !confirmed
+  ) {
+
+    return;
+
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  const administeredDate =
+    new Date(
+      administeredAt
+    );
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("records")
+      .insert({
+
+        user_id:
+          recordUserId,
+
+        record_type:
+          "insulin",
+
+        insulin_type:
+          selectedType,
+
+        insulin_name:
+          insulinName
+          ||
+          null,
+
+        insulin_units:
+          insulinUnits,
+
+        administered_at:
+          administeredDate
+            .toISOString(),
+
+        note:
+          note
+          ||
+          null
+
+      });
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "💉 인슐린 기록 저장";
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "인슐린 기록을 저장하지 못했습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  const nameText =
+    insulinName
+    ?
+    ` · ${insulinName}`
+    :
+    "";
+
+
+  document.getElementById(
+    "successText"
+  ).textContent =
+    `${selectedType}${nameText} · ${insulinUnits} Unit 기록을 저장했습니다.`;
+
+
+  document.getElementById(
+    "successOverlay"
+  ).style.display =
+    "flex";
+
+}
+
+
+
+/* =========================
+   완료
+========================= */
+
+function finishRecord() {
+
+  document.getElementById(
+    "successOverlay"
+  ).style.display =
+    "none";
+
+
+  goBack();
+
+}
+
+
+
+/* =========================
+   뒤로
+========================= */
+
+function goBack() {
+
+  if (
+    isTeacherRecording
+  ) {
+
+    window.location.href =
+      "./teacher.html";
+
+    return;
+
+  }
+
+
+  window.location.href =
+    "./index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
