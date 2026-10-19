@@ -189,10 +189,6 @@
       outline: none;
     }
 
-    .teacher-phone-input:focus {
-      border-color: #76a9cc;
-    }
-
     .teacher-phone-save {
       flex-shrink: 0;
 
@@ -223,14 +219,14 @@
 
 
     /* =========================
-       교직원 핵심 메뉴
+       핵심 메뉴
     ========================= */
 
     .teacher-tools {
       display: grid;
 
       grid-template-columns:
-        1fr 1fr;
+        repeat(3, 1fr);
 
       gap: 10px;
 
@@ -271,7 +267,8 @@
 
       border-radius: 14px;
 
-      background: rgba(255,255,255,.75);
+      background:
+        rgba(255,255,255,.75);
 
       font-size: 24px;
     }
@@ -292,15 +289,18 @@
       line-height: 1.5;
     }
 
+    .student-setting-tool {
+      background: #e8f7f1;
+      color: #3b715f;
+    }
+
     .emergency-tool {
       background: #ffe9e6;
-
       color: #a94c45;
     }
 
     .education-tool {
       background: #eaf4ff;
-
       color: #3d6685;
     }
 
@@ -383,7 +383,6 @@
 
     .student-card.needs-attention {
       border-color: #ffb7b1;
-
       background: #fffdfd;
     }
 
@@ -448,13 +447,11 @@
 
     .attention-badge {
       background: #ffe9e7;
-
       color: #c84d46;
     }
 
     .ok-badge {
       background: #edf7ef;
-
       color: #4c8560;
     }
 
@@ -472,9 +469,6 @@
       font-size: 11px;
       line-height: 1.55;
     }
-
-
-    /* 최근 정보 */
 
     .record-grid {
       display: grid;
@@ -518,16 +512,11 @@
       font-weight: 800;
 
       line-height: 1.5;
-
-      word-break: keep-all;
     }
 
     .status-box .record-value {
       color: #3e7565;
     }
-
-
-    /* 학생 기능 */
 
     .student-actions {
       display: grid;
@@ -553,25 +542,21 @@
 
     .records-action {
       background: #eaf3ff;
-
       color: #2d6893;
     }
 
     .symptom-action {
       background: #e8f7f1;
-
       color: #367662;
     }
 
     .contact-action {
       background: #eef0ff;
-
       color: #5669a4;
     }
 
     .password-action {
       background: #f3f5f6;
-
       color: #687d88;
     }
 
@@ -592,7 +577,7 @@
 
 
     /* =========================
-       공통 모달
+       모달
     ========================= */
 
     .modal-overlay {
@@ -678,38 +663,6 @@
       cursor: pointer;
     }
 
-    .input-label {
-      display: block;
-
-      margin:
-        0 0 5px 2px;
-
-      color: #607d8b;
-
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .modal-input,
-    .modal-select {
-      width: 100%;
-
-      padding: 12px;
-
-      margin-bottom: 11px;
-
-      border:
-        1px solid #d8e2e8;
-
-      border-radius: 13px;
-
-      background: white;
-
-      font-size: 14px;
-
-      outline: none;
-    }
-
     .primary-button {
       width: 100%;
 
@@ -731,7 +684,105 @@
 
 
     /* =========================
-       응급상황 모달
+       담당 학생 설정
+    ========================= */
+
+    .student-select-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+
+      margin-bottom: 15px;
+    }
+
+    .student-select-card {
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
+      padding: 12px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 15px;
+
+      background: #f6f8fa;
+
+      cursor: pointer;
+    }
+
+    .student-select-card.selected {
+      border-color: #80c4ad;
+
+      background: #eaf8f2;
+    }
+
+    .student-checkbox {
+      width: 20px;
+      height: 20px;
+
+      accent-color: #4d9d82;
+
+      cursor: pointer;
+    }
+
+    .select-avatar {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 13px;
+
+      background: white;
+
+      font-size: 23px;
+    }
+
+    .select-info {
+      flex: 1;
+    }
+
+    .select-name {
+      margin-bottom: 3px;
+
+      color: #486370;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .select-class {
+      color: #8598a3;
+
+      font-size: 10px;
+    }
+
+    .selection-note {
+      margin-bottom: 13px;
+
+      padding: 11px;
+
+      border-radius: 13px;
+
+      background: #eef8f4;
+
+      color: #547567;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       응급상황
     ========================= */
 
     .emergency-option-grid {
@@ -808,27 +859,6 @@
       border-bottom: none;
     }
 
-    .response-number {
-      display: inline-flex;
-
-      width: 22px;
-      height: 22px;
-
-      align-items: center;
-      justify-content: center;
-
-      margin-right: 5px;
-
-      border-radius: 50%;
-
-      background: #ffe3df;
-
-      color: #ad514a;
-
-      font-size: 10px;
-      font-weight: 900;
-    }
-
     .emergency-warning {
       margin-top: 12px;
 
@@ -846,7 +876,7 @@
 
 
     /* =========================
-       교육 모달
+       교육
     ========================= */
 
     .education-list {
@@ -897,27 +927,37 @@
 
 
     /* =========================
-       연락처 관리
+       연락처 / 비밀번호
     ========================= */
 
-    .contact-form-box {
-      padding: 14px;
+    .modal-input,
+    .modal-select {
+      width: 100%;
 
-      margin-bottom: 16px;
+      padding: 12px;
 
-      border-radius: 17px;
-
-      background: #f6f9fb;
-    }
-
-    .contact-form-title,
-    .contact-list-title {
       margin-bottom: 11px;
 
-      color: #526b7a;
+      border:
+        1px solid #d8e2e8;
 
-      font-size: 13px;
-      font-weight: 900;
+      border-radius: 13px;
+
+      background: white;
+
+      font-size: 14px;
+    }
+
+    .input-label {
+      display: block;
+
+      margin:
+        0 0 5px 2px;
+
+      color: #607d8b;
+
+      font-size: 11px;
+      font-weight: 800;
     }
 
     .modal-contact-card {
@@ -935,47 +975,26 @@
       background: #f7f9fa;
     }
 
-    .modal-contact-icon {
-      width: 38px;
-      height: 38px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 12px;
-
-      background: white;
-
-      font-size: 19px;
-    }
-
     .modal-contact-info {
       flex: 1;
-
-      min-width: 0;
     }
 
     .modal-contact-name {
-      margin-bottom: 2px;
-
-      color: #496574;
-
       font-size: 12px;
       font-weight: 900;
+
+      color: #496574;
     }
 
     .modal-contact-phone {
+      margin-top: 3px;
+
       color: #8798a2;
 
       font-size: 10px;
     }
 
     .contact-delete-button {
-      flex-shrink: 0;
-
       border: none;
 
       border-radius: 9px;
@@ -1004,15 +1023,13 @@
       text-align: center;
 
       font-size: 11px;
-      line-height: 1.6;
     }
 
 
-    @media (max-width: 520px) {
+    @media (max-width: 620px) {
 
       .teacher-tools {
-        grid-template-columns:
-          1fr 1fr;
+        grid-template-columns: 1fr;
       }
 
       .teacher-phone-row {
@@ -1035,9 +1052,7 @@
 <div class="page">
 
 
-  <!-- =========================
-       교직원 상단
-  ========================= -->
+  <!-- 상단 -->
 
   <div class="top-card">
 
@@ -1097,13 +1112,10 @@
           id="teacherPhone"
           class="teacher-phone-input"
           type="tel"
-          inputmode="tel"
-          maxlength="20"
           placeholder="예: 010-1234-5678">
 
 
         <button
-          id="teacherPhoneSaveButton"
           class="teacher-phone-save"
           onclick="saveTeacherPhone()">
 
@@ -1115,7 +1127,7 @@
 
 
       <div class="teacher-phone-help">
-        담당 학생의 연락 화면에 이 번호가 자동으로 표시됩니다.
+        담당 학생의 연락 화면에 이 번호가 표시됩니다.
       </div>
 
     </div>
@@ -1124,11 +1136,33 @@
 
 
 
-  <!-- =========================
-       응급 / 교육
-  ========================= -->
+  <!-- 핵심 메뉴 -->
 
   <div class="teacher-tools">
+
+
+    <button
+      class="tool-button student-setting-tool"
+      onclick="openStudentSetting()">
+
+      <div class="tool-icon">
+        👥
+      </div>
+
+      <div class="tool-text">
+
+        <div class="tool-title">
+          담당 학생 설정
+        </div>
+
+        <div class="tool-description">
+          내가 담당할 학생을 직접 선택해요.
+        </div>
+
+      </div>
+
+    </button>
+
 
 
     <button
@@ -1177,14 +1211,11 @@
 
     </button>
 
-
   </div>
 
 
 
-  <!-- =========================
-       요약
-  ========================= -->
+  <!-- 요약 -->
 
   <div class="summary-grid">
 
@@ -1243,9 +1274,73 @@
 
 
 
-<!-- ==================================================
-     응급상황 대응 모달
-================================================== -->
+<!-- 담당 학생 설정 -->
+
+<div
+  id="studentSettingOverlay"
+  class="modal-overlay">
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <h2 class="modal-title">
+          👥 담당 학생 설정
+        </h2>
+
+        <p class="modal-subtitle">
+          내가 담당할 학생을 선택해주세요.
+        </p>
+
+      </div>
+
+
+      <button
+        class="close-button"
+        onclick="closeStudentSetting()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <div class="selection-note">
+      한 학생을 여러 선생님이 함께 담당할 수 있습니다.
+      여기서 변경하는 내용은 내 담당 학생 연결에만 적용됩니다.
+    </div>
+
+
+    <div
+      id="studentSelectList"
+      class="student-select-list">
+
+      <div class="modal-empty">
+        학생 목록을 불러오는 중입니다.
+      </div>
+
+    </div>
+
+
+    <button
+      id="saveStudentSelectionButton"
+      class="primary-button"
+      onclick="saveStudentSelection()">
+
+      선택 저장
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- 응급상황 -->
 
 <div
   id="emergencyGuideOverlay"
@@ -1277,7 +1372,6 @@
       </button>
 
     </div>
-
 
 
     <div class="emergency-option-grid">
@@ -1321,7 +1415,6 @@
     </div>
 
 
-
     <div
       id="responseGuide"
       class="response-guide">
@@ -1335,13 +1428,8 @@
     </div>
 
 
-
     <div class="emergency-warning">
-
-      ⚠️ 이 화면은 일반적인 학교 대응을 돕기 위한 교육용 안내입니다.
-      학생의 개별 당뇨 관리계획(DMMP), 처방, 보호자·의료진 지침 및
-      학교 응급대응 절차가 항상 우선합니다.
-
+      ⚠️ 학생의 개별 당뇨 관리계획, 의료진 지침 및 학교 응급대응 절차가 항상 우선합니다.
     </div>
 
   </div>
@@ -1350,9 +1438,7 @@
 
 
 
-<!-- ==================================================
-     교직원 교육 모달
-================================================== -->
+<!-- 교육 -->
 
 <div
   id="educationOverlay"
@@ -1369,7 +1455,7 @@
         </h2>
 
         <p class="modal-subtitle">
-          학교생활에서 꼭 알아야 할 핵심 내용
+          학교에서 꼭 알아야 할 핵심 내용
         </p>
 
       </div>
@@ -1386,9 +1472,7 @@
     </div>
 
 
-
     <div class="education-list">
-
 
       <div class="education-card">
 
@@ -1397,12 +1481,10 @@
         </div>
 
         <div class="education-text">
-          학생이 스스로 혈당을 조절하기 어려워 인슐린 관리가 필요한 질환입니다.
-          학교에서는 학생의 개별 관리계획에 따라 안전하게 지원하는 것이 중요합니다.
+          인슐린이 필요한 질환으로, 학교에서도 학생별 관리계획에 따라 안전하게 지원하는 것이 중요합니다.
         </div>
 
       </div>
-
 
 
       <div class="education-card">
@@ -1414,11 +1496,9 @@
         <div class="education-text">
           식은땀, 손 떨림, 어지러움, 창백함, 졸림,
           집중력이나 행동 변화 등이 나타날 수 있습니다.
-          평소와 다른 모습도 중요한 신호가 될 수 있습니다.
         </div>
 
       </div>
-
 
 
       <div class="education-card">
@@ -1428,12 +1508,11 @@
         </div>
 
         <div class="education-text">
-          심한 갈증, 잦은 소변, 피로감 등이 나타날 수 있습니다.
-          구토나 심한 이상 증상이 동반되면 개별 계획에 따라 빠르게 확인해야 합니다.
+          심한 갈증, 잦은 소변, 피로 등이 나타날 수 있습니다.
+          구토나 심한 이상 증상이 있으면 빠른 확인이 필요합니다.
         </div>
 
       </div>
-
 
 
       <div class="education-card">
@@ -1443,27 +1522,11 @@
         </div>
 
         <div class="education-text">
-          운동 전후에는 학생의 개별 계획에 따라 혈당 확인이나 간식이 필요할 수 있습니다.
-          활동 중 몸이 이상하다고 말하면 운동을 계속하도록 강요하지 않습니다.
+          운동 전후 혈당 확인이나 간식이 필요할 수 있습니다.
+          몸이 이상하다고 하면 활동을 계속하도록 강요하지 않습니다.
         </div>
 
       </div>
-
-
-
-      <div class="education-card">
-
-        <div class="education-title">
-          🍱 급식과 간식
-        </div>
-
-        <div class="education-text">
-          학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
-          음식 섭취와 인슐린 사용은 학생의 개별 계획과 보호자·의료진 지침을 따릅니다.
-        </div>
-
-      </div>
-
 
 
       <div class="education-card">
@@ -1474,22 +1537,17 @@
 
         <div class="education-text">
           증상을 과소평가하지 말고 학생과 함께 있어 주세요.
-          필요하면 보건교사·보호자에게 연락하고,
-          응급상황에서는 학교의 응급 절차를 따릅니다.
+          필요하면 보건교사·보호자에게 연락하고 학교의 응급 절차를 따릅니다.
         </div>
 
       </div>
 
-
     </div>
 
 
-
     <div class="education-important">
-
       GlucoGuard는 진단이나 인슐린 용량을 결정하지 않습니다.
-      실제 치료·처치는 학생별 개별 관리계획과 의료진 지침이 우선합니다.
-
+      실제 치료는 학생별 관리계획과 의료진 지침이 우선합니다.
     </div>
 
   </div>
@@ -1498,9 +1556,7 @@
 
 
 
-<!-- ==================================================
-     비상연락처 관리 모달
-================================================== -->
+<!-- 연락처 -->
 
 <div
   id="contactModalOverlay"
@@ -1519,9 +1575,6 @@
         <p
           id="contactModalStudent"
           class="modal-subtitle">
-
-          학생 연락처
-
         </p>
 
       </div>
@@ -1538,93 +1591,55 @@
     </div>
 
 
+    <label class="input-label">
+      관계
+    </label>
 
-    <div class="contact-form-box">
+    <select
+      id="contactRelationship"
+      class="modal-select">
 
-      <div class="contact-form-title">
-        ➕ 새 연락처 등록
-      </div>
+      <option value="엄마">엄마</option>
+      <option value="아빠">아빠</option>
+      <option value="보호자">보호자</option>
+      <option value="보건실">보건실</option>
+      <option value="기타">기타</option>
 
-
-      <label class="input-label">
-        관계
-      </label>
-
-      <select
-        id="contactRelationship"
-        class="modal-select">
-
-        <option value="엄마">
-          엄마
-        </option>
-
-        <option value="아빠">
-          아빠
-        </option>
-
-        <option value="보호자">
-          보호자
-        </option>
-
-        <option value="보건실">
-          보건실
-        </option>
-
-        <option value="기타">
-          기타
-        </option>
-
-      </select>
+    </select>
 
 
-      <label class="input-label">
-        이름
-      </label>
+    <label class="input-label">
+      이름
+    </label>
 
-      <input
-        id="contactName"
-        class="modal-input"
-        type="text"
-        maxlength="30"
-        placeholder="예: 김OO">
+    <input
+      id="contactName"
+      class="modal-input"
+      type="text">
 
 
-      <label class="input-label">
-        전화번호
-      </label>
+    <label class="input-label">
+      전화번호
+    </label>
 
-      <input
-        id="contactPhone"
-        class="modal-input"
-        type="tel"
-        inputmode="tel"
-        maxlength="20"
-        placeholder="예: 010-1234-5678">
+    <input
+      id="contactPhone"
+      class="modal-input"
+      type="tel">
 
 
-      <button
-        id="contactSaveButton"
-        class="primary-button"
-        onclick="saveEmergencyContact()">
+    <button
+      class="primary-button"
+      onclick="saveEmergencyContact()">
 
-        연락처 등록
+      연락처 등록
 
-      </button>
-
-    </div>
+    </button>
 
 
-
-    <div class="contact-list-title">
-      등록된 연락처
-    </div>
-
-
-    <div id="contactModalList">
-
-      <div class="modal-empty">
-        연락처를 불러오는 중입니다.
-      </div>
+    <div
+      id="contactModalList"
+      style="margin-top:16px;">
 
     </div>
 
@@ -1634,9 +1649,7 @@
 
 
 
-<!-- ==================================================
-     비밀번호 변경 모달
-================================================== -->
+<!-- 비밀번호 -->
 
 <div
   id="passwordModalOverlay"
@@ -1655,9 +1668,6 @@
         <p
           id="passwordModalStudent"
           class="modal-subtitle">
-
-          학생 계정
-
         </p>
 
       </div>
@@ -1678,17 +1688,14 @@
       새 임시 비밀번호
     </label>
 
-
     <input
       id="newPassword"
       class="modal-input"
       type="password"
-      minlength="6"
-      placeholder="6자 이상 입력">
+      minlength="6">
 
 
     <button
-      id="resetPasswordButton"
       class="primary-button"
       onclick="resetStudentPassword()">
 
@@ -1710,10 +1717,8 @@
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
-
 
 const supabaseClient =
   window.supabase.createClient(
@@ -1722,37 +1727,15 @@ const supabaseClient =
   );
 
 
-let currentUser =
-  null;
+let currentUser = null;
+let currentTeacherProfile = null;
 
+let linkedStudents = [];
+let allStudents = [];
+let allRecords = [];
 
-let currentTeacherProfile =
-  null;
-
-
-let linkedStudents =
-  [];
-
-
-let allRecords =
-  [];
-
-
-let selectedContactStudentId =
-  null;
-
-
-let selectedContactStudentName =
-  "";
-
-
-let selectedPasswordStudentId =
-  null;
-
-
-let selectedPasswordStudentName =
-  "";
-
+let selectedContactStudentId = null;
+let selectedPasswordStudentId = null;
 
 
 /* =========================
@@ -1766,11 +1749,9 @@ window.addEventListener(
     const ready =
       await checkTeacherLogin();
 
-
     if (!ready) {
       return;
     }
-
 
     await loadDashboard();
 
@@ -1778,9 +1759,8 @@ window.addEventListener(
 );
 
 
-
 /* =========================
-   교직원 로그인
+   로그인
 ========================= */
 
 async function checkTeacherLogin() {
@@ -1801,9 +1781,7 @@ async function checkTeacherLogin() {
     location.href =
       "login.html";
 
-
     return false;
-
   }
 
 
@@ -1836,13 +1814,7 @@ async function checkTeacherLogin() {
       "교직원 정보를 확인할 수 없습니다."
     );
 
-
-    location.href =
-      "login.html";
-
-
     return false;
-
   }
 
 
@@ -1855,9 +1827,7 @@ async function checkTeacherLogin() {
     location.href =
       "index.html";
 
-
     return false;
-
   }
 
 
@@ -1875,25 +1845,22 @@ async function checkTeacherLogin() {
       ·
       ${escapeHtml(profile.class_name || "학급 정보 없음")}
       ·
-      ${profile.role === "nurse" ? "보건교사" : "교직원"}
+      교직원
     `;
 
 
   document.getElementById(
     "teacherPhone"
   ).value =
-    profile.phone_number ||
-    "";
+    profile.phone_number || "";
 
 
   return true;
-
 }
 
 
-
 /* =========================
-   교직원 전화번호 저장
+   전화번호
 ========================= */
 
 async function saveTeacherPhone() {
@@ -1910,45 +1877,8 @@ async function saveTeacherPhone() {
       "전화번호를 입력해주세요."
     );
 
-
     return;
-
   }
-
-
-  const cleanedPhone =
-    phone.replace(
-      /[^0-9+]/g,
-      ""
-    );
-
-
-  if (
-    cleanedPhone.length < 8
-  ) {
-
-    alert(
-      "전화번호를 다시 확인해주세요."
-    );
-
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "teacherPhoneSaveButton"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.textContent =
-    "저장 중...";
 
 
   const {
@@ -1962,8 +1892,7 @@ async function saveTeacherPhone() {
           phone,
 
         updated_at:
-          new Date()
-            .toISOString()
+          new Date().toISOString()
 
       })
       .eq(
@@ -1972,40 +1901,352 @@ async function saveTeacherPhone() {
       );
 
 
-  button.disabled =
-    false;
-
-
-  button.textContent =
-    "저장";
-
-
   if (error) {
 
     alert(
-      "전화번호를 저장하지 못했습니다."
+      "전화번호 저장에 실패했습니다."
     );
 
-
     return;
-
   }
-
-
-  currentTeacherProfile.phone_number =
-    phone;
 
 
   alert(
     "내 연락처를 저장했습니다."
   );
-
 }
 
 
+/* =========================
+   담당 학생 설정
+========================= */
+
+async function openStudentSetting() {
+
+  document.getElementById(
+    "studentSettingOverlay"
+  ).style.display =
+    "flex";
+
+
+  document.getElementById(
+    "studentSelectList"
+  ).innerHTML =
+    `
+      <div class="modal-empty">
+        학생 목록을 불러오는 중입니다.
+      </div>
+    `;
+
+
+  const {
+    data: students,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id, nickname, class_name, avatar, role"
+      )
+      .eq(
+        "role",
+        "student"
+      )
+      .order(
+        "class_name",
+        {
+          ascending: true
+        }
+      );
+
+
+  if (error) {
+
+    console.error(error);
+
+    document.getElementById(
+      "studentSelectList"
+    ).innerHTML =
+      `
+        <div class="modal-empty">
+          학생 목록을 불러오지 못했습니다.
+        </div>
+      `;
+
+    return;
+  }
+
+
+  allStudents =
+    students || [];
+
+
+  renderStudentSelection();
+}
+
+
+function closeStudentSetting() {
+
+  document.getElementById(
+    "studentSettingOverlay"
+  ).style.display =
+    "none";
+}
+
+
+function renderStudentSelection() {
+
+  const container =
+    document.getElementById(
+      "studentSelectList"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  const linkedIds =
+    linkedStudents.map(
+      student =>
+        student.id
+    );
+
+
+  if (
+    allStudents.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+        <div class="modal-empty">
+          등록된 학생이 없습니다.
+        </div>
+      `;
+
+    return;
+  }
+
+
+  allStudents.forEach(
+    student => {
+
+      const label =
+        document.createElement(
+          "label"
+        );
+
+
+      const checked =
+        linkedIds.includes(
+          student.id
+        );
+
+
+      label.className =
+        "student-select-card"
+        +
+        (
+          checked
+          ?
+          " selected"
+          :
+          ""
+        );
+
+
+      label.innerHTML =
+        `
+          <input
+            type="checkbox"
+            class="student-checkbox"
+            value="${student.id}"
+            ${checked ? "checked" : ""}
+          >
+
+          <div class="select-avatar">
+            ${escapeHtml(student.avatar || "🐻")}
+          </div>
+
+          <div class="select-info">
+
+            <div class="select-name">
+              ${escapeHtml(student.nickname || "학생")}
+            </div>
+
+            <div class="select-class">
+              ${escapeHtml(student.class_name || "학급 미등록")}
+            </div>
+
+          </div>
+        `;
+
+
+      const checkbox =
+        label.querySelector(
+          ".student-checkbox"
+        );
+
+
+      checkbox.addEventListener(
+        "change",
+        function() {
+
+          label.classList.toggle(
+            "selected",
+            checkbox.checked
+          );
+
+        }
+      );
+
+
+      container.appendChild(
+        label
+      );
+
+    }
+  );
+}
+
+
+async function saveStudentSelection() {
+
+  const button =
+    document.getElementById(
+      "saveStudentSelectionButton"
+    );
+
+
+  const checkedIds =
+    Array.from(
+      document.querySelectorAll(
+        ".student-checkbox:checked"
+      )
+    ).map(
+      checkbox =>
+        checkbox.value
+    );
+
+
+  const currentIds =
+    linkedStudents.map(
+      student =>
+        student.id
+    );
+
+
+  const idsToAdd =
+    checkedIds.filter(
+      id =>
+        !currentIds.includes(id)
+    );
+
+
+  const idsToRemove =
+    currentIds.filter(
+      id =>
+        !checkedIds.includes(id)
+    );
+
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "저장 중...";
+
+
+  try {
+
+    if (
+      idsToAdd.length > 0
+    ) {
+
+      const rows =
+        idsToAdd.map(
+          studentId => ({
+            teacher_id:
+              currentUser.id,
+
+            student_id:
+              studentId
+          })
+        );
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("teacher_students")
+          .insert(rows);
+
+
+      if (error) {
+        throw error;
+      }
+
+    }
+
+
+    if (
+      idsToRemove.length > 0
+    ) {
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("teacher_students")
+          .delete()
+          .eq(
+            "teacher_id",
+            currentUser.id
+          )
+          .in(
+            "student_id",
+            idsToRemove
+          );
+
+
+      if (error) {
+        throw error;
+      }
+
+    }
+
+
+    closeStudentSetting();
+
+    await loadDashboard();
+
+    alert(
+      "담당 학생 설정을 저장했습니다."
+    );
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "담당 학생 설정을 저장하지 못했습니다."
+    );
+
+  }
+
+
+  button.disabled =
+    false;
+
+  button.textContent =
+    "선택 저장";
+}
+
 
 /* =========================
-   학생 데이터 불러오기
+   대시보드
 ========================= */
 
 async function loadDashboard() {
@@ -2025,11 +2266,9 @@ async function loadDashboard() {
 
   if (linkError) {
 
-    showDashboardError();
-
+    console.error(linkError);
 
     return;
-
   }
 
 
@@ -2045,25 +2284,17 @@ async function loadDashboard() {
     studentIds.length === 0
   ) {
 
-    linkedStudents =
-      [];
-
-
-    allRecords =
-      [];
-
+    linkedStudents = [];
+    allRecords = [];
 
     renderDashboard();
 
-
     return;
-
   }
 
 
   const {
-    data: profiles,
-    error: profileError
+    data: students
   } =
     await supabaseClient
       .from("profiles")
@@ -2076,27 +2307,17 @@ async function loadDashboard() {
       );
 
 
-  if (profileError) {
-
-    showDashboardError();
-
-
-    return;
-
-  }
-
-
   linkedStudents =
-    (profiles || [])
+    (students || [])
       .filter(
-        profile =>
-          profile.role === "student"
+        student =>
+          student.role ===
+          "student"
       );
 
 
   const {
-    data: records,
-    error: recordError
+    data: records
   } =
     await supabaseClient
       .from("records")
@@ -2116,37 +2337,15 @@ async function loadDashboard() {
 
 
   allRecords =
-    recordError
-    ?
-    []
-    :
-    (records || []);
+    records || [];
 
 
   renderDashboard();
-
 }
-
-
-
-function showDashboardError() {
-
-  document.getElementById(
-    "studentList"
-  ).innerHTML =
-    `
-      <div class="empty-state">
-        학생 정보를 불러오지 못했습니다.<br>
-        잠시 후 다시 시도해주세요.
-      </div>
-    `;
-
-}
-
 
 
 /* =========================
-   학생 상태 계산
+   학생 상태
 ========================= */
 
 function buildStudentStatus(
@@ -2177,30 +2376,6 @@ function buildStudentStatus(
     );
 
 
-  const reasons =
-    [];
-
-
-  if (
-    latestGlucose &&
-    latestGlucose.glucose_value !== null
-  ) {
-
-    if (
-      latestGlucose.glucose_value < 70
-      ||
-      latestGlucose.glucose_value >= 250
-    ) {
-
-      reasons.push(
-        `최근 혈당 ${latestGlucose.glucose_value} mg/dL`
-      );
-
-    }
-
-  }
-
-
   const symptomData =
     parseNote(
       latestSymptom
@@ -2211,63 +2386,62 @@ function buildStudentStatus(
     );
 
 
-  if (latestSymptom) {
-
-    if (
-      Array.isArray(
-        symptomData.symptoms
-      )
-      &&
-      symptomData.symptoms.includes(
-        "구토"
-      )
-    ) {
-
-      reasons.push(
-        "구토 증상 기록"
-      );
-
-    }
+  const reasons = [];
 
 
-    if (
-      symptomData.condition ===
-      "danger"
-    ) {
+  if (
+    latestGlucose
+    &&
+    latestGlucose.glucose_value !== null
+    &&
+    (
+      latestGlucose.glucose_value < 70
+      ||
+      latestGlucose.glucose_value >= 250
+    )
+  ) {
 
-      reasons.push(
-        "이전 기록에서 의식·삼킴 상태 확인 필요"
-      );
-
-    }
-
-
-    if (
-      latestSymptom.glucose_value !== null
-      &&
-      (
-        latestSymptom.glucose_value < 70
-        ||
-        latestSymptom.glucose_value >= 250
-      )
-    ) {
-
-      reasons.push(
-        `상태 기록 당시 혈당 ${latestSymptom.glucose_value} mg/dL`
-      );
-
-    }
+    reasons.push(
+      `최근 혈당 ${latestGlucose.glucose_value} mg/dL`
+    );
 
   }
 
 
-  const todayCount =
-    records.filter(
-      record =>
-        isToday(
-          record.created_at
-        )
-    ).length;
+  if (
+    latestSymptom
+    &&
+    latestSymptom.glucose_value !== null
+    &&
+    (
+      latestSymptom.glucose_value < 70
+      ||
+      latestSymptom.glucose_value >= 250
+    )
+  ) {
+
+    reasons.push(
+      `상태 기록 당시 혈당 ${latestSymptom.glucose_value} mg/dL`
+    );
+
+  }
+
+
+  if (
+    Array.isArray(
+      symptomData.symptoms
+    )
+    &&
+    symptomData.symptoms.includes(
+      "구토"
+    )
+  ) {
+
+    reasons.push(
+      "구토 증상 기록"
+    );
+
+  }
 
 
   return {
@@ -2291,96 +2465,22 @@ function buildStudentStatus(
       symptomData,
 
     todayCount:
-      todayCount
+      records.filter(
+        record =>
+          isToday(
+            record.created_at
+          )
+      ).length
 
   };
-
 }
 
 
-
 /* =========================
-   학생 목록
+   대시보드 출력
 ========================= */
 
 function renderDashboard() {
-
-  const studentsWithStatus =
-    linkedStudents.map(
-      student => {
-
-        const studentRecords =
-          allRecords.filter(
-            record =>
-              record.user_id ===
-              student.id
-          );
-
-
-        const status =
-          buildStudentStatus(
-            studentRecords
-          );
-
-
-        return {
-          student,
-          status
-        };
-
-      }
-    );
-
-
-  studentsWithStatus.sort(
-    (a, b) => {
-
-      if (
-        a.status.needsAttention
-        &&
-        !b.status.needsAttention
-      ) {
-
-        return -1;
-
-      }
-
-
-      if (
-        !a.status.needsAttention
-        &&
-        b.status.needsAttention
-      ) {
-
-        return 1;
-
-      }
-
-
-      return (
-        a.student.nickname || ""
-      ).localeCompare(
-        b.student.nickname || ""
-      );
-
-    }
-  );
-
-
-  document.getElementById(
-    "studentCount"
-  ).textContent =
-    linkedStudents.length;
-
-
-  document.getElementById(
-    "attentionCount"
-  ).textContent =
-    studentsWithStatus.filter(
-      item =>
-        item.status.needsAttention
-    ).length;
-
 
   const container =
     document.getElementById(
@@ -2392,38 +2492,81 @@ function renderDashboard() {
     "";
 
 
+  let attentionCount =
+    0;
+
+
+  document.getElementById(
+    "studentCount"
+  ).textContent =
+    linkedStudents.length;
+
+
   if (
-    studentsWithStatus.length === 0
+    linkedStudents.length === 0
   ) {
+
+    document.getElementById(
+      "attentionCount"
+    ).textContent =
+      "0";
+
 
     container.innerHTML =
       `
         <div class="empty-state">
-          아직 연결된 학생이 없습니다.
+          아직 담당 학생이 없습니다.<br><br>
+          위의 <strong>👥 담당 학생 설정</strong>에서<br>
+          학생을 선택해주세요.
         </div>
       `;
 
-
     return;
-
   }
 
 
-  studentsWithStatus.forEach(
-    item => {
+  linkedStudents.forEach(
+    student => {
+
+      const records =
+        allRecords.filter(
+          record =>
+            record.user_id ===
+            student.id
+        );
+
+
+      const status =
+        buildStudentStatus(
+          records
+        );
+
+
+      if (
+        status.needsAttention
+      ) {
+
+        attentionCount++;
+
+      }
+
 
       container.appendChild(
         createStudentCard(
-          item.student,
-          item.status
+          student,
+          status
         )
       );
 
     }
   );
 
-}
 
+  document.getElementById(
+    "attentionCount"
+  ).textContent =
+    attentionCount;
+}
 
 
 /* =========================
@@ -2629,7 +2772,6 @@ function createStudentCard(
         student.id
       );
 
-
       location.href =
         "records.html";
 
@@ -2645,7 +2787,6 @@ function createStudentCard(
         "teacherSelectedStudent",
         student.id
       );
-
 
       location.href =
         "symptom.html";
@@ -2678,13 +2819,11 @@ function createStudentCard(
 
 
   return card;
-
 }
 
 
-
 /* =========================
-   최근 기록 텍스트
+   텍스트
 ========================= */
 
 function getMealText(
@@ -2696,48 +2835,34 @@ function getMealText(
   }
 
 
-  const meal =
-    record.meal_type ||
-    "식사";
+  let amount = "";
 
 
-  let amount =
-    "";
+  const ratio =
+    Number(
+      record.intake_ratio
+    );
 
 
-  if (
-    record.intake_ratio !== null
-    &&
-    record.intake_ratio !== undefined
-  ) {
+  if (ratio === 1) {
+    amount = "다 먹었어요";
+  }
 
-    const ratio =
-      Number(
-        record.intake_ratio
-      );
+  if (ratio === 0.5) {
+    amount = "반 정도 먹었어요";
+  }
 
+  if (ratio === 0.25) {
+    amount = "조금 먹었어요";
+  }
 
-    if (ratio === 1) {
-      amount = "다 먹었어요";
-    }
-
-    if (ratio === 0.5) {
-      amount = "반 정도 먹었어요";
-    }
-
-    if (ratio === 0.25) {
-      amount = "조금 먹었어요";
-    }
-
-    if (ratio === 0) {
-      amount = "안 먹었어요";
-    }
-
+  if (ratio === 0) {
+    amount = "안 먹었어요";
   }
 
 
   return (
-    meal
+    (record.meal_type || "식사")
     +
     (
       amount
@@ -2747,9 +2872,7 @@ function getMealText(
       ""
     )
   );
-
 }
-
 
 
 function getSymptomText(
@@ -2762,8 +2885,7 @@ function getSymptomText(
   }
 
 
-  const parts =
-    [];
+  const parts = [];
 
 
   if (
@@ -2781,8 +2903,6 @@ function getSymptomText(
     Array.isArray(
       data.symptoms
     )
-    &&
-    data.symptoms.length > 0
   ) {
 
     parts.push(
@@ -2807,25 +2927,18 @@ function getSymptomText(
   }
 
 
-  if (
-    parts.length === 0
-  ) {
-
-    return "몸 상태 기록";
-
-  }
-
-
-  return parts.join(
-    " · "
+  return (
+    parts.length > 0
+    ?
+    parts.join(" · ")
+    :
+    "몸 상태 기록"
   );
-
 }
 
 
-
 /* =========================
-   응급상황 안내
+   응급
 ========================= */
 
 function openEmergencyGuide() {
@@ -2834,28 +2947,7 @@ function openEmergencyGuide() {
     "emergencyGuideOverlay"
   ).style.display =
     "flex";
-
-
-  document.getElementById(
-    "responseGuide"
-  ).style.display =
-    "none";
-
-
-  document.querySelectorAll(
-    ".emergency-option"
-  ).forEach(
-    button => {
-
-      button.classList.remove(
-        "selected"
-      );
-
-    }
-  );
-
 }
-
 
 
 function closeEmergencyGuide() {
@@ -2864,9 +2956,7 @@ function closeEmergencyGuide() {
     "emergencyGuideOverlay"
   ).style.display =
     "none";
-
 }
-
 
 
 function showEmergencyResponse(
@@ -2877,14 +2967,15 @@ function showEmergencyResponse(
   document.querySelectorAll(
     ".emergency-option"
   ).forEach(
-    item => {
+    item =>
+      item.classList.remove(
+        "selected"
+      )
+  );
 
-      item.classList.toggle(
-        "selected",
-        item === button
-      );
 
-    }
+  button.classList.add(
+    "selected"
   );
 
 
@@ -2915,29 +3006,20 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🩸 저혈당이 의심될 때";
-
+      "🩸 저혈당 의심";
 
     content.innerHTML =
       `
         <div class="response-step">
-          <span class="response-number">1</span>
-          학생과 함께 있고 혈당을 확인할 수 있다면 개별 계획에 따라 확인합니다.
+          학생과 함께 있고 혈당을 확인합니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">2</span>
-          의식이 있고 안전하게 삼킬 수 있는 경우에만 학생의 개별 저혈당 계획에 따라 대응합니다.
+          안전하게 삼킬 수 있는 경우에만 개별 저혈당 계획에 따라 대응합니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">3</span>
-          정해진 시간 후 재확인이 필요한 경우 개별 계획을 따릅니다.
-        </div>
-
-        <div class="response-step">
-          <span class="response-number">4</span>
-          상태가 악화되거나 의식이 흐려지면 즉시 중증 상황 대응으로 전환합니다.
+          상태가 악화되면 즉시 추가 도움을 요청합니다.
         </div>
       `;
 
@@ -2949,29 +3031,20 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🔺 고혈당이 의심될 때";
-
+      "🔺 고혈당 의심";
 
     content.innerHTML =
       `
         <div class="response-step">
-          <span class="response-number">1</span>
-          혈당을 확인하고 학생의 개별 고혈당 관리계획을 확인합니다.
+          혈당과 학생의 개별 관리계획을 확인합니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">2</span>
-          케톤 확인, 수분 섭취, 인슐린 관련 대응은 학생의 개별 계획과 의료진 지침에 따릅니다.
+          케톤, 수분, 인슐린 관련 대응은 개별 계획을 따릅니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">3</span>
-          보호자 또는 보건교사에게 필요한 내용을 공유합니다.
-        </div>
-
-        <div class="response-step">
-          <span class="response-number">4</span>
-          구토, 호흡 이상, 의식 변화 등 심한 이상 증상이 있으면 긴급 대응이 필요할 수 있습니다.
+          구토나 의식 변화 등이 있으면 긴급 대응을 확인합니다.
         </div>
       `;
 
@@ -2983,29 +3056,24 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🚨 의식이 흐리거나 삼키기 어려울 때";
-
+      "🚨 의식 저하·삼키기 어려움";
 
     content.innerHTML =
       `
         <div class="response-step">
-          <span class="response-number">1</span>
           음식이나 음료를 입으로 먹이지 않습니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">2</span>
-          학생을 혼자 두지 않고 즉시 다른 교직원이나 보건교사에게 도움을 요청합니다.
+          학생을 혼자 두지 않습니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">3</span>
-          처방된 글루카곤이 있고 교육받은 교직원이라면 학생의 개별 응급계획에 따라 사용합니다.
+          처방된 글루카곤이 있고 교육받은 경우 개별 응급계획에 따라 사용합니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">4</span>
-          학교 응급계획에 따라 119 등 응급의료 도움을 요청하고 보호자에게 연락합니다.
+          학교 응급계획에 따라 응급의료 도움과 보호자 연락을 진행합니다.
         </div>
       `;
 
@@ -3017,36 +3085,30 @@ function showEmergencyResponse(
   ) {
 
     title.textContent =
-      "🤢 구토나 심한 이상증상이 있을 때";
-
+      "🤢 구토·심한 이상증상";
 
     content.innerHTML =
       `
         <div class="response-step">
-          <span class="response-number">1</span>
-          학생을 혼자 두지 않고 상태를 관찰합니다.
+          학생을 혼자 두지 않습니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">2</span>
-          혈당을 확인할 수 있다면 확인하고 학생의 개별 관리계획을 살펴봅니다.
+          혈당과 개별 관리계획을 확인합니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">3</span>
-          보건교사와 보호자에게 즉시 알립니다.
+          보건교사와 보호자에게 알립니다.
         </div>
 
         <div class="response-step">
-          <span class="response-number">4</span>
-          의식 변화, 호흡 이상, 심한 탈수 등 응급 신호가 있으면 학교 응급 절차를 따릅니다.
+          의식 또는 호흡 이상이 있으면 학교 응급 절차를 따릅니다.
         </div>
       `;
 
   }
 
 }
-
 
 
 /* =========================
@@ -3059,9 +3121,7 @@ function openEducation() {
     "educationOverlay"
   ).style.display =
     "flex";
-
 }
-
 
 
 function closeEducation() {
@@ -3070,13 +3130,11 @@ function closeEducation() {
     "educationOverlay"
   ).style.display =
     "none";
-
 }
 
 
-
 /* =========================
-   비상연락처
+   연락처
 ========================= */
 
 async function openContactModal(
@@ -3087,35 +3145,12 @@ async function openContactModal(
     student.id;
 
 
-  selectedContactStudentName =
-    student.nickname ||
-    "학생";
-
-
   document.getElementById(
     "contactModalStudent"
   ).textContent =
-    selectedContactStudentName
+    student.nickname
     +
     " 학생의 비상연락처";
-
-
-  document.getElementById(
-    "contactName"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "contactPhone"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "contactRelationship"
-  ).value =
-    "엄마";
 
 
   document.getElementById(
@@ -3125,9 +3160,7 @@ async function openContactModal(
 
 
   await loadEmergencyContacts();
-
 }
-
 
 
 function closeContactModal() {
@@ -3136,73 +3169,24 @@ function closeContactModal() {
     "contactModalOverlay"
   ).style.display =
     "none";
-
-
-  selectedContactStudentId =
-    null;
-
 }
-
 
 
 async function loadEmergencyContacts() {
 
-  if (!selectedContactStudentId) {
-    return;
-  }
-
-
   const {
-    data,
-    error
+    data
   } =
     await supabaseClient
-      .from(
-        "emergency_contacts"
-      )
+      .from("emergency_contacts")
       .select(
-        "id, contact_name, relationship, phone_number, created_at"
+        "id, contact_name, relationship, phone_number"
       )
       .eq(
         "user_id",
         selectedContactStudentId
-      )
-      .order(
-        "created_at",
-        {
-          ascending: true
-        }
       );
 
-
-  if (error) {
-
-    document.getElementById(
-      "contactModalList"
-    ).innerHTML =
-      `
-        <div class="modal-empty">
-          연락처를 불러오지 못했습니다.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  renderEmergencyContacts(
-    data || []
-  );
-
-}
-
-
-
-function renderEmergencyContacts(
-  contacts
-) {
 
   const container =
     document.getElementById(
@@ -3214,193 +3198,70 @@ function renderEmergencyContacts(
     "";
 
 
-  if (
-    contacts.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="modal-empty">
-          아직 등록된 비상연락처가 없습니다.
-        </div>
-      `;
-
-
-    return;
-
-  }
-
-
-  contacts.forEach(
+  (data || []).forEach(
     contact => {
 
-      const card =
+      const item =
         document.createElement(
           "div"
         );
 
 
-      card.className =
+      item.className =
         "modal-contact-card";
 
 
-      let icon =
-        "📞";
+      item.innerHTML =
+        `
+          <div class="modal-contact-info">
+
+            <div class="modal-contact-name">
+              ${escapeHtml(contact.relationship)}
+              ·
+              ${escapeHtml(contact.contact_name)}
+            </div>
+
+            <div class="modal-contact-phone">
+              ${escapeHtml(contact.phone_number)}
+            </div>
+
+          </div>
+
+          <button class="contact-delete-button">
+            삭제
+          </button>
+        `;
 
 
-      if (
-        contact.relationship === "엄마"
-        ||
-        contact.relationship === "아빠"
-        ||
-        contact.relationship === "보호자"
-      ) {
+      item.querySelector(
+        "button"
+      ).onclick =
+        async function() {
 
-        icon =
-          "👨‍👩‍👧";
-
-      }
-
-
-      if (
-        contact.relationship === "보건실"
-      ) {
-
-        icon =
-          "🏥";
-
-      }
+          await supabaseClient
+            .from("emergency_contacts")
+            .delete()
+            .eq(
+              "id",
+              contact.id
+            );
 
 
-      const iconBox =
-        document.createElement(
-          "div"
-        );
-
-
-      iconBox.className =
-        "modal-contact-icon";
-
-
-      iconBox.textContent =
-        icon;
-
-
-      const info =
-        document.createElement(
-          "div"
-        );
-
-
-      info.className =
-        "modal-contact-info";
-
-
-      const name =
-        document.createElement(
-          "div"
-        );
-
-
-      name.className =
-        "modal-contact-name";
-
-
-      name.textContent =
-        contact.relationship
-        +
-        " · "
-        +
-        contact.contact_name;
-
-
-      const phone =
-        document.createElement(
-          "div"
-        );
-
-
-      phone.className =
-        "modal-contact-phone";
-
-
-      phone.textContent =
-        contact.phone_number;
-
-
-      info.appendChild(
-        name
-      );
-
-
-      info.appendChild(
-        phone
-      );
-
-
-      const deleteButton =
-        document.createElement(
-          "button"
-        );
-
-
-      deleteButton.className =
-        "contact-delete-button";
-
-
-      deleteButton.textContent =
-        "삭제";
-
-
-      deleteButton.onclick =
-        function() {
-
-          deleteEmergencyContact(
-            contact.id,
-            contact.contact_name
-          );
+          await loadEmergencyContacts();
 
         };
 
 
-      card.appendChild(
-        iconBox
-      );
-
-
-      card.appendChild(
-        info
-      );
-
-
-      card.appendChild(
-        deleteButton
-      );
-
-
       container.appendChild(
-        card
+        item
       );
 
     }
   );
-
 }
 
 
-
 async function saveEmergencyContact() {
-
-  if (!selectedContactStudentId) {
-    return;
-  }
-
-
-  const relationship =
-    document.getElementById(
-      "contactRelationship"
-    ).value;
-
 
   const name =
     document.getElementById(
@@ -3414,6 +3275,12 @@ async function saveEmergencyContact() {
     ).value.trim();
 
 
+  const relationship =
+    document.getElementById(
+      "contactRelationship"
+    ).value;
+
+
   if (
     !name ||
     !phone
@@ -3423,67 +3290,27 @@ async function saveEmergencyContact() {
       "이름과 전화번호를 입력해주세요."
     );
 
-
     return;
-
   }
 
 
-  const cleanedPhone =
-    phone.replace(
-      /[^0-9+]/g,
-      ""
-    );
+  await supabaseClient
+    .from("emergency_contacts")
+    .insert({
 
+      user_id:
+        selectedContactStudentId,
 
-  if (
-    cleanedPhone.length < 8
-  ) {
+      contact_name:
+        name,
 
-    alert(
-      "전화번호를 다시 확인해주세요."
-    );
+      phone_number:
+        phone,
 
+      relationship:
+        relationship
 
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from(
-        "emergency_contacts"
-      )
-      .insert({
-
-        user_id:
-          selectedContactStudentId,
-
-        contact_name:
-          name,
-
-        relationship:
-          relationship,
-
-        phone_number:
-          phone
-
-      });
-
-
-  if (error) {
-
-    alert(
-      "비상연락처를 등록하지 못했습니다."
-    );
-
-
-    return;
-
-  }
+    });
 
 
   document.getElementById(
@@ -3499,52 +3326,11 @@ async function saveEmergencyContact() {
 
 
   await loadEmergencyContacts();
-
 }
-
-
-
-async function deleteEmergencyContact(
-  contactId,
-  contactName
-) {
-
-  const confirmed =
-    confirm(
-      contactName
-      +
-      " 연락처를 삭제할까요?"
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  await supabaseClient
-    .from(
-      "emergency_contacts"
-    )
-    .delete()
-    .eq(
-      "id",
-      contactId
-    )
-    .eq(
-      "user_id",
-      selectedContactStudentId
-    );
-
-
-  await loadEmergencyContacts();
-
-}
-
 
 
 /* =========================
-   비밀번호 변경
+   비밀번호
 ========================= */
 
 function openPasswordModal(
@@ -3555,32 +3341,19 @@ function openPasswordModal(
     student.id;
 
 
-  selectedPasswordStudentName =
-    student.nickname ||
-    "학생";
-
-
   document.getElementById(
     "passwordModalStudent"
   ).textContent =
-    selectedPasswordStudentName
+    student.nickname
     +
-    " 학생의 새 임시 비밀번호를 설정합니다.";
-
-
-  document.getElementById(
-    "newPassword"
-  ).value =
-    "";
+    " 학생";
 
 
   document.getElementById(
     "passwordModalOverlay"
   ).style.display =
     "flex";
-
 }
-
 
 
 function closePasswordModal() {
@@ -3589,21 +3362,10 @@ function closePasswordModal() {
     "passwordModalOverlay"
   ).style.display =
     "none";
-
-
-  selectedPasswordStudentId =
-    null;
-
 }
 
 
-
 async function resetStudentPassword() {
-
-  if (!selectedPasswordStudentId) {
-    return;
-  }
-
 
   const password =
     document.getElementById(
@@ -3616,40 +3378,18 @@ async function resetStudentPassword() {
   ) {
 
     alert(
-      "비밀번호는 6자 이상으로 입력해주세요."
+      "6자 이상 입력해주세요."
     );
 
-
     return;
-
   }
 
 
   const {
-    data: sessionData
+    data
   } =
     await supabaseClient.auth
       .getSession();
-
-
-  const accessToken =
-    sessionData.session
-    ?
-    sessionData.session.access_token
-    :
-    null;
-
-
-  if (!accessToken) {
-
-    alert(
-      "로그인 세션을 확인할 수 없습니다."
-    );
-
-
-    return;
-
-  }
 
 
   const response =
@@ -3662,18 +3402,17 @@ async function resetStudentPassword() {
         method:
           "POST",
 
-        headers:
-          {
+        headers: {
 
-            "Content-Type":
-              "application/json",
+          "Content-Type":
+            "application/json",
 
-            "Authorization":
-              "Bearer "
-              +
-              accessToken
+          "Authorization":
+            "Bearer "
+            +
+            data.session.access_token
 
-          },
+        },
 
         body:
           JSON.stringify({
@@ -3690,29 +3429,25 @@ async function resetStudentPassword() {
     );
 
 
-  if (!response.ok) {
+  if (
+    !response.ok
+  ) {
 
     alert(
-      "비밀번호 재설정에 실패했습니다."
+      "비밀번호 변경에 실패했습니다."
     );
 
-
     return;
-
   }
 
 
   alert(
-    selectedPasswordStudentName
-    +
-    " 학생의 비밀번호를 변경했습니다."
+    "비밀번호를 변경했습니다."
   );
 
 
   closePasswordModal();
-
 }
-
 
 
 /* =========================
@@ -3723,25 +3458,10 @@ function parseNote(
   note
 ) {
 
-  if (!note) {
-    return {};
-  }
-
-
-  if (
-    typeof note ===
-    "object"
-  ) {
-
-    return note;
-
-  }
-
-
   try {
 
     return JSON.parse(
-      note
+      note || "{}"
     );
 
   } catch {
@@ -3749,9 +3469,7 @@ function parseNote(
     return {};
 
   }
-
 }
-
 
 
 function isToday(
@@ -3778,9 +3496,7 @@ function isToday(
     date.getDate() ===
       today.getDate()
   );
-
 }
-
 
 
 function escapeHtml(
@@ -3790,29 +3506,12 @@ function escapeHtml(
   return String(
     value ?? ""
   )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
-
 
 
 async function logout() {
@@ -3823,16 +3522,13 @@ async function logout() {
 
   location.href =
     "login.html";
-
 }
 
 
-
-/* =========================
-   바깥 영역 클릭
-========================= */
+/* 모달 바깥 클릭 */
 
 [
+  "studentSettingOverlay",
   "emergencyGuideOverlay",
   "educationOverlay",
   "contactModalOverlay",
@@ -3852,41 +3548,8 @@ async function logout() {
           return;
         }
 
-
-        if (
-          id === "emergencyGuideOverlay"
-        ) {
-
-          closeEmergencyGuide();
-
-        }
-
-
-        if (
-          id === "educationOverlay"
-        ) {
-
-          closeEducation();
-
-        }
-
-
-        if (
-          id === "contactModalOverlay"
-        ) {
-
-          closeContactModal();
-
-        }
-
-
-        if (
-          id === "passwordModalOverlay"
-        ) {
-
-          closePasswordModal();
-
-        }
+        this.style.display =
+          "none";
 
       }
     );
