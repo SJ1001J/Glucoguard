@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <title>교직원 관리 - GlucoGuard</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -17,11 +19,13 @@
     body {
       margin: 0;
       background: #f4f8fb;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
       color: #263238;
     }
 
@@ -34,104 +38,154 @@
     .page {
       width: 100%;
       max-width: 760px;
+
       margin: 0 auto;
+
       padding: 22px 18px 40px;
     }
 
+
+    /* =========================
+       상단
+    ========================= */
+
     .top-card {
       background: white;
+
       border-radius: 24px;
+
       padding: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 6px 20px rgba(57,79,94,.07);
+
+      margin-bottom: 14px;
+
+      box-shadow:
+        0 6px 20px rgba(57,79,94,.07);
     }
 
     .top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 12px;
     }
 
     .brand {
       display: flex;
       align-items: center;
+
       gap: 12px;
     }
 
     .brand-icon {
       width: 52px;
       height: 52px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 17px;
+
       background: #eef4ff;
+
       font-size: 27px;
     }
 
     .brand h1 {
       margin: 0;
+
       color: #314f68;
+
       font-size: 22px;
       font-weight: 900;
     }
 
     .brand p {
       margin: 4px 0 0;
+
       color: #8194a1;
+
       font-size: 11px;
     }
 
     .logout-button {
       border: none;
+
       border-radius: 11px;
+
       padding: 10px 12px;
+
       background: #f4f6f8;
+
       color: #657b88;
+
       font-size: 11px;
       font-weight: 800;
+
       cursor: pointer;
     }
 
     .teacher-info {
       margin-top: 15px;
+
       padding-top: 14px;
-      border-top: 1px solid #edf1f3;
-      font-size: 12px;
+
+      border-top:
+        1px solid #edf1f3;
+
       color: #718793;
+
+      font-size: 12px;
     }
 
     .teacher-info strong {
       color: #3e6179;
     }
 
+
+    /* =========================
+       내 연락처
+    ========================= */
+
     .teacher-phone-box {
       margin-top: 13px;
+
       padding: 13px;
+
       background: #f7f9fb;
+
       border-radius: 15px;
     }
 
     .teacher-phone-label {
       margin-bottom: 7px;
+
+      color: #607d8b;
+
       font-size: 11px;
       font-weight: 800;
-      color: #607d8b;
     }
 
     .teacher-phone-row {
       display: flex;
+
       gap: 8px;
     }
 
     .teacher-phone-input {
       flex: 1;
       min-width: 0;
-      border: 1px solid #d8e2e8;
-      border-radius: 11px;
+
       padding: 10px 11px;
+
+      border:
+        1px solid #d8e2e8;
+
+      border-radius: 11px;
+
       font-size: 13px;
+
       outline: none;
     }
 
@@ -141,47 +195,155 @@
 
     .teacher-phone-save {
       flex-shrink: 0;
+
       border: none;
+
       border-radius: 11px;
+
       padding: 10px 13px;
+
       background: #4285b4;
+
       color: white;
+
       font-size: 11px;
       font-weight: 900;
+
       cursor: pointer;
     }
 
     .teacher-phone-help {
       margin-top: 6px;
+
       color: #8a9ba5;
+
       font-size: 10px;
       line-height: 1.5;
     }
 
+
+    /* =========================
+       교직원 핵심 메뉴
+    ========================= */
+
+    .teacher-tools {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+
+      margin-bottom: 14px;
+    }
+
+    .tool-button {
+      min-height: 96px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 20px;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 14px rgba(57,79,94,.05);
+    }
+
+    .tool-icon {
+      width: 45px;
+      height: 45px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,.75);
+
+      font-size: 24px;
+    }
+
+    .tool-text {
+      flex: 1;
+    }
+
+    .tool-title {
+      margin-bottom: 4px;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .tool-description {
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .emergency-tool {
+      background: #ffe9e6;
+
+      color: #a94c45;
+    }
+
+    .education-tool {
+      background: #eaf4ff;
+
+      color: #3d6685;
+    }
+
+
+    /* =========================
+       요약
+    ========================= */
+
     .summary-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 10px;
+
       margin-bottom: 18px;
     }
 
     .summary-card {
       background: white;
+
       border-radius: 19px;
+
       padding: 16px;
-      box-shadow: 0 4px 14px rgba(57,79,94,.05);
+
+      box-shadow:
+        0 4px 14px rgba(57,79,94,.05);
     }
 
     .summary-label {
-      font-size: 11px;
-      color: #8295a0;
       margin-bottom: 6px;
+
+      color: #8295a0;
+
+      font-size: 11px;
     }
 
     .summary-value {
+      color: #365e78;
+
       font-size: 24px;
       font-weight: 900;
-      color: #365e78;
     }
 
     .summary-card.alert .summary-value {
@@ -189,223 +351,341 @@
     }
 
     .section-title {
-      margin: 0 0 10px 2px;
+      margin:
+        0 0 10px 2px;
+
+      color: #455a64;
+
       font-size: 15px;
       font-weight: 900;
-      color: #455a64;
     }
+
+
+    /* =========================
+       학생 카드
+    ========================= */
 
     .student-card {
       background: white;
+
+      border:
+        2px solid transparent;
+
       border-radius: 23px;
+
       padding: 17px;
+
       margin-bottom: 13px;
-      box-shadow: 0 5px 17px rgba(57,79,94,.06);
-      border: 2px solid transparent;
+
+      box-shadow:
+        0 5px 17px rgba(57,79,94,.06);
     }
 
     .student-card.needs-attention {
       border-color: #ffb7b1;
+
       background: #fffdfd;
     }
 
     .student-head {
       display: flex;
       align-items: center;
+
       gap: 12px;
+
       margin-bottom: 13px;
     }
 
     .student-avatar {
       width: 56px;
       height: 56px;
+
       flex-shrink: 0;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 18px;
+
       background: #fff1c8;
+
       font-size: 31px;
     }
 
     .student-main {
       flex: 1;
+
       min-width: 0;
     }
 
     .student-name {
+      margin-bottom: 3px;
+
+      color: #344e5e;
+
       font-size: 18px;
       font-weight: 900;
-      color: #344e5e;
-      margin-bottom: 3px;
     }
 
     .student-class {
       color: #81939f;
+
       font-size: 11px;
     }
 
     .attention-badge,
     .ok-badge {
       flex-shrink: 0;
+
       padding: 6px 9px;
+
       border-radius: 10px;
+
       font-size: 10px;
       font-weight: 900;
     }
 
     .attention-badge {
       background: #ffe9e7;
+
       color: #c84d46;
     }
 
     .ok-badge {
       background: #edf7ef;
+
       color: #4c8560;
     }
 
     .alert-reason {
       margin-bottom: 12px;
+
       padding: 10px 11px;
+
       border-radius: 13px;
+
       background: #fff0ee;
+
       color: #b44e47;
+
       font-size: 11px;
       line-height: 1.55;
     }
 
+
+    /* 최근 정보 */
+
     .record-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 8px;
+
       margin-bottom: 13px;
     }
 
     .record-box {
+      min-height: 70px;
+
       padding: 11px;
+
       border-radius: 14px;
+
       background: #f6f8fa;
-      min-height: 68px;
+    }
+
+    .record-box.status-box {
+      grid-column: 1 / -1;
+
+      background: #eaf8f2;
     }
 
     .record-label {
-      font-size: 10px;
-      color: #8798a2;
       margin-bottom: 5px;
+
+      color: #8798a2;
+
+      font-size: 10px;
     }
 
     .record-value {
+      color: #496675;
+
       font-size: 12px;
       font-weight: 800;
-      color: #496675;
-      line-height: 1.45;
+
+      line-height: 1.5;
+
       word-break: keep-all;
     }
 
+    .status-box .record-value {
+      color: #3e7565;
+    }
+
+
+    /* 학생 기능 */
+
     .student-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 8px;
     }
 
     .action-button {
       border: none;
+
       border-radius: 13px;
+
       padding: 12px 8px;
+
       font-size: 11px;
       font-weight: 900;
+
       cursor: pointer;
     }
 
     .records-action {
       background: #eaf3ff;
+
       color: #2d6893;
     }
 
     .symptom-action {
-      background: #ffefed;
-      color: #bd514a;
+      background: #e8f7f1;
+
+      color: #367662;
     }
 
     .contact-action {
       background: #eef0ff;
+
       color: #5669a4;
     }
 
     .password-action {
       background: #f3f5f6;
+
       color: #687d88;
     }
 
     .empty-state {
       background: white;
+
       border-radius: 20px;
+
       padding: 28px 18px;
+
       text-align: center;
+
       color: #8396a1;
+
       font-size: 12px;
       line-height: 1.7;
     }
 
+
+    /* =========================
+       공통 모달
+    ========================= */
+
     .modal-overlay {
       position: fixed;
+
       inset: 0;
+
       z-index: 1000;
+
       display: none;
+
       align-items: center;
       justify-content: center;
+
       padding: 18px;
-      background: rgba(30,45,55,.42);
+
+      background:
+        rgba(30,45,55,.46);
     }
 
     .modal {
       width: 100%;
-      max-width: 460px;
+      max-width: 500px;
+
       max-height: 88vh;
+
       overflow-y: auto;
+
       background: white;
+
       border-radius: 24px;
+
       padding: 19px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.18);
     }
 
     .modal-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
+
       gap: 12px;
+
       margin-bottom: 16px;
     }
 
     .modal-title {
       margin: 0;
+
       color: #344e5e;
+
       font-size: 19px;
       font-weight: 900;
     }
 
     .modal-subtitle {
       margin: 4px 0 0;
+
       color: #82939d;
+
       font-size: 11px;
       line-height: 1.5;
     }
 
     .close-button {
-      border: none;
-      background: #f4f6f7;
       width: 35px;
       height: 35px;
+
+      flex-shrink: 0;
+
+      border: none;
+
       border-radius: 11px;
+
+      background: #f4f6f7;
+
       color: #6b7e89;
+
       font-size: 18px;
+
       cursor: pointer;
     }
 
     .input-label {
       display: block;
-      margin: 0 0 5px 2px;
+
+      margin:
+        0 0 5px 2px;
+
       color: #607d8b;
+
       font-size: 11px;
       font-weight: 800;
     }
@@ -413,38 +693,229 @@
     .modal-input,
     .modal-select {
       width: 100%;
+
       padding: 12px;
+
       margin-bottom: 11px;
-      border: 1px solid #d8e2e8;
+
+      border:
+        1px solid #d8e2e8;
+
       border-radius: 13px;
+
       background: white;
+
       font-size: 14px;
+
       outline: none;
     }
 
     .primary-button {
       width: 100%;
+
       border: none;
+
       border-radius: 13px;
+
       padding: 13px;
+
       background: #4285b4;
+
       color: white;
+
       font-size: 14px;
       font-weight: 900;
+
       cursor: pointer;
     }
 
+
+    /* =========================
+       응급상황 모달
+    ========================= */
+
+    .emergency-option-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+
+      margin-bottom: 14px;
+    }
+
+    .emergency-option {
+      min-height: 70px;
+
+      padding: 11px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 14px;
+
+      background: #f6f8fa;
+
+      color: #526b79;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .emergency-option.selected {
+      border-color: #ef9f98;
+
+      background: #fff0ee;
+
+      color: #a84942;
+    }
+
+    .response-guide {
+      display: none;
+
+      padding: 15px;
+
+      border-radius: 17px;
+
+      background: #fff5f3;
+
+      color: #624f4d;
+
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .response-guide h3 {
+      margin:
+        0 0 9px;
+
+      color: #a54a43;
+
+      font-size: 15px;
+    }
+
+    .response-step {
+      padding: 9px 0;
+
+      border-bottom:
+        1px solid #f1ddda;
+    }
+
+    .response-step:last-child {
+      border-bottom: none;
+    }
+
+    .response-number {
+      display: inline-flex;
+
+      width: 22px;
+      height: 22px;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 5px;
+
+      border-radius: 50%;
+
+      background: #ffe3df;
+
+      color: #ad514a;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .emergency-warning {
+      margin-top: 12px;
+
+      padding: 11px;
+
+      border-radius: 12px;
+
+      background: #fff0d9;
+
+      color: #735c2e;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       교육 모달
+    ========================= */
+
+    .education-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 9px;
+    }
+
+    .education-card {
+      padding: 13px;
+
+      border-radius: 15px;
+
+      background: #f5f8fb;
+    }
+
+    .education-title {
+      margin-bottom: 5px;
+
+      color: #3e6179;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .education-text {
+      color: #6e828e;
+
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .education-important {
+      margin-top: 13px;
+
+      padding: 12px;
+
+      border-radius: 14px;
+
+      background: #eaf3ff;
+
+      color: #45677f;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       연락처 관리
+    ========================= */
+
     .contact-form-box {
       padding: 14px;
+
       margin-bottom: 16px;
+
       border-radius: 17px;
+
       background: #f6f9fb;
     }
 
     .contact-form-title,
     .contact-list-title {
       margin-bottom: 11px;
+
       color: #526b7a;
+
       font-size: 13px;
       font-weight: 900;
     }
@@ -452,79 +923,121 @@
     .modal-contact-card {
       display: flex;
       align-items: center;
+
       gap: 10px;
+
       padding: 11px;
+
       margin-bottom: 8px;
+
       border-radius: 14px;
+
       background: #f7f9fa;
     }
 
     .modal-contact-icon {
       width: 38px;
       height: 38px;
+
       flex-shrink: 0;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 12px;
+
       background: white;
+
       font-size: 19px;
     }
 
     .modal-contact-info {
       flex: 1;
+
       min-width: 0;
     }
 
     .modal-contact-name {
+      margin-bottom: 2px;
+
       color: #496574;
+
       font-size: 12px;
       font-weight: 900;
-      margin-bottom: 2px;
     }
 
     .modal-contact-phone {
       color: #8798a2;
+
       font-size: 10px;
     }
 
     .contact-delete-button {
       flex-shrink: 0;
+
       border: none;
+
       border-radius: 9px;
+
       padding: 8px 9px;
+
       background: #fff0ee;
+
       color: #b6534d;
+
       font-size: 10px;
       font-weight: 800;
+
       cursor: pointer;
     }
 
     .modal-empty {
       padding: 18px 12px;
+
       border-radius: 14px;
+
       background: #f7f9fa;
+
       color: #889aa4;
+
       text-align: center;
+
       font-size: 11px;
       line-height: 1.6;
     }
 
+
     @media (max-width: 520px) {
-      .student-actions {
-        grid-template-columns: 1fr;
+
+      .teacher-tools {
+        grid-template-columns:
+          1fr 1fr;
       }
 
       .teacher-phone-row {
         flex-direction: column;
       }
+
+      .student-actions {
+        grid-template-columns: 1fr;
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
 <div class="page">
+
+
+  <!-- =========================
+       교직원 상단
+  ========================= -->
 
   <div class="top-card">
 
@@ -537,11 +1050,19 @@
         </div>
 
         <div>
-          <h1>GlucoGuard 관리</h1>
-          <p>학생들의 오늘 기록과 상태를 확인해요.</p>
+
+          <h1>
+            GlucoGuard 관리
+          </h1>
+
+          <p>
+            학생의 기록과 상태를 한눈에 확인해요.
+          </p>
+
         </div>
 
       </div>
+
 
       <button
         class="logout-button"
@@ -569,6 +1090,7 @@
         📞 내 연락처
       </div>
 
+
       <div class="teacher-phone-row">
 
         <input
@@ -578,6 +1100,7 @@
           inputmode="tel"
           maxlength="20"
           placeholder="예: 010-1234-5678">
+
 
         <button
           id="teacherPhoneSaveButton"
@@ -590,8 +1113,9 @@
 
       </div>
 
+
       <div class="teacher-phone-help">
-        담당 학생의 도움 요청 화면에 이 번호가 자동으로 표시됩니다.
+        담당 학생의 연락 화면에 이 번호가 자동으로 표시됩니다.
       </div>
 
     </div>
@@ -599,6 +1123,68 @@
   </div>
 
 
+
+  <!-- =========================
+       응급 / 교육
+  ========================= -->
+
+  <div class="teacher-tools">
+
+
+    <button
+      class="tool-button emergency-tool"
+      onclick="openEmergencyGuide()">
+
+      <div class="tool-icon">
+        🚨
+      </div>
+
+      <div class="tool-text">
+
+        <div class="tool-title">
+          응급상황 대처
+        </div>
+
+        <div class="tool-description">
+          증상별 대응 순서를 빠르게 확인해요.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <button
+      class="tool-button education-tool"
+      onclick="openEducation()">
+
+      <div class="tool-icon">
+        📘
+      </div>
+
+      <div class="tool-text">
+
+        <div class="tool-title">
+          교직원 교육
+        </div>
+
+        <div class="tool-description">
+          학교에서 꼭 알아야 할 내용을 확인해요.
+        </div>
+
+      </div>
+
+    </button>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       요약
+  ========================= -->
 
   <div class="summary-grid">
 
@@ -652,9 +1238,269 @@
 
   </div>
 
+
 </div>
 
 
+
+<!-- ==================================================
+     응급상황 대응 모달
+================================================== -->
+
+<div
+  id="emergencyGuideOverlay"
+  class="modal-overlay">
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <h2 class="modal-title">
+          🚨 응급상황 대처
+        </h2>
+
+        <p class="modal-subtitle">
+          학생 상태에 가장 가까운 항목을 선택하세요.
+        </p>
+
+      </div>
+
+
+      <button
+        class="close-button"
+        onclick="closeEmergencyGuide()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+
+    <div class="emergency-option-grid">
+
+      <button
+        class="emergency-option"
+        onclick="showEmergencyResponse('low', this)">
+
+        🩸 저혈당 의심
+
+      </button>
+
+
+      <button
+        class="emergency-option"
+        onclick="showEmergencyResponse('high', this)">
+
+        🔺 고혈당 의심
+
+      </button>
+
+
+      <button
+        class="emergency-option"
+        onclick="showEmergencyResponse('unconscious', this)">
+
+        🚨 의식 저하<br>
+        삼키기 어려움
+
+      </button>
+
+
+      <button
+        class="emergency-option"
+        onclick="showEmergencyResponse('vomit', this)">
+
+        🤢 구토·심한 이상증상
+
+      </button>
+
+    </div>
+
+
+
+    <div
+      id="responseGuide"
+      class="response-guide">
+
+      <h3 id="responseTitle">
+      </h3>
+
+      <div id="responseContent">
+      </div>
+
+    </div>
+
+
+
+    <div class="emergency-warning">
+
+      ⚠️ 이 화면은 일반적인 학교 대응을 돕기 위한 교육용 안내입니다.
+      학생의 개별 당뇨 관리계획(DMMP), 처방, 보호자·의료진 지침 및
+      학교 응급대응 절차가 항상 우선합니다.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     교직원 교육 모달
+================================================== -->
+
+<div
+  id="educationOverlay"
+  class="modal-overlay">
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <div>
+
+        <h2 class="modal-title">
+          📘 교직원 교육
+        </h2>
+
+        <p class="modal-subtitle">
+          학교생활에서 꼭 알아야 할 핵심 내용
+        </p>
+
+      </div>
+
+
+      <button
+        class="close-button"
+        onclick="closeEducation()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+
+    <div class="education-list">
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          💙 제1형 당뇨란?
+        </div>
+
+        <div class="education-text">
+          학생이 스스로 혈당을 조절하기 어려워 인슐린 관리가 필요한 질환입니다.
+          학교에서는 학생의 개별 관리계획에 따라 안전하게 지원하는 것이 중요합니다.
+        </div>
+
+      </div>
+
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          🩸 저혈당에서 볼 수 있는 모습
+        </div>
+
+        <div class="education-text">
+          식은땀, 손 떨림, 어지러움, 창백함, 졸림,
+          집중력이나 행동 변화 등이 나타날 수 있습니다.
+          평소와 다른 모습도 중요한 신호가 될 수 있습니다.
+        </div>
+
+      </div>
+
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          🔺 고혈당에서 볼 수 있는 모습
+        </div>
+
+        <div class="education-text">
+          심한 갈증, 잦은 소변, 피로감 등이 나타날 수 있습니다.
+          구토나 심한 이상 증상이 동반되면 개별 계획에 따라 빠르게 확인해야 합니다.
+        </div>
+
+      </div>
+
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          🏃 체육시간
+        </div>
+
+        <div class="education-text">
+          운동 전후에는 학생의 개별 계획에 따라 혈당 확인이나 간식이 필요할 수 있습니다.
+          활동 중 몸이 이상하다고 말하면 운동을 계속하도록 강요하지 않습니다.
+        </div>
+
+      </div>
+
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          🍱 급식과 간식
+        </div>
+
+        <div class="education-text">
+          학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
+          음식 섭취와 인슐린 사용은 학생의 개별 계획과 보호자·의료진 지침을 따릅니다.
+        </div>
+
+      </div>
+
+
+
+      <div class="education-card">
+
+        <div class="education-title">
+          🚨 학생이 도움을 요청하면
+        </div>
+
+        <div class="education-text">
+          증상을 과소평가하지 말고 학생과 함께 있어 주세요.
+          필요하면 보건교사·보호자에게 연락하고,
+          응급상황에서는 학교의 응급 절차를 따릅니다.
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="education-important">
+
+      GlucoGuard는 진단이나 인슐린 용량을 결정하지 않습니다.
+      실제 치료·처치는 학생별 개별 관리계획과 의료진 지침이 우선합니다.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     비상연락처 관리 모달
+================================================== -->
 
 <div
   id="contactModalOverlay"
@@ -665,6 +1511,7 @@
     <div class="modal-header">
 
       <div>
+
         <h2 class="modal-title">
           📞 비상연락처 관리
         </h2>
@@ -676,7 +1523,9 @@
           학생 연락처
 
         </p>
+
       </div>
+
 
       <button
         class="close-button"
@@ -687,6 +1536,7 @@
       </button>
 
     </div>
+
 
 
     <div class="contact-form-box">
@@ -704,11 +1554,25 @@
         id="contactRelationship"
         class="modal-select">
 
-        <option value="엄마">엄마</option>
-        <option value="아빠">아빠</option>
-        <option value="보호자">보호자</option>
-        <option value="보건실">보건실</option>
-        <option value="기타">기타</option>
+        <option value="엄마">
+          엄마
+        </option>
+
+        <option value="아빠">
+          아빠
+        </option>
+
+        <option value="보호자">
+          보호자
+        </option>
+
+        <option value="보건실">
+          보건실
+        </option>
+
+        <option value="기타">
+          기타
+        </option>
 
       </select>
 
@@ -750,6 +1614,7 @@
     </div>
 
 
+
     <div class="contact-list-title">
       등록된 연락처
     </div>
@@ -769,6 +1634,10 @@
 
 
 
+<!-- ==================================================
+     비밀번호 변경 모달
+================================================== -->
+
 <div
   id="passwordModalOverlay"
   class="modal-overlay">
@@ -778,6 +1647,7 @@
     <div class="modal-header">
 
       <div>
+
         <h2 class="modal-title">
           🔑 학생 비밀번호 재설정
         </h2>
@@ -789,7 +1659,9 @@
           학생 계정
 
         </p>
+
       </div>
+
 
       <button
         class="close-button"
@@ -805,6 +1677,7 @@
     <label class="input-label">
       새 임시 비밀번호
     </label>
+
 
     <input
       id="newPassword"
@@ -831,13 +1704,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
 
 const supabaseClient =
   window.supabase.createClient(
@@ -845,19 +1721,43 @@ const supabaseClient =
     SUPABASE_PUBLISHABLE_KEY
   );
 
-let currentUser = null;
-let currentTeacherProfile = null;
 
-let linkedStudents = [];
-let allRecords = [];
-
-let selectedContactStudentId = null;
-let selectedContactStudentName = "";
-
-let selectedPasswordStudentId = null;
-let selectedPasswordStudentName = "";
+let currentUser =
+  null;
 
 
+let currentTeacherProfile =
+  null;
+
+
+let linkedStudents =
+  [];
+
+
+let allRecords =
+  [];
+
+
+let selectedContactStudentId =
+  null;
+
+
+let selectedContactStudentName =
+  "";
+
+
+let selectedPasswordStudentId =
+  null;
+
+
+let selectedPasswordStudentName =
+  "";
+
+
+
+/* =========================
+   시작
+========================= */
 
 window.addEventListener(
   "load",
@@ -866,9 +1766,11 @@ window.addEventListener(
     const ready =
       await checkTeacherLogin();
 
+
     if (!ready) {
       return;
     }
+
 
     await loadDashboard();
 
@@ -876,6 +1778,10 @@ window.addEventListener(
 );
 
 
+
+/* =========================
+   교직원 로그인
+========================= */
 
 async function checkTeacherLogin() {
 
@@ -886,6 +1792,7 @@ async function checkTeacherLogin() {
     await supabaseClient.auth
       .getSession();
 
+
   if (
     error ||
     !data.session
@@ -894,11 +1801,15 @@ async function checkTeacherLogin() {
     location.href =
       "login.html";
 
+
     return false;
+
   }
+
 
   currentUser =
     data.session.user;
+
 
   const {
     data: profile,
@@ -915,24 +1826,25 @@ async function checkTeacherLogin() {
       )
       .maybeSingle();
 
+
   if (
     profileError ||
     !profile
   ) {
 
-    console.error(
-      profileError
-    );
-
     alert(
       "교직원 정보를 확인할 수 없습니다."
     );
 
+
     location.href =
       "login.html";
 
+
     return false;
+
   }
+
 
   if (
     profile.role !== "teacher"
@@ -943,11 +1855,15 @@ async function checkTeacherLogin() {
     location.href =
       "index.html";
 
+
     return false;
+
   }
+
 
   currentTeacherProfile =
     profile;
+
 
   document.getElementById(
     "teacherInfo"
@@ -962,17 +1878,23 @@ async function checkTeacherLogin() {
       ${profile.role === "nurse" ? "보건교사" : "교직원"}
     `;
 
+
   document.getElementById(
     "teacherPhone"
   ).value =
     profile.phone_number ||
     "";
 
+
   return true;
 
 }
 
 
+
+/* =========================
+   교직원 전화번호 저장
+========================= */
 
 async function saveTeacherPhone() {
 
@@ -981,20 +1903,25 @@ async function saveTeacherPhone() {
       "teacherPhone"
     ).value.trim();
 
+
   if (!phone) {
 
     alert(
       "전화번호를 입력해주세요."
     );
 
+
     return;
+
   }
+
 
   const cleanedPhone =
     phone.replace(
       /[^0-9+]/g,
       ""
     );
+
 
   if (
     cleanedPhone.length < 8
@@ -1004,19 +1931,25 @@ async function saveTeacherPhone() {
       "전화번호를 다시 확인해주세요."
     );
 
+
     return;
+
   }
+
 
   const button =
     document.getElementById(
       "teacherPhoneSaveButton"
     );
 
+
   button.disabled =
     true;
 
+
   button.textContent =
     "저장 중...";
+
 
   const {
     error
@@ -1024,37 +1957,44 @@ async function saveTeacherPhone() {
     await supabaseClient
       .from("profiles")
       .update({
+
         phone_number:
           phone,
+
         updated_at:
-          new Date().toISOString()
+          new Date()
+            .toISOString()
+
       })
       .eq(
         "id",
         currentUser.id
       );
 
+
   button.disabled =
     false;
+
 
   button.textContent =
     "저장";
 
-  if (error) {
 
-    console.error(
-      error
-    );
+  if (error) {
 
     alert(
       "전화번호를 저장하지 못했습니다."
     );
 
+
     return;
+
   }
+
 
   currentTeacherProfile.phone_number =
     phone;
+
 
   alert(
     "내 연락처를 저장했습니다."
@@ -1063,6 +2003,10 @@ async function saveTeacherPhone() {
 }
 
 
+
+/* =========================
+   학생 데이터 불러오기
+========================= */
 
 async function loadDashboard() {
 
@@ -1078,27 +2022,44 @@ async function loadDashboard() {
         currentUser.id
       );
 
+
   if (linkError) {
+
     showDashboardError();
+
+
     return;
+
   }
 
+
   const studentIds =
-    (links || []).map(
-      item => item.student_id
-    );
+    (links || [])
+      .map(
+        item =>
+          item.student_id
+      );
+
 
   if (
     studentIds.length === 0
   ) {
 
-    linkedStudents = [];
-    allRecords = [];
+    linkedStudents =
+      [];
+
+
+    allRecords =
+      [];
+
 
     renderDashboard();
 
+
     return;
+
   }
+
 
   const {
     data: profiles,
@@ -1114,10 +2075,16 @@ async function loadDashboard() {
         studentIds
       );
 
+
   if (profileError) {
+
     showDashboardError();
+
+
     return;
+
   }
+
 
   linkedStudents =
     (profiles || [])
@@ -1125,6 +2092,7 @@ async function loadDashboard() {
         profile =>
           profile.role === "student"
       );
+
 
   const {
     data: records,
@@ -1146,12 +2114,14 @@ async function loadDashboard() {
         }
       );
 
+
   allRecords =
     recordError
-      ?
-      []
-      :
-      (records || []);
+    ?
+    []
+    :
+    (records || []);
+
 
   renderDashboard();
 
@@ -1175,109 +2145,9 @@ function showDashboardError() {
 
 
 
-function renderDashboard() {
-
-  const studentsWithStatus =
-    linkedStudents.map(
-      student => {
-
-        const studentRecords =
-          allRecords.filter(
-            record =>
-              record.user_id ===
-              student.id
-          );
-
-        const status =
-          buildStudentStatus(
-            studentRecords
-          );
-
-        return {
-          student,
-          status
-        };
-
-      }
-    );
-
-  studentsWithStatus.sort(
-    (a, b) => {
-
-      if (
-        a.status.needsAttention &&
-        !b.status.needsAttention
-      ) {
-        return -1;
-      }
-
-      if (
-        !a.status.needsAttention &&
-        b.status.needsAttention
-      ) {
-        return 1;
-      }
-
-      return (
-        a.student.nickname || ""
-      ).localeCompare(
-        b.student.nickname || ""
-      );
-
-    }
-  );
-
-  document.getElementById(
-    "studentCount"
-  ).textContent =
-    linkedStudents.length;
-
-  document.getElementById(
-    "attentionCount"
-  ).textContent =
-    studentsWithStatus.filter(
-      item =>
-        item.status.needsAttention
-    ).length;
-
-  const container =
-    document.getElementById(
-      "studentList"
-    );
-
-  container.innerHTML =
-    "";
-
-  if (
-    studentsWithStatus.length === 0
-  ) {
-
-    container.innerHTML =
-      `
-        <div class="empty-state">
-          아직 연결된 학생이 없습니다.
-        </div>
-      `;
-
-    return;
-  }
-
-  studentsWithStatus.forEach(
-    item => {
-
-      container.appendChild(
-        createStudentCard(
-          item.student,
-          item.status
-        )
-      );
-
-    }
-  );
-
-}
-
-
+/* =========================
+   학생 상태 계산
+========================= */
 
 function buildStudentStatus(
   records
@@ -1285,33 +2155,31 @@ function buildStudentStatus(
 
   const latestGlucose =
     records.find(
-      r =>
-        r.record_type ===
+      record =>
+        record.record_type ===
         "glucose"
     );
 
+
   const latestMeal =
     records.find(
-      r =>
-        r.record_type ===
+      record =>
+        record.record_type ===
         "meal"
     );
 
+
   const latestSymptom =
     records.find(
-      r =>
-        r.record_type ===
+      record =>
+        record.record_type ===
         "symptom"
     );
 
-  const latestActivity =
-    records.find(
-      r =>
-        r.record_type ===
-        "activity"
-    );
 
-  const reasons = [];
+  const reasons =
+    [];
+
 
   if (
     latestGlucose &&
@@ -1332,27 +2200,18 @@ function buildStudentStatus(
 
   }
 
+
   const symptomData =
     parseNote(
       latestSymptom
-        ?
-        latestSymptom.note
-        :
-        null
+      ?
+      latestSymptom.note
+      :
+      null
     );
 
+
   if (latestSymptom) {
-
-    if (
-      symptomData.condition ===
-      "danger"
-    ) {
-
-      reasons.push(
-        "의식·삼킴 상태 확인 필요"
-      );
-
-    }
 
     if (
       Array.isArray(
@@ -1369,6 +2228,19 @@ function buildStudentStatus(
       );
 
     }
+
+
+    if (
+      symptomData.condition ===
+      "danger"
+    ) {
+
+      reasons.push(
+        "이전 기록에서 의식·삼킴 상태 확인 필요"
+      );
+
+    }
+
 
     if (
       latestSymptom.glucose_value !== null
@@ -1388,45 +2260,6 @@ function buildStudentStatus(
 
   }
 
-  const activityData =
-    parseNote(
-      latestActivity
-        ?
-        latestActivity.note
-        :
-        null
-    );
-
-  if (latestActivity) {
-
-    if (
-      activityData.feeling ===
-      "몸이 이상해요"
-    ) {
-
-      reasons.push(
-        "활동 중 몸이 이상하다고 기록"
-      );
-
-    }
-
-    if (
-      latestActivity.glucose_value !== null
-      &&
-      (
-        latestActivity.glucose_value < 70
-        ||
-        latestActivity.glucose_value >= 250
-      )
-    ) {
-
-      reasons.push(
-        `활동 기록 당시 혈당 ${latestActivity.glucose_value} mg/dL`
-      );
-
-    }
-
-  }
 
   const todayCount =
     records.filter(
@@ -1436,23 +2269,166 @@ function buildStudentStatus(
         )
     ).length;
 
+
   return {
+
     needsAttention:
       reasons.length > 0,
 
-    reasons,
-    latestGlucose,
-    latestMeal,
-    latestSymptom,
-    latestActivity,
-    symptomData,
-    activityData,
-    todayCount
+    reasons:
+      reasons,
+
+    latestGlucose:
+      latestGlucose,
+
+    latestMeal:
+      latestMeal,
+
+    latestSymptom:
+      latestSymptom,
+
+    symptomData:
+      symptomData,
+
+    todayCount:
+      todayCount
+
   };
 
 }
 
 
+
+/* =========================
+   학생 목록
+========================= */
+
+function renderDashboard() {
+
+  const studentsWithStatus =
+    linkedStudents.map(
+      student => {
+
+        const studentRecords =
+          allRecords.filter(
+            record =>
+              record.user_id ===
+              student.id
+          );
+
+
+        const status =
+          buildStudentStatus(
+            studentRecords
+          );
+
+
+        return {
+          student,
+          status
+        };
+
+      }
+    );
+
+
+  studentsWithStatus.sort(
+    (a, b) => {
+
+      if (
+        a.status.needsAttention
+        &&
+        !b.status.needsAttention
+      ) {
+
+        return -1;
+
+      }
+
+
+      if (
+        !a.status.needsAttention
+        &&
+        b.status.needsAttention
+      ) {
+
+        return 1;
+
+      }
+
+
+      return (
+        a.student.nickname || ""
+      ).localeCompare(
+        b.student.nickname || ""
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "studentCount"
+  ).textContent =
+    linkedStudents.length;
+
+
+  document.getElementById(
+    "attentionCount"
+  ).textContent =
+    studentsWithStatus.filter(
+      item =>
+        item.status.needsAttention
+    ).length;
+
+
+  const container =
+    document.getElementById(
+      "studentList"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  if (
+    studentsWithStatus.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+        <div class="empty-state">
+          아직 연결된 학생이 없습니다.
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  studentsWithStatus.forEach(
+    item => {
+
+      container.appendChild(
+        createStudentCard(
+          item.student,
+          item.status
+        )
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   학생 카드
+========================= */
 
 function createStudentCard(
   student,
@@ -1464,16 +2440,36 @@ function createStudentCard(
       "div"
     );
 
+
   card.className =
     "student-card"
     +
     (
       status.needsAttention
-        ?
-        " needs-attention"
-        :
-        ""
+      ?
+      " needs-attention"
+      :
+      ""
     );
+
+
+  const glucoseText =
+    status.latestGlucose
+    &&
+    status.latestGlucose.glucose_value !== null
+    ?
+    status.latestGlucose.glucose_value
+    +
+    " mg/dL"
+    :
+    "기록 없음";
+
+
+  const mealText =
+    getMealText(
+      status.latestMeal
+    );
+
 
   const symptomText =
     getSymptomText(
@@ -1481,31 +2477,6 @@ function createStudentCard(
       status.symptomData
     );
 
-  const activityText =
-    getActivityText(
-      status.latestActivity,
-      status.activityData
-    );
-
-  const mealText =
-    getMealText(
-      status.latestMeal
-    );
-
-  const glucoseText =
-    status.latestGlucose
-    &&
-    status.latestGlucose.glucose_value !== null
-
-      ?
-
-      status.latestGlucose.glucose_value
-      +
-      " mg/dL"
-
-      :
-
-      "기록 없음";
 
   card.innerHTML =
     `
@@ -1528,19 +2499,16 @@ function createStudentCard(
 
         </div>
 
+
         ${
           status.needsAttention
-
           ?
-
           `
             <div class="attention-badge">
               확인 필요
             </div>
           `
-
           :
-
           `
             <div class="ok-badge">
               기록 확인
@@ -1550,11 +2518,10 @@ function createStudentCard(
 
       </div>
 
+
       ${
         status.needsAttention
-
         ?
-
         `
           <div class="alert-reason">
             ⚠️
@@ -1563,43 +2530,53 @@ function createStudentCard(
               .join(" · ")}
           </div>
         `
-
         :
-
         ""
       }
+
 
       <div class="record-grid">
 
         <div class="record-box">
-          <div class="record-label">🩸 최근 혈당</div>
+
+          <div class="record-label">
+            🩸 최근 혈당
+          </div>
+
           <div class="record-value">
             ${escapeHtml(glucoseText)}
           </div>
+
         </div>
 
+
         <div class="record-box">
-          <div class="record-label">🍱 최근 식사</div>
+
+          <div class="record-label">
+            🍱 최근 식사
+          </div>
+
           <div class="record-value">
             ${escapeHtml(mealText)}
           </div>
+
         </div>
 
-        <div class="record-box">
-          <div class="record-label">🙂 최근 상태</div>
+
+        <div class="record-box status-box">
+
+          <div class="record-label">
+            🙂 최근 몸 상태
+          </div>
+
           <div class="record-value">
             ${escapeHtml(symptomText)}
           </div>
-        </div>
 
-        <div class="record-box">
-          <div class="record-label">🏃 최근 활동</div>
-          <div class="record-value">
-            ${escapeHtml(activityText)}
-          </div>
         </div>
 
       </div>
+
 
       <div class="student-actions">
 
@@ -1611,13 +2588,15 @@ function createStudentCard(
 
         </button>
 
+
         <button
           class="action-button symptom-action"
           data-action="symptom">
 
-          🚨 증상 대응
+          🙂 몸 상태 기록
 
         </button>
+
 
         <button
           class="action-button contact-action"
@@ -1626,6 +2605,7 @@ function createStudentCard(
           📞 비상연락처 관리
 
         </button>
+
 
         <button
           class="action-button password-action"
@@ -1638,6 +2618,7 @@ function createStudentCard(
       </div>
     `;
 
+
   card.querySelector(
     '[data-action="records"]'
   ).onclick =
@@ -1648,10 +2629,12 @@ function createStudentCard(
         student.id
       );
 
+
       location.href =
         "records.html";
 
     };
+
 
   card.querySelector(
     '[data-action="symptom"]'
@@ -1663,10 +2646,12 @@ function createStudentCard(
         student.id
       );
 
+
       location.href =
         "symptom.html";
 
     };
+
 
   card.querySelector(
     '[data-action="contacts"]'
@@ -1679,6 +2664,7 @@ function createStudentCard(
 
     };
 
+
   card.querySelector(
     '[data-action="password"]'
   ).onclick =
@@ -1690,11 +2676,16 @@ function createStudentCard(
 
     };
 
+
   return card;
 
 }
 
 
+
+/* =========================
+   최근 기록 텍스트
+========================= */
 
 function getMealText(
   record
@@ -1704,11 +2695,15 @@ function getMealText(
     return "기록 없음";
   }
 
+
   const meal =
     record.meal_type ||
     "식사";
 
-  let amount = "";
+
+  let amount =
+    "";
+
 
   if (
     record.intake_ratio !== null
@@ -1721,27 +2716,35 @@ function getMealText(
         record.intake_ratio
       );
 
+
     if (ratio === 1) {
       amount = "다 먹었어요";
-    } else if (ratio === 0.5) {
+    }
+
+    if (ratio === 0.5) {
       amount = "반 정도 먹었어요";
-    } else if (ratio === 0.25) {
+    }
+
+    if (ratio === 0.25) {
       amount = "조금 먹었어요";
-    } else if (ratio === 0) {
-      amount = "먹지 않았어요";
+    }
+
+    if (ratio === 0) {
+      amount = "안 먹었어요";
     }
 
   }
+
 
   return (
     meal
     +
     (
       amount
-        ?
-        " · " + amount
-        :
-        ""
+      ?
+      " · " + amount
+      :
+      ""
     )
   );
 
@@ -1758,83 +2761,323 @@ function getSymptomText(
     return "기록 없음";
   }
 
-  let text =
+
+  const parts =
+    [];
+
+
+  if (
+    data.context
+  ) {
+
+    parts.push(
+      data.context
+    );
+
+  }
+
+
+  if (
     Array.isArray(
       data.symptoms
     )
     &&
     data.symptoms.length > 0
+  ) {
 
-      ?
-
+    parts.push(
       data.symptoms.join(", ")
+    );
 
-      :
+  }
 
-      "상태 기록";
 
   if (
     record.glucose_value !== null
   ) {
 
-    text +=
-      " · 혈당 "
+    parts.push(
+      "혈당 "
       +
       record.glucose_value
       +
-      " mg/dL";
+      " mg/dL"
+    );
 
   }
 
-  return text;
+
+  if (
+    parts.length === 0
+  ) {
+
+    return "몸 상태 기록";
+
+  }
+
+
+  return parts.join(
+    " · "
+  );
 
 }
 
 
 
-function getActivityText(
-  record,
-  data
+/* =========================
+   응급상황 안내
+========================= */
+
+function openEmergencyGuide() {
+
+  document.getElementById(
+    "emergencyGuideOverlay"
+  ).style.display =
+    "flex";
+
+
+  document.getElementById(
+    "responseGuide"
+  ).style.display =
+    "none";
+
+
+  document.querySelectorAll(
+    ".emergency-option"
+  ).forEach(
+    button => {
+
+      button.classList.remove(
+        "selected"
+      );
+
+    }
+  );
+
+}
+
+
+
+function closeEmergencyGuide() {
+
+  document.getElementById(
+    "emergencyGuideOverlay"
+  ).style.display =
+    "none";
+
+}
+
+
+
+function showEmergencyResponse(
+  type,
+  button
 ) {
 
-  if (!record) {
-    return "기록 없음";
-  }
+  document.querySelectorAll(
+    ".emergency-option"
+  ).forEach(
+    item => {
 
-  let text =
-    data.activityType
-    ||
-    record.meal_type
-    ||
-    "활동 기록";
+      item.classList.toggle(
+        "selected",
+        item === button
+      );
 
-  if (data.feeling) {
+    }
+  );
 
-    text +=
-      " · "
-      +
-      data.feeling;
 
-  }
+  const guide =
+    document.getElementById(
+      "responseGuide"
+    );
+
+
+  const title =
+    document.getElementById(
+      "responseTitle"
+    );
+
+
+  const content =
+    document.getElementById(
+      "responseContent"
+    );
+
+
+  guide.style.display =
+    "block";
+
 
   if (
-    record.glucose_value !== null
+    type === "low"
   ) {
 
-    text +=
-      " · 혈당 "
-      +
-      record.glucose_value
-      +
-      " mg/dL";
+    title.textContent =
+      "🩸 저혈당이 의심될 때";
+
+
+    content.innerHTML =
+      `
+        <div class="response-step">
+          <span class="response-number">1</span>
+          학생과 함께 있고 혈당을 확인할 수 있다면 개별 계획에 따라 확인합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">2</span>
+          의식이 있고 안전하게 삼킬 수 있는 경우에만 학생의 개별 저혈당 계획에 따라 대응합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">3</span>
+          정해진 시간 후 재확인이 필요한 경우 개별 계획을 따릅니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">4</span>
+          상태가 악화되거나 의식이 흐려지면 즉시 중증 상황 대응으로 전환합니다.
+        </div>
+      `;
 
   }
 
-  return text;
+
+  if (
+    type === "high"
+  ) {
+
+    title.textContent =
+      "🔺 고혈당이 의심될 때";
+
+
+    content.innerHTML =
+      `
+        <div class="response-step">
+          <span class="response-number">1</span>
+          혈당을 확인하고 학생의 개별 고혈당 관리계획을 확인합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">2</span>
+          케톤 확인, 수분 섭취, 인슐린 관련 대응은 학생의 개별 계획과 의료진 지침에 따릅니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">3</span>
+          보호자 또는 보건교사에게 필요한 내용을 공유합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">4</span>
+          구토, 호흡 이상, 의식 변화 등 심한 이상 증상이 있으면 긴급 대응이 필요할 수 있습니다.
+        </div>
+      `;
+
+  }
+
+
+  if (
+    type === "unconscious"
+  ) {
+
+    title.textContent =
+      "🚨 의식이 흐리거나 삼키기 어려울 때";
+
+
+    content.innerHTML =
+      `
+        <div class="response-step">
+          <span class="response-number">1</span>
+          음식이나 음료를 입으로 먹이지 않습니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">2</span>
+          학생을 혼자 두지 않고 즉시 다른 교직원이나 보건교사에게 도움을 요청합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">3</span>
+          처방된 글루카곤이 있고 교육받은 교직원이라면 학생의 개별 응급계획에 따라 사용합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">4</span>
+          학교 응급계획에 따라 119 등 응급의료 도움을 요청하고 보호자에게 연락합니다.
+        </div>
+      `;
+
+  }
+
+
+  if (
+    type === "vomit"
+  ) {
+
+    title.textContent =
+      "🤢 구토나 심한 이상증상이 있을 때";
+
+
+    content.innerHTML =
+      `
+        <div class="response-step">
+          <span class="response-number">1</span>
+          학생을 혼자 두지 않고 상태를 관찰합니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">2</span>
+          혈당을 확인할 수 있다면 확인하고 학생의 개별 관리계획을 살펴봅니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">3</span>
+          보건교사와 보호자에게 즉시 알립니다.
+        </div>
+
+        <div class="response-step">
+          <span class="response-number">4</span>
+          의식 변화, 호흡 이상, 심한 탈수 등 응급 신호가 있으면 학교 응급 절차를 따릅니다.
+        </div>
+      `;
+
+  }
 
 }
 
 
+
+/* =========================
+   교육
+========================= */
+
+function openEducation() {
+
+  document.getElementById(
+    "educationOverlay"
+  ).style.display =
+    "flex";
+
+}
+
+
+
+function closeEducation() {
+
+  document.getElementById(
+    "educationOverlay"
+  ).style.display =
+    "none";
+
+}
+
+
+
+/* =========================
+   비상연락처
+========================= */
 
 async function openContactModal(
   student
@@ -1843,9 +3086,11 @@ async function openContactModal(
   selectedContactStudentId =
     student.id;
 
+
   selectedContactStudentName =
     student.nickname ||
     "학생";
+
 
   document.getElementById(
     "contactModalStudent"
@@ -1854,25 +3099,30 @@ async function openContactModal(
     +
     " 학생의 비상연락처";
 
+
   document.getElementById(
     "contactName"
   ).value =
     "";
+
 
   document.getElementById(
     "contactPhone"
   ).value =
     "";
 
+
   document.getElementById(
     "contactRelationship"
   ).value =
     "엄마";
 
+
   document.getElementById(
     "contactModalOverlay"
   ).style.display =
     "flex";
+
 
   await loadEmergencyContacts();
 
@@ -1887,6 +3137,7 @@ function closeContactModal() {
   ).style.display =
     "none";
 
+
   selectedContactStudentId =
     null;
 
@@ -1899,6 +3150,7 @@ async function loadEmergencyContacts() {
   if (!selectedContactStudentId) {
     return;
   }
+
 
   const {
     data,
@@ -1922,6 +3174,7 @@ async function loadEmergencyContacts() {
         }
       );
 
+
   if (error) {
 
     document.getElementById(
@@ -1933,8 +3186,11 @@ async function loadEmergencyContacts() {
         </div>
       `;
 
+
     return;
+
   }
+
 
   renderEmergencyContacts(
     data || []
@@ -1953,8 +3209,10 @@ function renderEmergencyContacts(
       "contactModalList"
     );
 
+
   container.innerHTML =
     "";
+
 
   if (
     contacts.length === 0
@@ -1967,8 +3225,11 @@ function renderEmergencyContacts(
         </div>
       `;
 
+
     return;
+
   }
+
 
   contacts.forEach(
     contact => {
@@ -1978,11 +3239,14 @@ function renderEmergencyContacts(
           "div"
         );
 
+
       card.className =
         "modal-contact-card";
 
+
       let icon =
         "📞";
+
 
       if (
         contact.relationship === "엄마"
@@ -1991,41 +3255,56 @@ function renderEmergencyContacts(
         ||
         contact.relationship === "보호자"
       ) {
-        icon = "👨‍👩‍👧";
+
+        icon =
+          "👨‍👩‍👧";
+
       }
+
 
       if (
         contact.relationship === "보건실"
       ) {
-        icon = "🏥";
+
+        icon =
+          "🏥";
+
       }
+
 
       const iconBox =
         document.createElement(
           "div"
         );
 
+
       iconBox.className =
         "modal-contact-icon";
 
+
       iconBox.textContent =
         icon;
+
 
       const info =
         document.createElement(
           "div"
         );
 
+
       info.className =
         "modal-contact-info";
+
 
       const name =
         document.createElement(
           "div"
         );
 
+
       name.className =
         "modal-contact-name";
+
 
       name.textContent =
         contact.relationship
@@ -2034,35 +3313,44 @@ function renderEmergencyContacts(
         +
         contact.contact_name;
 
+
       const phone =
         document.createElement(
           "div"
         );
 
+
       phone.className =
         "modal-contact-phone";
 
+
       phone.textContent =
         contact.phone_number;
+
 
       info.appendChild(
         name
       );
 
+
       info.appendChild(
         phone
       );
+
 
       const deleteButton =
         document.createElement(
           "button"
         );
 
+
       deleteButton.className =
         "contact-delete-button";
 
+
       deleteButton.textContent =
         "삭제";
+
 
       deleteButton.onclick =
         function() {
@@ -2074,17 +3362,21 @@ function renderEmergencyContacts(
 
         };
 
+
       card.appendChild(
         iconBox
       );
+
 
       card.appendChild(
         info
       );
 
+
       card.appendChild(
         deleteButton
       );
+
 
       container.appendChild(
         card
@@ -2103,29 +3395,60 @@ async function saveEmergencyContact() {
     return;
   }
 
+
   const relationship =
     document.getElementById(
       "contactRelationship"
     ).value;
+
 
   const name =
     document.getElementById(
       "contactName"
     ).value.trim();
 
+
   const phone =
     document.getElementById(
       "contactPhone"
     ).value.trim();
 
-  if (!name || !phone) {
+
+  if (
+    !name ||
+    !phone
+  ) {
 
     alert(
       "이름과 전화번호를 입력해주세요."
     );
 
+
     return;
+
   }
+
+
+  const cleanedPhone =
+    phone.replace(
+      /[^0-9+]/g,
+      ""
+    );
+
+
+  if (
+    cleanedPhone.length < 8
+  ) {
+
+    alert(
+      "전화번호를 다시 확인해주세요."
+    );
+
+
+    return;
+
+  }
+
 
   const {
     error
@@ -2135,15 +3458,21 @@ async function saveEmergencyContact() {
         "emergency_contacts"
       )
       .insert({
+
         user_id:
           selectedContactStudentId,
+
         contact_name:
           name,
+
         relationship:
           relationship,
+
         phone_number:
           phone
+
       });
+
 
   if (error) {
 
@@ -2151,18 +3480,23 @@ async function saveEmergencyContact() {
       "비상연락처를 등록하지 못했습니다."
     );
 
+
     return;
+
   }
+
 
   document.getElementById(
     "contactName"
   ).value =
     "";
 
+
   document.getElementById(
     "contactPhone"
   ).value =
     "";
+
 
   await loadEmergencyContacts();
 
@@ -2182,9 +3516,11 @@ async function deleteEmergencyContact(
       " 연락처를 삭제할까요?"
     );
 
+
   if (!confirmed) {
     return;
   }
+
 
   await supabaseClient
     .from(
@@ -2200,11 +3536,16 @@ async function deleteEmergencyContact(
       selectedContactStudentId
     );
 
+
   await loadEmergencyContacts();
 
 }
 
 
+
+/* =========================
+   비밀번호 변경
+========================= */
 
 function openPasswordModal(
   student
@@ -2213,9 +3554,11 @@ function openPasswordModal(
   selectedPasswordStudentId =
     student.id;
 
+
   selectedPasswordStudentName =
     student.nickname ||
     "학생";
+
 
   document.getElementById(
     "passwordModalStudent"
@@ -2224,10 +3567,12 @@ function openPasswordModal(
     +
     " 학생의 새 임시 비밀번호를 설정합니다.";
 
+
   document.getElementById(
     "newPassword"
   ).value =
     "";
+
 
   document.getElementById(
     "passwordModalOverlay"
@@ -2245,6 +3590,7 @@ function closePasswordModal() {
   ).style.display =
     "none";
 
+
   selectedPasswordStudentId =
     null;
 
@@ -2254,10 +3600,16 @@ function closePasswordModal() {
 
 async function resetStudentPassword() {
 
+  if (!selectedPasswordStudentId) {
+    return;
+  }
+
+
   const password =
     document.getElementById(
       "newPassword"
     ).value;
+
 
   if (
     password.length < 6
@@ -2267,8 +3619,11 @@ async function resetStudentPassword() {
       "비밀번호는 6자 이상으로 입력해주세요."
     );
 
+
     return;
+
   }
+
 
   const {
     data: sessionData
@@ -2276,12 +3631,26 @@ async function resetStudentPassword() {
     await supabaseClient.auth
       .getSession();
 
+
   const accessToken =
     sessionData.session
-      ?
-      sessionData.session.access_token
-      :
-      null;
+    ?
+    sessionData.session.access_token
+    :
+    null;
+
+
+  if (!accessToken) {
+
+    alert(
+      "로그인 세션을 확인할 수 없습니다."
+    );
+
+
+    return;
+
+  }
+
 
   const response =
     await fetch(
@@ -2289,11 +3658,13 @@ async function resetStudentPassword() {
       +
       "/functions/v1/reset-student-password",
       {
+
         method:
           "POST",
 
         headers:
           {
+
             "Content-Type":
               "application/json",
 
@@ -2301,17 +3672,23 @@ async function resetStudentPassword() {
               "Bearer "
               +
               accessToken
+
           },
 
         body:
           JSON.stringify({
+
             studentId:
               selectedPasswordStudentId,
+
             newPassword:
               password
+
           })
+
       }
     );
+
 
   if (!response.ok) {
 
@@ -2319,18 +3696,28 @@ async function resetStudentPassword() {
       "비밀번호 재설정에 실패했습니다."
     );
 
+
     return;
+
   }
 
+
   alert(
-    "학생 비밀번호를 변경했습니다."
+    selectedPasswordStudentName
+    +
+    " 학생의 비밀번호를 변경했습니다."
   );
+
 
   closePasswordModal();
 
 }
 
 
+
+/* =========================
+   공통
+========================= */
 
 function parseNote(
   note
@@ -2340,19 +3727,27 @@ function parseNote(
     return {};
   }
 
+
   if (
     typeof note ===
     "object"
   ) {
+
     return note;
+
   }
 
+
   try {
+
     return JSON.parse(
       note
     );
+
   } catch {
+
     return {};
+
   }
 
 }
@@ -2368,8 +3763,10 @@ function isToday(
       dateString
     );
 
+
   const today =
     new Date();
+
 
   return (
     date.getFullYear() ===
@@ -2393,11 +3790,26 @@ function escapeHtml(
   return String(
     value ?? ""
   )
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
@@ -2408,12 +3820,82 @@ async function logout() {
   await supabaseClient.auth
     .signOut();
 
+
   location.href =
     "login.html";
 
 }
 
+
+
+/* =========================
+   바깥 영역 클릭
+========================= */
+
+[
+  "emergencyGuideOverlay",
+  "educationOverlay",
+  "contactModalOverlay",
+  "passwordModalOverlay"
+].forEach(
+  id => {
+
+    document.getElementById(
+      id
+    ).addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target !== this
+        ) {
+          return;
+        }
+
+
+        if (
+          id === "emergencyGuideOverlay"
+        ) {
+
+          closeEmergencyGuide();
+
+        }
+
+
+        if (
+          id === "educationOverlay"
+        ) {
+
+          closeEducation();
+
+        }
+
+
+        if (
+          id === "contactModalOverlay"
+        ) {
+
+          closeContactModal();
+
+        }
+
+
+        if (
+          id === "passwordModalOverlay"
+        ) {
+
+          closePasswordModal();
+
+        }
+
+      }
+    );
+
+  }
+);
+
 </script>
 
 </body>
+
 </html>
