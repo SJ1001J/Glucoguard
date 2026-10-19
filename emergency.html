@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>비상연락처 - GlucoGuard</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+  <style>
+
+    body {
+      background: #f5f9fc;
+    }
+
+    .page-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .back-button {
+      border: none;
+      background: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    }
+
+    .title-area {
+      flex: 1;
+    }
+
+    .title-area h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #37474f;
+    }
+
+    .title-area p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #78909c;
+    }
+
+
+    /* 안내 */
+
+    .info-card {
+      background: #eef6ff;
+      border-radius: 18px;
+      padding: 15px;
+      margin-bottom: 16px;
+      color: #456b82;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+
+    /* 119 */
+
+    .emergency-call-card {
+      background: #fff0ef;
+      border: 2px solid #ffc8c3;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .emergency-call-card strong {
+      display: block;
+      font-size: 17px;
+      color: #c4473f;
+      margin-bottom: 5px;
+    }
+
+    .emergency-call-card p {
+      margin: 0 0 12px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #855c59;
+    }
+
+    .call-119-button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      background: #e9574f;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+
+    /* 등록 영역 */
+
+    .form-card {
+      background: white;
+      border-radius: 21px;
+      padding: 17px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 15px rgba(70,90,110,.07);
+    }
+
+    .form-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #455a64;
+      margin-bottom: 13px;
+    }
+
+    .input-label {
+      display: block;
+      margin: 0 0 5px 2px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #607d8b;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      margin-bottom: 12px;
+      border: 1px solid #d8e2e8;
+      border-radius: 13px;
+      background: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: #6ba6cf;
+      box-shadow: 0 0 0 3px rgba(107,166,207,.12);
+    }
+
+    .save-button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      background: #4285b4;
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+
+    /* 연락처 목록 */
+
+    .list-title {
+      margin: 4px 0 11px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #455a64;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 18px;
+      padding: 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 13px rgba(70,90,110,.06);
+    }
+
+    .contact-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .contact-info {
+      min-width: 0;
+    }
+
+    .contact-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #37474f;
+      margin-bottom: 3px;
+    }
+
+    .contact-relationship {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 8px;
+      background: #eef5fa;
+      font-size: 11px;
+      color: #607d8b;
+      margin-bottom: 6px;
+    }
+
+    .contact-phone {
+      font-size: 14px;
+      color: #607d8b;
+    }
+
+    .delete-button {
+      border: none;
+      background: #f7f7f7;
+      color: #9a6b6b;
+      border-radius: 10px;
+      padding: 8px 9px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .call-button {
+      width: 100%;
+      margin-top: 12px;
+      border: none;
+      border-radius: 13px;
+      padding: 12px;
+      background: #eaf5ff;
+      color: #25648e;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .empty-message {
+      background: white;
+      border-radius: 18px;
+      padding: 25px 15px;
+      text-align: center;
+      color: #90a4ae;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="page-wrap">
+
+
+  <div class="top-bar">
+
+    <button
+      class="back-button"
+      onclick="location.href='index.html'">
+
+      ‹
+
+    </button>
+
+
+    <div class="title-area">
+
+      <h1>
+        📞 비상연락처
+      </h1>
+
+      <p>
+        필요할 때 바로 연락할 수 있도록 등록해요.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="info-card">
+
+    보호자나 학교 보건실의 연락처를 미리 등록해두면,
+    휴대폰에서 버튼을 눌러 바로 전화 앱을 열 수 있어요.
+
+  </div>
+
+
+
+  <div class="emergency-call-card">
+
+    <strong>
+      🚨 아주 위급한 상황인가요?
+    </strong>
+
+    <p>
+      의식이 흐리거나, 반응이 없거나, 심각한 응급상황이라면
+      주변 어른에게 즉시 알리고 학교의 응급대응 절차를 따라주세요.
+    </p>
+
+    <button
+      class="call-119-button"
+      onclick="confirmCall119()">
+
+      🚑 119에 전화하기
+
+    </button>
+
+  </div>
+
+
+
+  <div class="form-card">
+
+    <div class="form-title">
+      ➕ 연락처 등록
+    </div>
+
+
+    <label class="input-label">
+      관계
+    </label>
+
+    <select
+      id="relationship"
+      class="form-select">
+
+      <option value="엄마">
+        엄마
+      </option>
+
+      <option value="아빠">
+        아빠
+      </option>
+
+      <option value="보호자">
+        보호자
+      </option>
+
+      <option value="보건실">
+        보건실
+      </option>
+
+      <option value="담임 선생님">
+        담임 선생님
+      </option>
+
+      <option value="기타">
+        기타
+      </option>
+
+    </select>
+
+
+    <label class="input-label">
+      이름
+    </label>
+
+    <input
+      id="contactName"
+      class="form-input"
+      type="text"
+      maxlength="30"
+      placeholder="예: 김OO">
+
+
+    <label class="input-label">
+      전화번호
+    </label>
+
+    <input
+      id="phoneNumber"
+      class="form-input"
+      type="tel"
+      maxlength="20"
+      inputmode="tel"
+      placeholder="예: 010-1234-5678">
+
+
+    <button
+      id="saveButton"
+      class="save-button"
+      onclick="saveContact()">
+
+      연락처 저장
+
+    </button>
+
+  </div>
+
+
+
+  <div class="list-title">
+    📱 등록된 연락처
+  </div>
+
+
+  <div id="contactList">
+
+    <div class="empty-message">
+      연락처를 불러오는 중이에요.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const loggedIn =
+      await checkLogin();
+
+
+    if (!loggedIn) {
+      return;
+    }
+
+
+    await loadContacts();
+
+  }
+);
+
+
+
+async function checkLogin() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    error ||
+    !data.session
+  ) {
+
+    location.href =
+      "login.html";
+
+
+    return false;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  const {
+    data: profile,
+    error: profileError
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select("role")
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (profileError) {
+
+    console.error(
+      profileError
+    );
+
+  }
+
+
+  if (
+    profile &&
+    (
+      profile.role === "teacher"
+      ||
+      profile.role === "nurse"
+    )
+  ) {
+
+    location.href =
+      "teacher.html";
+
+
+    return false;
+
+  }
+
+
+  return true;
+
+}
+
+
+
+async function saveContact() {
+
+  const relationship =
+    document.getElementById(
+      "relationship"
+    ).value;
+
+
+  const contactName =
+    document.getElementById(
+      "contactName"
+    ).value.trim();
+
+
+  const phoneNumber =
+    document.getElementById(
+      "phoneNumber"
+    ).value.trim();
+
+
+  if (!contactName) {
+
+    alert(
+      "연락할 사람의 이름을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (!phoneNumber) {
+
+    alert(
+      "전화번호를 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const cleanedPhone =
+    phoneNumber.replace(
+      /[^0-9+]/g,
+      ""
+    );
+
+
+  if (
+    cleanedPhone.length < 8
+  ) {
+
+    alert(
+      "전화번호를 다시 확인해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "emergency_contacts"
+      )
+      .insert({
+
+        user_id:
+          currentUser.id,
+
+        contact_name:
+          contactName,
+
+        relationship:
+          relationship,
+
+        phone_number:
+          phoneNumber
+
+      });
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "연락처 저장";
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "연락처를 저장하지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "contactName"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "phoneNumber"
+  ).value =
+    "";
+
+
+  await loadContacts();
+
+}
+
+
+
+async function loadContacts() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "emergency_contacts"
+      )
+      .select(
+        "id, contact_name, relationship, phone_number, created_at"
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending: true
+        }
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    document.getElementById(
+      "contactList"
+    ).innerHTML =
+      `
+        <div class="empty-message">
+          연락처를 불러오지 못했어요.
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  renderContacts(
+    data || []
+  );
+
+}
+
+
+
+function renderContacts(
+  contacts
+) {
+
+  const container =
+    document.getElementById(
+      "contactList"
+    );
+
+
+  if (
+    contacts.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+        <div class="empty-message">
+          아직 등록된 연락처가 없어요.<br>
+          보호자나 보건실 연락처를 등록해주세요.
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    "";
+
+
+  contacts.forEach(
+    function(contact) {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "contact-card";
+
+
+      const top =
+        document.createElement(
+          "div"
+        );
+
+
+      top.className =
+        "contact-top";
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "contact-info";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "contact-name";
+
+
+      name.textContent =
+        contact.contact_name;
+
+
+      const relationship =
+        document.createElement(
+          "div"
+        );
+
+
+      relationship.className =
+        "contact-relationship";
+
+
+      relationship.textContent =
+        contact.relationship ||
+        "연락처";
+
+
+      const phone =
+        document.createElement(
+          "div"
+        );
+
+
+      phone.className =
+        "contact-phone";
+
+
+      phone.textContent =
+        contact.phone_number;
+
+
+      info.appendChild(
+        name
+      );
+
+
+      info.appendChild(
+        relationship
+      );
+
+
+      info.appendChild(
+        phone
+      );
+
+
+      const deleteButton =
+        document.createElement(
+          "button"
+        );
+
+
+      deleteButton.className =
+        "delete-button";
+
+
+      deleteButton.textContent =
+        "삭제";
+
+
+      deleteButton.onclick =
+        function() {
+
+          deleteContact(
+            contact.id,
+            contact.contact_name
+          );
+
+        };
+
+
+      top.appendChild(
+        info
+      );
+
+
+      top.appendChild(
+        deleteButton
+      );
+
+
+      const callButton =
+        document.createElement(
+          "button"
+        );
+
+
+      callButton.className =
+        "call-button";
+
+
+      callButton.textContent =
+        "📞 "
+        +
+        (
+          contact.relationship ||
+          contact.contact_name
+        )
+        +
+        "에게 전화";
+
+
+      callButton.onclick =
+        function() {
+
+          confirmCall(
+            contact.contact_name,
+            contact.phone_number
+          );
+
+        };
+
+
+      card.appendChild(
+        top
+      );
+
+
+      card.appendChild(
+        callButton
+      );
+
+
+      container.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+
+function confirmCall(
+  name,
+  phone
+) {
+
+  const confirmed =
+    confirm(
+      name
+      +
+      "에게 전화할까요?\n\n"
+      +
+      phone
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  const cleanedPhone =
+    phone.replace(
+      /[^0-9+]/g,
+      ""
+    );
+
+
+  location.href =
+    "tel:"
+    +
+    cleanedPhone;
+
+}
+
+
+
+function confirmCall119() {
+
+  const confirmed =
+    confirm(
+      "119에 전화할까요?\n\n"
+      +
+      "실수로 누른 경우에는 취소를 눌러주세요."
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  location.href =
+    "tel:119";
+
+}
+
+
+
+async function deleteContact(
+  id,
+  name
+) {
+
+  const confirmed =
+    confirm(
+      name
+      +
+      " 연락처를 삭제할까요?"
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "emergency_contacts"
+      )
+      .delete()
+      .eq(
+        "id",
+        id
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "연락처를 삭제하지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  await loadContacts();
+
+}
+
+</script>
+
+</body>
+
+</html>
