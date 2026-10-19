@@ -29,7 +29,8 @@
 
     button,
     input,
-    select {
+    select,
+    textarea {
       font-family: inherit;
     }
 
@@ -661,6 +662,169 @@
       color: #95a2a9;
     }
 
+    .emergency-plan-button {
+      width: 100%;
+
+      margin: 0 0 8px;
+      padding: 13px;
+
+      border: none;
+      border-radius: 14px;
+
+      background: #ffe8e4;
+      color: #a44842;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       응급정보 설정 폼
+    ========================= */
+
+    .emergency-form-profile {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      margin-bottom: 14px;
+      padding: 13px;
+
+      border-radius: 16px;
+
+      background: #fff4f1;
+    }
+
+    .emergency-form-avatar {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 15px;
+
+      background: white;
+
+      font-size: 27px;
+    }
+
+    .emergency-form-name {
+      color: #5e4a47;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .emergency-form-class {
+      margin-top: 3px;
+
+      color: #9a7b76;
+      font-size: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 13px;
+    }
+
+    .form-label {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #506873;
+
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .form-help {
+      margin-top: 5px;
+
+      color: #93a0a7;
+
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+
+      border:
+        1px solid #dce5e9;
+
+      border-radius: 12px;
+
+      background: #fbfcfd;
+
+      color: #405963;
+
+      font-size: 12px;
+
+      outline: none;
+    }
+
+    .form-input {
+      height: 43px;
+      padding: 0 12px;
+    }
+
+    .form-textarea {
+      min-height: 110px;
+      padding: 11px 12px;
+
+      resize: vertical;
+
+      line-height: 1.6;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: #e0a19b;
+      background: white;
+    }
+
+    .emergency-form-note {
+      margin-bottom: 13px;
+      padding: 11px;
+
+      border-radius: 13px;
+
+      background: #fff7df;
+      color: #78652e;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .save-emergency-button {
+      width: 100%;
+
+      padding: 13px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #d95e55;
+      color: white;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .save-emergency-button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
 
     /* =========================
        모달
@@ -934,658 +1098,6 @@
       color: #a66528;
     }
 
-    .repeat-alert.vomit .repeat-title {
-      color: #b34842;
-    }
-
-    .repeat-text {
-      margin-bottom: 10px;
-
-      color: #687c87;
-
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .repeat-buttons {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-    }
-
-    .repeat-open,
-    .repeat-close {
-      border: none;
-      border-radius: 11px;
-
-      padding: 10px;
-
-      font-size: 10px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-    .repeat-open {
-      background: #ffe6e2;
-      color: #a44640;
-    }
-
-    .repeat-close {
-      background: #f2f4f6;
-      color: #6f808a;
-    }
-
-
-    @media (max-width: 520px) {
-
-      .demo-banner {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .demo-switch {
-        width: 100%;
-      }
-
-      .today-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .student-actions,
-      .safety-action-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-<div class="page">
-
-
-  <!-- 데모 모드 -->
-
-  <div
-    id="demoBanner"
-    class="demo-banner">
-
-    <div>
-      ⭐ 체험 모드 · 👩‍🏫 교직원 화면
-    </div>
-
-    <button
-      class="demo-switch"
-      onclick="switchToStudent()">
-
-      👧 학생 화면
-
-    </button>
-
-  </div>
-
-
-
-  <!-- 상단 -->
-
-  <div class="top-card">
-
-    <div class="top-row">
-
-      <div class="brand">
-
-        <div class="brand-icon">
-          👩‍🏫
-        </div>
-
-        <div>
-
-          <div class="brand-title">
-            GlucoGuard 관리
-          </div>
-
-          <div class="brand-sub">
-            학생 안전 지원 및 교직원 교육
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="logout-button"
-        onclick="logout()">
-
-        로그아웃
-
-      </button>
-
-    </div>
-
-
-    <div
-      id="teacherInfo"
-      class="teacher-info">
-
-      정보를 불러오는 중...
-
-    </div>
-
-  </div>
-
-
-
-  <!-- 오늘 상황판 -->
-
-  <div class="today-board">
-
-    <div class="today-head">
-
-      <div class="today-title">
-        ☀️ 오늘의 상황판
-      </div>
-
-      <div
-        id="todayDate"
-        class="today-date">
-      </div>
-
-    </div>
-
-
-    <div
-      id="todaySummary"
-      class="today-summary">
-
-      상황을 확인하고 있습니다.
-
-    </div>
-
-
-    <div class="today-grid">
-
-      <div class="today-stat">
-
-        <div class="today-stat-icon">
-          ⚠️
-        </div>
-
-        <div
-          id="todayAttention"
-          class="today-stat-value">
-          0
-        </div>
-
-        <div class="today-stat-label">
-          확인 필요
-        </div>
-
-      </div>
-
-
-      <div class="today-stat">
-
-        <div class="today-stat-icon">
-          📝
-        </div>
-
-        <div
-          id="todayRecords"
-          class="today-stat-value">
-          0
-        </div>
-
-        <div class="today-stat-label">
-          오늘 기록
-        </div>
-
-      </div>
-
-
-      <div class="today-stat">
-
-        <div class="today-stat-icon">
-          🩸
-        </div>
-
-        <div
-          id="todayLow"
-          class="today-stat-value">
-          0
-        </div>
-
-        <div class="today-stat-label">
-          저혈당
-        </div>
-
-      </div>
-
-
-      <div class="today-stat">
-
-        <div class="today-stat-icon">
-          🔺
-        </div>
-
-        <div
-          id="todayHigh"
-          class="today-stat-value">
-          0
-        </div>
-
-        <div class="today-stat-label">
-          고혈당
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div
-      id="todayMessage"
-      class="today-message">
-    </div>
-
-  </div>
-
-
-
-  <!-- 중요 기능 -->
-
-  <div class="main-tools">
-
-    <button
-      class="main-tool tool-emergency"
-      onclick="goEmergency()">
-
-      <div class="tool-icon">
-        🚨
-      </div>
-
-      <div class="tool-content">
-
-        <div class="tool-title">
-          응급상황 대처
-        </div>
-
-        <div class="tool-desc">
-          저혈당, 고혈당, 의식 저하 등 상황별 대응 순서를 빠르게 확인합니다.
-        </div>
-
-      </div>
-
-      <div class="tool-arrow">
-        ›
-      </div>
-
-    </button>
-
-
-    <button
-      class="main-tool tool-education"
-      onclick="goEducation()">
-
-      <div class="tool-icon">
-        📘
-      </div>
-
-      <div class="tool-content">
-
-        <div class="tool-title">
-          교직원 교육
-        </div>
-
-        <div class="tool-desc">
-          핵심 교육, 상황 연습, O/X 퀴즈로 학생 지원 방법을 익혀요.
-        </div>
-
-      </div>
-
-      <div class="tool-arrow">
-        ›
-      </div>
-
-    </button>
-
-  </div>
-
-
-
-  <!-- 요약 -->
-
-  <div class="summary-grid">
-
-    <div class="summary-card">
-
-      <div class="summary-label">
-        관리 학생
-      </div>
-
-      <div
-        id="studentCount"
-        class="summary-value">
-
-        0
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="summary-card clickable"
-      onclick="openAttentionList()">
-
-      <div class="summary-label">
-        확인 필요
-      </div>
-
-      <div
-        id="attentionCount"
-        class="summary-value attention-value">
-
-        0
-
-      </div>
-
-      <div class="summary-hint">
-        눌러서 상황 확인 ›
-      </div>
-
-    </button>
-
-  </div>
-
-
-
-  <!-- 학생 목록 -->
-
-  <button
-    class="student-toggle"
-    onclick="toggleStudentList()">
-
-    <div class="student-toggle-left">
-
-      <div style="font-size:22px;">
-        👧
-      </div>
-
-      <div>
-
-        <div
-          id="studentToggleTitle"
-          class="student-toggle-title">
-
-          담당 학생
-
-        </div>
-
-        <div
-          id="studentToggleSub"
-          class="student-toggle-sub">
-
-          학생 목록 펼치기
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div>
-      ▼
-    </div>
-
-  </button>
-
-
-  <div
-    id="studentList"
-    class="student-list">
-  </div>
-
-
-</div>
-
-
-
-<!-- 안전카드 -->
-
-<div
-  id="safetyOverlay"
-  class="overlay">
-
-  <div class="modal">
-
-    <div class="modal-head">
-
-      <div>
-
-        <div class="modal-title">
-          🪪 학생 안전카드
-        </div>
-
-        <div class="modal-desc">
-          학생의 핵심 정보를 빠르게 확인합니다.
-        </div>
-
-      </div>
-
-      <button
-        class="close"
-        onclick="closeSafety()">
-
-        ×
-
-      </button>
-
-    </div>
-
-    <div id="safetyContent"></div>
-
-  </div>
-
-</div>
-
-
-
-<!-- 확인필요 목록 -->
-
-<div
-  id="attentionOverlay"
-  class="overlay">
-
-  <div class="modal">
-
-    <div class="modal-head">
-
-      <div>
-
-        <div class="modal-title">
-          ⚠️ 확인 필요
-        </div>
-
-        <div class="modal-desc">
-          아직 확인하지 않은 기록입니다.
-        </div>
-
-      </div>
-
-      <button
-        class="close"
-        onclick="closeAttentionList()">
-
-        ×
-
-      </button>
-
-    </div>
-
-    <div id="attentionContent"></div>
-
-  </div>
-
-</div>
-
-
-
-<!-- 반복 알림 -->
-
-<div
-  id="repeatAlert"
-  class="repeat-alert">
-
-  <div
-    id="repeatTitle"
-    class="repeat-title">
-  </div>
-
-  <div
-    id="repeatText"
-    class="repeat-text">
-  </div>
-
-  <div class="repeat-buttons">
-
-    <button
-      class="repeat-open"
-      onclick="openRepeatStudent()">
-
-      학생 안전카드 열기
-
-    </button>
-
-    <button
-      class="repeat-close"
-      onclick="hideRepeatAlert()">
-
-      닫기
-
-    </button>
-
-  </div>
-
-</div>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<script>
-
-const SUPABASE_URL =
-  "https://zvksfkslavrqagytswco.supabase.co";
-
-
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
-
-
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
-
-
-let currentUser = null;
-let currentProfile = null;
-
-let isDemoTeacher = false;
-
-let students = [];
-let allRecords = [];
-
-let attentionStudents = [];
-
-let selectedStudent = null;
-let selectedStatus = null;
-
-let studentListOpen = false;
-
-let repeatStudent = null;
-let repeatTimer = null;
-
-
-
-/* =========================
-   시작
-========================= */
-
-window.addEventListener(
-  "load",
-  async function() {
-
-    setDate();
-
-    const allowed =
-      await checkLogin();
-
-
-    if (!allowed) {
-      return;
-    }
-
-
-    await loadDashboard();
-
-
-    startRepeatTimer();
-
-  }
-);
-
-
-
-/* =========================
-   로그인 확인
-========================= */
-
-async function checkLogin() {
-
-  const {
-    data
-  } =
-    await supabaseClient.auth
-      .getSession();
-
-
-  if (
-    !data.session
-  ) {
-
-    window.location.href =
-      "./login.html";
-
-    return false;
-
-  }
-
-
-  currentUser =
-    data.session.user;
-
-
-  const {
-    data: profile,
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,nickname,class_name,avatar,role"
-      )
-      .eq(
-        "id",
-        currentUser.id
       )
       .maybeSingle();
 
@@ -2537,6 +2049,7 @@ function createStudentCard(
 
   card.className =
     "student-card"
+
     +
     (
       status.needsAttention
@@ -2577,6 +2090,7 @@ function createStudentCard(
           </div>
 
         </div>
+
 
         ${
           status.needsAttention
@@ -2632,11 +2146,13 @@ function createStudentCard(
           </div>
 
           <div class="record-value">
+
             ${escapeHtml(
               mealText(
                 status.latestMeal
               )
             )}
+
           </div>
 
         </div>
@@ -2649,11 +2165,13 @@ function createStudentCard(
           </div>
 
           <div class="record-value">
+
             ${escapeHtml(
               symptomText(
                 status.latestSymptom
               )
             )}
+
           </div>
 
         </div>
@@ -2661,32 +2179,60 @@ function createStudentCard(
       </div>
 
 
+
       <button class="safety-button">
+
         🪪 학생 안전카드 보기
+
       </button>
+
+
+
+      <!-- 새 기능 -->
+
+      <button class="emergency-plan-button">
+
+        🚨 응급정보 설정
+
+      </button>
+
 
 
       <div class="student-actions">
 
         <button class="student-action action-records">
+
           📊 학생 기록 보기
+
         </button>
+
 
         <button class="student-action action-symptom">
+
           🙂 몸 상태 기록
+
         </button>
+
 
         <button class="student-action action-contact">
+
           📞 비상연락처
+
         </button>
 
+
         <button class="student-action action-disabled">
+
           🔑 비밀번호
+
         </button>
 
       </div>
     `;
 
+
+
+  /* 학생 안전카드 */
 
   card.querySelector(
     ".safety-button"
@@ -2697,6 +2243,26 @@ function createStudentCard(
         status
       );
 
+
+
+  /* =========================
+     응급정보 설정
+  ========================= */
+
+  card.querySelector(
+    ".emergency-plan-button"
+  ).onclick =
+    function() {
+
+      openEmergencyPlan(
+        student
+      );
+
+    };
+
+
+
+  /* 전체 기록 */
 
   card.querySelector(
     ".action-records"
@@ -2721,6 +2287,7 @@ function createStudentCard(
         window.location.href =
           "./records.html";
 
+
         return;
 
       }
@@ -2737,6 +2304,9 @@ function createStudentCard(
 
     };
 
+
+
+  /* 몸 상태 기록 */
 
   card.querySelector(
     ".action-symptom"
@@ -2756,6 +2326,7 @@ function createStudentCard(
         window.location.href =
           "./symptom.html";
 
+
         return;
 
       }
@@ -2773,6 +2344,9 @@ function createStudentCard(
     };
 
 
+
+  /* 비상연락처 */
+
   card.querySelector(
     ".action-contact"
   ).onclick =
@@ -2786,9 +2360,16 @@ function createStudentCard(
           "체험 모드에서는 실제 연락처를 사용하지 않습니다."
         );
 
+
         return;
 
       }
+
+
+      sessionStorage.setItem(
+        "teacherSelectedStudent",
+        student.id
+      );
 
 
       window.location.href =
@@ -2796,6 +2377,9 @@ function createStudentCard(
 
     };
 
+
+
+  /* 비밀번호 */
 
   card.querySelector(
     ".action-disabled"
@@ -2822,6 +2406,386 @@ function createStudentCard(
 
 
 /* =========================
+   학생 응급정보 설정
+========================= */
+
+async function openEmergencyPlan(
+  student
+) {
+
+  if (
+    isDemoTeacher
+  ) {
+
+    alert(
+      "체험 모드에서는 실제 학생 응급정보를 저장하지 않습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  selectedEmergencyStudent =
+    student;
+
+
+  document.getElementById(
+    "emergencyPlanOverlay"
+  ).style.display =
+    "flex";
+
+
+  document.getElementById(
+    "emergencyPlanStudent"
+  ).innerHTML =
+    `
+
+      <div class="emergency-form-avatar">
+
+        ${escapeHtml(
+          student.avatar || "🐻"
+        )}
+
+      </div>
+
+
+      <div>
+
+        <div class="emergency-form-name">
+
+          ${escapeHtml(
+            student.nickname || "학생"
+          )}
+
+        </div>
+
+
+        <div class="emergency-form-class">
+
+          ${escapeHtml(
+            student.class_name ||
+            "학급 정보 없음"
+          )}
+
+        </div>
+
+      </div>
+
+    `;
+
+
+  clearEmergencyPlanForm();
+
+
+  const saveButton =
+    document.getElementById(
+      "saveEmergencyPlanButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "불러오는 중...";
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "student_emergency_plans"
+      )
+      .select(
+        `
+        glucagon_product,
+        glucagon_location,
+        emergency_kit_location,
+        plan_summary
+        `
+      )
+      .eq(
+        "student_id",
+        student.id
+      )
+      .maybeSingle();
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "저장하기";
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "응급정보를 불러오지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "glucagonProduct"
+  ).value =
+    data?.glucagon_product
+    ||
+    "";
+
+
+  document.getElementById(
+    "glucagonLocation"
+  ).value =
+    data?.glucagon_location
+    ||
+    "";
+
+
+  document.getElementById(
+    "emergencyKitLocation"
+  ).value =
+    data?.emergency_kit_location
+    ||
+    "";
+
+
+  document.getElementById(
+    "planSummary"
+  ).value =
+    data?.plan_summary
+    ||
+    "";
+
+}
+
+
+
+/* =========================
+   응급정보 입력창 초기화
+========================= */
+
+function clearEmergencyPlanForm() {
+
+  document.getElementById(
+    "glucagonProduct"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "glucagonLocation"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "emergencyKitLocation"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "planSummary"
+  ).value =
+    "";
+
+}
+
+
+
+/* =========================
+   응급정보 창 닫기
+========================= */
+
+function closeEmergencyPlan() {
+
+  document.getElementById(
+    "emergencyPlanOverlay"
+  ).style.display =
+    "none";
+
+
+  selectedEmergencyStudent =
+    null;
+
+
+  clearEmergencyPlanForm();
+
+}
+
+
+
+/* =========================
+   응급정보 저장
+========================= */
+
+async function saveEmergencyPlan() {
+
+  if (
+    !selectedEmergencyStudent
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    isDemoTeacher
+  ) {
+
+    alert(
+      "체험 모드에서는 실제 학생 응급정보를 저장하지 않습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveEmergencyPlanButton"
+    );
+
+
+  const glucagonProduct =
+    document.getElementById(
+      "glucagonProduct"
+    ).value.trim();
+
+
+  const glucagonLocation =
+    document.getElementById(
+      "glucagonLocation"
+    ).value.trim();
+
+
+  const emergencyKitLocation =
+    document.getElementById(
+      "emergencyKitLocation"
+    ).value.trim();
+
+
+  const planSummary =
+    document.getElementById(
+      "planSummary"
+    ).value.trim();
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "student_emergency_plans"
+      )
+      .upsert(
+        {
+
+          student_id:
+            selectedEmergencyStudent.id,
+
+
+          glucagon_product:
+            glucagonProduct
+            ||
+            null,
+
+
+          glucagon_location:
+            glucagonLocation
+            ||
+            null,
+
+
+          emergency_kit_location:
+            emergencyKitLocation
+            ||
+            null,
+
+
+          plan_summary:
+            planSummary
+            ||
+            null
+
+        },
+        {
+
+          onConflict:
+            "student_id"
+
+        }
+      );
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "저장하기";
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "응급정보를 저장하지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  alert(
+    "학생 응급정보를 저장했어요."
+  );
+
+
+  closeEmergencyPlan();
+
+}
+
+
+
+/* =========================
    알림 출력
 ========================= */
 
@@ -2833,20 +2797,31 @@ function createAlerts(
     .map(
       alert =>
         `
+
           <div class="alert-item alert-${alert.type}">
 
             <div>
-              ${escapeHtml(alert.label)}
+
+              ${escapeHtml(
+                alert.label
+              )}
+
             </div>
+
 
             <div style="
               margin-top:3px;
               font-weight:600;
             ">
-              ${escapeHtml(alert.reason)}
+
+              ${escapeHtml(
+                alert.reason
+              )}
+
             </div>
 
           </div>
+
         `
     )
     .join("");
@@ -2892,21 +2867,37 @@ function openSafety(
     "safetyContent"
   ).innerHTML =
     `
+
       <div class="safety-profile">
 
         <div class="safety-avatar">
-          ${escapeHtml(student.avatar || "🐻")}
+
+          ${escapeHtml(
+            student.avatar || "🐻"
+          )}
+
         </div>
+
 
         <div>
 
           <div class="safety-name">
-            ${escapeHtml(student.nickname)}
+
+            ${escapeHtml(
+              student.nickname
+            )}
+
           </div>
 
+
           <div class="safety-class">
-            ${escapeHtml(student.class_name || "")}
+
+            ${escapeHtml(
+              student.class_name || ""
+            )}
+
             · 오늘 기록 ${status.todayCount}건
+
           </div>
 
         </div>
@@ -2914,13 +2905,20 @@ function openSafety(
       </div>
 
 
+
       ${
         status.needsAttention
         ?
         `
+
           <div class="alert-list">
-            ${createAlerts(status.alerts)}
+
+            ${createAlerts(
+              status.alerts
+            )}
+
           </div>
+
 
           <button
             class="ack-button"
@@ -2929,74 +2927,104 @@ function openSafety(
             ✅ 확인 완료
 
           </button>
+
         `
         :
         `
+
           <div class="safe-message">
+
             ✅ 현재 미확인 이상 기록이 없습니다.
+
           </div>
+
         `
       }
 
 
+
       <div class="safety-grid">
 
+
         <div class="safety-box">
 
           <div class="safety-label">
+
             🩸 최근 혈당
+
           </div>
 
           <div class="safety-value">
-            ${escapeHtml(glucose)}
+
+            ${escapeHtml(
+              glucose
+            )}
+
           </div>
 
         </div>
+
 
 
         <div class="safety-box">
 
           <div class="safety-label">
+
             📝 오늘 기록
+
           </div>
 
           <div class="safety-value">
+
             ${status.todayCount}건
+
           </div>
 
         </div>
+
 
 
         <div class="safety-box full">
 
           <div class="safety-label">
+
             🙂 최근 몸 상태
+
           </div>
 
           <div class="safety-value">
+
             ${escapeHtml(
               symptomText(
                 status.latestSymptom
               )
             )}
+
           </div>
 
         </div>
 
+
       </div>
+
 
 
       ${
         isDemoTeacher
         ?
         `
+
           <div class="safe-message">
+
             ⭐ 체험 모드에서는 실제 학생·보호자 정보가 표시되지 않습니다.
+
           </div>
+
         `
         :
         ""
       }
+
 
 
       <div class="safety-action-grid">
@@ -3009,6 +3037,7 @@ function openSafety(
 
         </button>
 
+
         <button
           class="safety-action records-action"
           onclick="openSafetyRecords()">
@@ -3018,10 +3047,16 @@ function openSafety(
         </button>
 
       </div>
+
     `;
 
 }
 
+
+
+/* =========================
+   안전카드 닫기
+========================= */
 
 function closeSafety() {
 
@@ -3034,12 +3069,11 @@ function closeSafety() {
   selectedStudent =
     null;
 
+
   selectedStatus =
     null;
 
 }
-
-
 
 /* =========================
    확인 완료
@@ -3782,7 +3816,8 @@ async function logout() {
 
 [
   "safetyOverlay",
-  "attentionOverlay"
+  "attentionOverlay",
+  "emergencyPlanOverlay"
 ].forEach(
   id => {
 
@@ -3798,6 +3833,33 @@ async function logout() {
 
           this.style.display =
             "none";
+
+
+          if (
+            id === "emergencyPlanOverlay"
+          ) {
+
+            selectedEmergencyStudent =
+              null;
+
+
+            clearEmergencyPlanForm();
+
+          }
+
+
+          if (
+            id === "safetyOverlay"
+          ) {
+
+            selectedStudent =
+              null;
+
+
+            selectedStatus =
+              null;
+
+          }
 
         }
 
