@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -9,6 +10,7 @@
     content="width=device-width, initial-scale=1.0">
 
   <title>응급상황 대처 - GlucoGuard</title>
+
 
   <style>
 
@@ -148,6 +150,54 @@
 
 
     /* =========================
+       현장 기본 원칙
+    ========================= */
+
+    .core-rules {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 8px;
+
+      margin-bottom: 17px;
+    }
+
+    .core-rule {
+      min-height: 88px;
+
+      padding: 12px 9px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      text-align: center;
+
+      box-shadow:
+        0 4px 13px rgba(60,80,95,.05);
+    }
+
+    .core-rule-icon {
+      display: block;
+
+      margin-bottom: 6px;
+
+      font-size: 23px;
+    }
+
+    .core-rule-title {
+      color: #415d6b;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      line-height: 1.45;
+    }
+
+
+    /* =========================
        상황 선택
     ========================= */
 
@@ -205,6 +255,7 @@
 
       font-size: 12px;
       font-weight: 900;
+
       line-height: 1.4;
     }
 
@@ -256,6 +307,181 @@
 
       font-size: 11px;
       line-height: 1.55;
+    }
+
+
+    /* =========================
+       역할 나누기
+    ========================= */
+
+    .team-card {
+      margin-bottom: 10px;
+
+      padding: 15px;
+
+      border-radius: 18px;
+
+      background: #eef7ff;
+
+      color: #48697e;
+    }
+
+    .team-card-title {
+      margin-bottom: 8px;
+
+      color: #355f7b;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .team-row {
+      display: flex;
+
+      gap: 9px;
+
+      margin-bottom: 8px;
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .team-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-badge {
+      min-width: 28px;
+      height: 28px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 9px;
+
+      background: white;
+
+      color: #37627d;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+
+    /* =========================
+       삼킴 여부 분기
+    ========================= */
+
+    .decision-card {
+      display: none;
+
+      margin-bottom: 10px;
+
+      padding: 15px;
+
+      border:
+        2px solid #f0c977;
+
+      border-radius: 18px;
+
+      background: #fff9ea;
+    }
+
+    .decision-card.show {
+      display: block;
+    }
+
+    .decision-title {
+      margin-bottom: 5px;
+
+      color: #765d28;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .decision-text {
+      margin-bottom: 11px;
+
+      color: #7a6b47;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .decision-buttons {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+    }
+
+    .decision-button {
+      min-height: 60px;
+
+      padding: 10px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 13px;
+
+      background: white;
+
+      color: #596d77;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      line-height: 1.45;
+
+      cursor: pointer;
+    }
+
+    .decision-button.safe {
+      border-color: #a9d8c4;
+    }
+
+    .decision-button.danger {
+      border-color: #f1aaa2;
+
+      color: #9a4c46;
+    }
+
+    .decision-result {
+      display: none;
+
+      margin-top: 10px;
+
+      padding: 11px;
+
+      border-radius: 12px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      line-height: 1.65;
+    }
+
+    .decision-result.show {
+      display: block;
+    }
+
+    .decision-result.safe {
+      background: #eaf8f2;
+
+      color: #407463;
+    }
+
+    .decision-result.danger {
+      background: #fff0ee;
+
+      color: #98514b;
     }
 
 
@@ -455,7 +681,7 @@
 
 
     /* =========================
-       119 고정버튼
+       119 버튼
     ========================= */
 
     .emergency-call-area {
@@ -520,6 +746,14 @@
         grid-template-columns: 1fr;
       }
 
+      .core-rules {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-buttons {
+        grid-template-columns: 1fr;
+      }
+
     }
 
   </style>
@@ -570,13 +804,67 @@
     </div>
 
     <div class="emergency-header-text">
+
       학생의 상태를 확인하고,
-      가능한 경우 담당 보건교사 또는 교육받은 교직원에게 즉시 도움을 요청하세요.
+      가능한 경우 담당 보건교사 또는 교육받은 교직원에게
+      즉시 도움을 요청하세요.
+
     </div>
 
     <div class="important-line">
+
       ⚠️ 의식이 없거나 안전하게 삼키기 어렵다면
       음식이나 음료를 입으로 주지 않습니다.
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 현장 기본 원칙 -->
+
+  <div class="core-rules">
+
+    <div class="core-rule">
+
+      <span class="core-rule-icon">
+        👀
+      </span>
+
+      <div class="core-rule-title">
+        학생을<br>
+        혼자 두지 않기
+      </div>
+
+    </div>
+
+
+    <div class="core-rule">
+
+      <span class="core-rule-icon">
+        🙋
+      </span>
+
+      <div class="core-rule-title">
+        가까운 교직원에게<br>
+        즉시 도움 요청
+      </div>
+
+    </div>
+
+
+    <div class="core-rule">
+
+      <span class="core-rule-icon">
+        📋
+      </span>
+
+      <div class="core-rule-title">
+        학생별 응급계획<br>
+        바로 확인
+      </div>
+
     </div>
 
   </div>
@@ -608,6 +896,7 @@
     </button>
 
 
+
     <button
       class="situation-button"
       onclick="selectSituation('high', this)">
@@ -623,6 +912,7 @@
     </button>
 
 
+
     <button
       class="situation-button"
       onclick="selectSituation('severe', this)">
@@ -632,11 +922,14 @@
       </span>
 
       <span class="situation-title">
+
         의식 저하 · 경련<br>
         삼키기 어려움
+
       </span>
 
     </button>
+
 
 
     <button
@@ -648,7 +941,10 @@
       </span>
 
       <span class="situation-title">
-        구토 · 심한 이상증상
+
+        고혈당 + 구토<br>
+        심한 이상증상
+
       </span>
 
     </button>
@@ -681,6 +977,110 @@
 
 
 
+    <!-- 역할 나누기 -->
+
+    <div class="team-card">
+
+      <div class="team-card-title">
+        👥 가능하면 역할을 나누세요
+      </div>
+
+
+      <div class="team-row">
+
+        <span class="team-badge">
+          A
+        </span>
+
+        <span>
+
+          한 명은
+          <strong>학생 곁에 계속 있으면서</strong>
+          의식, 호흡, 증상 변화를 확인합니다.
+
+        </span>
+
+      </div>
+
+
+      <div class="team-row">
+
+        <span class="team-badge">
+          B
+        </span>
+
+        <span>
+
+          다른 교직원은 보건교사에게 알리고,
+          학생의 응급키트·글루카곤·개별 관리계획을 가져오며
+          필요하면 119와 보호자 연락을 돕습니다.
+
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- 저혈당 삼킴 분기 -->
+
+    <div
+      id="decisionCard"
+      class="decision-card">
+
+      <div class="decision-title">
+
+        ❓ 학생이 깨어 있고
+        안전하게 삼킬 수 있나요?
+
+      </div>
+
+
+      <div class="decision-text">
+
+        저혈당이 의심될 때 가장 먼저 확인할 중요한 분기입니다.
+        확실하지 않다면
+        ‘아니오 / 확실하지 않음’을 선택하세요.
+
+      </div>
+
+
+      <div class="decision-buttons">
+
+        <button
+          class="decision-button safe"
+          onclick="showSwallowDecision('safe')">
+
+          네<br>
+          깨어 있고 삼킬 수 있어요
+
+        </button>
+
+
+        <button
+          class="decision-button danger"
+          onclick="showSwallowDecision('danger')">
+
+          아니오<br>
+          또는 확실하지 않아요
+
+        </button>
+
+      </div>
+
+
+      <div
+        id="decisionResult"
+        class="decision-result">
+      </div>
+
+    </div>
+
+
+
+    <!-- 행동 -->
+
     <div
       id="actionCard"
       class="action-card">
@@ -696,6 +1096,8 @@
 
 
 
+    <!-- 금지 -->
+
     <div
       id="dontCard"
       class="dont-card">
@@ -710,6 +1112,8 @@
     </div>
 
 
+
+    <!-- 위험신호 -->
 
     <div
       id="warningCard"
@@ -728,6 +1132,8 @@
 
 
 
+    <!-- 개별 계획 -->
+
     <div class="plan-card">
 
       <div class="plan-title">
@@ -735,12 +1141,19 @@
       </div>
 
       이 화면은 일반적인 학교 응급대응을 돕기 위한 안내입니다.
-      혈당 기준, 간식, 케톤 확인, 인슐린, 글루카곤 등 실제 처치는
-      학생의 개별 당뇨 관리계획과 의료진·학교 지침을 따라주세요.
+
+      <br><br>
+
+      혈당 기준, 간식, 케톤 확인, 인슐린,
+      글루카곤 등 실제 처치는
+      학생의 개별 당뇨 관리계획과
+      의료진·학교 지침을 따라주세요.
 
     </div>
 
 
+
+    <!-- 119 -->
 
     <div
       id="emergencyCallArea"
@@ -755,7 +1168,10 @@
       </button>
 
       <div class="call-note">
+
+        의식 변화, 경련, 호흡 이상 등
         응급의료 지원이 필요한 상황에서 사용하세요.
+
       </div>
 
     </div>
@@ -768,7 +1184,9 @@
   <div class="footer-note">
 
     GlucoGuard는 의료진의 진단이나 처방을 대신하지 않습니다.<br>
-    응급상황에서는 학생의 개별 응급계획과 학교 절차를 우선하세요.
+
+    응급상황에서는 학생의 개별 응급계획과
+    학교 절차를 우선하세요.
 
   </div>
 
@@ -778,6 +1196,11 @@
 
 
 <script>
+
+
+/* =========================
+   상황 선택
+========================= */
 
 function selectSituation(
   type,
@@ -850,6 +1273,18 @@ function selectSituation(
     );
 
 
+  const decisionCard =
+    document.getElementById(
+      "decisionCard"
+    );
+
+
+  const decisionResult =
+    document.getElementById(
+      "decisionResult"
+    );
+
+
   area.classList.add(
     "show"
   );
@@ -863,6 +1298,19 @@ function selectSituation(
   callArea.classList.remove(
     "show"
   );
+
+
+  decisionCard.classList.remove(
+    "show"
+  );
+
+
+  decisionResult.className =
+    "decision-result";
+
+
+  decisionResult.innerHTML =
+    "";
 
 
 
@@ -879,11 +1327,18 @@ function selectSituation(
 
 
     subtitle.textContent =
+
       "식은땀, 손 떨림, 어지러움, 창백함, 졸림 또는 평소와 다른 행동 등이 나타날 수 있습니다.";
+
+
+    decisionCard.classList.add(
+      "show"
+    );
 
 
     actions.innerHTML =
       `
+
         ${makeStep(
           1,
           "<strong>학생과 함께 있습니다.</strong> 혼자 보건실로 보내지 않습니다."
@@ -896,18 +1351,20 @@ function selectSituation(
 
         ${makeStep(
           3,
-          "학생이 의식이 있고 안전하게 삼킬 수 있는 경우에만 개별 계획에 따라 저혈당 처치를 돕습니다."
+          "학생이 <strong>깨어 있고 안전하게 삼킬 수 있는 경우에만</strong> 학생의 개별 계획에 따른 빠르게 흡수되는 탄수화물 처치를 돕습니다."
         )}
 
         ${makeStep(
           4,
           "개별 계획에서 정한 시간에 혈당과 증상을 다시 확인합니다."
         )}
+
       `;
 
 
     dontList.innerHTML =
       `
+
         ${makeDont(
           "학생을 혼자 보건실이나 다른 장소로 보내지 않습니다."
         )}
@@ -919,14 +1376,22 @@ function selectSituation(
         ${makeDont(
           "학생의 개별 계획 없이 임의로 인슐린 용량을 결정하지 않습니다."
         )}
+
       `;
 
 
     warningText.innerHTML =
       `
-        의식이 흐려짐 · 반응이 없음 · 경련 · 안전하게 삼킬 수 없음
-        등의 증상이 나타나면
-        <strong>‘의식 저하 · 경련’ 대응으로 즉시 전환</strong>하세요.
+
+        의식이 흐려짐 · 반응이 없음 · 경련 ·
+        안전하게 삼킬 수 없음 등의 증상이 나타나면
+
+        <strong>
+          ‘의식 저하 · 경련’ 대응으로 즉시 전환
+        </strong>
+
+        하세요.
+
       `;
 
   }
@@ -946,11 +1411,13 @@ function selectSituation(
 
 
     subtitle.textContent =
+
       "심한 갈증, 잦은 소변, 피로감 등이 나타날 수 있으며 학생별 목표 혈당은 다를 수 있습니다.";
 
 
     actions.innerHTML =
       `
+
         ${makeStep(
           1,
           "<strong>혈당을 확인</strong>하고 학생의 개별 고혈당 관리계획을 확인합니다."
@@ -970,11 +1437,13 @@ function selectSituation(
           4,
           "필요한 경우 보건교사와 보호자에게 학생 상태를 알립니다."
         )}
+
       `;
 
 
     dontList.innerHTML =
       `
+
         ${makeDont(
           "혈당 수치만 보고 교직원이 임의로 인슐린 용량을 계산하지 않습니다."
         )}
@@ -982,15 +1451,23 @@ function selectSituation(
         ${makeDont(
           "구토나 호흡 이상이 있는데 단순 고혈당으로만 판단해 기다리지 않습니다."
         )}
+
       `;
 
 
     warningText.innerHTML =
       `
-        <strong>반복되는 구토, 심한 복통, 호흡 이상,
-        심한 졸림 또는 의식 변화</strong>가 있으면
-        즉시 보건교사·보호자에게 알리고
+
+        <strong>
+
+          반복되는 구토, 심한 복통,
+          호흡 이상, 심한 졸림 또는 의식 변화
+
+        </strong>
+
+        가 있으면 즉시 보건교사·보호자에게 알리고
         학교의 응급 절차를 따르세요.
+
       `;
 
   }
@@ -998,7 +1475,7 @@ function selectSituation(
 
 
   /* =========================
-     중증
+     의식 저하 / 경련
   ========================= */
 
   if (
@@ -1006,10 +1483,12 @@ function selectSituation(
   ) {
 
     title.textContent =
+
       "🚨 의식 저하 · 경련 · 삼키기 어려움";
 
 
     subtitle.textContent =
+
       "중증 저혈당을 포함한 응급상황일 수 있습니다. 빠른 대응이 필요합니다.";
 
 
@@ -1025,6 +1504,7 @@ function selectSituation(
 
     actions.innerHTML =
       `
+
         ${makeStep(
           1,
           "<strong>학생을 혼자 두지 않습니다.</strong> 즉시 주변 교직원과 보건교사에게 도움을 요청합니다."
@@ -1047,13 +1527,25 @@ function selectSituation(
 
         ${makeStep(
           5,
-          "학생을 계속 관찰하며 응급의료 인력이 올 때까지 곁에 있습니다."
+          "경련이 있으면 주변의 위험한 물건을 치우고, <strong>억지로 몸을 붙잡거나 입 안에 물건을 넣지 않습니다.</strong>"
         )}
+
+        ${makeStep(
+          6,
+          "반응이 없지만 정상적으로 호흡한다면 기도를 보호할 수 있도록 옆으로 눕히는 자세를 고려하고 계속 관찰합니다."
+        )}
+
+        ${makeStep(
+          7,
+          "반응이 없고 정상적으로 호흡하지 않거나 헐떡임만 있다면 <strong>119에 신고하고 AED를 요청하며, 교육받은 범위에서 즉시 심폐소생술을 시작합니다.</strong>"
+        )}
+
       `;
 
 
     dontList.innerHTML =
       `
+
         ${makeDont(
           "주스, 사탕, 음식 등을 입으로 먹이지 않습니다."
         )}
@@ -1065,13 +1557,26 @@ function selectSituation(
         ${makeDont(
           "회복되기를 기다리면서 응급의료 요청을 지연하지 않습니다."
         )}
+
+        ${makeDont(
+          "경련 중 학생의 몸을 억지로 붙잡거나 입 안에 손가락·물건을 넣지 않습니다."
+        )}
+
       `;
 
 
     warningText.innerHTML =
       `
-        반응이 없거나 경련이 있거나 안전하게 삼킬 수 없는 경우는
-        <strong>즉시 대응이 필요한 응급상황</strong>입니다.
+
+        반응이 없거나 경련이 있거나
+        안전하게 삼킬 수 없는 경우는
+
+        <strong>
+          즉시 대응이 필요한 응급상황
+        </strong>
+
+        입니다.
+
       `;
 
   }
@@ -1087,15 +1592,22 @@ function selectSituation(
   ) {
 
     title.textContent =
-      "🤢 구토 · 심한 이상증상";
+      "🤢 고혈당 + 구토 · 심한 이상증상";
 
 
     subtitle.textContent =
+
       "제1형 당뇨 학생의 구토나 호흡 이상은 단순한 컨디션 저하로만 판단하지 않습니다.";
+
+
+    callArea.classList.add(
+      "show"
+    );
 
 
     actions.innerHTML =
       `
+
         ${makeStep(
           1,
           "<strong>학생을 혼자 두지 않고</strong> 상태를 확인합니다."
@@ -1118,13 +1630,15 @@ function selectSituation(
 
         ${makeStep(
           5,
-          "의식 변화, 호흡 이상 또는 상태가 빠르게 악화되면 학교 응급 절차를 따릅니다."
+          "의식 변화, 호흡 이상, 반복 구토 또는 상태가 빠르게 악화되면 <strong>119 등 응급의료 도움을 요청합니다.</strong>"
         )}
+
       `;
 
 
     dontList.innerHTML =
       `
+
         ${makeDont(
           "구토를 단순한 소화불량으로 가정하고 학생을 혼자 쉬게 하지 않습니다."
         )}
@@ -1132,30 +1646,122 @@ function selectSituation(
         ${makeDont(
           "학생의 개별 계획 없이 임의로 인슐린을 추가하지 않습니다."
         )}
+
       `;
 
 
     warningText.innerHTML =
       `
-        <strong>반복되는 구토, 호흡이 깊거나 힘듦,
-        심한 졸림, 의식 변화</strong>가 나타나면
+
+        <strong>
+
+          반복되는 구토,
+          호흡이 깊거나 힘듦,
+          심한 졸림,
+          의식 변화
+
+        </strong>
+
+        가 나타나면
         긴급 평가가 필요할 수 있습니다.
+
       `;
 
   }
 
 
   area.scrollIntoView({
+
     behavior:
       "smooth",
 
     block:
       "start"
+
   });
 
 }
 
 
+
+/* =========================
+   저혈당 삼킴 여부
+========================= */
+
+function showSwallowDecision(
+  type
+) {
+
+  const result =
+    document.getElementById(
+      "decisionResult"
+    );
+
+
+  if (
+    type === "safe"
+  ) {
+
+    result.className =
+      "decision-result show safe";
+
+
+    result.innerHTML =
+      `
+
+        ✅
+        <strong>
+          깨어 있고 안전하게 삼킬 수 있어요.
+        </strong>
+
+        <br>
+
+        학생의 개별 저혈당 관리계획에 따라
+        빠르게 흡수되는 탄수화물 처치를 돕고,
+        계획에 정해진 시간에 혈당과 증상을 다시 확인하세요.
+
+      `;
+
+  }
+
+
+  if (
+    type === "danger"
+  ) {
+
+    result.className =
+      "decision-result show danger";
+
+
+    result.innerHTML =
+      `
+
+        🚨
+        <strong>
+          입으로 음식이나 음료를 주지 마세요.
+        </strong>
+
+        <br>
+
+        학생을 혼자 두지 말고,
+        즉시 ‘의식 저하 · 경련’ 대응으로 전환하세요.
+
+        <br>
+
+        처방된 글루카곤과 학생의 응급계획을 확인하고
+        119 등 응급의료 도움을 요청하세요.
+
+      `;
+
+  }
+
+}
+
+
+
+/* =========================
+   단계 만들기
+========================= */
 
 function makeStep(
   number,
@@ -1163,6 +1769,7 @@ function makeStep(
 ) {
 
   return `
+
     <div class="step">
 
       <div class="step-number">
@@ -1174,25 +1781,38 @@ function makeStep(
       </div>
 
     </div>
+
   `;
 
 }
 
 
+
+/* =========================
+   금지 항목
+========================= */
 
 function makeDont(
   text
 ) {
 
   return `
+
     <div class="dont-item">
+
       ✕ ${text}
+
     </div>
+
   `;
 
 }
 
 
+
+/* =========================
+   119
+========================= */
 
 function call119() {
 
@@ -1202,8 +1822,12 @@ function call119() {
     );
 
 
-  if (!confirmed) {
+  if (
+    !confirmed
+  ) {
+
     return;
+
   }
 
 
@@ -1214,6 +1838,10 @@ function call119() {
 
 
 
+/* =========================
+   뒤로가기
+========================= */
+
 function goBack() {
 
   location.href =
@@ -1222,6 +1850,7 @@ function goBack() {
 }
 
 </script>
+
 
 </body>
 
