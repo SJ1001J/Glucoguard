@@ -360,60 +360,31 @@
       font-weight: 300;
     }
 
-
-    /* 식사 */
-
     .meal {
       background: #fff4cf;
     }
-
-
-    /* 혈당 */
 
     .glucose {
       background: #e8f2ff;
     }
 
-
-    /* 활동 */
-
     .exercise {
       background: #eaf9ee;
     }
-
-
-    /* 상태 */
 
     .symptom {
       background: #ffeded;
     }
 
-
-    /* 도움 요청 */
-
     .help {
       background: #ffe8e5;
 
       border:
-        2px solid #ffd1cd;
+        2px solid #ffbeb8;
     }
 
     .help .menu-text strong {
       color: #c8443d;
-    }
-
-
-    /* 비상 연락 */
-
-    .emergency-contact {
-      background: #edf1ff;
-
-      border:
-        2px solid #dfe6ff;
-    }
-
-    .emergency-contact .menu-text strong {
-      color: #445fa7;
     }
 
 
@@ -554,8 +525,6 @@
 <div class="container">
 
 
-  <!-- 로고 -->
-
   <div class="hero">
 
     <div class="hero-icon">
@@ -574,8 +543,6 @@
   </div>
 
 
-
-  <!-- 로그인 -->
 
   <div class="student-login-card">
 
@@ -607,8 +574,6 @@
   </div>
 
 
-
-  <!-- 프로필 설정 -->
 
   <div
     id="profileSetup"
@@ -704,8 +669,6 @@
   </div>
 
 
-
-  <!-- 프로필 -->
 
   <div
     id="profileCard"
@@ -803,8 +766,6 @@
 
 
 
-  <!-- 기록 보기 -->
-
   <button
     id="recordsButton"
     class="records-button"
@@ -817,12 +778,8 @@
 
 
 
-  <!-- 메뉴 -->
-
   <div class="menu">
 
-
-    <!-- 먹은 거 -->
 
     <button
       class="menu-card meal"
@@ -852,8 +809,6 @@
 
 
 
-    <!-- 혈당 -->
-
     <button
       class="menu-card glucose"
       onclick="location.href='glucose.html'">
@@ -881,8 +836,6 @@
     </button>
 
 
-
-    <!-- 활동 -->
 
     <button
       class="menu-card exercise"
@@ -912,14 +865,12 @@
 
 
 
-    <!-- 상태 -->
-
     <button
       class="menu-card symptom"
       onclick="location.href='symptom.html'">
 
       <div class="icon-box">
-        🙂 
+        🙂
       </div>
 
       <div class="menu-text">
@@ -942,11 +893,9 @@
 
 
 
-    <!-- 도움 요청 -->
-
     <button
       class="menu-card help"
-      onclick="location.href='symptom.html'">
+      onclick="location.href='emergency.html'">
 
       <div class="icon-box">
         🚨
@@ -959,37 +908,7 @@
         </strong>
 
         <span>
-          몸이 이상하면 바로 도움을 요청해요
-        </span>
-
-      </div>
-
-      <div class="arrow">
-        ›
-      </div>
-
-    </button>
-
-
-
-    <!-- 비상연락처 -->
-
-    <button
-      class="menu-card emergency-contact"
-      onclick="location.href='emergency.html'">
-
-      <div class="icon-box">
-        📞
-      </div>
-
-      <div class="menu-text">
-
-        <strong>
-          비상연락처
-        </strong>
-
-        <span>
-          보호자·보건실에 바로 전화할 수 있어요
+          보호자·보건실·119에 바로 연락할 수 있어요
         </span>
 
       </div>
@@ -1023,10 +942,6 @@
 <script>
 
 
-/* =========================
-   Supabase 연결
-========================= */
-
 const SUPABASE_URL =
   "https://zvksfkslavrqagytswco.supabase.co";
 
@@ -1055,10 +970,6 @@ let selectedAvatar =
 
 
 
-/* =========================
-   시작
-========================= */
-
 window.addEventListener(
   "load",
   async function() {
@@ -1081,10 +992,6 @@ window.addEventListener(
 );
 
 
-
-/* =========================
-   로그인 확인
-========================= */
 
 async function checkLogin() {
 
@@ -1144,11 +1051,6 @@ async function checkLogin() {
   }
 
 
-  /*
-    교직원 계정이 학생 화면에 접근하면
-    관리 화면으로 이동
-  */
-
   if (
     profile &&
     (
@@ -1172,10 +1074,6 @@ async function checkLogin() {
 }
 
 
-
-/* =========================
-   프로필 불러오기
-========================= */
 
 async function loadProfile() {
 
@@ -1236,10 +1134,6 @@ async function loadProfile() {
 
 
 
-/* =========================
-   프로필 카드
-========================= */
-
 function showProfileCard() {
 
   document.getElementById(
@@ -1283,10 +1177,6 @@ function showProfileCard() {
 }
 
 
-
-/* =========================
-   프로필 설정
-========================= */
 
 function showProfileSetup() {
 
@@ -1391,10 +1281,6 @@ function showProfileSetup() {
 
 
 
-/* =========================
-   수정
-========================= */
-
 function editProfile() {
 
   showProfileSetup();
@@ -1402,10 +1288,6 @@ function editProfile() {
 }
 
 
-
-/* =========================
-   아바타 선택
-========================= */
 
 function selectAvatar(
   button
@@ -1444,10 +1326,6 @@ function updateAvatarSelection() {
 }
 
 
-
-/* =========================
-   프로필 저장
-========================= */
 
 async function saveProfile() {
 
@@ -1590,10 +1468,6 @@ async function saveProfile() {
 
 
 
-/* =========================
-   오늘 기록 수
-========================= */
-
 async function loadTodayRecordCount() {
 
   if (!currentUser) {
@@ -1681,10 +1555,6 @@ async function loadTodayRecordCount() {
 }
 
 
-
-/* =========================
-   로그아웃
-========================= */
 
 async function logout() {
 
