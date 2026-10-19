@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
@@ -40,7 +39,6 @@
       padding: 22px 18px 40px;
     }
 
-
     /* =========================
        상단
     ========================= */
@@ -49,7 +47,7 @@
       background: white;
       border-radius: 24px;
       padding: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       box-shadow: 0 6px 20px rgba(57,79,94,.07);
     }
 
@@ -113,11 +111,6 @@
       color: #3e6179;
     }
 
-
-    /* =========================
-       내 연락처
-    ========================= */
-
     .teacher-phone-box {
       margin-top: 13px;
       padding: 13px;
@@ -161,6 +154,97 @@
       margin-top: 6px;
       color: #8a9ba5;
       font-size: 10px;
+    }
+
+
+    /* =========================
+       오늘의 상황판
+    ========================= */
+
+    .today-board {
+      margin-bottom: 14px;
+      padding: 17px;
+      border-radius: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          #eef7ff,
+          #f4fbf7
+        );
+      box-shadow: 0 5px 16px rgba(57,79,94,.05);
+    }
+
+    .today-board-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 13px;
+    }
+
+    .today-board-title {
+      color: #3e6179;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .today-board-date {
+      color: #8799a4;
+      font-size: 10px;
+    }
+
+    .today-main-summary {
+      margin-bottom: 12px;
+      color: #496675;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .today-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .today-stat {
+      padding: 10px 6px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.82);
+      text-align: center;
+    }
+
+    .today-stat-icon {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .today-stat-value {
+      color: #405e70;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .today-stat-label {
+      margin-top: 2px;
+      color: #8899a2;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .today-message {
+      padding: 11px 12px;
+      border-radius: 13px;
+      background: white;
+      color: #637985;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .today-message.attention {
+      background: #fff1ef;
+      color: #a64c46;
     }
 
 
@@ -234,7 +318,7 @@
 
 
     /* =========================
-       담당학생 설정
+       학생 설정 / 요약
     ========================= */
 
     .management-row {
@@ -285,11 +369,6 @@
       font-size: 22px;
       opacity: .55;
     }
-
-
-    /* =========================
-       요약
-    ========================= */
 
     .summary-grid {
       display: grid;
@@ -391,11 +470,6 @@
       display: block;
     }
 
-
-    /* =========================
-       학생 카드
-    ========================= */
-
     .student-card {
       background: white;
       border: 2px solid transparent;
@@ -463,11 +537,6 @@
       color: #4c8560;
     }
 
-
-    /* =========================
-       알림 종류
-    ========================= */
-
     .alert-list {
       display: flex;
       flex-direction: column;
@@ -500,11 +569,6 @@
       color: #b34842;
       border: 1px solid #f7c5c1;
     }
-
-
-    /* =========================
-       기록
-    ========================= */
 
     .record-grid {
       display: grid;
@@ -670,11 +734,6 @@
       font-weight: 900;
       cursor: pointer;
     }
-
-
-    /* =========================
-       안전카드
-    ========================= */
 
     .safety-profile {
       display: flex;
@@ -846,7 +905,7 @@
 
 
     /* =========================
-       담당 학생 선택
+       학생 설정
     ========================= */
 
     .student-select-list {
@@ -913,11 +972,6 @@
       line-height: 1.6;
     }
 
-
-    /* =========================
-       입력
-    ========================= */
-
     .modal-input,
     .modal-select {
       width: 100%;
@@ -982,23 +1036,12 @@
       right: 18px;
       bottom: 18px;
       z-index: 2000;
-
-      width: min(
-        350px,
-        calc(100vw - 36px)
-      );
-
+      width: min(350px, calc(100vw - 36px));
       display: none;
-
       padding: 15px;
-
       border-radius: 18px;
-
       background: white;
-
-      box-shadow:
-        0 14px 35px rgba(0,0,0,.18);
-
+      box-shadow: 0 14px 35px rgba(0,0,0,.18);
       border: 2px solid #ffb1aa;
     }
 
@@ -1024,18 +1067,15 @@
       margin-bottom: 5px;
     }
 
-    .repeat-alert.low
-    .repeat-alert-title {
+    .repeat-alert.low .repeat-alert-title {
       color: #356b96;
     }
 
-    .repeat-alert.high
-    .repeat-alert-title {
+    .repeat-alert.high .repeat-alert-title {
       color: #a66528;
     }
 
-    .repeat-alert.vomit
-    .repeat-alert-title {
+    .repeat-alert.vomit .repeat-alert-title {
       color: #b34842;
     }
 
@@ -1074,11 +1114,14 @@
       cursor: pointer;
     }
 
-
     @media (max-width: 520px) {
 
       .teacher-phone-row {
         flex-direction: column;
+      }
+
+      .today-stats {
+        grid-template-columns: 1fr 1fr;
       }
 
       .student-actions,
@@ -1089,13 +1132,15 @@
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 <div class="page">
+
+
+  <!-- 상단 -->
 
   <div class="top-card">
 
@@ -1174,6 +1219,127 @@
   </div>
 
 
+
+  <!-- 오늘의 상황판 -->
+
+  <div class="today-board">
+
+    <div class="today-board-head">
+
+      <div class="today-board-title">
+        ☀️ 오늘의 상황판
+      </div>
+
+      <div
+        id="todayDate"
+        class="today-board-date">
+      </div>
+
+    </div>
+
+
+    <div
+      id="todayMainSummary"
+      class="today-main-summary">
+
+      오늘 상황을 확인하는 중입니다.
+
+    </div>
+
+
+    <div class="today-stats">
+
+      <div class="today-stat">
+
+        <div class="today-stat-icon">
+          ⚠️
+        </div>
+
+        <div
+          id="todayAttention"
+          class="today-stat-value">
+          0
+        </div>
+
+        <div class="today-stat-label">
+          확인 필요
+        </div>
+
+      </div>
+
+
+      <div class="today-stat">
+
+        <div class="today-stat-icon">
+          📝
+        </div>
+
+        <div
+          id="todayRecords"
+          class="today-stat-value">
+          0
+        </div>
+
+        <div class="today-stat-label">
+          오늘 기록
+        </div>
+
+      </div>
+
+
+      <div class="today-stat">
+
+        <div class="today-stat-icon">
+          🩸
+        </div>
+
+        <div
+          id="todayLow"
+          class="today-stat-value">
+          0
+        </div>
+
+        <div class="today-stat-label">
+          저혈당
+        </div>
+
+      </div>
+
+
+      <div class="today-stat">
+
+        <div class="today-stat-icon">
+          🔺
+        </div>
+
+        <div
+          id="todayHigh"
+          class="today-stat-value">
+          0
+        </div>
+
+        <div class="today-stat-label">
+          고혈당
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="todayMessage"
+      class="today-message">
+
+      오늘 기록을 불러오는 중입니다.
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 중요 기능 -->
 
   <div class="main-tools">
 
@@ -1277,9 +1443,7 @@
       <div
         id="studentCount"
         class="summary-value">
-
         0
-
       </div>
 
     </div>
@@ -1296,9 +1460,7 @@
       <div
         id="attentionCount"
         class="summary-value">
-
         0
-
       </div>
 
       <div class="summary-click-hint">
@@ -1359,7 +1521,7 @@
 
 
 
-<!-- 학생 안전카드 -->
+<!-- 안전카드 -->
 
 <div
   id="safetyCardOverlay"
@@ -1370,7 +1532,6 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           🪪 학생 안전카드
         </h2>
@@ -1378,15 +1539,12 @@
         <p class="modal-subtitle">
           학생의 핵심 정보를 빠르게 확인합니다.
         </p>
-
       </div>
 
       <button
         class="close-button"
         onclick="closeSafetyCard()">
-
         ×
-
       </button>
 
     </div>
@@ -1410,7 +1568,6 @@
     <div class="modal-header">
 
       <div>
-
         <h2 class="modal-title">
           ⚠️ 확인 필요
         </h2>
@@ -1418,15 +1575,12 @@
         <p class="modal-subtitle">
           아직 확인 완료되지 않은 기록입니다.
         </p>
-
       </div>
 
       <button
         class="close-button"
         onclick="closeAttentionModal()">
-
         ×
-
       </button>
 
     </div>
@@ -1439,7 +1593,7 @@
 
 
 
-<!-- 담당학생 설정 -->
+<!-- 담당 학생 -->
 
 <div
   id="studentSettingOverlay"
@@ -1449,20 +1603,14 @@
 
     <div class="modal-header">
 
-      <div>
-
-        <h2 class="modal-title">
-          👥 담당 학생 설정
-        </h2>
-
-      </div>
+      <h2 class="modal-title">
+        👥 담당 학생 설정
+      </h2>
 
       <button
         class="close-button"
         onclick="closeStudentSetting()">
-
         ×
-
       </button>
 
     </div>
@@ -1490,7 +1638,7 @@
 
 
 
-<!-- 비상 연락처 -->
+<!-- 연락처 -->
 
 <div
   id="contactModalOverlay"
@@ -1516,12 +1664,11 @@
       <button
         class="close-button"
         onclick="closeContactModal()">
-
         ×
-
       </button>
 
     </div>
+
 
     <label class="input-label">
       관계
@@ -1539,6 +1686,7 @@
 
     </select>
 
+
     <label class="input-label">
       이름
     </label>
@@ -1547,6 +1695,7 @@
       id="contactName"
       class="modal-input">
 
+
     <label class="input-label">
       전화번호
     </label>
@@ -1554,6 +1703,7 @@
     <input
       id="contactPhone"
       class="modal-input">
+
 
     <button
       class="primary-button"
@@ -1591,9 +1741,7 @@
       <button
         class="close-button"
         onclick="closePasswordModal()">
-
         ×
-
       </button>
 
     </div>
@@ -1674,7 +1822,6 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
 
-
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
@@ -1692,7 +1839,6 @@ let attentionStudents = [];
 
 let selectedContactStudentId = null;
 let selectedPasswordStudentId = null;
-
 let selectedSafetyStudent = null;
 let selectedSafetyStatus = null;
 
@@ -1703,9 +1849,7 @@ let repeatAlertTimer = null;
 
 
 
-/* =========================
-   이동
-========================= */
+/* 이동 */
 
 function goEmergencyGuide() {
 
@@ -1724,13 +1868,13 @@ function goTeacherEducation() {
 
 
 
-/* =========================
-   시작
-========================= */
+/* 시작 */
 
 window.addEventListener(
   "load",
   async function() {
+
+    setTodayDate();
 
     const ready =
       await checkTeacherLogin();
@@ -1743,7 +1887,6 @@ window.addEventListener(
 
     await loadDashboard();
 
-
     startRepeatAlertTimer();
 
   }
@@ -1751,9 +1894,24 @@ window.addEventListener(
 
 
 
-/* =========================
-   로그인
-========================= */
+/* 날짜 */
+
+function setTodayDate() {
+
+  const now =
+    new Date();
+
+
+  document.getElementById(
+    "todayDate"
+  ).textContent =
+    `${now.getMonth() + 1}월 ${now.getDate()}일`;
+
+}
+
+
+
+/* 로그인 */
 
 async function checkTeacherLogin() {
 
@@ -1836,9 +1994,7 @@ async function checkTeacherLogin() {
 
 
 
-/* =========================
-   교직원 전화번호
-========================= */
+/* 연락처 */
 
 async function saveTeacherPhone() {
 
@@ -1879,9 +2035,7 @@ async function saveTeacherPhone() {
 
 
 
-/* =========================
-   담당학생
-========================= */
+/* 담당 학생 */
 
 async function openStudentSetting() {
 
@@ -2100,16 +2254,13 @@ async function saveStudentSelection() {
 
   closeStudentSetting();
 
-
   await loadDashboard();
 
 }
 
 
 
-/* =========================
-   데이터
-========================= */
+/* 데이터 */
 
 async function loadDashboard() {
 
@@ -2218,9 +2369,7 @@ async function loadDashboard() {
 
 
 
-/* =========================
-   알림 판정
-========================= */
+/* 알림 판정 */
 
 function getRecordAlert(
   record
@@ -2388,9 +2537,7 @@ function getRecordAlert(
 
 
 
-/* =========================
-   학생 상태
-========================= */
+/* 학생 상태 */
 
 function buildStudentStatus(
   records
@@ -2481,9 +2628,155 @@ function buildStudentStatus(
 
 
 
-/* =========================
-   대시보드 출력
-========================= */
+/* 오늘 상황판 */
+
+function renderTodayBoard() {
+
+  const todayRecords =
+    allRecords.filter(
+      record =>
+        isToday(
+          record.created_at
+        )
+    );
+
+
+  const todayAlerts =
+    [];
+
+
+  attentionStudents.forEach(
+    item => {
+
+      item.status.alerts.forEach(
+        alert => {
+
+          if (
+            isToday(
+              alert.record.created_at
+            )
+          ) {
+
+            todayAlerts.push(
+              alert
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  const lowCount =
+    todayAlerts.filter(
+      alert =>
+        alert.type === "low"
+    ).length;
+
+
+  const highCount =
+    todayAlerts.filter(
+      alert =>
+        alert.type === "high"
+    ).length;
+
+
+  const vomitCount =
+    todayAlerts.filter(
+      alert =>
+        alert.type === "vomit"
+    ).length;
+
+
+  document.getElementById(
+    "todayAttention"
+  ).textContent =
+    attentionStudents.length;
+
+
+  document.getElementById(
+    "todayRecords"
+  ).textContent =
+    todayRecords.length;
+
+
+  document.getElementById(
+    "todayLow"
+  ).textContent =
+    lowCount;
+
+
+  document.getElementById(
+    "todayHigh"
+  ).textContent =
+    highCount;
+
+
+  document.getElementById(
+    "todayMainSummary"
+  ).textContent =
+    `담당 학생 ${linkedStudents.length}명 · 오늘 기록 ${todayRecords.length}건 · 현재 확인 필요 ${attentionStudents.length}명`;
+
+
+  const message =
+    document.getElementById(
+      "todayMessage"
+    );
+
+
+  if (
+    attentionStudents.length === 0
+  ) {
+
+    message.className =
+      "today-message";
+
+
+    message.innerHTML =
+      `
+        ✅ 현재 미확인 이상 기록이 없습니다.
+        오늘도 학생들의 기록을 필요할 때 확인해주세요.
+      `;
+
+  } else {
+
+    const names =
+      attentionStudents
+        .slice(0, 2)
+        .map(
+          item =>
+            item.student.nickname || "학생"
+        )
+        .join(", ");
+
+
+    message.className =
+      "today-message attention";
+
+
+    message.innerHTML =
+      `
+        ⚠️ <strong>${escapeHtml(names)}</strong>
+        학생의 확인이 필요합니다.
+        ${
+          vomitCount > 0
+          ?
+          ` 오늘 구토 관련 알림 ${vomitCount}건이 있습니다.`
+          :
+          ""
+        }
+      `;
+
+  }
+
+}
+
+
+
+/* 대시보드 출력 */
 
 function renderDashboard() {
 
@@ -2573,6 +2866,9 @@ function renderDashboard() {
   }
 
 
+  renderTodayBoard();
+
+
   if (
     attentionStudents.length === 0
   ) {
@@ -2585,9 +2881,7 @@ function renderDashboard() {
 
 
 
-/* =========================
-   알림 HTML
-========================= */
+/* 알림 HTML */
 
 function createAlertsHtml(
   alerts
@@ -2617,9 +2911,7 @@ function createAlertsHtml(
 
 
 
-/* =========================
-   학생 카드
-========================= */
+/* 학생 카드 */
 
 function createStudentCard(
   student,
@@ -2838,9 +3130,7 @@ function createStudentCard(
 
 
 
-/* =========================
-   학생 안전카드
-========================= */
+/* 안전카드 */
 
 async function openSafetyCard(
   student,
@@ -3078,9 +3368,7 @@ async function openSafetyCard(
 
 
 
-/* =========================
-   확인 완료
-========================= */
+/* 확인 완료 */
 
 async function acknowledgeCurrentAlerts() {
 
@@ -3089,7 +3377,9 @@ async function acknowledgeCurrentAlerts() {
     ||
     !selectedSafetyStatus
   ) {
+
     return;
+
   }
 
 
@@ -3139,7 +3429,6 @@ async function acknowledgeCurrentAlerts() {
 
   closeSafetyCard();
 
-
   await loadDashboard();
 
 
@@ -3151,9 +3440,7 @@ async function acknowledgeCurrentAlerts() {
 
 
 
-/* =========================
-   반복 알림
-========================= */
+/* 반복 알림 */
 
 function startRepeatAlertTimer() {
 
@@ -3252,19 +3539,13 @@ function openRepeatAlertStudent() {
 
 
 
-/* =========================
-   확인 필요 목록
-========================= */
+/* 확인 필요 */
 
 function openAttentionModal() {
 
-  const overlay =
-    document.getElementById(
-      "attentionOverlay"
-    );
-
-
-  overlay.style.display =
+  document.getElementById(
+    "attentionOverlay"
+  ).style.display =
     "flex";
 
 
@@ -3376,9 +3657,7 @@ function closeAttentionModal() {
 
 
 
-/* =========================
-   학생 목록 펼치기
-========================= */
+/* 학생 목록 */
 
 function toggleStudentList() {
 
@@ -3415,9 +3694,7 @@ function toggleStudentList() {
 
 
 
-/* =========================
-   비상연락처
-========================= */
+/* 연락처 */
 
 async function openContactModal(
   student
@@ -3621,9 +3898,7 @@ async function saveEmergencyContact() {
 
 
 
-/* =========================
-   비밀번호
-========================= */
+/* 비밀번호 */
 
 function openPasswordModal(
   student
@@ -3732,7 +4007,6 @@ async function resetStudentPassword() {
       "비밀번호를 변경했습니다."
     );
 
-
     closePasswordModal();
 
   } else {
@@ -3747,9 +4021,7 @@ async function resetStudentPassword() {
 
 
 
-/* =========================
-   기록 이동
-========================= */
+/* 기록 이동 */
 
 function openStudentRecords(
   id
@@ -3801,9 +4073,7 @@ function closeSafetyCard() {
 
 
 
-/* =========================
-   전화
-========================= */
+/* 전화 */
 
 function callContact(
   phone
@@ -3829,9 +4099,7 @@ function callContact(
 
 
 
-/* =========================
-   기록 표시
-========================= */
+/* 기록 표시 */
 
 function getMealText(
   record
@@ -3852,43 +4120,20 @@ function getMealText(
     "";
 
 
-  if (
-    ratio === 1
-  ) {
-
-    text =
-      "다 먹었어요";
-
+  if (ratio === 1) {
+    text = "다 먹었어요";
   }
 
-
-  if (
-    ratio === .5
-  ) {
-
-    text =
-      "반 정도 먹었어요";
-
+  if (ratio === .5) {
+    text = "반 정도 먹었어요";
   }
 
-
-  if (
-    ratio === .25
-  ) {
-
-    text =
-      "조금 먹었어요";
-
+  if (ratio === .25) {
+    text = "조금 먹었어요";
   }
 
-
-  if (
-    ratio === 0
-  ) {
-
-    text =
-      "안 먹었어요";
-
+  if (ratio === 0) {
+    text = "안 먹었어요";
   }
 
 
@@ -3936,6 +4181,8 @@ function getSymptomText(
     Array.isArray(
       data.symptoms
     )
+    &&
+    data.symptoms.length > 0
   ) {
 
     values.push(
@@ -3966,9 +4213,7 @@ function getSymptomText(
 
 
 
-/* =========================
-   공통
-========================= */
+/* 공통 */
 
 function parseNote(
   note
@@ -4002,9 +4247,14 @@ function isToday(
 
 
   return (
-    date.toDateString()
-    ===
-    now.toDateString()
+    date.getFullYear() ===
+      now.getFullYear()
+    &&
+    date.getMonth() ===
+      now.getMonth()
+    &&
+    date.getDate() ===
+      now.getDate()
   );
 
 }
@@ -4052,9 +4302,7 @@ async function logout() {
 
 
 
-/* =========================
-   모달 외부 클릭
-========================= */
+/* 모달 외부 클릭 */
 
 [
   "safetyCardOverlay",
