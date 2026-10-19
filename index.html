@@ -1157,6 +1157,10 @@ let emergencyInfoOpen =
   false;
 
 
+let emergencyPlanChannel =
+  null;
+
+
 
 /* =========================
    시작
@@ -1256,6 +1260,9 @@ async function loadStudent() {
 
 
     await loadEmergencyInfo();
+
+
+    startEmergencyInfoRealtime();
 
 
     return;
@@ -1419,7 +1426,9 @@ function toggleEmergencyInfo() {
    나의 응급정보
 ========================= */
 
-async function loadEmergencyInfo() {
+async function loadEmergencyInfo(
+  resetOpen = true
+) {
 
   const card =
     document.getElementById(
@@ -1445,24 +1454,31 @@ async function loadEmergencyInfo() {
 
 
   /*
-    항상 처음에는 접힌 상태
+    처음 진입할 때만 접힌 상태로 시작
+    실시간 갱신 때는 현재 열림/닫힘 상태 유지
   */
 
-  emergencyInfoOpen =
-    false;
+  if (
+    resetOpen
+  ) {
+
+    emergencyInfoOpen =
+      false;
 
 
-  card.classList.remove(
-    "open"
-  );
+    card.classList.remove(
+      "open"
+    );
 
 
-  document.getElementById(
-    "emergencyInfoToggle"
-  ).setAttribute(
-    "aria-expanded",
-    "false"
-  );
+    document.getElementById(
+      "emergencyInfoToggle"
+    ).setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
 
 
   content.innerHTML =
@@ -1514,7 +1530,7 @@ async function loadEmergencyInfo() {
         "student_emergency_plans"
       )
       .select(
-        "glucagon_product,glucagon_location,emergency_kit_location,plan_summary"
+        "glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary,updated_at"
       )
       .eq(
         "student_id",
@@ -1589,6 +1605,15 @@ function getDemoEmergencyPlan() {
     glucagon_product:
       "Baqsimi",
 
+    glucagon_dose:
+      "3 mg · 1회분",
+
+    glucagon_route:
+      "비강",
+
+    glucagon_expiry:
+      "2027-03-31",
+
     glucagon_location:
       "보건실 응급약품함",
 
@@ -1632,6 +1657,12 @@ function renderEmergencyInfo(
   const hasAnyValue =
     plan.glucagon_product
     ||
+    plan.glucagon_dose
+    ||
+    plan.glucagon_route
+    ||
+    plan.glucagon_expiry
+    ||
     plan.glucagon_location
     ||
     plan.emergency_kit_location
@@ -1656,6 +1687,23 @@ function renderEmergencyInfo(
       ${makeEmergencyInfoItem(
         "💉 글루카곤",
         plan.glucagon_product
+      )}
+
+      ${makeEmergencyInfoItem(
+        "💊 처방 용량 / 사용량",
+        plan.glucagon_dose
+      )}
+
+      ${makeEmergencyInfoItem(
+        "👃 투여 형태",
+        plan.glucagon_route
+      )}
+
+      ${makeEmergencyInfoItem(
+        "📅 유효기간",
+        formatExpiryDate(
+          plan.glucagon_expiry
+        )
       )}
 
       ${makeEmergencyInfoItem(
@@ -1735,6 +1783,125 @@ function makeEmergencyInfoItem(
 
 }
 
+
+
+/* =========================
+   응급정보 실시간 업데이트
+========================= */
+
+function startEmergencyInfoRealtime() {
+
+  if (
+    isDemoStudent
+    ||
+    !currentUser
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    emergencyPlanChannel
+  ) {
+
+    supabaseClient.removeChannel(
+      emergencyPlanChannel
+    );
+
+  }
+
+
+  emergencyPlanChannel =
+    supabaseClient
+      .channel(
+        `student-emergency-plan-${currentUser.id}`
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "student_emergency_plans",
+          filter: `student_id=eq.${currentUser.id}`
+        },
+        async function() {
+
+          await loadEmergencyInfo(
+            false
+          );
+
+        }
+      )
+      .subscribe();
+
+}
+
+
+window.addEventListener(
+  "beforeunload",
+  function() {
+
+    if (
+      emergencyPlanChannel
+    ) {
+
+      supabaseClient.removeChannel(
+        emergencyPlanChannel
+      );
+
+    }
+
+  }
+);
+
+
+function formatExpiryDate(
+  value
+) {
+
+  if (
+    !value
+  ) {
+
+    return "";
+
+  }
+
+
+  const parts =
+    String(
+      value
+    ).split(
+      "-"
+    );
+
+
+  if (
+    parts.length !== 3
+  ) {
+
+    return String(
+      value
+    );
+
+  }
+
+
+  return (
+    parts[0]
+    +
+    "."
+    +
+    parts[1]
+    +
+    "."
+    +
+    parts[2]
+  );
+
+}
 
 
 /* =========================
