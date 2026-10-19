@@ -39,13 +39,11 @@
       display: none;
 
       margin-bottom: 14px;
-
       padding: 12px 14px;
 
       border-radius: 16px;
 
       background: #f3efff;
-
       color: #665096;
 
       font-size: 12px;
@@ -54,20 +52,17 @@
 
     .viewer-card strong {
       display: block;
-
       margin-bottom: 3px;
-
       font-size: 13px;
     }
 
     .summary-card {
-      background: white;
+      margin-bottom: 15px;
+      padding: 18px;
 
       border-radius: 22px;
 
-      padding: 18px;
-
-      margin-bottom: 15px;
+      background: white;
 
       box-shadow:
         0 5px 14px rgba(60,90,110,.07);
@@ -87,14 +82,18 @@
       color: #245978;
     }
 
+
+    /* =========================
+       혈당 그래프
+    ========================= */
+
     .chart-card {
-      background: white;
+      margin-bottom: 18px;
+      padding: 18px;
 
       border-radius: 22px;
 
-      padding: 18px;
-
-      margin-bottom: 18px;
+      background: white;
 
       box-shadow:
         0 5px 14px rgba(60,90,110,.07);
@@ -102,7 +101,6 @@
 
     .chart-title-row {
       display: flex;
-
       align-items: center;
       justify-content: space-between;
 
@@ -114,7 +112,6 @@
     .chart-title {
       font-size: 17px;
       font-weight: 800;
-
       color: #37474f;
     }
 
@@ -124,16 +121,14 @@
       border-radius: 9px;
 
       background: #edf5ff;
+      color: #3974a2;
 
       font-size: 11px;
       font-weight: bold;
-
-      color: #3974a2;
     }
 
     .chart-wrap {
       position: relative;
-
       height: 230px;
     }
 
@@ -145,7 +140,6 @@
       text-align: center;
 
       font-size: 13px;
-
       color: #90a4ae;
     }
 
@@ -157,6 +151,11 @@
 
       color: #90a4ae;
     }
+
+
+    /* =========================
+       기록 목록
+    ========================= */
 
     .records-section-title {
       margin: 0 0 12px;
@@ -182,23 +181,21 @@
 
     .record-list {
       display: flex;
-
       flex-direction: column;
-
       gap: 10px;
     }
 
     .record-card {
-      background: white;
-
-      border-radius: 18px;
-
-      padding: 14px;
-
       display: flex;
       align-items: center;
 
       gap: 12px;
+
+      padding: 14px;
+
+      border-radius: 18px;
+
+      background: white;
 
       box-shadow:
         0 4px 12px rgba(60,90,110,.06);
@@ -208,13 +205,13 @@
       width: 48px;
       height: 48px;
 
-      flex-shrink: 0;
-
-      border-radius: 15px;
-
       display: flex;
       align-items: center;
       justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 15px;
 
       font-size: 24px;
     }
@@ -233,6 +230,10 @@
 
     .record-icon.activity {
       background: #eef9ef;
+    }
+
+    .record-icon.insulin {
+      background: #ffe9e4;
     }
 
     .record-main {
@@ -260,7 +261,6 @@
 
     .record-time {
       font-size: 11px;
-
       color: #90a4ae;
     }
 
@@ -276,7 +276,6 @@
       border-radius: 10px;
 
       background: #fff0f0;
-
       color: #a43c37;
 
       font-size: 11px;
@@ -285,12 +284,17 @@
       cursor: pointer;
     }
 
+
+    /* =========================
+       빈 화면
+    ========================= */
+
     .empty-card {
-      background: white;
+      padding: 32px 20px;
 
       border-radius: 22px;
 
-      padding: 32px 20px;
+      background: white;
 
       text-align: center;
 
@@ -302,7 +306,6 @@
 
     .empty-icon {
       margin-bottom: 10px;
-
       font-size: 40px;
     }
 
@@ -310,7 +313,6 @@
       margin: 0 0 7px;
 
       font-size: 18px;
-
       color: #37474f;
     }
 
@@ -330,6 +332,10 @@
 
 <div class="container">
 
+
+  <!-- =========================
+       상단
+  ========================= -->
 
   <div class="records-header">
 
@@ -357,7 +363,7 @@
         id="pageDescription"
         class="records-description">
 
-        혈당, 식사, 상태, 활동 기록을 확인해요.
+        혈당, 식사, 상태, 활동, 인슐린 기록을 확인해요.
 
       </p>
 
@@ -366,6 +372,8 @@
   </div>
 
 
+
+  <!-- 교직원 조회 안내 -->
 
   <div
     id="viewerCard"
@@ -380,6 +388,8 @@
   </div>
 
 
+
+  <!-- 전체 기록 -->
 
   <div class="summary-card">
 
@@ -398,6 +408,8 @@
   </div>
 
 
+
+  <!-- 혈당 그래프 -->
 
   <div class="chart-card">
 
@@ -446,6 +458,8 @@
   </div>
 
 
+
+  <!-- 최근 기록 -->
 
   <div class="records-section-title">
     최근 기록
@@ -510,6 +524,10 @@ let glucoseChart =
 
 
 
+/* =========================
+   시작
+========================= */
+
 window.addEventListener(
   "load",
   async function() {
@@ -518,8 +536,12 @@ window.addEventListener(
       await initializeViewer();
 
 
-    if (!ready) {
+    if (
+      !ready
+    ) {
+
       return;
+
     }
 
 
@@ -529,6 +551,10 @@ window.addEventListener(
 );
 
 
+
+/* =========================
+   사용자 / 조회 대상 확인
+========================= */
 
 async function initializeViewer() {
 
@@ -541,7 +567,8 @@ async function initializeViewer() {
 
 
   if (
-    sessionError ||
+    sessionError
+    ||
     !sessionData.session
   ) {
 
@@ -574,7 +601,9 @@ async function initializeViewer() {
       .maybeSingle();
 
 
-  if (profileError) {
+  if (
+    profileError
+  ) {
 
     console.error(
       profileError
@@ -592,13 +621,15 @@ async function initializeViewer() {
 
 
   viewerRole =
-    profile?.role ||
+    profile?.role
+    ||
     "student";
 
 
-  /*
-    교직원
-  */
+
+  /* =========================
+     교직원
+  ========================= */
 
   if (
     viewerRole === "teacher"
@@ -612,7 +643,9 @@ async function initializeViewer() {
       );
 
 
-    if (!selectedStudent) {
+    if (
+      !selectedStudent
+    ) {
 
       alert(
         "먼저 학생을 선택해주세요."
@@ -636,13 +669,18 @@ async function initializeViewer() {
       true;
 
 
+
+    /* 담당 학생인지 확인 */
+
     const {
       data: relation,
       error: relationError
     } =
       await supabaseClient
         .from("teacher_students")
-        .select("student_id")
+        .select(
+          "student_id"
+        )
         .eq(
           "teacher_id",
           currentUser.id
@@ -655,7 +693,8 @@ async function initializeViewer() {
 
 
     if (
-      relationError ||
+      relationError
+      ||
       !relation
     ) {
 
@@ -673,6 +712,9 @@ async function initializeViewer() {
     }
 
 
+
+    /* 학생 정보 */
+
     const {
       data: studentProfile,
       error: studentError
@@ -689,7 +731,9 @@ async function initializeViewer() {
         .maybeSingle();
 
 
-    if (studentError) {
+    if (
+      studentError
+    ) {
 
       console.error(
         studentError
@@ -699,7 +743,8 @@ async function initializeViewer() {
 
 
     targetStudentName =
-      studentProfile?.nickname ||
+      studentProfile?.nickname
+      ||
       "학생";
 
 
@@ -718,13 +763,15 @@ async function initializeViewer() {
     ).textContent =
       (
         studentProfile?.class_name
-          ? studentProfile.class_name
-            +
-            " · "
-          : ""
+          ?
+          studentProfile.class_name
+          +
+          " · "
+          :
+          ""
       )
       +
-      "혈당, 식사, 상태, 활동 기록을 확인해요.";
+      "혈당, 식사, 상태, 활동, 인슐린 기록을 확인해요.";
 
 
     document.getElementById(
@@ -738,9 +785,10 @@ async function initializeViewer() {
   }
 
 
-  /*
-    학생 본인
-  */
+
+  /* =========================
+     학생 / 데모 본인
+  ========================= */
 
   targetUserId =
     currentUser.id;
@@ -769,7 +817,21 @@ async function loadRecords() {
     await supabaseClient
       .from("records")
       .select(
-        "id, user_id, record_type, glucose_value, meal_type, intake_ratio, note, created_at"
+        `
+        id,
+        user_id,
+        record_type,
+        glucose_value,
+        meal_type,
+        intake_ratio,
+        note,
+        created_at,
+        insulin_type,
+        insulin_name,
+        insulin_units,
+        injection_site,
+        administered_at
+        `
       )
       .eq(
         "user_id",
@@ -783,7 +845,9 @@ async function loadRecords() {
       );
 
 
-  if (error) {
+  if (
+    error
+  ) {
 
     console.error(
       error
@@ -798,20 +862,57 @@ async function loadRecords() {
   }
 
 
+  const safeRecords =
+    records
+    ||
+    [];
+
+
+  /*
+    인슐린은 기록 버튼을 누른 시간이 아니라
+    실제 투여시간(administered_at)을 기준으로 정렬
+  */
+
+  const sortedRecords =
+    [...safeRecords].sort(
+      function(
+        a,
+        b
+      ) {
+
+        return (
+          new Date(
+            getRecordDateTime(
+              b
+            )
+          ).getTime()
+          -
+          new Date(
+            getRecordDateTime(
+              a
+            )
+          ).getTime()
+        );
+
+      }
+    );
+
+
   document.getElementById(
     "recordCount"
   ).textContent =
-    records.length +
+    sortedRecords.length
+    +
     "회";
 
 
   renderGlucoseChart(
-    records
+    sortedRecords
   );
 
 
   renderRecords(
-    records
+    sortedRecords
   );
 
 }
@@ -829,13 +930,16 @@ function renderGlucoseChart(
   const glucoseRecords =
     records
       .filter(
-        function(record) {
+        function(
+          record
+        ) {
 
           return (
             record.record_type ===
-            "glucose"
+              "glucose"
             &&
-            record.glucose_value !== null
+            record.glucose_value !==
+              null
           );
 
         }
@@ -873,6 +977,19 @@ function renderGlucoseChart(
       "block";
 
 
+    if (
+      glucoseChart
+    ) {
+
+      glucoseChart.destroy();
+
+
+      glucoseChart =
+        null;
+
+    }
+
+
     return;
 
   }
@@ -892,7 +1009,9 @@ function renderGlucoseChart(
 
   const labels =
     glucoseRecords.map(
-      function(record) {
+      function(
+        record
+      ) {
 
         return new Date(
           record.created_at
@@ -913,7 +1032,9 @@ function renderGlucoseChart(
 
   const values =
     glucoseRecords.map(
-      function(record) {
+      function(
+        record
+      ) {
 
         return Number(
           record.glucose_value
@@ -925,7 +1046,9 @@ function renderGlucoseChart(
 
   const tooltipLabels =
     glucoseRecords.map(
-      function(record) {
+      function(
+        record
+      ) {
 
         return new Date(
           record.created_at
@@ -1038,7 +1161,9 @@ function renderGlucoseChart(
               callbacks: {
 
                 title:
-                  function(context) {
+                  function(
+                    context
+                  ) {
 
                     const index =
                       context[0]
@@ -1054,7 +1179,9 @@ function renderGlucoseChart(
                   },
 
                 label:
-                  function(context) {
+                  function(
+                    context
+                  ) {
 
                     return (
                       "혈당 "
@@ -1117,7 +1244,8 @@ function renderRecords(
 
 
   if (
-    !records ||
+    !records
+    ||
     records.length === 0
   ) {
 
@@ -1152,11 +1280,15 @@ function renderRecords(
 
 
   records.forEach(
-    function(record) {
+    function(
+      record
+    ) {
 
       const key =
         getDateKey(
-          record.created_at
+          getRecordDateTime(
+            record
+          )
         );
 
 
@@ -1185,7 +1317,9 @@ function renderRecords(
   Object.keys(
     grouped
   ).forEach(
-    function(dateKey) {
+    function(
+      dateKey
+    ) {
 
       html += `
 
@@ -1200,17 +1334,20 @@ function renderRecords(
       `;
 
 
-      grouped[dateKey]
-        .forEach(
-          function(record) {
+      grouped[
+        dateKey
+      ].forEach(
+        function(
+          record
+        ) {
 
-            html +=
-              createRecordCard(
-                record
-              );
+          html +=
+            createRecordCard(
+              record
+            );
 
-          }
-        );
+        }
+      );
 
 
       html += `
@@ -1233,7 +1370,7 @@ function renderRecords(
 
 
 /* =========================
-   기록 종류
+   기록 종류 분기
 ========================= */
 
 function createRecordCard(
@@ -1242,7 +1379,7 @@ function createRecordCard(
 
   if (
     record.record_type ===
-    "glucose"
+      "glucose"
   ) {
 
     return createGlucoseCard(
@@ -1254,7 +1391,7 @@ function createRecordCard(
 
   if (
     record.record_type ===
-    "meal"
+      "meal"
   ) {
 
     return createMealCard(
@@ -1266,7 +1403,7 @@ function createRecordCard(
 
   if (
     record.record_type ===
-    "symptom"
+      "symptom"
   ) {
 
     return createSymptomCard(
@@ -1278,10 +1415,22 @@ function createRecordCard(
 
   if (
     record.record_type ===
-    "activity"
+      "activity"
   ) {
 
     return createActivityCard(
+      record
+    );
+
+  }
+
+
+  if (
+    record.record_type ===
+      "insulin"
+  ) {
+
+    return createInsulinCard(
       record
     );
 
@@ -1295,7 +1444,7 @@ function createRecordCard(
 
 
 /* =========================
-   혈당
+   혈당 카드
 ========================= */
 
 function createGlucoseCard(
@@ -1329,7 +1478,7 @@ function createGlucoseCard(
           class="record-value
           ${isAlert ? "danger-text" : ""}">
 
-          ${record.glucose_value}
+          ${escapeHtml(record.glucose_value)}
           mg/dL
 
         </div>
@@ -1358,7 +1507,7 @@ function createGlucoseCard(
 
 
 /* =========================
-   식사
+   식사 카드
 ========================= */
 
 function createMealCard(
@@ -1366,12 +1515,14 @@ function createMealCard(
 ) {
 
   const mealType =
-    record.meal_type ||
+    record.meal_type
+    ||
     "식사";
 
 
   const amountText =
-    record.note ||
+    record.note
+    ||
     getMealAmountText(
       record.intake_ratio
     );
@@ -1389,12 +1540,13 @@ function createMealCard(
       <div class="record-main">
 
         <div class="record-value">
-          ${mealType}
+          ${escapeHtml(mealType)}
         </div>
 
 
         <div class="record-sub">
-          ${amountText} · 먹은 양 기록
+          ${escapeHtml(amountText)}
+          · 먹은 양 기록
         </div>
 
 
@@ -1416,7 +1568,7 @@ function createMealCard(
 
 
 /* =========================
-   상태/증상
+   상태 / 증상 카드
 ========================= */
 
 function createSymptomCard(
@@ -1434,7 +1586,8 @@ function createSymptomCard(
 
 
   if (
-    symptom.symptoms.length > 0
+    symptom.symptoms.length >
+      0
   ) {
 
     title =
@@ -1442,7 +1595,8 @@ function createSymptomCard(
         " · "
       );
 
-  } else if (
+  }
+  else if (
     symptom.conditionLabel
   ) {
 
@@ -1453,12 +1607,16 @@ function createSymptomCard(
 
 
   let sub =
-    symptom.conditionLabel ||
+    symptom.conditionLabel
+    ||
+    symptom.context
+    ||
     "현재 상태 기록";
 
 
   if (
-    record.glucose_value !== null
+    record.glucose_value !==
+      null
   ) {
 
     sub +=
@@ -1472,19 +1630,31 @@ function createSymptomCard(
 
 
   const glucoseValue =
-    record.glucose_value !== null
-      ? Number(
-          record.glucose_value
-        )
-      : null;
+    record.glucose_value !==
+      null
+      ?
+      Number(
+        record.glucose_value
+      )
+      :
+      null;
 
 
-  const isAlert =
-    symptom.condition === "danger"
-    ||
+  const hasVomiting =
     symptom.symptoms.includes(
       "구토"
     )
+    ||
+    symptom.symptoms.includes(
+      "토했어요"
+    );
+
+
+  const isAlert =
+    symptom.condition ===
+      "danger"
+    ||
+    hasVomiting
     ||
     (
       glucoseValue !== null
@@ -1512,13 +1682,13 @@ function createSymptomCard(
           class="record-value
           ${isAlert ? "danger-text" : ""}">
 
-          ${title}
+          ${escapeHtml(title)}
 
         </div>
 
 
         <div class="record-sub">
-          ${sub}
+          ${escapeHtml(sub)}
         </div>
 
 
@@ -1540,7 +1710,7 @@ function createSymptomCard(
 
 
 /* =========================
-   활동
+   활동 카드
 ========================= */
 
 function createActivityCard(
@@ -1572,7 +1742,8 @@ function createActivityCard(
 
 
   if (
-    record.glucose_value !== null
+    record.glucose_value !==
+      null
   ) {
 
     sub +=
@@ -1586,11 +1757,14 @@ function createActivityCard(
 
 
   const glucoseValue =
-    record.glucose_value !== null
-      ? Number(
-          record.glucose_value
-        )
-      : null;
+    record.glucose_value !==
+      null
+      ?
+      Number(
+        record.glucose_value
+      )
+      :
+      null;
 
 
   const isAlert =
@@ -1623,13 +1797,13 @@ function createActivityCard(
           class="record-value
           ${isAlert ? "danger-text" : ""}">
 
-          ${activityType}
+          ${escapeHtml(activityType)}
 
         </div>
 
 
         <div class="record-sub">
-          ${sub}
+          ${escapeHtml(sub)}
         </div>
 
 
@@ -1651,7 +1825,109 @@ function createActivityCard(
 
 
 /* =========================
-   증상 JSON
+   💉 인슐린 카드
+========================= */
+
+function createInsulinCard(
+  record
+) {
+
+  const units =
+    (
+      record.insulin_units !==
+        null
+      &&
+      record.insulin_units !==
+        undefined
+    )
+      ?
+      Number(
+        record.insulin_units
+      )
+      :
+      null;
+
+
+  const unitsText =
+    (
+      units !== null
+      &&
+      Number.isFinite(
+        units
+      )
+    )
+      ?
+      `${units} Unit`
+      :
+      "투여량 미입력";
+
+
+  const siteText =
+    record.injection_site
+    ||
+    "투여 위치 미입력";
+
+
+  const nameText =
+    record.insulin_name
+    ||
+    "인슐린 이름 미입력";
+
+
+  const administeredTime =
+    record.administered_at
+    ||
+    record.created_at;
+
+
+  return `
+
+    <div class="record-card">
+
+      <div class="record-icon insulin">
+        💉
+      </div>
+
+
+      <div class="record-main">
+
+        <div class="record-value">
+          ${escapeHtml(unitsText)}
+        </div>
+
+
+        <div class="record-sub">
+
+          ${escapeHtml(siteText)}
+
+          ·
+
+          ${escapeHtml(nameText)}
+
+        </div>
+
+
+        <div class="record-time">
+
+          ${formatRecordTime(administeredTime)}
+
+        </div>
+
+      </div>
+
+
+      ${getDeleteButton(record.id)}
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =========================
+   증상 JSON 읽기
 ========================= */
 
 function parseSymptomRecord(
@@ -1667,13 +1943,17 @@ function parseSymptomRecord(
       null,
 
     conditionLabel:
+      "",
+
+    context:
       ""
 
   };
 
 
   if (
-    !record ||
+    !record
+    ||
     !record.note
   ) {
 
@@ -1696,21 +1976,30 @@ function parseSymptomRecord(
         Array.isArray(
           parsed.symptoms
         )
-          ? parsed.symptoms
-          : [],
+          ?
+          parsed.symptoms
+          :
+          [],
 
       condition:
-        parsed.condition ||
+        parsed.condition
+        ||
         null,
 
       conditionLabel:
-        parsed.conditionLabel ||
+        parsed.conditionLabel
+        ||
+        "",
+
+      context:
+        parsed.context
+        ||
         ""
 
     };
 
-
-  } catch (
+  }
+  catch (
     error
   ) {
 
@@ -1723,7 +2012,7 @@ function parseSymptomRecord(
 
 
 /* =========================
-   활동 JSON
+   활동 JSON 읽기
 ========================= */
 
 function parseActivityRecord(
@@ -1742,7 +2031,8 @@ function parseActivityRecord(
 
 
   if (
-    !record ||
+    !record
+    ||
     !record.note
   ) {
 
@@ -1762,17 +2052,19 @@ function parseActivityRecord(
     return {
 
       activityType:
-        parsed.activityType ||
+        parsed.activityType
+        ||
         "",
 
       feeling:
-        parsed.feeling ||
+        parsed.feeling
+        ||
         ""
 
     };
 
-
-  } catch (
+  }
+  catch (
     error
   ) {
 
@@ -1791,6 +2083,10 @@ function parseActivityRecord(
 function getDeleteButton(
   recordId
 ) {
+
+  /*
+    교직원은 조회만
+  */
 
   if (
     isTeacherView
@@ -1818,7 +2114,7 @@ function getDeleteButton(
 
 
 /* =========================
-   삭제
+   기록 삭제
 ========================= */
 
 async function deleteRecord(
@@ -1840,8 +2136,12 @@ async function deleteRecord(
     );
 
 
-  if (!confirmed) {
+  if (
+    !confirmed
+  ) {
+
     return;
+
   }
 
 
@@ -1861,7 +2161,9 @@ async function deleteRecord(
       );
 
 
-  if (error) {
+  if (
+    error
+  ) {
 
     console.error(
       error
@@ -1885,7 +2187,7 @@ async function deleteRecord(
 
 
 /* =========================
-   식사량
+   식사량 표시
 ========================= */
 
 function getMealAmountText(
@@ -1941,7 +2243,81 @@ function getMealAmountText(
 
 
 /* =========================
-   날짜
+   기록 기준 시간
+
+   인슐린:
+   실제 투여시간 사용
+
+   나머지:
+   기록 생성시간 사용
+========================= */
+
+function getRecordDateTime(
+  record
+) {
+
+  if (
+    record
+    &&
+    record.record_type ===
+      "insulin"
+    &&
+    record.administered_at
+  ) {
+
+    return record.administered_at;
+
+  }
+
+
+  return (
+    record?.created_at
+    ||
+    new Date().toISOString()
+  );
+
+}
+
+
+
+/* =========================
+   화면 출력 안전 처리
+========================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+
+/* =========================
+   날짜 그룹
 ========================= */
 
 function getDateKey(
@@ -1991,6 +2367,10 @@ function getDateKey(
 }
 
 
+
+/* =========================
+   날짜 제목
+========================= */
 
 function formatDateTitle(
   dateKey
@@ -2050,6 +2430,7 @@ function formatDateTitle(
   return date.toLocaleDateString(
     "ko-KR",
     {
+
       year:
         "numeric",
 
@@ -2061,12 +2442,17 @@ function formatDateTitle(
 
       weekday:
         "short"
+
     }
   );
 
 }
 
 
+
+/* =========================
+   같은 날짜 확인
+========================= */
 
 function isSameDate(
   a,
@@ -2097,20 +2483,50 @@ function isSameDate(
 
 
 
+/* =========================
+   기록 시간
+========================= */
+
 function formatRecordTime(
   dateString
 ) {
 
-  return new Date(
-    dateString
-  ).toLocaleTimeString(
+  if (
+    !dateString
+  ) {
+
+    return "-";
+
+  }
+
+
+  const date =
+    new Date(
+      dateString
+    );
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "-";
+
+  }
+
+
+  return date.toLocaleTimeString(
     "ko-KR",
     {
+
       hour:
         "2-digit",
 
       minute:
         "2-digit"
+
     }
   );
 
