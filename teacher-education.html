@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>교직원 교육 - GlucoGuard</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f6f9fc;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: #263238;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 680px;
+
+      margin: 0 auto;
+
+      padding: 18px 16px 42px;
+    }
+
+
+    /* =========================
+       상단
+    ========================= */
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 16px;
+    }
+
+    .back-button {
+      width: 45px;
+      height: 45px;
+
+      flex-shrink: 0;
+
+      border: none;
+      border-radius: 14px;
+
+      background: white;
+
+      color: #607d8b;
+
+      font-size: 23px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 13px rgba(60,80,95,.07);
+    }
+
+    .top-title h1 {
+      margin: 0;
+
+      color: #355f7f;
+
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .top-title p {
+      margin: 4px 0 0;
+
+      color: #8597a1;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       소개
+    ========================= */
+
+    .intro-card {
+      padding: 17px;
+
+      margin-bottom: 15px;
+
+      border-radius: 22px;
+
+      background: #eaf3ff;
+
+      color: #45677f;
+    }
+
+    .intro-title {
+      margin-bottom: 7px;
+
+      color: #355f7f;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .intro-text {
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       교육 메뉴
+    ========================= */
+
+    .section-title {
+      margin:
+        0 0 9px 3px;
+
+      color: #607580;
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .education-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 9px;
+
+      margin-bottom: 18px;
+    }
+
+    .education-card {
+      background: white;
+
+      border: none;
+
+      border-radius: 18px;
+
+      padding: 15px;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 13px rgba(60,80,95,.05);
+    }
+
+    .education-card-top {
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+    }
+
+    .education-icon {
+      width: 44px;
+      height: 44px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 13px;
+
+      background: #f4f8fb;
+
+      font-size: 23px;
+    }
+
+    .education-info {
+      flex: 1;
+    }
+
+    .education-title {
+      margin-bottom: 3px;
+
+      color: #405e70;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .education-subtitle {
+      color: #8496a1;
+
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .education-arrow {
+      color: #9aabb4;
+
+      font-size: 21px;
+    }
+
+    .education-content {
+      display: none;
+
+      margin-top: 13px;
+
+      padding-top: 13px;
+
+      border-top:
+        1px solid #edf1f3;
+
+      color: #5f747f;
+
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .education-card.open
+    .education-content {
+      display: block;
+    }
+
+    .highlight-box {
+      margin-top: 10px;
+
+      padding: 11px;
+
+      border-radius: 13px;
+
+      background: #eef8f4;
+
+      color: #497264;
+
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .warning-box {
+      margin-top: 10px;
+
+      padding: 11px;
+
+      border-radius: 13px;
+
+      background: #fff0ee;
+
+      color: #9c514b;
+
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+
+    /* =========================
+       퀴즈
+    ========================= */
+
+    .quiz-card {
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 17px;
+
+      box-shadow:
+        0 5px 15px rgba(60,80,95,.06);
+    }
+
+    .quiz-header {
+      margin-bottom: 14px;
+    }
+
+    .quiz-title {
+      margin-bottom: 5px;
+
+      color: #405e70;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .quiz-subtitle {
+      color: #8799a3;
+
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .quiz-question {
+      margin-bottom: 13px;
+
+      padding: 13px;
+
+      border-radius: 15px;
+
+      background: #f7f9fb;
+    }
+
+    .quiz-question-text {
+      margin-bottom: 10px;
+
+      color: #4b6573;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      line-height: 1.6;
+    }
+
+    .quiz-buttons {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 8px;
+    }
+
+    .quiz-button {
+      padding: 10px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 11px;
+
+      background: white;
+
+      color: #607d8b;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .quiz-button.selected {
+      border-color: #76a9cc;
+
+      background: #eaf4ff;
+
+      color: #35627f;
+    }
+
+    .quiz-result {
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 14px;
+
+      border-radius: 16px;
+
+      background: #eaf8f2;
+
+      color: #467465;
+
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .submit-quiz-button {
+      width: 100%;
+
+      margin-top: 5px;
+
+      padding: 13px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #4285b4;
+
+      color: white;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       하단
+    ========================= */
+
+    .footer-note {
+      margin-top: 17px;
+
+      color: #95a4ac;
+
+      text-align: center;
+
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+  <!-- 상단 -->
+
+  <div class="top-bar">
+
+    <button
+      class="back-button"
+      onclick="goBack()">
+
+      ←
+
+    </button>
+
+
+    <div class="top-title">
+
+      <h1>
+        📘 교직원 교육
+      </h1>
+
+      <p>
+        학교에서 제1형 당뇨 학생을 안전하게 지원하기 위한 핵심 내용
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- 소개 -->
+
+  <div class="intro-card">
+
+    <div class="intro-title">
+      학교에서 기억해야 할 핵심
+    </div>
+
+    <div class="intro-text">
+      제1형 당뇨 학생은 학교생활 중에도 혈당 확인,
+      인슐린 관리, 식사와 활동 조절이 필요할 수 있습니다.
+      학생별 개별 관리계획과 의료진·보호자 지침을 우선하여 지원해주세요.
+    </div>
+
+  </div>
+
+
+
+  <!-- 교육 -->
+
+  <div class="section-title">
+    핵심 교육
+  </div>
+
+
+  <div class="education-list">
+
+
+    <!-- 1 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          💙
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            제1형 당뇨 이해
+          </div>
+
+          <div class="education-subtitle">
+            왜 혈당 확인과 인슐린 관리가 필요한지 알아봐요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        제1형 당뇨는 몸에서 인슐린을 충분히 만들지 못해
+        외부에서 인슐린을 공급해야 하는 질환입니다.
+
+        <br><br>
+
+        학생은 하루 중 여러 번 혈당을 확인하거나
+        연속혈당측정기(CGM)를 사용할 수 있으며,
+        식사·운동·스트레스·질병 등에 따라 혈당이 변할 수 있습니다.
+
+        <div class="highlight-box">
+          학생이 혈당을 확인하거나 간식을 먹는 행동은
+          학교생활을 방해하는 행동이 아니라
+          안전을 위한 건강관리입니다.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- 2 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          🩸
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            저혈당 알아보기
+          </div>
+
+          <div class="education-subtitle">
+            식은땀, 손 떨림, 어지러움 등의 신호를 알아봐요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        저혈당은 혈당이 너무 낮아진 상태입니다.
+        학생마다 증상이 다를 수 있습니다.
+
+        <br><br>
+
+        식은땀, 손 떨림, 어지러움, 창백함,
+        심한 배고픔, 졸림, 집중력 저하,
+        평소와 다른 행동 등이 나타날 수 있습니다.
+
+        <div class="warning-box">
+          의식이 흐리거나 안전하게 삼키기 어려운 학생에게
+          음식이나 음료를 입으로 주지 않습니다.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- 3 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          🔺
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            고혈당 알아보기
+          </div>
+
+          <div class="education-subtitle">
+            갈증, 잦은 소변, 피로 등의 변화를 확인해요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        고혈당은 혈당이 높은 상태입니다.
+        심한 갈증, 잦은 소변, 피로,
+        집중력 저하 등이 나타날 수 있습니다.
+
+        <br><br>
+
+        구토, 심한 복통, 호흡 이상,
+        심한 졸림이나 의식 변화가 함께 나타나면
+        더 빠른 확인과 대응이 필요할 수 있습니다.
+
+        <div class="highlight-box">
+          교직원이 임의로 인슐린 용량을 계산하거나
+          변경하지 않습니다.
+          학생의 개별 계획과 의료진 지침을 따릅니다.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- 4 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          🍱
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            급식과 간식
+          </div>
+
+          <div class="education-subtitle">
+            실제 섭취량과 간식이 왜 중요한지 확인해요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        식사량은 혈당과 인슐린 관리에 영향을 줄 수 있습니다.
+        학교에서는 학생이 실제로 얼마나 먹었는지 확인하는 것이 도움이 됩니다.
+
+        <br><br>
+
+        저혈당 예방이나 처치를 위해
+        학생이 정해진 시간 외에 간식을 먹어야 할 수도 있습니다.
+
+        <div class="highlight-box">
+          간식을 먹는 것을 벌이나 규칙 위반으로 보지 않고
+          건강관리를 위한 행동으로 이해해주세요.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- 5 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          🏃
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            체육 · 현장학습
+          </div>
+
+          <div class="education-subtitle">
+            운동과 외부 활동에서 확인할 점을 알아봐요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        운동은 혈당을 낮출 수 있기 때문에
+        학생에 따라 운동 전후 혈당 확인이나 간식이 필요할 수 있습니다.
+
+        <br><br>
+
+        현장학습이나 운동회처럼
+        평소보다 활동량이 많은 날에는
+        혈당 측정기, 간식, 응급약품 등을 준비해야 할 수 있습니다.
+
+        <div class="warning-box">
+          학생이 몸이 이상하다고 말하면
+          활동을 계속하도록 강요하지 않습니다.
+        </div>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- 6 -->
+
+    <button
+      class="education-card"
+      onclick="toggleEducation(this)">
+
+      <div class="education-card-top">
+
+        <div class="education-icon">
+          🚨
+        </div>
+
+        <div class="education-info">
+
+          <div class="education-title">
+            학생이 도움을 요청할 때
+          </div>
+
+          <div class="education-subtitle">
+            학생의 말을 가볍게 넘기지 않는 것이 중요해요.
+          </div>
+
+        </div>
+
+        <div class="education-arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div class="education-content">
+
+        학생이 “어지러워요”, “이상해요”, “혈당 확인하고 싶어요”라고 말하면
+        먼저 학생의 말을 믿고 상태를 확인해주세요.
+
+        <br><br>
+
+        필요하면 보건교사 또는 보호자에게 연락하고,
+        학생의 개별 관리계획과 학교 응급절차에 따라 대응합니다.
+
+        <div class="highlight-box">
+          저혈당이 의심되는 학생을 혼자 보건실로 보내지 않는 것이 중요합니다.
+        </div>
+
+      </div>
+
+    </button>
+
+
+  </div>
+
+
+
+  <!-- 퀴즈 -->
+
+  <div class="quiz-card">
+
+    <div class="quiz-header">
+
+      <div class="quiz-title">
+        ✅ 교직원 O/X 퀴즈
+      </div>
+
+      <div class="quiz-subtitle">
+        핵심 내용을 잘 이해했는지 간단히 확인해보세요.
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="quiz-question"
+      data-answer="X">
+
+      <div class="quiz-question-text">
+        1. 저혈당이 의심되는 학생은 혼자 보건실에 보내도 된다.
+      </div>
+
+      <div class="quiz-buttons">
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'O')">
+          O
+        </button>
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'X')">
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="quiz-question"
+      data-answer="X">
+
+      <div class="quiz-question-text">
+        2. 의식이 없는 학생에게 주스나 사탕을 먹여야 한다.
+      </div>
+
+      <div class="quiz-buttons">
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'O')">
+          O
+        </button>
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'X')">
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="quiz-question"
+      data-answer="O">
+
+      <div class="quiz-question-text">
+        3. 학생이 몸이 이상하다고 말하면 먼저 상태를 확인해야 한다.
+      </div>
+
+      <div class="quiz-buttons">
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'O')">
+          O
+        </button>
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'X')">
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="quiz-question"
+      data-answer="X">
+
+      <div class="quiz-question-text">
+        4. 교직원이 혈당 수치를 보고 인슐린 용량을 임의로 정해도 된다.
+      </div>
+
+      <div class="quiz-buttons">
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'O')">
+          O
+        </button>
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'X')">
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="quiz-question"
+      data-answer="O">
+
+      <div class="quiz-question-text">
+        5. 체육이나 현장학습 전후에는 학생에 따라 추가 혈당 확인이 필요할 수 있다.
+      </div>
+
+      <div class="quiz-buttons">
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'O')">
+          O
+        </button>
+
+        <button
+          class="quiz-button"
+          onclick="selectQuiz(this, 'X')">
+          X
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <button
+      class="submit-quiz-button"
+      onclick="submitQuiz()">
+
+      퀴즈 결과 확인
+
+    </button>
+
+
+    <div
+      id="quizResult"
+      class="quiz-result">
+    </div>
+
+  </div>
+
+
+
+  <div class="footer-note">
+
+    GlucoGuard는 교육용 지원 도구입니다.<br>
+    실제 치료와 처치는 학생의 개별 관리계획과 의료진 지침이 우선합니다.
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+function toggleEducation(
+  card
+) {
+
+  card.classList.toggle(
+    "open"
+  );
+
+}
+
+
+
+function selectQuiz(
+  button,
+  answer
+) {
+
+  const question =
+    button.closest(
+      ".quiz-question"
+    );
+
+
+  question.dataset.selected =
+    answer;
+
+
+  question.querySelectorAll(
+    ".quiz-button"
+  ).forEach(
+    item => {
+
+      item.classList.remove(
+        "selected"
+      );
+
+    }
+  );
+
+
+  button.classList.add(
+    "selected"
+  );
+
+}
+
+
+
+function submitQuiz() {
+
+  const questions =
+    document.querySelectorAll(
+      ".quiz-question"
+    );
+
+
+  let answered =
+    0;
+
+
+  let correct =
+    0;
+
+
+  questions.forEach(
+    question => {
+
+      const selected =
+        question.dataset.selected;
+
+
+      const answer =
+        question.dataset.answer;
+
+
+      if (selected) {
+
+        answered++;
+
+      }
+
+
+      if (
+        selected === answer
+      ) {
+
+        correct++;
+
+      }
+
+    }
+  );
+
+
+  if (
+    answered < questions.length
+  ) {
+
+    alert(
+      "모든 문제에 답해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const result =
+    document.getElementById(
+      "quizResult"
+    );
+
+
+  result.classList.add(
+    "show"
+  );
+
+
+  if (
+    correct === 5
+  ) {
+
+    result.innerHTML =
+      `
+        🎉 <strong>5문제 모두 맞았습니다!</strong><br>
+        제1형 당뇨 학생의 학교생활 지원 핵심 내용을 잘 이해하고 있어요.
+      `;
+
+  } else if (
+    correct >= 4
+  ) {
+
+    result.innerHTML =
+      `
+        👍 <strong>${correct}/5 정답</strong><br>
+        거의 다 이해했어요. 틀린 내용을 교육 카드에서 한 번 더 확인해보세요.
+      `;
+
+  } else {
+
+    result.innerHTML =
+      `
+        📘 <strong>${correct}/5 정답</strong><br>
+        위의 교육 내용을 다시 읽어본 뒤 한 번 더 풀어보세요.
+      `;
+
+  }
+
+}
+
+
+
+function goBack() {
+
+  window.location.href =
+    "./teacher.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
