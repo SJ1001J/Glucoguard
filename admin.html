@@ -246,15 +246,25 @@
 
     .user-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
 
       gap: 8px;
 
       margin-top: 13px;
     }
 
+    .student-actions {
+      grid-template-columns:
+        1fr 1fr 1fr;
+    }
+
+    .staff-actions {
+      grid-template-columns:
+        1fr 1fr;
+    }
+
     .edit-button,
-    .view-button {
+    .view-button,
+    .password-button {
       border: none;
       border-radius: 12px;
 
@@ -274,6 +284,11 @@
     .view-button {
       background: #eaf3ff;
       color: #356b91;
+    }
+
+    .password-button {
+      background: #f1edff;
+      color: #665a91;
     }
 
     .empty-card {
@@ -323,6 +338,9 @@
       border-radius: 23px;
 
       background: white;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.15);
     }
 
     .modal-title {
@@ -340,6 +358,7 @@
       color: #8b9ca6;
 
       font-size: 10px;
+      line-height: 1.6;
     }
 
     .field {
@@ -366,6 +385,12 @@
       padding: 12px 13px;
 
       font-size: 16px;
+
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: #9cbfd7;
     }
 
     .readonly-box {
@@ -380,6 +405,21 @@
       font-size: 12px;
     }
 
+    .password-notice {
+      margin-bottom: 13px;
+
+      padding: 11px 12px;
+
+      border-radius: 13px;
+
+      background: #fff5dd;
+
+      color: #826824;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
     .modal-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -390,7 +430,8 @@
     }
 
     .cancel-button,
-    .save-button {
+    .save-button,
+    .password-save-button {
       border: none;
       border-radius: 13px;
 
@@ -412,6 +453,17 @@
       color: #355f7f;
     }
 
+    .password-save-button {
+      background: #eee9ff;
+      color: #65568f;
+    }
+
+    .save-button:disabled,
+    .password-save-button:disabled {
+      opacity: .5;
+      cursor: wait;
+    }
+
     .message {
       display: none;
 
@@ -423,6 +475,8 @@
 
       font-size: 10px;
       font-weight: 800;
+
+      line-height: 1.5;
     }
 
     .message.show {
@@ -438,8 +492,26 @@
       background: #fff0ee;
       color: #a6534c;
     }
+
+    @media (max-width: 600px) {
+
+      .student-actions,
+      .staff-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .top-row {
+        align-items: flex-start;
+      }
+
+      .top-actions {
+        flex-direction: column;
+      }
+
+    }
   </style>
 </head>
+
 
 <body>
 
@@ -498,9 +570,8 @@
 
   <div class="notice-card">
 
-    학생 계정에서는
-    <strong>학생 화면 보기</strong>를 눌러
-    해당 학생이 실제로 보는 화면을 확인할 수 있습니다.
+    학생 화면 확인, 계정 정보 수정,
+    보호자 연락처 관리 및 비밀번호 변경을 할 수 있습니다.
 
   </div>
 
@@ -515,6 +586,7 @@
       👧 학생 관리
 
     </button>
+
 
     <button
       id="staffTab"
@@ -550,6 +622,10 @@
 </div>
 
 
+
+<!-- =========================
+     프로필 수정
+========================= -->
 
 <div
   id="editModal"
@@ -648,12 +724,112 @@
 
       </button>
 
+
       <button
         id="saveButton"
         class="save-button"
         onclick="saveProfile()">
 
         저장
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     비밀번호 변경
+========================= -->
+
+<div
+  id="passwordModal"
+  class="modal-backdrop">
+
+  <div class="modal">
+
+    <div class="modal-title">
+      🔑 비밀번호 변경
+    </div>
+
+
+    <div
+      id="passwordDescription"
+      class="modal-sub">
+
+      계정의 새 비밀번호를 설정합니다.
+
+    </div>
+
+
+    <div
+      id="passwordTarget"
+      class="readonly-box"
+      style="margin-bottom:13px;">
+    </div>
+
+
+    <div class="password-notice">
+
+      새 비밀번호는 최소 6자 이상 입력해주세요.
+      변경 후 해당 사용자는 새로운 비밀번호로 로그인해야 합니다.
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="newPassword">
+        새 비밀번호
+      </label>
+
+      <input
+        id="newPassword"
+        type="password"
+        minlength="6"
+        autocomplete="new-password"
+        placeholder="새 비밀번호">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="confirmPassword">
+        새 비밀번호 확인
+      </label>
+
+      <input
+        id="confirmPassword"
+        type="password"
+        minlength="6"
+        autocomplete="new-password"
+        placeholder="새 비밀번호 다시 입력">
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-button"
+        onclick="closePasswordModal()">
+
+        취소
+
+      </button>
+
+
+      <button
+        id="passwordSaveButton"
+        class="password-save-button"
+        onclick="changePassword()">
+
+        비밀번호 변경
 
       </button>
 
@@ -687,13 +863,34 @@ const supabaseClient =
   );
 
 
-let currentUser = null;
-let currentProfile = null;
-let profiles = [];
-let activeTab = "student";
-let editingProfile = null;
+let currentUser =
+  null;
 
 
+let currentProfile =
+  null;
+
+
+let profiles =
+  [];
+
+
+let activeTab =
+  "student";
+
+
+let editingProfile =
+  null;
+
+
+let passwordTargetProfile =
+  null;
+
+
+
+/* =========================
+   시작
+========================= */
 
 window.addEventListener(
   "load",
@@ -703,12 +900,15 @@ window.addEventListener(
       "superViewStudent"
     );
 
+
     const allowed =
       await checkSuperAccount();
+
 
     if (!allowed) {
       return;
     }
+
 
     await loadProfiles();
 
@@ -716,6 +916,10 @@ window.addEventListener(
 );
 
 
+
+/* =========================
+   슈퍼계정 확인
+========================= */
 
 async function checkSuperAccount() {
 
@@ -732,6 +936,7 @@ async function checkSuperAccount() {
 
     window.location.href =
       "./login.html";
+
 
     return false;
 
@@ -770,8 +975,10 @@ async function checkSuperAccount() {
       "슈퍼계정만 접근할 수 있습니다."
     );
 
+
     window.location.href =
       "./login.html";
+
 
     return false;
 
@@ -787,6 +994,10 @@ async function checkSuperAccount() {
 }
 
 
+
+/* =========================
+   계정 목록
+========================= */
 
 async function loadProfiles() {
 
@@ -825,10 +1036,12 @@ async function loadProfiles() {
 
     console.error(error);
 
+
     showMessage(
       "계정 정보를 불러오지 못했습니다.",
       "error"
     );
+
 
     return;
 
@@ -845,7 +1058,13 @@ async function loadProfiles() {
 
 
 
-function showTab(tab) {
+/* =========================
+   탭
+========================= */
+
+function showTab(
+  tab
+) {
 
   activeTab =
     tab;
@@ -871,10 +1090,10 @@ function showTab(tab) {
     "sectionTitle"
   ).textContent =
     tab === "student"
-    ?
-    "👧 학생 계정"
-    :
-    "👩‍🏫 교직원 계정";
+      ?
+      "👧 학생 계정"
+      :
+      "👩‍🏫 교직원 계정";
 
 
   renderProfiles();
@@ -882,6 +1101,10 @@ function showTab(tab) {
 }
 
 
+
+/* =========================
+   카드 표시
+========================= */
 
 function renderProfiles() {
 
@@ -891,7 +1114,8 @@ function renderProfiles() {
     );
 
 
-  let filtered = [];
+  let filtered =
+    [];
 
 
   if (
@@ -929,87 +1153,157 @@ function renderProfiles() {
         </div>
       `;
 
+
     return;
 
   }
 
 
   area.innerHTML =
-    filtered.map(
-      profile => {
+    filtered
+      .map(
+        profile => {
 
-        const avatar =
-          profile.role === "student"
-          ?
-          (
-            profile.avatar
+          const avatar =
+            profile.role === "student"
+              ?
+              (
+                profile.avatar
+                ||
+                "🐻"
+              )
+              :
+              (
+                profile.role === "nurse"
+                  ?
+                  "🩺"
+                  :
+                  "👩‍🏫"
+              );
+
+
+          const className =
+            profile.class_name
             ||
-            "🐻"
-          )
-          :
-          (
-            profile.role === "nurse"
-            ?
-            "🩺"
-            :
-            "👩‍🏫"
-          );
+            "학급 정보 없음";
 
 
-        const className =
-          profile.class_name
-          ||
-          "학급 정보 없음";
+          const phone =
+            profile.phone_number
+            ||
+            "연락처 없음";
 
 
-        const phone =
-          profile.phone_number
-          ||
-          "연락처 없음";
+          const roleText =
+            getRoleText(
+              profile.role
+            );
 
 
-        const studentViewButton =
-          profile.role === "student"
-          ?
-          `
-            <button
-              class="view-button"
-              onclick="viewStudent('${profile.id}')">
+          if (
+            profile.role === "student"
+          ) {
 
-              👀 학생 화면 보기
+            return `
+              <div class="user-card">
 
-            </button>
-          `
-          :
-          "";
+                <div class="user-top">
 
+                  <div class="user-main">
 
-        return `
-          <div class="user-card">
+                    <div class="avatar">
+                      ${escapeHtml(avatar)}
+                    </div>
 
-            <div class="user-top">
+                    <div>
 
-              <div class="user-main">
+                      <div class="user-name">
+                        ${escapeHtml(profile.nickname || "이름 없음")}
+                      </div>
 
-                <div class="avatar">
-                  ${escapeHtml(avatar)}
-                </div>
+                      <div class="user-meta">
 
-                <div>
+                        ${escapeHtml(roleText)}
+                        ·
+                        ${escapeHtml(className)}
 
-                  <div class="user-name">
-                    ${escapeHtml(profile.nickname || "이름 없음")}
+                        <br>
+
+                        ${escapeHtml(phone)}
+
+                      </div>
+
+                    </div>
+
                   </div>
 
-                  <div class="user-meta">
+                </div>
 
-                    ${escapeHtml(getRoleText(profile.role))}
-                    ·
-                    ${escapeHtml(className)}
 
-                    <br>
+                <div class="user-actions student-actions">
 
-                    ${escapeHtml(phone)}
+                  <button
+                    class="view-button"
+                    onclick="viewStudent('${profile.id}')">
+
+                    👀 학생 화면
+
+                  </button>
+
+
+                  <button
+                    class="edit-button"
+                    onclick="openEditModal('${profile.id}')">
+
+                    ✏️ 정보 수정
+
+                  </button>
+
+
+                  <button
+                    class="password-button"
+                    onclick="openPasswordModal('${profile.id}')">
+
+                    🔑 비밀번호
+
+                  </button>
+
+                </div>
+
+              </div>
+            `;
+
+          }
+
+
+          return `
+            <div class="user-card">
+
+              <div class="user-top">
+
+                <div class="user-main">
+
+                  <div class="avatar">
+                    ${escapeHtml(avatar)}
+                  </div>
+
+                  <div>
+
+                    <div class="user-name">
+                      ${escapeHtml(profile.nickname || "이름 없음")}
+                    </div>
+
+                    <div class="user-meta">
+
+                      ${escapeHtml(roleText)}
+                      ·
+                      ${escapeHtml(className)}
+
+                      <br>
+
+                      ${escapeHtml(phone)}
+
+                    </div>
 
                   </div>
 
@@ -1017,44 +1311,41 @@ function renderProfiles() {
 
               </div>
 
-            </div>
+
+              <div class="user-actions staff-actions">
+
+                <button
+                  class="edit-button"
+                  onclick="openEditModal('${profile.id}')">
+
+                  ✏️ 정보 수정
+
+                </button>
 
 
-            <div
-              class="user-actions"
-              style="
-                grid-template-columns:
-                ${profile.role === "student"
-                ?
-                "1fr 1fr"
-                :
-                "1fr"};
-              ">
+                <button
+                  class="password-button"
+                  onclick="openPasswordModal('${profile.id}')">
 
-              ${studentViewButton}
+                  🔑 비밀번호 변경
 
-              <button
-                class="edit-button"
-                onclick="openEditModal('${profile.id}')">
+                </button>
 
-                ✏️ 정보 수정
-
-              </button>
+              </div>
 
             </div>
+          `;
 
-          </div>
-        `;
-
-      }
-    ).join("");
+        }
+      )
+      .join("");
 
 }
 
 
 
 /* =========================
-   학생 화면 보기
+   학생 화면
 ========================= */
 
 function viewStudent(
@@ -1086,7 +1377,7 @@ function viewStudent(
 
 
 /* =========================
-   수정
+   정보 수정
 ========================= */
 
 function openEditModal(
@@ -1151,10 +1442,10 @@ function openEditModal(
     "avatarField"
   ).style.display =
     target.role === "student"
-    ?
-    "block"
-    :
-    "none";
+      ?
+      "block"
+      :
+      "none";
 
 
   document.getElementById(
@@ -1185,7 +1476,9 @@ function closeEditModal() {
 
 async function saveProfile() {
 
-  if (!editingProfile) {
+  if (
+    !editingProfile
+  ) {
     return;
   }
 
@@ -1214,11 +1507,14 @@ async function saveProfile() {
     ).value.trim();
 
 
-  if (!nickname) {
+  if (
+    !nickname
+  ) {
 
     alert(
       "이름을 입력해주세요."
     );
+
 
     return;
 
@@ -1240,13 +1536,28 @@ async function saveProfile() {
 
 
   if (
-    editingProfile.role === "student"
+    editingProfile.role ===
+    "student"
   ) {
 
     updates.avatar =
       avatar || null;
 
   }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
 
 
   const {
@@ -1263,13 +1574,25 @@ async function saveProfile() {
       );
 
 
-  if (error) {
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "저장";
+
+
+  if (
+    error
+  ) {
 
     console.error(error);
+
 
     alert(
       "정보 수정에 실패했습니다."
     );
+
 
     return;
 
@@ -1290,6 +1613,325 @@ async function saveProfile() {
 }
 
 
+
+/* =========================
+   비밀번호 모달
+========================= */
+
+function openPasswordModal(
+  profileId
+) {
+
+  const target =
+    profiles.find(
+      item =>
+        item.id === profileId
+    );
+
+
+  if (
+    !target
+  ) {
+    return;
+  }
+
+
+  passwordTargetProfile =
+    target;
+
+
+  document.getElementById(
+    "passwordDescription"
+  ).textContent =
+    `${target.nickname || "사용자"} 계정의 새 비밀번호를 설정합니다.`;
+
+
+  document.getElementById(
+    "passwordTarget"
+  ).textContent =
+    `${getRoleText(target.role)} · ${target.nickname || "이름 없음"}`;
+
+
+  document.getElementById(
+    "newPassword"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "confirmPassword"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "passwordModal"
+  ).classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    function() {
+
+      document.getElementById(
+        "newPassword"
+      ).focus();
+
+    },
+    100
+  );
+
+}
+
+
+
+function closePasswordModal() {
+
+  document.getElementById(
+    "passwordModal"
+  ).classList.remove(
+    "show"
+  );
+
+
+  passwordTargetProfile =
+    null;
+
+
+  document.getElementById(
+    "newPassword"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "confirmPassword"
+  ).value =
+    "";
+
+}
+
+
+
+/* =========================
+   비밀번호 변경
+========================= */
+
+async function changePassword() {
+
+  if (
+    !passwordTargetProfile
+  ) {
+    return;
+  }
+
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    ).value;
+
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    ).value;
+
+
+  if (
+    newPassword.length < 6
+  ) {
+
+    alert(
+      "비밀번호는 6자 이상이어야 합니다."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    newPassword !==
+    confirmPassword
+  ) {
+
+    alert(
+      "새 비밀번호가 서로 일치하지 않습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      `${passwordTargetProfile.nickname || "사용자"} 계정의 비밀번호를 변경할까요?`
+    );
+
+
+  if (
+    !confirmed
+  ) {
+    return;
+  }
+
+
+  const button =
+    document.getElementById(
+      "passwordSaveButton"
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "변경 중...";
+
+
+  try {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .functions
+        .invoke(
+          "reset-student-password",
+          {
+            body: {
+
+              targetUserId:
+                passwordTargetProfile.id,
+
+              newPassword:
+                newPassword
+
+            }
+          }
+        );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "비밀번호 변경";
+
+
+    if (
+      error
+    ) {
+
+      console.error(
+        error
+      );
+
+
+      let message =
+        "비밀번호를 변경하지 못했습니다.";
+
+
+      try {
+
+        if (
+          error.context
+        ) {
+
+          const result =
+            await error.context.json();
+
+
+          if (
+            result?.error
+          ) {
+
+            message =
+              result.error;
+
+          }
+
+        }
+
+      }
+      catch {
+      }
+
+
+      alert(
+        message
+      );
+
+
+      return;
+
+    }
+
+
+    if (
+      data?.error
+    ) {
+
+      alert(
+        data.error
+      );
+
+
+      return;
+
+    }
+
+
+    closePasswordModal();
+
+
+    showMessage(
+      `${passwordTargetProfile?.nickname || "계정"}의 비밀번호가 변경되었습니다.`,
+      "success"
+    );
+
+
+    alert(
+      "비밀번호가 정상적으로 변경되었습니다."
+    );
+
+  }
+  catch (error) {
+
+    console.error(
+      error
+    );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "비밀번호 변경";
+
+
+    alert(
+      "비밀번호 변경 요청 중 오류가 발생했습니다."
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   메시지
+========================= */
 
 function showMessage(
   text,
@@ -1317,14 +1959,20 @@ function showMessage(
         "message";
 
     },
-    3000
+    3500
   );
 
 }
 
 
 
-function getRoleText(role) {
+/* =========================
+   역할
+========================= */
+
+function getRoleText(
+  role
+) {
 
   if (
     role === "student"
@@ -1353,10 +2001,19 @@ function getRoleText(role) {
 
 
 
+/* =========================
+   교직원 화면
+========================= */
+
 function goDemoTeacher() {
 
   sessionStorage.removeItem(
     "superViewStudent"
+  );
+
+
+  sessionStorage.removeItem(
+    "teacherSelectedStudent"
   );
 
 
@@ -1372,6 +2029,10 @@ function goDemoTeacher() {
 }
 
 
+
+/* =========================
+   로그아웃
+========================= */
 
 async function logout() {
 
@@ -1389,7 +2050,13 @@ async function logout() {
 
 
 
-function escapeHtml(value) {
+/* =========================
+   HTML 안전처리
+========================= */
+
+function escapeHtml(
+  value
+) {
 
   return String(
     value ?? ""
@@ -1419,6 +2086,10 @@ function escapeHtml(value) {
 
 
 
+/* =========================
+   모달 바깥 클릭
+========================= */
+
 document.getElementById(
   "editModal"
 ).addEventListener(
@@ -1436,7 +2107,26 @@ document.getElementById(
   }
 );
 
+
+document.getElementById(
+  "passwordModal"
+).addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      event.target === this
+    ) {
+
+      closePasswordModal();
+
+    }
+
+  }
+);
+
 </script>
 
 </body>
+
 </html>
