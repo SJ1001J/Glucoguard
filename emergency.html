@@ -2,469 +2,594 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <title>다른 연락처 - GlucoGuard</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>다른 연락처 - GlucoGuard</title>
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      background: #f5faff;
+body {
+  margin: 0;
 
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+  background: #f5f8fb;
 
-      color: #263238;
-    }
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-    .page-wrap {
-      width: 100%;
-      max-width: 460px;
+  color: #344e5e;
+}
 
-      margin: 0 auto;
+button,
+input,
+select {
+  font-family: inherit;
+}
 
-      padding: 20px 18px 38px;
-    }
+.page {
+  width: 100%;
+  max-width: 650px;
 
-    .top-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+  margin: 0 auto;
 
-      margin-bottom: 22px;
-    }
+  padding: 18px 16px 50px;
+}
 
-    .back-button {
-      width: 43px;
-      height: 43px;
 
-      flex-shrink: 0;
+/* =========================
+상단
+========================= */
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.top-bar {
+  display: flex;
+  align-items: flex-start;
 
-      border: none;
-      border-radius: 14px;
+  gap: 12px;
 
-      background: white;
+  margin-bottom: 15px;
+}
 
-      color: #526b7b;
+.back-button {
+  width: 44px;
+  height: 44px;
 
-      font-size: 27px;
+  flex-shrink: 0;
 
-      cursor: pointer;
+  border: none;
+  border-radius: 14px;
 
-      box-shadow:
-        0 4px 13px rgba(60,90,110,.07);
-    }
+  background: white;
 
-    .title-area h1 {
-      margin: 0;
+  color: #607d8b;
 
-      color: #344e5e;
+  font-size: 22px;
 
-      font-size: 22px;
-      font-weight: 900;
-    }
+  cursor: pointer;
 
-    .title-area p {
-      margin: 4px 0 0;
+  box-shadow:
+    0 4px 12px rgba(60,80,95,.06);
+}
 
-      color: #8295a1;
+.top-title h1 {
+  margin: 0;
 
-      font-size: 12px;
-    }
+  color: #355f7f;
 
-    .section-title {
-      margin: 0 0 11px;
+  font-size: 22px;
+  font-weight: 900;
+}
 
-      color: #455a64;
+.top-title p {
+  margin: 5px 0 0;
 
-      font-size: 15px;
-      font-weight: 900;
-    }
+  color: #8799a4;
 
+  font-size: 11px;
+  line-height: 1.5;
+}
 
-    /* =========================
-       담당 선생님
-    ========================= */
 
-    .teacher-card {
-      background: #eef4ff;
+/* =========================
+슈퍼모드
+========================= */
 
-      border: 2px solid #d8e6ff;
+.super-banner {
+  display: none;
 
-      border-radius: 21px;
+  margin-bottom: 14px;
 
-      padding: 15px;
+  padding: 13px 14px;
 
-      margin-bottom: 20px;
-    }
+  border-radius: 16px;
 
-    .teacher-top {
-      display: flex;
-      align-items: center;
+  background: #fff3d8;
 
-      gap: 12px;
-    }
+  color: #8a6722;
 
-    .teacher-icon {
-      width: 52px;
-      height: 52px;
+  font-size: 11px;
+  line-height: 1.6;
+}
 
-      flex-shrink: 0;
+.super-banner.show {
+  display: block;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.super-banner strong {
+  display: block;
 
-      border-radius: 16px;
+  margin-bottom: 3px;
+}
 
-      background: white;
 
-      font-size: 28px;
-    }
+/* =========================
+학생 정보
+========================= */
 
-    .teacher-info {
-      flex: 1;
-      min-width: 0;
-    }
+.student-card {
+  display: flex;
+  align-items: center;
 
-    .teacher-role {
-      color: #405b83;
+  gap: 12px;
 
-      font-size: 15px;
-      font-weight: 900;
+  margin-bottom: 14px;
 
-      margin-bottom: 3px;
-    }
+  padding: 16px;
 
-    .teacher-name {
-      color: #60728f;
+  border-radius: 20px;
 
-      font-size: 12px;
+  background: white;
 
-      margin-bottom: 3px;
-    }
+  box-shadow:
+    0 5px 15px rgba(60,80,95,.06);
+}
 
-    .teacher-phone {
-      color: #8091aa;
+.student-avatar {
+  width: 52px;
+  height: 52px;
 
-      font-size: 10px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .teacher-call-button {
-      width: 100%;
+  flex-shrink: 0;
 
-      margin-top: 12px;
+  border-radius: 16px;
 
-      padding: 13px;
+  background: #fff0c8;
 
-      border: none;
-      border-radius: 13px;
+  font-size: 29px;
+}
 
-      background: #6386c6;
+.student-name {
+  color: #344e5e;
 
-      color: white;
+  font-size: 16px;
+  font-weight: 900;
+}
 
-      font-size: 13px;
-      font-weight: 900;
+.student-class {
+  margin-top: 4px;
 
-      cursor: pointer;
-    }
+  color: #899aa3;
 
-    .teacher-call-button:disabled {
-      background: #e3e8ee;
-      color: #9eabb5;
-      cursor: default;
-    }
+  font-size: 10px;
+}
 
 
-    /* =========================
-       보호자
-    ========================= */
+/* =========================
+안내
+========================= */
 
-    .guardian-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+.info-card {
+  margin-bottom: 15px;
 
-      gap: 10px;
+  padding: 14px 15px;
 
-      margin-bottom: 19px;
-    }
+  border-radius: 17px;
 
-    .guardian-card {
-      min-height: 180px;
+  background: #eaf4ff;
 
-      display: flex;
-      flex-direction: column;
+  color: #4a6d83;
 
-      padding: 15px;
+  font-size: 10px;
+  line-height: 1.65;
+}
 
-      background: white;
 
-      border-radius: 21px;
+/* =========================
+추가 버튼
+========================= */
 
-      box-shadow:
-        0 5px 15px rgba(60,90,110,.06);
-    }
+.add-button {
+  display: none;
 
-    .guardian-icon {
-      width: 50px;
-      height: 50px;
+  width: 100%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  margin-bottom: 14px;
 
-      margin-bottom: 10px;
+  padding: 13px;
 
-      border-radius: 16px;
+  border: none;
+  border-radius: 14px;
 
-      background: #eef6ff;
+  background: #dff2e8;
 
-      font-size: 27px;
-    }
+  color: #3e765c;
 
-    .guardian-role {
-      color: #344e5e;
+  font-size: 11px;
+  font-weight: 900;
 
-      font-size: 16px;
-      font-weight: 900;
+  cursor: pointer;
+}
 
-      margin-bottom: 4px;
-    }
+.add-button.show {
+  display: block;
+}
 
-    .guardian-name {
-      color: #607d8b;
 
-      font-size: 12px;
+/* =========================
+목록
+========================= */
 
-      margin-bottom: 4px;
-    }
+.section-title {
+  margin: 18px 2px 10px;
 
-    .guardian-phone {
-      color: #81939e;
+  color: #516c7a;
 
-      font-size: 10px;
-      line-height: 1.4;
+  font-size: 14px;
+  font-weight: 900;
+}
 
-      margin-bottom: 12px;
+.contact-list {
+  display: grid;
 
-      word-break: break-all;
-    }
+  gap: 10px;
+}
 
-    .guardian-spacer {
-      flex: 1;
-    }
+.contact-card {
+  padding: 15px;
 
-    .call-button {
-      width: 100%;
+  border-radius: 19px;
 
-      padding: 12px 8px;
+  background: white;
 
-      border: none;
-      border-radius: 13px;
+  box-shadow:
+    0 4px 13px rgba(60,80,95,.05);
+}
 
-      background: #e7f3ff;
+.contact-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
-      color: #28658e;
+  gap: 10px;
+}
 
-      font-size: 12px;
-      font-weight: 900;
+.contact-main {
+  display: flex;
+  align-items: center;
 
-      cursor: pointer;
-    }
+  gap: 11px;
+}
 
-    .call-button:disabled {
-      background: #f1f4f6;
-      color: #a0adb4;
-      cursor: default;
-    }
+.contact-icon {
+  width: 43px;
+  height: 43px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    /* =========================
-       보건실
-    ========================= */
+  flex-shrink: 0;
 
-    .nurse-card {
-      background: white;
+  border-radius: 13px;
 
-      border-radius: 21px;
+  background: #f2f6f9;
 
-      padding: 15px;
+  font-size: 21px;
+}
 
-      margin-bottom: 18px;
+.contact-name {
+  color: #344e5e;
 
-      box-shadow:
-        0 5px 15px rgba(60,90,110,.06);
-    }
+  font-size: 13px;
+  font-weight: 900;
+}
 
-    .nurse-top {
-      display: flex;
-      align-items: center;
+.contact-relation {
+  margin-top: 3px;
 
-      gap: 12px;
-    }
+  color: #8999a2;
 
-    .nurse-icon {
-      width: 50px;
-      height: 50px;
+  font-size: 9px;
+}
 
-      flex-shrink: 0;
+.phone-button {
+  display: inline-block;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  margin-top: 10px;
 
-      border-radius: 16px;
+  padding: 9px 11px;
 
-      background: #edf9f1;
+  border: none;
+  border-radius: 11px;
 
-      font-size: 26px;
-    }
+  background: #edf5ff;
 
-    .nurse-info {
-      flex: 1;
-      min-width: 0;
-    }
+  color: #3d7193;
 
-    .nurse-role {
-      color: #344e5e;
+  font-size: 11px;
+  font-weight: 900;
 
-      font-size: 15px;
-      font-weight: 900;
+  cursor: pointer;
+}
 
-      margin-bottom: 3px;
-    }
+.admin-actions {
+  display: none;
 
-    .nurse-name {
-      color: #607d8b;
+  grid-template-columns: 1fr 1fr;
 
-      font-size: 11px;
+  gap: 7px;
 
-      margin-bottom: 3px;
-    }
+  margin-top: 10px;
+}
 
-    .nurse-phone {
-      color: #81939e;
+.admin-actions.show {
+  display: grid;
+}
 
-      font-size: 10px;
-    }
+.edit-button,
+.delete-button {
+  border: none;
+  border-radius: 11px;
 
-    .nurse-call-button {
-      width: 100%;
+  padding: 9px;
 
-      margin-top: 11px;
+  font-size: 10px;
+  font-weight: 900;
 
-      padding: 13px;
+  cursor: pointer;
+}
 
-      border: none;
-      border-radius: 13px;
+.edit-button {
+  background: #e9f4ed;
 
-      background: #eaf8ef;
+  color: #47725a;
+}
 
-      color: #3f7c56;
+.delete-button {
+  background: #fff0ee;
 
-      font-size: 13px;
-      font-weight: 900;
+  color: #a6534c;
+}
 
-      cursor: pointer;
-    }
+.empty-card {
+  padding: 25px;
 
-    .nurse-call-button:disabled {
-      background: #f1f4f6;
-      color: #a0adb4;
-      cursor: default;
-    }
+  border-radius: 19px;
 
+  background: white;
 
-    /* =========================
-       안내
-    ========================= */
+  color: #8999a2;
 
-    .managed-note {
-      background: #eef5ff;
+  text-align: center;
 
-      border-radius: 17px;
+  font-size: 11px;
+  line-height: 1.6;
+}
 
-      padding: 13px 14px;
 
-      color: #607d8b;
+/* =========================
+담당교직원
+========================= */
 
-      font-size: 11px;
-      line-height: 1.6;
+.teacher-card {
+  margin-top: 16px;
 
-      text-align: center;
-    }
+  padding: 15px;
 
-    .bottom-message {
-      margin-top: 18px;
+  border-radius: 19px;
 
-      text-align: center;
+  background: #f2efff;
 
-      color: #8da0ab;
+  color: #65598a;
+}
 
-      font-size: 10px;
-      line-height: 1.6;
-    }
+.teacher-title {
+  margin-bottom: 8px;
 
-    @media (max-width: 360px) {
+  font-size: 12px;
+  font-weight: 900;
+}
 
-      .guardian-grid {
-        grid-template-columns: 1fr;
-      }
+.teacher-name {
+  font-size: 13px;
+  font-weight: 900;
+}
 
-      .guardian-card {
-        min-height: 160px;
-      }
+.teacher-phone {
+  margin-top: 4px;
 
-    }
+  font-size: 10px;
+}
 
-  </style>
+
+/* =========================
+모달
+========================= */
+
+.overlay {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 1000;
+
+  padding: 18px;
+
+  overflow-y: auto;
+
+  background:
+    rgba(35,50,60,.42);
+}
+
+.overlay.show {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal {
+  width: 100%;
+  max-width: 480px;
+
+  margin-top: 30px;
+
+  padding: 19px;
+
+  border-radius: 22px;
+
+  background: white;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.17);
+}
+
+.modal-title {
+  margin-bottom: 5px;
+
+  color: #355f7f;
+
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.modal-sub {
+  margin-bottom: 16px;
+
+  color: #899aa3;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.field {
+  margin-bottom: 13px;
+}
+
+.field label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #607783;
+
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.field input,
+.field select {
+  width: 100%;
+
+  border: 1px solid #dbe5ea;
+  border-radius: 12px;
+
+  padding: 12px;
+
+  background: white;
+
+  color: #344e5e;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #9dbed5;
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+.cancel-button,
+.save-button {
+  border: none;
+  border-radius: 13px;
+
+  padding: 12px;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.cancel-button {
+  background: #f1f3f4;
+
+  color: #71818a;
+}
+
+.save-button {
+  background: #dfefff;
+
+  color: #355f7f;
+}
+
+.save-button:disabled {
+  opacity: .5;
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-<div class="page-wrap">
+<div class="page">
 
 
   <div class="top-bar">
 
     <button
       class="back-button"
-      onclick="location.href='index.html'">
+      onclick="goBack()">
 
-      ‹
+      ←
 
     </button>
 
 
-    <div class="title-area">
+    <div class="top-title">
 
       <h1>
-        다른 연락처
+        📞 다른 연락처
       </h1>
 
-      <p>
-        도움이 필요할 때 바로 연락할 수 있어요.
+      <p id="pageDescription">
+        보호자와 학교 연락처를 확인해요.
       </p>
 
     </div>
@@ -473,229 +598,94 @@
 
 
 
-  <!-- 담당 선생님 -->
+  <div
+    id="superBanner"
+    class="super-banner">
+
+    <strong>
+      🛡️ 슈퍼관리
+    </strong>
+
+    선택한 실제 학생의 연락처를 관리하고 있습니다.
+
+  </div>
+
+
+
+  <div class="student-card">
+
+    <div
+      id="studentAvatar"
+      class="student-avatar">
+
+      🐻
+
+    </div>
+
+    <div>
+
+      <div
+        id="studentName"
+        class="student-name">
+
+        학생
+
+      </div>
+
+      <div
+        id="studentClass"
+        class="student-class">
+
+        정보를 불러오는 중...
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div
+    id="infoCard"
+    class="info-card">
+
+    보호자 또는 학교 연락처를 확인할 수 있습니다.
+
+  </div>
+
+
+
+  <button
+    id="addButton"
+    class="add-button"
+    onclick="openAddModal()">
+
+    ➕ 연락처 추가
+
+  </button>
+
+
 
   <div class="section-title">
-    👩‍🏫 담당 선생님
+    📱 등록된 연락처
   </div>
 
 
-  <div class="teacher-card">
+  <div
+    id="contactList"
+    class="contact-list">
 
-    <div class="teacher-top">
-
-      <div class="teacher-icon">
-        👩‍🏫
-      </div>
-
-      <div class="teacher-info">
-
-        <div class="teacher-role">
-          담당 선생님
-        </div>
-
-        <div
-          id="teacherName"
-          class="teacher-name">
-
-          담당 선생님 확인 중
-
-        </div>
-
-        <div
-          id="teacherPhone"
-          class="teacher-phone">
-
-          전화번호 확인 중
-
-        </div>
-
-      </div>
-
+    <div class="empty-card">
+      연락처를 불러오는 중...
     </div>
 
-
-    <button
-      id="teacherCallButton"
-      class="teacher-call-button"
-      disabled
-      onclick="callTeacher()">
-
-      📞 담당 선생님에게 전화
-
-    </button>
-
   </div>
 
 
 
-  <!-- 보호자 -->
-
-  <div class="section-title">
-    👨‍👩‍👧 보호자
-  </div>
-
-
-  <div class="guardian-grid">
-
-
-    <div class="guardian-card">
-
-      <div class="guardian-icon">
-        👩
-      </div>
-
-      <div class="guardian-role">
-        엄마
-      </div>
-
-      <div
-        id="motherName"
-        class="guardian-name">
-
-        등록된 이름 없음
-
-      </div>
-
-      <div
-        id="motherPhone"
-        class="guardian-phone">
-
-        등록된 번호 없음
-
-      </div>
-
-      <div class="guardian-spacer"></div>
-
-      <button
-        id="motherCallButton"
-        class="call-button"
-        disabled
-        onclick="callContact('mother')">
-
-        📞 엄마에게 전화
-
-      </button>
-
-    </div>
-
-
-
-    <div class="guardian-card">
-
-      <div class="guardian-icon">
-        👨
-      </div>
-
-      <div class="guardian-role">
-        아빠
-      </div>
-
-      <div
-        id="fatherName"
-        class="guardian-name">
-
-        등록된 이름 없음
-
-      </div>
-
-      <div
-        id="fatherPhone"
-        class="guardian-phone">
-
-        등록된 번호 없음
-
-      </div>
-
-      <div class="guardian-spacer"></div>
-
-      <button
-        id="fatherCallButton"
-        class="call-button"
-        disabled
-        onclick="callContact('father')">
-
-        📞 아빠에게 전화
-
-      </button>
-
-    </div>
-
-
-  </div>
-
-
-
-  <!-- 보건실 -->
-
-  <div class="section-title">
-    🏥 학교 연락처
-  </div>
-
-
-  <div class="nurse-card">
-
-    <div class="nurse-top">
-
-      <div class="nurse-icon">
-        🏥
-      </div>
-
-      <div class="nurse-info">
-
-        <div class="nurse-role">
-          보건실
-        </div>
-
-        <div
-          id="nurseName"
-          class="nurse-name">
-
-          등록된 이름 없음
-
-        </div>
-
-        <div
-          id="nursePhone"
-          class="nurse-phone">
-
-          등록된 번호 없음
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <button
-      id="nurseCallButton"
-      class="nurse-call-button"
-      disabled
-      onclick="callContact('nurse')">
-
-      📞 보건실에 전화하기
-
-    </button>
-
-  </div>
-
-
-
-  <div class="managed-note">
-
-    🔒 담당 선생님은 학교 연결 정보에서 자동으로 표시돼요.<br>
-    보호자와 보건실 연락처는 보호자 또는 교직원이 관리해요.
-
-  </div>
-
-
-
-  <div class="bottom-message">
-
-    전화 버튼을 누르면 휴대폰의 전화 기능이 열려요.<br>
-    도움이 필요하면 혼자 있지 말고 가까운 어른에게 바로 알려주세요.
-
+  <div
+    id="teacherArea">
   </div>
 
 
@@ -703,7 +693,136 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- 연락처 등록/수정 모달 -->
+
+<div
+  id="contactOverlay"
+  class="overlay">
+
+  <div class="modal">
+
+    <div
+      id="modalTitle"
+      class="modal-title">
+
+      연락처 추가
+
+    </div>
+
+
+    <div class="modal-sub">
+
+      학생에게 필요한 보호자 또는 학교 연락처를 입력해주세요.
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label for="contactName">
+        이름
+      </label>
+
+      <input
+        id="contactName"
+        type="text"
+        maxlength="50"
+        placeholder="예: 김OO">
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label for="relationship">
+        관계
+      </label>
+
+      <select id="relationship">
+
+        <option value="">
+          선택해주세요
+        </option>
+
+        <option value="어머니">
+          어머니
+        </option>
+
+        <option value="아버지">
+          아버지
+        </option>
+
+        <option value="보호자">
+          보호자
+        </option>
+
+        <option value="보건실">
+          보건실
+        </option>
+
+        <option value="학교">
+          학교
+        </option>
+
+        <option value="기타">
+          기타
+        </option>
+
+      </select>
+
+    </div>
+
+
+
+    <div class="field">
+
+      <label for="phoneNumber">
+        전화번호
+      </label>
+
+      <input
+        id="phoneNumber"
+        type="tel"
+        maxlength="30"
+        placeholder="예: 010-1234-5678">
+
+    </div>
+
+
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-button"
+        onclick="closeModal()">
+
+        취소
+
+      </button>
+
+
+      <button
+        id="saveButton"
+        class="save-button"
+        onclick="saveContact()">
+
+        저장
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
 
 
 <script>
@@ -727,59 +846,84 @@ let currentUser =
   null;
 
 
-let currentTeacher =
+let loginProfile =
   null;
 
 
-let contactMap =
-  {
-    mother: null,
-    father: null,
-    nurse: null
-  };
+let targetStudentId =
+  null;
 
 
+let targetStudent =
+  null;
+
+
+let isSuperView =
+  false;
+
+
+let isTeacherView =
+  false;
+
+
+let contacts =
+  [];
+
+
+let editingContact =
+  null;
+
+
+
+/* =========================
+시작
+========================= */
 
 window.addEventListener(
   "load",
   async function() {
 
-    const loggedIn =
-      await checkLogin();
+    const ready =
+      await initializePage();
 
 
-    if (!loggedIn) {
+    if (!ready) {
       return;
     }
 
 
-    await loadTeacher();
-
-
     await loadContacts();
+
+
+    await loadTeacher();
 
   }
 );
 
 
 
-async function checkLogin() {
+/* =========================
+누구의 연락처를 볼지 결정
+========================= */
+
+async function initializePage() {
 
   const {
-    data,
-    error
+    data: sessionData,
+    error: sessionError
   } =
     await supabaseClient.auth
       .getSession();
 
 
   if (
-    error ||
-    !data.session
+    sessionError
+    ||
+    !sessionData.session
   ) {
 
     location.href =
-      "login.html";
+      "./login.html";
 
 
     return false;
@@ -788,16 +932,18 @@ async function checkLogin() {
 
 
   currentUser =
-    data.session.user;
+    sessionData.session.user;
 
 
   const {
     data: profile,
-    error: profileError
+    error
   } =
     await supabaseClient
       .from("profiles")
-      .select("role")
+      .select(
+        "id,nickname,role,is_super"
+      )
       .eq(
         "id",
         currentUser.id
@@ -805,26 +951,15 @@ async function checkLogin() {
       .maybeSingle();
 
 
-  if (profileError) {
-
-    console.error(
-      profileError
-    );
-
-  }
-
-
   if (
-    profile &&
-    (
-      profile.role === "teacher"
-      ||
-      profile.role === "nurse"
-    )
+    error
+    ||
+    !profile
   ) {
 
-    location.href =
-      "teacher.html";
+    alert(
+      "계정 정보를 확인하지 못했어요."
+    );
 
 
     return false;
@@ -832,191 +967,355 @@ async function checkLogin() {
   }
 
 
-  return true;
+  loginProfile =
+    profile;
+
+
+
+  /* =========================
+     슈퍼계정
+  ========================= */
+
+  const superStudentId =
+    sessionStorage.getItem(
+      "superViewStudent"
+    );
+
+
+  if (
+    profile.is_super === true
+    &&
+    superStudentId
+  ) {
+
+    isSuperView =
+      true;
+
+
+    targetStudentId =
+      superStudentId;
+
+
+    const {
+      data: student,
+      error: studentError
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,nickname,class_name,avatar,role"
+        )
+        .eq(
+          "id",
+          targetStudentId
+        )
+        .eq(
+          "role",
+          "student"
+        )
+        .maybeSingle();
+
+
+    if (
+      studentError
+      ||
+      !student
+    ) {
+
+      alert(
+        "학생 정보를 불러오지 못했어요."
+      );
+
+
+      location.href =
+        "./admin.html";
+
+
+      return false;
+
+    }
+
+
+    targetStudent =
+      student;
+
+
+    document.getElementById(
+      "superBanner"
+    ).classList.add(
+      "show"
+    );
+
+
+    document.getElementById(
+      "addButton"
+    ).classList.add(
+      "show"
+    );
+
+
+    document.getElementById(
+      "infoCard"
+    ).innerHTML =
+      `
+        🛡️ 슈퍼계정에서는
+        이 학생의 보호자·학교 연락처를
+        <strong>추가, 수정, 삭제</strong>할 수 있습니다.
+      `;
+
+
+    renderStudentInfo();
+
+
+    return true;
+
+  }
+
+
+
+  /* =========================
+     교직원
+  ========================= */
+
+  if (
+    profile.role === "teacher"
+    ||
+    profile.role === "nurse"
+  ) {
+
+    const selectedStudent =
+      sessionStorage.getItem(
+        "teacherSelectedStudent"
+      );
+
+
+    if (!selectedStudent) {
+
+      alert(
+        "먼저 학생을 선택해주세요."
+      );
+
+
+      location.href =
+        "./teacher.html";
+
+
+      return false;
+
+    }
+
+
+    targetStudentId =
+      selectedStudent;
+
+
+    isTeacherView =
+      true;
+
+
+    const {
+      data: student
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,nickname,class_name,avatar"
+        )
+        .eq(
+          "id",
+          targetStudentId
+        )
+        .maybeSingle();
+
+
+    targetStudent =
+      student;
+
+
+    renderStudentInfo();
+
+
+    return true;
+
+  }
+
+
+
+  /* =========================
+     일반 학생
+  ========================= */
+
+  if (
+    profile.role === "student"
+  ) {
+
+    targetStudentId =
+      currentUser.id;
+
+
+    const {
+      data: student
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,nickname,class_name,avatar"
+        )
+        .eq(
+          "id",
+          currentUser.id
+        )
+        .maybeSingle();
+
+
+    targetStudent =
+      student;
+
+
+    renderStudentInfo();
+
+
+    return true;
+
+  }
+
+
+
+  /* =========================
+     데모
+  ========================= */
+
+  if (
+    profile.role === "demo"
+  ) {
+
+    targetStudentId =
+      currentUser.id;
+
+
+    targetStudent = {
+
+      id:
+        currentUser.id,
+
+      nickname:
+        "GlucoGuard Demo",
+
+      class_name:
+        "학생 화면 체험 중",
+
+      avatar:
+        "⭐"
+
+    };
+
+
+    renderStudentInfo();
+
+
+    document.getElementById(
+      "contactList"
+    ).innerHTML =
+      `
+
+        <div class="contact-card">
+
+          <div class="contact-main">
+
+            <div class="contact-icon">
+              👩
+            </div>
+
+            <div>
+
+              <div class="contact-name">
+                보호자
+              </div>
+
+              <div class="contact-relation">
+                체험용 연락처
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            class="phone-button"
+            onclick="alert('체험 모드에서는 실제 전화 연결을 하지 않습니다.')">
+
+            📞 010-0000-0000
+
+          </button>
+
+        </div>
+
+      `;
+
+
+    return false;
+
+  }
+
+
+  return false;
 
 }
 
 
 
 /* =========================
-   담당 선생님
+학생정보
 ========================= */
 
-async function loadTeacher() {
+function renderStudentInfo() {
 
-  const {
-    data: links,
-    error: linkError
-  } =
-    await supabaseClient
-      .from("teacher_students")
-      .select("teacher_id")
-      .eq(
-        "student_id",
-        currentUser.id
-      );
-
-
-  if (
-    linkError ||
-    !links ||
-    links.length === 0
-  ) {
-
-    showNoTeacher();
-
-
+  if (!targetStudent) {
     return;
-
   }
 
 
-  const teacherIds =
-    links.map(
-      item =>
-        item.teacher_id
-    );
-
-
-  const {
-    data: teachers,
-    error: teacherError
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id, nickname, role, phone_number"
-      )
-      .in(
-        "id",
-        teacherIds
-      );
-
-
-  if (
-    teacherError ||
-    !teachers ||
-    teachers.length === 0
-  ) {
-
-    showNoTeacher();
-
-
-    return;
-
-  }
-
-
-  currentTeacher =
-    teachers.find(
-      teacher =>
-        teacher.phone_number
-    )
+  document.getElementById(
+    "studentAvatar"
+  ).textContent =
+    targetStudent.avatar
     ||
-    teachers[0];
+    "🐻";
 
 
   document.getElementById(
-    "teacherName"
+    "studentName"
   ).textContent =
-    currentTeacher.nickname ||
-    "담당 선생님";
-
-
-  document.getElementById(
-    "teacherPhone"
-  ).textContent =
-    currentTeacher.phone_number
+    targetStudent.nickname
     ||
-    "등록된 번호 없음";
+    "학생";
 
 
   document.getElementById(
-    "teacherCallButton"
-  ).disabled =
-    !currentTeacher.phone_number;
-
-}
-
-
-
-function showNoTeacher() {
-
-  currentTeacher =
-    null;
-
-
-  document.getElementById(
-    "teacherName"
+    "studentClass"
   ).textContent =
-    "연결된 담당 선생님 없음";
+    targetStudent.class_name
+    ||
+    "학급 정보 없음";
 
-
-  document.getElementById(
-    "teacherPhone"
-  ).textContent =
-    "등록된 번호 없음";
-
-
-  document.getElementById(
-    "teacherCallButton"
-  ).disabled =
-    true;
-
-}
-
-
-
-function callTeacher() {
 
   if (
-    !currentTeacher ||
-    !currentTeacher.phone_number
+    isSuperView
   ) {
 
-    alert(
-      "담당 선생님의 전화번호가 등록되지 않았어요."
-    );
-
-
-    return;
+    document.getElementById(
+      "pageDescription"
+    ).textContent =
+      `${targetStudent.nickname || "학생"} 학생의 연락처를 관리합니다.`;
 
   }
-
-
-  const confirmed =
-    confirm(
-      (currentTeacher.nickname || "담당 선생님")
-      +
-      "에게 전화할까요?\n\n"
-      +
-      currentTeacher.phone_number
-    );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  const cleanedPhone =
-    currentTeacher.phone_number.replace(
-      /[^0-9+]/g,
-      ""
-    );
-
-
-  location.href =
-    "tel:"
-    +
-    cleanedPhone;
 
 }
 
 
 
 /* =========================
-   보호자 / 보건실
+연락처 불러오기
 ========================= */
 
 async function loadContacts() {
@@ -1030,11 +1329,11 @@ async function loadContacts() {
         "emergency_contacts"
       )
       .select(
-        "id, contact_name, relationship, phone_number, created_at"
+        "id,user_id,contact_name,relationship,phone_number,created_at"
       )
       .eq(
         "user_id",
-        currentUser.id
+        targetStudentId
       )
       .order(
         "created_at",
@@ -1051,154 +1350,69 @@ async function loadContacts() {
     );
 
 
+    document.getElementById(
+      "contactList"
+    ).innerHTML =
+      `
+
+        <div class="empty-card">
+
+          연락처를 불러오지 못했어요.
+
+        </div>
+
+      `;
+
+
     return;
 
   }
 
 
-  const contacts =
+  contacts =
     data || [];
 
 
-  contactMap.mother =
-    contacts.find(
-      contact =>
-        contact.relationship ===
-        "엄마"
-    ) || null;
-
-
-  contactMap.father =
-    contacts.find(
-      contact =>
-        contact.relationship ===
-        "아빠"
-    ) || null;
-
-
-  contactMap.nurse =
-    contacts.find(
-      contact =>
-        contact.relationship ===
-        "보건실"
-    ) || null;
-
-
-  renderContact(
-    "mother",
-    contactMap.mother
-  );
-
-
-  renderContact(
-    "father",
-    contactMap.father
-  );
-
-
-  renderContact(
-    "nurse",
-    contactMap.nurse
-  );
+  renderContacts();
 
 }
 
 
 
-function renderContact(
-  type,
-  contact
-) {
+/* =========================
+연락처 표시
+========================= */
 
-  let nameElement;
-  let phoneElement;
-  let buttonElement;
+function renderContacts() {
 
-
-  if (
-    type === "mother"
-  ) {
-
-    nameElement =
-      document.getElementById(
-        "motherName"
-      );
-
-
-    phoneElement =
-      document.getElementById(
-        "motherPhone"
-      );
-
-
-    buttonElement =
-      document.getElementById(
-        "motherCallButton"
-      );
-
-  }
+  const area =
+    document.getElementById(
+      "contactList"
+    );
 
 
   if (
-    type === "father"
+    contacts.length === 0
   ) {
 
-    nameElement =
-      document.getElementById(
-        "fatherName"
-      );
+    area.innerHTML =
+      `
 
+        <div class="empty-card">
 
-    phoneElement =
-      document.getElementById(
-        "fatherPhone"
-      );
+          아직 등록된 다른 연락처가 없습니다.
 
+          ${
+            isSuperView
+            ?
+            "<br>위의 ‘연락처 추가’ 버튼으로 등록해주세요."
+            :
+            ""
+          }
 
-    buttonElement =
-      document.getElementById(
-        "fatherCallButton"
-      );
+        </div>
 
-  }
-
-
-  if (
-    type === "nurse"
-  ) {
-
-    nameElement =
-      document.getElementById(
-        "nurseName"
-      );
-
-
-    phoneElement =
-      document.getElementById(
-        "nursePhone"
-      );
-
-
-    buttonElement =
-      document.getElementById(
-        "nurseCallButton"
-      );
-
-  }
-
-
-  if (!contact) {
-
-    nameElement.textContent =
-      "등록된 이름 없음";
-
-
-    phoneElement.textContent =
-      "등록된 번호 없음";
-
-
-    buttonElement.disabled =
-      true;
+      `;
 
 
     return;
@@ -1206,73 +1420,848 @@ function renderContact(
   }
 
 
-  nameElement.textContent =
-    contact.contact_name;
+  area.innerHTML =
+    contacts.map(
+      contact => {
+
+        return `
+
+          <div class="contact-card">
+
+            <div class="contact-head">
+
+              <div class="contact-main">
+
+                <div class="contact-icon">
+
+                  ${getRelationshipIcon(
+                    contact.relationship
+                  )}
+
+                </div>
 
 
-  phoneElement.textContent =
-    contact.phone_number;
+                <div>
+
+                  <div class="contact-name">
+
+                    ${escapeHtml(
+                      contact.contact_name
+                      ||
+                      "이름 없음"
+                    )}
+
+                  </div>
 
 
-  buttonElement.disabled =
-    false;
+                  <div class="contact-relation">
+
+                    ${escapeHtml(
+                      contact.relationship
+                      ||
+                      "연락처"
+                    )}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="phone-button"
+              onclick="callContact('${escapeJs(contact.phone_number || "")}')">
+
+              📞
+              ${escapeHtml(
+                contact.phone_number
+                ||
+                "전화번호 없음"
+              )}
+
+            </button>
+
+
+            <div
+              class="admin-actions
+              ${isSuperView ? "show" : ""}">
+
+              <button
+                class="edit-button"
+                onclick="openEditModal(${Number(contact.id)})">
+
+                ✏️ 수정
+
+              </button>
+
+
+              <button
+                class="delete-button"
+                onclick="deleteContact(${Number(contact.id)})">
+
+                🗑️ 삭제
+
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
 
-function callContact(
-  type
+/* =========================
+담당 교직원
+========================= */
+
+async function loadTeacher() {
+
+  if (
+    !targetStudentId
+  ) {
+    return;
+  }
+
+
+  const {
+    data: links,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "teacher_students"
+      )
+      .select(
+        "teacher_id"
+      )
+      .eq(
+        "student_id",
+        targetStudentId
+      )
+      .limit(1);
+
+
+  if (
+    error
+    ||
+    !links
+    ||
+    links.length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  const teacherId =
+    links[0].teacher_id;
+
+
+  const {
+    data: teacher
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "nickname,phone_number"
+      )
+      .eq(
+        "id",
+        teacherId
+      )
+      .maybeSingle();
+
+
+  if (!teacher) {
+    return;
+  }
+
+
+  document.getElementById(
+    "teacherArea"
+  ).innerHTML =
+    `
+
+      <div class="teacher-card">
+
+        <div class="teacher-title">
+          👩‍🏫 담당 선생님
+        </div>
+
+        <div class="teacher-name">
+
+          ${escapeHtml(
+            teacher.nickname
+            ||
+            "담당 선생님"
+          )}
+
+        </div>
+
+        <div class="teacher-phone">
+
+          ${
+            teacher.phone_number
+            ?
+            escapeHtml(
+              teacher.phone_number
+            )
+            :
+            "등록된 연락처 없음"
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+}
+
+
+
+/* =========================
+추가 모달
+========================= */
+
+function openAddModal() {
+
+  if (
+    !isSuperView
+  ) {
+    return;
+  }
+
+
+  editingContact =
+    null;
+
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    "연락처 추가";
+
+
+  document.getElementById(
+    "contactName"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "relationship"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "phoneNumber"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "contactOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+
+/* =========================
+수정 모달
+========================= */
+
+function openEditModal(
+  id
 ) {
 
+  if (
+    !isSuperView
+  ) {
+    return;
+  }
+
+
   const contact =
-    contactMap[type];
+    contacts.find(
+      item =>
+        Number(item.id)
+        ===
+        Number(id)
+    );
 
 
   if (!contact) {
+    return;
+  }
+
+
+  editingContact =
+    contact;
+
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    "연락처 수정";
+
+
+  document.getElementById(
+    "contactName"
+  ).value =
+    contact.contact_name
+    ||
+    "";
+
+
+  document.getElementById(
+    "relationship"
+  ).value =
+    contact.relationship
+    ||
+    "";
+
+
+  document.getElementById(
+    "phoneNumber"
+  ).value =
+    contact.phone_number
+    ||
+    "";
+
+
+  document.getElementById(
+    "contactOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+
+/* =========================
+모달 닫기
+========================= */
+
+function closeModal() {
+
+  document.getElementById(
+    "contactOverlay"
+  ).classList.remove(
+    "show"
+  );
+
+
+  editingContact =
+    null;
+
+}
+
+
+
+/* =========================
+연락처 저장
+========================= */
+
+async function saveContact() {
+
+  if (
+    !isSuperView
+  ) {
+
+    return;
+
+  }
+
+
+  const contactName =
+    document.getElementById(
+      "contactName"
+    ).value.trim();
+
+
+  const relationship =
+    document.getElementById(
+      "relationship"
+    ).value.trim();
+
+
+  const phoneNumber =
+    document.getElementById(
+      "phoneNumber"
+    ).value.trim();
+
+
+  if (
+    !contactName
+  ) {
 
     alert(
-      "등록된 전화번호가 없어요."
+      "이름을 입력해주세요."
     );
 
 
     return;
 
+  }
+
+
+  if (
+    !relationship
+  ) {
+
+    alert(
+      "관계를 선택해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    !phoneNumber
+  ) {
+
+    alert(
+      "전화번호를 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  let result;
+
+
+  if (
+    editingContact
+  ) {
+
+    result =
+      await supabaseClient
+        .from(
+          "emergency_contacts"
+        )
+        .update(
+          {
+
+            contact_name:
+              contactName,
+
+            relationship:
+              relationship,
+
+            phone_number:
+              phoneNumber
+
+          }
+        )
+        .eq(
+          "id",
+          editingContact.id
+        )
+        .eq(
+          "user_id",
+          targetStudentId
+        );
+
+  }
+  else {
+
+    result =
+      await supabaseClient
+        .from(
+          "emergency_contacts"
+        )
+        .insert(
+          {
+
+            user_id:
+              targetStudentId,
+
+            contact_name:
+              contactName,
+
+            relationship:
+              relationship,
+
+            phone_number:
+              phoneNumber
+
+          }
+        );
+
+  }
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "저장";
+
+
+  if (
+    result.error
+  ) {
+
+    console.error(
+      result.error
+    );
+
+
+    alert(
+      "연락처를 저장하지 못했어요.\nSupabase 권한 설정도 확인해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  closeModal();
+
+
+  await loadContacts();
+
+
+  alert(
+    "연락처가 저장되었습니다."
+  );
+
+}
+
+
+
+/* =========================
+삭제
+========================= */
+
+async function deleteContact(
+  id
+) {
+
+  if (
+    !isSuperView
+  ) {
+    return;
+  }
+
+
+  const contact =
+    contacts.find(
+      item =>
+        Number(item.id)
+        ===
+        Number(id)
+    );
+
+
+  if (!contact) {
+    return;
   }
 
 
   const confirmed =
     confirm(
-      contact.relationship
-      +
-      " "
-      +
-      contact.contact_name
-      +
-      "에게 전화할까요?\n\n"
-      +
-      contact.phone_number
+      `${contact.contact_name || "이 연락처"}를 삭제할까요?`
     );
 
 
-  if (!confirmed) {
+  if (
+    !confirmed
+  ) {
+
     return;
+
   }
 
 
-  const cleanedPhone =
-    contact.phone_number.replace(
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "emergency_contacts"
+      )
+      .delete()
+      .eq(
+        "id",
+        id
+      )
+      .eq(
+        "user_id",
+        targetStudentId
+      );
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "연락처를 삭제하지 못했어요."
+    );
+
+
+    return;
+
+  }
+
+
+  await loadContacts();
+
+}
+
+
+
+/* =========================
+전화
+========================= */
+
+function callContact(
+  phone
+) {
+
+  if (!phone) {
+
+    alert(
+      "전화번호가 등록되어 있지 않습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  const cleaned =
+    phone.replace(
       /[^0-9+]/g,
       ""
     );
 
 
-  location.href =
+  window.location.href =
     "tel:"
     +
-    cleanedPhone;
+    cleaned;
 
 }
+
+
+
+/* =========================
+관계 아이콘
+========================= */
+
+function getRelationshipIcon(
+  relationship
+) {
+
+  if (
+    relationship === "어머니"
+  ) {
+    return "👩";
+  }
+
+
+  if (
+    relationship === "아버지"
+  ) {
+    return "👨";
+  }
+
+
+  if (
+    relationship === "보건실"
+  ) {
+    return "🩺";
+  }
+
+
+  if (
+    relationship === "학교"
+  ) {
+    return "🏫";
+  }
+
+
+  if (
+    relationship === "보호자"
+  ) {
+    return "🧑";
+  }
+
+
+  return "📞";
+
+}
+
+
+
+/* =========================
+뒤로가기
+========================= */
+
+function goBack() {
+
+  if (
+    isSuperView
+  ) {
+
+    location.href =
+      "./index.html";
+
+
+    return;
+
+  }
+
+
+  if (
+    isTeacherView
+  ) {
+
+    location.href =
+      "./teacher.html";
+
+
+    return;
+
+  }
+
+
+  location.href =
+    "./index.html";
+
+}
+
+
+
+/* =========================
+안전처리
+========================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+function escapeJs(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "\\",
+      "\\\\"
+    )
+    .replaceAll(
+      "'",
+      "\\'"
+    )
+    .replaceAll(
+      "\n",
+      ""
+    )
+    .replaceAll(
+      "\r",
+      ""
+    );
+
+}
+
+
+
+/* =========================
+바깥 클릭
+========================= */
+
+document.getElementById(
+  "contactOverlay"
+).addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      event.target === this
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
 
 </script>
 
