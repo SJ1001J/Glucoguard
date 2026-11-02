@@ -17,7 +17,6 @@
 
     body {
       margin: 0;
-
       background: #f5f8fb;
 
       font-family:
@@ -30,8 +29,7 @@
     }
 
     button,
-    input,
-    select {
+    input {
       font-family: inherit;
     }
 
@@ -44,10 +42,6 @@
       padding: 18px 16px 50px;
     }
 
-    /* =========================
-       상단
-    ========================= */
-
     .top-card {
       padding: 18px;
 
@@ -58,7 +52,7 @@
       background: white;
 
       box-shadow:
-        0 5px 18px rgba(60, 80, 95, .07);
+        0 5px 18px rgba(60,80,95,.07);
     }
 
     .top-row {
@@ -67,10 +61,6 @@
       justify-content: space-between;
 
       gap: 12px;
-    }
-
-    .brand {
-      min-width: 0;
     }
 
     .brand-title {
@@ -91,42 +81,30 @@
 
     .top-actions {
       display: flex;
-
       gap: 7px;
-
-      flex-shrink: 0;
     }
 
-    .small-button {
-      border: none;
-      border-radius: 11px;
-
-      padding: 9px 11px;
-
-      background: #edf4fa;
-
-      color: #526f82;
-
-      font-size: 10px;
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
+    .small-button,
     .logout-button {
       border: none;
       border-radius: 11px;
 
       padding: 9px 11px;
 
-      background: #f4f4f4;
-
-      color: #7a858b;
-
       font-size: 10px;
       font-weight: 900;
 
       cursor: pointer;
+    }
+
+    .small-button {
+      background: #edf4fa;
+      color: #526f82;
+    }
+
+    .logout-button {
+      background: #f4f4f4;
+      color: #7a858b;
     }
 
     .super-badge {
@@ -146,10 +124,6 @@
       font-weight: 900;
     }
 
-    /* =========================
-       안내
-    ========================= */
-
     .notice-card {
       margin-bottom: 18px;
 
@@ -164,10 +138,6 @@
       font-size: 11px;
       line-height: 1.7;
     }
-
-    /* =========================
-       탭
-    ========================= */
 
     .tabs {
       display: grid;
@@ -192,20 +162,12 @@
       font-weight: 900;
 
       cursor: pointer;
-
-      box-shadow:
-        0 3px 11px rgba(60, 80, 95, .05);
     }
 
     .tab-button.active {
       background: #dfefff;
-
       color: #355f7f;
     }
-
-    /* =========================
-       목록
-    ========================= */
 
     .section-title {
       margin: 18px 2px 10px;
@@ -218,7 +180,6 @@
 
     .user-list {
       display: grid;
-
       gap: 10px;
     }
 
@@ -230,12 +191,12 @@
       background: white;
 
       box-shadow:
-        0 4px 13px rgba(60, 80, 95, .05);
+        0 4px 13px rgba(60,80,95,.05);
     }
 
     .user-top {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
 
       gap: 10px;
@@ -245,9 +206,9 @@
       display: flex;
       align-items: center;
 
-      min-width: 0;
-
       gap: 11px;
+
+      min-width: 0;
     }
 
     .avatar {
@@ -267,17 +228,11 @@
       font-size: 25px;
     }
 
-    .user-text {
-      min-width: 0;
-    }
-
     .user-name {
       color: #344e5e;
 
       font-size: 14px;
       font-weight: 900;
-
-      word-break: break-word;
     }
 
     .user-meta {
@@ -287,26 +242,38 @@
 
       font-size: 10px;
       line-height: 1.5;
-
-      word-break: break-word;
     }
 
-    .edit-button {
-      flex-shrink: 0;
+    .user-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
+      gap: 8px;
+
+      margin-top: 13px;
+    }
+
+    .edit-button,
+    .view-button {
       border: none;
-      border-radius: 11px;
+      border-radius: 12px;
 
-      padding: 9px 11px;
-
-      background: #e9f4ed;
-
-      color: #47725a;
+      padding: 11px 8px;
 
       font-size: 10px;
       font-weight: 900;
 
       cursor: pointer;
+    }
+
+    .edit-button {
+      background: #e9f4ed;
+      color: #47725a;
+    }
+
+    .view-button {
+      background: #eaf3ff;
+      color: #356b91;
     }
 
     .empty-card {
@@ -321,18 +288,12 @@
       text-align: center;
 
       font-size: 11px;
-      line-height: 1.6;
     }
-
-    /* =========================
-       수정창
-    ========================= */
 
     .modal-backdrop {
       display: none;
 
       position: fixed;
-
       inset: 0;
 
       z-index: 1000;
@@ -342,7 +303,7 @@
       overflow-y: auto;
 
       background:
-        rgba(32, 48, 58, .38);
+        rgba(32,48,58,.38);
     }
 
     .modal-backdrop.show {
@@ -362,9 +323,6 @@
       border-radius: 23px;
 
       background: white;
-
-      box-shadow:
-        0 12px 34px rgba(20, 35, 45, .18);
     }
 
     .modal-title {
@@ -382,7 +340,6 @@
       color: #8b9ca6;
 
       font-size: 10px;
-      line-height: 1.6;
     }
 
     .field {
@@ -408,17 +365,7 @@
 
       padding: 12px 13px;
 
-      outline: none;
-
-      background: white;
-
-      color: #344e5e;
-
       font-size: 16px;
-    }
-
-    .field input:focus {
-      border-color: #9fc1dc;
     }
 
     .readonly-box {
@@ -457,25 +404,13 @@
 
     .cancel-button {
       background: #f1f3f4;
-
       color: #72828a;
     }
 
     .save-button {
       background: #dfefff;
-
       color: #355f7f;
     }
-
-    .save-button:disabled {
-      opacity: .55;
-
-      cursor: default;
-    }
-
-    /* =========================
-       메시지
-    ========================= */
 
     .message {
       display: none;
@@ -488,7 +423,6 @@
 
       font-size: 10px;
       font-weight: 800;
-      line-height: 1.5;
     }
 
     .message.show {
@@ -497,36 +431,15 @@
 
     .message.success {
       background: #eaf7ee;
-
       color: #47725a;
     }
 
     .message.error {
       background: #fff0ee;
-
       color: #a6534c;
-    }
-
-    @media (max-width: 520px) {
-      .top-row {
-        align-items: flex-start;
-      }
-
-      .top-actions {
-        flex-direction: column;
-      }
-
-      .user-top {
-        align-items: flex-start;
-      }
-
-      .modal {
-        margin-top: 5px;
-      }
     }
   </style>
 </head>
-
 
 <body>
 
@@ -536,18 +449,17 @@
 
     <div class="top-row">
 
-      <div class="brand">
+      <div>
 
         <div class="brand-title">
           🛡️ GlucoGuard 슈퍼관리
         </div>
 
         <div class="brand-sub">
-          학생 및 교직원 계정 정보를 관리합니다.
+          학생 및 교직원 계정을 관리합니다.
         </div>
 
       </div>
-
 
       <div class="top-actions">
 
@@ -571,7 +483,6 @@
 
     </div>
 
-
     <div class="super-badge">
       ⭐ 슈퍼계정
     </div>
@@ -587,9 +498,9 @@
 
   <div class="notice-card">
 
-    슈퍼계정에서는 학생과 교직원의 기본 정보를 수정할 수 있습니다.
-    <br>
-    비밀번호 변경 기능은 다음 단계에서 별도로 연결합니다.
+    학생 계정에서는
+    <strong>학생 화면 보기</strong>를 눌러
+    해당 학생이 실제로 보는 화면을 확인할 수 있습니다.
 
   </div>
 
@@ -604,7 +515,6 @@
       👧 학생 관리
 
     </button>
-
 
     <button
       id="staffTab"
@@ -640,8 +550,6 @@
 </div>
 
 
-
-<!-- 수정 모달 -->
 
 <div
   id="editModal"
@@ -681,8 +589,7 @@
 
       <input
         id="editNickname"
-        type="text"
-        maxlength="40">
+        type="text">
 
     </div>
 
@@ -696,7 +603,6 @@
       <input
         id="editClassName"
         type="text"
-        maxlength="50"
         placeholder="예: 3학년 4반">
 
     </div>
@@ -711,7 +617,6 @@
       <input
         id="editPhone"
         type="tel"
-        maxlength="30"
         placeholder="예: 010-1234-5678">
 
     </div>
@@ -728,7 +633,6 @@
       <input
         id="editAvatar"
         type="text"
-        maxlength="10"
         placeholder="예: 🐱">
 
     </div>
@@ -743,7 +647,6 @@
         취소
 
       </button>
-
 
       <button
         id="saveButton"
@@ -784,43 +687,28 @@ const supabaseClient =
   );
 
 
-let currentUser =
-  null;
+let currentUser = null;
+let currentProfile = null;
+let profiles = [];
+let activeTab = "student";
+let editingProfile = null;
 
 
-let currentProfile =
-  null;
-
-
-let profiles =
-  [];
-
-
-let activeTab =
-  "student";
-
-
-let editingProfile =
-  null;
-
-
-
-/* =========================
-   시작
-========================= */
 
 window.addEventListener(
   "load",
   async function() {
 
+    sessionStorage.removeItem(
+      "superViewStudent"
+    );
+
     const allowed =
       await checkSuperAccount();
-
 
     if (!allowed) {
       return;
     }
-
 
     await loadProfiles();
 
@@ -829,29 +717,21 @@ window.addEventListener(
 
 
 
-/* =========================
-   슈퍼계정 확인
-========================= */
-
 async function checkSuperAccount() {
 
   const {
-    data: sessionData,
-    error: sessionError
+    data: sessionData
   } =
     await supabaseClient.auth
       .getSession();
 
 
   if (
-    sessionError
-    ||
     !sessionData.session
   ) {
 
     window.location.href =
       "./login.html";
-
 
     return false;
 
@@ -890,10 +770,8 @@ async function checkSuperAccount() {
       "슈퍼계정만 접근할 수 있습니다."
     );
 
-
     window.location.href =
       "./login.html";
-
 
     return false;
 
@@ -909,10 +787,6 @@ async function checkSuperAccount() {
 }
 
 
-
-/* =========================
-   계정 목록 불러오기
-========================= */
 
 async function loadProfiles() {
 
@@ -949,22 +823,12 @@ async function loadProfiles() {
 
   if (error) {
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     showMessage(
       "계정 정보를 불러오지 못했습니다.",
       "error"
     );
-
-
-    profiles = [];
-
-
-    renderProfiles();
-
 
     return;
 
@@ -980,10 +844,6 @@ async function loadProfiles() {
 }
 
 
-
-/* =========================
-   탭
-========================= */
 
 function showTab(tab) {
 
@@ -1011,10 +871,10 @@ function showTab(tab) {
     "sectionTitle"
   ).textContent =
     tab === "student"
-      ?
-      "👧 학생 계정"
-      :
-      "👩‍🏫 교직원 계정";
+    ?
+    "👧 학생 계정"
+    :
+    "👩‍🏫 교직원 계정";
 
 
   renderProfiles();
@@ -1022,10 +882,6 @@ function showTab(tab) {
 }
 
 
-
-/* =========================
-   목록 표시
-========================= */
 
 function renderProfiles() {
 
@@ -1035,8 +891,7 @@ function renderProfiles() {
     );
 
 
-  let filtered =
-    [];
+  let filtered = [];
 
 
   if (
@@ -1074,109 +929,169 @@ function renderProfiles() {
         </div>
       `;
 
-
     return;
 
   }
 
 
   area.innerHTML =
-    filtered
-      .map(
-        profile => {
+    filtered.map(
+      profile => {
 
-          const avatar =
-            profile.role === "student"
-              ?
-              (
-                profile.avatar
-                ||
-                "🐻"
-              )
-              :
-              (
-                profile.role === "nurse"
-                  ?
-                  "🩺"
-                  :
-                  "👩‍🏫"
-              );
-
-
-          const roleText =
-            getRoleText(
-              profile.role
-            );
-
-
-          const className =
-            profile.class_name
+        const avatar =
+          profile.role === "student"
+          ?
+          (
+            profile.avatar
             ||
-            "학급 정보 없음";
+            "🐻"
+          )
+          :
+          (
+            profile.role === "nurse"
+            ?
+            "🩺"
+            :
+            "👩‍🏫"
+          );
 
 
-          const phone =
-            profile.phone_number
-            ||
-            "연락처 없음";
+        const className =
+          profile.class_name
+          ||
+          "학급 정보 없음";
 
 
-          return `
-            <div class="user-card">
+        const phone =
+          profile.phone_number
+          ||
+          "연락처 없음";
 
-              <div class="user-top">
 
-                <div class="user-main">
+        const studentViewButton =
+          profile.role === "student"
+          ?
+          `
+            <button
+              class="view-button"
+              onclick="viewStudent('${profile.id}')">
 
-                  <div class="avatar">
-                    ${escapeHtml(avatar)}
+              👀 학생 화면 보기
+
+            </button>
+          `
+          :
+          "";
+
+
+        return `
+          <div class="user-card">
+
+            <div class="user-top">
+
+              <div class="user-main">
+
+                <div class="avatar">
+                  ${escapeHtml(avatar)}
+                </div>
+
+                <div>
+
+                  <div class="user-name">
+                    ${escapeHtml(profile.nickname || "이름 없음")}
                   </div>
 
-                  <div class="user-text">
+                  <div class="user-meta">
 
-                    <div class="user-name">
-                      ${escapeHtml(profile.nickname || "이름 없음")}
-                    </div>
+                    ${escapeHtml(getRoleText(profile.role))}
+                    ·
+                    ${escapeHtml(className)}
 
-                    <div class="user-meta">
-                      ${escapeHtml(roleText)}
-                      ·
-                      ${escapeHtml(className)}
-                      <br>
-                      ${escapeHtml(phone)}
-                    </div>
+                    <br>
+
+                    ${escapeHtml(phone)}
 
                   </div>
 
                 </div>
 
-
-                <button
-                  class="edit-button"
-                  onclick="openEditModal('${profile.id}')">
-
-                  수정
-
-                </button>
-
               </div>
 
             </div>
-          `;
 
-        }
-      )
-      .join("");
+
+            <div
+              class="user-actions"
+              style="
+                grid-template-columns:
+                ${profile.role === "student"
+                ?
+                "1fr 1fr"
+                :
+                "1fr"};
+              ">
+
+              ${studentViewButton}
+
+              <button
+                class="edit-button"
+                onclick="openEditModal('${profile.id}')">
+
+                ✏️ 정보 수정
+
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      }
+    ).join("");
 
 }
 
 
 
 /* =========================
-   수정창 열기
+   학생 화면 보기
 ========================= */
 
-function openEditModal(profileId) {
+function viewStudent(
+  studentId
+) {
+
+  sessionStorage.setItem(
+    "superViewStudent",
+    studentId
+  );
+
+
+  sessionStorage.setItem(
+    "teacherSelectedStudent",
+    studentId
+  );
+
+
+  sessionStorage.removeItem(
+    "demoMode"
+  );
+
+
+  window.location.href =
+    "./index.html";
+
+}
+
+
+
+/* =========================
+   수정
+========================= */
+
+function openEditModal(
+  profileId
+) {
 
   const target =
     profiles.find(
@@ -1186,15 +1101,7 @@ function openEditModal(profileId) {
 
 
   if (!target) {
-
-    showMessage(
-      "계정 정보를 찾지 못했습니다.",
-      "error"
-    );
-
-
     return;
-
   }
 
 
@@ -1205,7 +1112,7 @@ function openEditModal(profileId) {
   document.getElementById(
     "editDescription"
   ).textContent =
-    `${target.nickname || "사용자"} 계정의 정보를 수정합니다.`;
+    `${target.nickname || "사용자"} 계정 정보를 수정합니다.`;
 
 
   document.getElementById(
@@ -1244,10 +1151,10 @@ function openEditModal(profileId) {
     "avatarField"
   ).style.display =
     target.role === "student"
-      ?
-      "block"
-      :
-      "none";
+    ?
+    "block"
+    :
+    "none";
 
 
   document.getElementById(
@@ -1259,10 +1166,6 @@ function openEditModal(profileId) {
 }
 
 
-
-/* =========================
-   수정창 닫기
-========================= */
 
 function closeEditModal() {
 
@@ -1279,10 +1182,6 @@ function closeEditModal() {
 }
 
 
-
-/* =========================
-   프로필 저장
-========================= */
 
 async function saveProfile() {
 
@@ -1318,27 +1217,12 @@ async function saveProfile() {
   if (!nickname) {
 
     alert(
-      "이름 또는 표시이름을 입력해주세요."
+      "이름을 입력해주세요."
     );
-
 
     return;
 
   }
-
-
-  const saveButton =
-    document.getElementById(
-      "saveButton"
-    );
-
-
-  saveButton.disabled =
-    true;
-
-
-  saveButton.textContent =
-    "저장 중...";
 
 
   const updates = {
@@ -1379,25 +1263,13 @@ async function saveProfile() {
       );
 
 
-  saveButton.disabled =
-    false;
-
-
-  saveButton.textContent =
-    "저장";
-
-
   if (error) {
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     alert(
       "정보 수정에 실패했습니다."
     );
-
 
     return;
 
@@ -1419,10 +1291,6 @@ async function saveProfile() {
 
 
 
-/* =========================
-   메시지
-========================= */
-
 function showMessage(
   text,
   type
@@ -1442,23 +1310,19 @@ function showMessage(
     `message show ${type}`;
 
 
-  window.setTimeout(
+  setTimeout(
     function() {
 
       box.className =
         "message";
 
     },
-    3500
+    3000
   );
 
 }
 
 
-
-/* =========================
-   역할명
-========================= */
 
 function getRoleText(role) {
 
@@ -1483,17 +1347,18 @@ function getRoleText(role) {
   }
 
 
-  return role || "알 수 없음";
+  return role || "";
 
 }
 
 
 
-/* =========================
-   데모 교직원 화면
-========================= */
-
 function goDemoTeacher() {
+
+  sessionStorage.removeItem(
+    "superViewStudent"
+  );
+
 
   sessionStorage.setItem(
     "demoMode",
@@ -1508,20 +1373,9 @@ function goDemoTeacher() {
 
 
 
-/* =========================
-   로그아웃
-========================= */
-
 async function logout() {
 
-  sessionStorage.removeItem(
-    "demoMode"
-  );
-
-
-  sessionStorage.removeItem(
-    "teacherSelectedStudent"
-  );
+  sessionStorage.clear();
 
 
   await supabaseClient.auth
@@ -1535,41 +1389,35 @@ async function logout() {
 
 
 
-/* =========================
-   HTML 안전처리
-========================= */
-
 function escapeHtml(value) {
 
   return String(
     value ?? ""
   )
-    .replace(
-      /&/g,
+    .replaceAll(
+      "&",
       "&amp;"
     )
-    .replace(
-      /</g,
+    .replaceAll(
+      "<",
       "&lt;"
     )
-    .replace(
-      />/g,
+    .replaceAll(
+      ">",
       "&gt;"
     )
-    .replace(
-      /"/g,
+    .replaceAll(
+      '"',
       "&quot;"
     )
-    .replace(
-      /'/g,
+    .replaceAll(
+      "'",
       "&#039;"
     );
 
 }
 
 
-
-/* 바깥 영역 클릭 시 닫기 */
 
 document.getElementById(
   "editModal"
@@ -1590,7 +1438,5 @@ document.getElementById(
 
 </script>
 
-
 </body>
-
 </html>
