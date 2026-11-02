@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>GlucoGuard 슈퍼관리</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+
+      background: #f5f8fb;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: #263238;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      padding: 18px 16px 50px;
+    }
+
+    /* =========================
+       상단
+    ========================= */
+
+    .top-card {
+      padding: 18px;
+
+      margin-bottom: 18px;
+
+      border-radius: 22px;
+
+      background: white;
+
+      box-shadow:
+        0 5px 18px rgba(60, 80, 95, .07);
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+    }
+
+    .brand {
+      min-width: 0;
+    }
+
+    .brand-title {
+      color: #355f7f;
+
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+
+      color: #8597a1;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .top-actions {
+      display: flex;
+
+      gap: 7px;
+
+      flex-shrink: 0;
+    }
+
+    .small-button {
+      border: none;
+      border-radius: 11px;
+
+      padding: 9px 11px;
+
+      background: #edf4fa;
+
+      color: #526f82;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .logout-button {
+      border: none;
+      border-radius: 11px;
+
+      padding: 9px 11px;
+
+      background: #f4f4f4;
+
+      color: #7a858b;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .super-badge {
+      display: inline-block;
+
+      margin-top: 13px;
+
+      padding: 7px 10px;
+
+      border-radius: 999px;
+
+      background: #fff3d8;
+
+      color: #9b6c1c;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    /* =========================
+       안내
+    ========================= */
+
+    .notice-card {
+      margin-bottom: 18px;
+
+      padding: 15px 16px;
+
+      border-radius: 18px;
+
+      background: #eaf3ff;
+
+      color: #45677f;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       탭
+    ========================= */
+
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 8px;
+
+      margin-bottom: 14px;
+    }
+
+    .tab-button {
+      border: none;
+      border-radius: 14px;
+
+      padding: 13px 10px;
+
+      background: white;
+
+      color: #7c8f99;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 3px 11px rgba(60, 80, 95, .05);
+    }
+
+    .tab-button.active {
+      background: #dfefff;
+
+      color: #355f7f;
+    }
+
+    /* =========================
+       목록
+    ========================= */
+
+    .section-title {
+      margin: 18px 2px 10px;
+
+      color: #435f70;
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .user-list {
+      display: grid;
+
+      gap: 10px;
+    }
+
+    .user-card {
+      padding: 15px;
+
+      border-radius: 19px;
+
+      background: white;
+
+      box-shadow:
+        0 4px 13px rgba(60, 80, 95, .05);
+    }
+
+    .user-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+    }
+
+    .user-main {
+      display: flex;
+      align-items: center;
+
+      min-width: 0;
+
+      gap: 11px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 14px;
+
+      background: #f2f6f9;
+
+      font-size: 25px;
+    }
+
+    .user-text {
+      min-width: 0;
+    }
+
+    .user-name {
+      color: #344e5e;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      word-break: break-word;
+    }
+
+    .user-meta {
+      margin-top: 4px;
+
+      color: #8798a2;
+
+      font-size: 10px;
+      line-height: 1.5;
+
+      word-break: break-word;
+    }
+
+    .edit-button {
+      flex-shrink: 0;
+
+      border: none;
+      border-radius: 11px;
+
+      padding: 9px 11px;
+
+      background: #e9f4ed;
+
+      color: #47725a;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .empty-card {
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background: white;
+
+      color: #8b9aa2;
+
+      text-align: center;
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       수정창
+    ========================= */
+
+    .modal-backdrop {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      padding: 20px;
+
+      overflow-y: auto;
+
+      background:
+        rgba(32, 48, 58, .38);
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 500px;
+
+      margin-top: 30px;
+
+      padding: 19px;
+
+      border-radius: 23px;
+
+      background: white;
+
+      box-shadow:
+        0 12px 34px rgba(20, 35, 45, .18);
+    }
+
+    .modal-title {
+      margin-bottom: 4px;
+
+      color: #355f7f;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .modal-sub {
+      margin-bottom: 17px;
+
+      color: #8b9ca6;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 13px;
+    }
+
+    .field label {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #5e7481;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .field input {
+      width: 100%;
+
+      border: 1px solid #dce6ec;
+      border-radius: 12px;
+
+      padding: 12px 13px;
+
+      outline: none;
+
+      background: white;
+
+      color: #344e5e;
+
+      font-size: 16px;
+    }
+
+    .field input:focus {
+      border-color: #9fc1dc;
+    }
+
+    .readonly-box {
+      padding: 12px 13px;
+
+      border-radius: 12px;
+
+      background: #f5f7f8;
+
+      color: #71838d;
+
+      font-size: 12px;
+    }
+
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 8px;
+
+      margin-top: 17px;
+    }
+
+    .cancel-button,
+    .save-button {
+      border: none;
+      border-radius: 13px;
+
+      padding: 12px;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      background: #f1f3f4;
+
+      color: #72828a;
+    }
+
+    .save-button {
+      background: #dfefff;
+
+      color: #355f7f;
+    }
+
+    .save-button:disabled {
+      opacity: .55;
+
+      cursor: default;
+    }
+
+    /* =========================
+       메시지
+    ========================= */
+
+    .message {
+      display: none;
+
+      margin-bottom: 13px;
+
+      padding: 11px 13px;
+
+      border-radius: 13px;
+
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #eaf7ee;
+
+      color: #47725a;
+    }
+
+    .message.error {
+      background: #fff0ee;
+
+      color: #a6534c;
+    }
+
+    @media (max-width: 520px) {
+      .top-row {
+        align-items: flex-start;
+      }
+
+      .top-actions {
+        flex-direction: column;
+      }
+
+      .user-top {
+        align-items: flex-start;
+      }
+
+      .modal {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+  <div class="top-card">
+
+    <div class="top-row">
+
+      <div class="brand">
+
+        <div class="brand-title">
+          🛡️ GlucoGuard 슈퍼관리
+        </div>
+
+        <div class="brand-sub">
+          학생 및 교직원 계정 정보를 관리합니다.
+        </div>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <button
+          class="small-button"
+          onclick="goDemoTeacher()">
+
+          교직원 화면
+
+        </button>
+
+        <button
+          class="logout-button"
+          onclick="logout()">
+
+          로그아웃
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="super-badge">
+      ⭐ 슈퍼계정
+    </div>
+
+  </div>
+
+
+  <div
+    id="message"
+    class="message">
+  </div>
+
+
+  <div class="notice-card">
+
+    슈퍼계정에서는 학생과 교직원의 기본 정보를 수정할 수 있습니다.
+    <br>
+    비밀번호 변경 기능은 다음 단계에서 별도로 연결합니다.
+
+  </div>
+
+
+  <div class="tabs">
+
+    <button
+      id="studentTab"
+      class="tab-button active"
+      onclick="showTab('student')">
+
+      👧 학생 관리
+
+    </button>
+
+
+    <button
+      id="staffTab"
+      class="tab-button"
+      onclick="showTab('staff')">
+
+      👩‍🏫 교직원 관리
+
+    </button>
+
+  </div>
+
+
+  <div
+    id="sectionTitle"
+    class="section-title">
+
+    👧 학생 계정
+
+  </div>
+
+
+  <div
+    id="userList"
+    class="user-list">
+
+    <div class="empty-card">
+      계정 정보를 불러오는 중...
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- 수정 모달 -->
+
+<div
+  id="editModal"
+  class="modal-backdrop">
+
+  <div class="modal">
+
+    <div class="modal-title">
+      계정 정보 수정
+    </div>
+
+    <div
+      id="editDescription"
+      class="modal-sub">
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        계정 종류
+      </label>
+
+      <div
+        id="editRole"
+        class="readonly-box">
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="editNickname">
+        이름 / 표시이름
+      </label>
+
+      <input
+        id="editNickname"
+        type="text"
+        maxlength="40">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="editClassName">
+        학년 / 반 또는 담당 학급
+      </label>
+
+      <input
+        id="editClassName"
+        type="text"
+        maxlength="50"
+        placeholder="예: 3학년 4반">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="editPhone">
+        연락처
+      </label>
+
+      <input
+        id="editPhone"
+        type="tel"
+        maxlength="30"
+        placeholder="예: 010-1234-5678">
+
+    </div>
+
+
+    <div
+      id="avatarField"
+      class="field">
+
+      <label for="editAvatar">
+        학생 캐릭터
+      </label>
+
+      <input
+        id="editAvatar"
+        type="text"
+        maxlength="10"
+        placeholder="예: 🐱">
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-button"
+        onclick="closeEditModal()">
+
+        취소
+
+      </button>
+
+
+      <button
+        id="saveButton"
+        class="save-button"
+        onclick="saveProfile()">
+
+        저장
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://zvksfkslavrqagytswco.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+let currentUser =
+  null;
+
+
+let currentProfile =
+  null;
+
+
+let profiles =
+  [];
+
+
+let activeTab =
+  "student";
+
+
+let editingProfile =
+  null;
+
+
+
+/* =========================
+   시작
+========================= */
+
+window.addEventListener(
+  "load",
+  async function() {
+
+    const allowed =
+      await checkSuperAccount();
+
+
+    if (!allowed) {
+      return;
+    }
+
+
+    await loadProfiles();
+
+  }
+);
+
+
+
+/* =========================
+   슈퍼계정 확인
+========================= */
+
+async function checkSuperAccount() {
+
+  const {
+    data: sessionData,
+    error: sessionError
+  } =
+    await supabaseClient.auth
+      .getSession();
+
+
+  if (
+    sessionError
+    ||
+    !sessionData.session
+  ) {
+
+    window.location.href =
+      "./login.html";
+
+
+    return false;
+
+  }
+
+
+  currentUser =
+    sessionData.session.user;
+
+
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,nickname,role,is_super"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+
+  if (
+    error
+    ||
+    !profile
+    ||
+    profile.is_super !== true
+  ) {
+
+    alert(
+      "슈퍼계정만 접근할 수 있습니다."
+    );
+
+
+    window.location.href =
+      "./login.html";
+
+
+    return false;
+
+  }
+
+
+  currentProfile =
+    profile;
+
+
+  return true;
+
+}
+
+
+
+/* =========================
+   계정 목록 불러오기
+========================= */
+
+async function loadProfiles() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,nickname,class_name,avatar,role,phone_number,is_super"
+      )
+      .in(
+        "role",
+        [
+          "student",
+          "teacher",
+          "nurse"
+        ]
+      )
+      .order(
+        "role",
+        {
+          ascending: true
+        }
+      )
+      .order(
+        "nickname",
+        {
+          ascending: true
+        }
+      );
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    showMessage(
+      "계정 정보를 불러오지 못했습니다.",
+      "error"
+    );
+
+
+    profiles = [];
+
+
+    renderProfiles();
+
+
+    return;
+
+  }
+
+
+  profiles =
+    data || [];
+
+
+  renderProfiles();
+
+}
+
+
+
+/* =========================
+   탭
+========================= */
+
+function showTab(tab) {
+
+  activeTab =
+    tab;
+
+
+  document.getElementById(
+    "studentTab"
+  ).classList.toggle(
+    "active",
+    tab === "student"
+  );
+
+
+  document.getElementById(
+    "staffTab"
+  ).classList.toggle(
+    "active",
+    tab === "staff"
+  );
+
+
+  document.getElementById(
+    "sectionTitle"
+  ).textContent =
+    tab === "student"
+      ?
+      "👧 학생 계정"
+      :
+      "👩‍🏫 교직원 계정";
+
+
+  renderProfiles();
+
+}
+
+
+
+/* =========================
+   목록 표시
+========================= */
+
+function renderProfiles() {
+
+  const area =
+    document.getElementById(
+      "userList"
+    );
+
+
+  let filtered =
+    [];
+
+
+  if (
+    activeTab === "student"
+  ) {
+
+    filtered =
+      profiles.filter(
+        item =>
+          item.role === "student"
+      );
+
+  }
+  else {
+
+    filtered =
+      profiles.filter(
+        item =>
+          item.role === "teacher"
+          ||
+          item.role === "nurse"
+      );
+
+  }
+
+
+  if (
+    filtered.length === 0
+  ) {
+
+    area.innerHTML =
+      `
+        <div class="empty-card">
+          등록된 계정이 없습니다.
+        </div>
+      `;
+
+
+    return;
+
+  }
+
+
+  area.innerHTML =
+    filtered
+      .map(
+        profile => {
+
+          const avatar =
+            profile.role === "student"
+              ?
+              (
+                profile.avatar
+                ||
+                "🐻"
+              )
+              :
+              (
+                profile.role === "nurse"
+                  ?
+                  "🩺"
+                  :
+                  "👩‍🏫"
+              );
+
+
+          const roleText =
+            getRoleText(
+              profile.role
+            );
+
+
+          const className =
+            profile.class_name
+            ||
+            "학급 정보 없음";
+
+
+          const phone =
+            profile.phone_number
+            ||
+            "연락처 없음";
+
+
+          return `
+            <div class="user-card">
+
+              <div class="user-top">
+
+                <div class="user-main">
+
+                  <div class="avatar">
+                    ${escapeHtml(avatar)}
+                  </div>
+
+                  <div class="user-text">
+
+                    <div class="user-name">
+                      ${escapeHtml(profile.nickname || "이름 없음")}
+                    </div>
+
+                    <div class="user-meta">
+                      ${escapeHtml(roleText)}
+                      ·
+                      ${escapeHtml(className)}
+                      <br>
+                      ${escapeHtml(phone)}
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <button
+                  class="edit-button"
+                  onclick="openEditModal('${profile.id}')">
+
+                  수정
+
+                </button>
+
+              </div>
+
+            </div>
+          `;
+
+        }
+      )
+      .join("");
+
+}
+
+
+
+/* =========================
+   수정창 열기
+========================= */
+
+function openEditModal(profileId) {
+
+  const target =
+    profiles.find(
+      item =>
+        item.id === profileId
+    );
+
+
+  if (!target) {
+
+    showMessage(
+      "계정 정보를 찾지 못했습니다.",
+      "error"
+    );
+
+
+    return;
+
+  }
+
+
+  editingProfile =
+    target;
+
+
+  document.getElementById(
+    "editDescription"
+  ).textContent =
+    `${target.nickname || "사용자"} 계정의 정보를 수정합니다.`;
+
+
+  document.getElementById(
+    "editRole"
+  ).textContent =
+    getRoleText(
+      target.role
+    );
+
+
+  document.getElementById(
+    "editNickname"
+  ).value =
+    target.nickname || "";
+
+
+  document.getElementById(
+    "editClassName"
+  ).value =
+    target.class_name || "";
+
+
+  document.getElementById(
+    "editPhone"
+  ).value =
+    target.phone_number || "";
+
+
+  document.getElementById(
+    "editAvatar"
+  ).value =
+    target.avatar || "";
+
+
+  document.getElementById(
+    "avatarField"
+  ).style.display =
+    target.role === "student"
+      ?
+      "block"
+      :
+      "none";
+
+
+  document.getElementById(
+    "editModal"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+
+/* =========================
+   수정창 닫기
+========================= */
+
+function closeEditModal() {
+
+  document.getElementById(
+    "editModal"
+  ).classList.remove(
+    "show"
+  );
+
+
+  editingProfile =
+    null;
+
+}
+
+
+
+/* =========================
+   프로필 저장
+========================= */
+
+async function saveProfile() {
+
+  if (!editingProfile) {
+    return;
+  }
+
+
+  const nickname =
+    document.getElementById(
+      "editNickname"
+    ).value.trim();
+
+
+  const className =
+    document.getElementById(
+      "editClassName"
+    ).value.trim();
+
+
+  const phone =
+    document.getElementById(
+      "editPhone"
+    ).value.trim();
+
+
+  const avatar =
+    document.getElementById(
+      "editAvatar"
+    ).value.trim();
+
+
+  if (!nickname) {
+
+    alert(
+      "이름 또는 표시이름을 입력해주세요."
+    );
+
+
+    return;
+
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.textContent =
+    "저장 중...";
+
+
+  const updates = {
+
+    nickname:
+      nickname,
+
+    class_name:
+      className || null,
+
+    phone_number:
+      phone || null
+
+  };
+
+
+  if (
+    editingProfile.role === "student"
+  ) {
+
+    updates.avatar =
+      avatar || null;
+
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .update(
+        updates
+      )
+      .eq(
+        "id",
+        editingProfile.id
+      );
+
+
+  saveButton.disabled =
+    false;
+
+
+  saveButton.textContent =
+    "저장";
+
+
+  if (error) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "정보 수정에 실패했습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  closeEditModal();
+
+
+  showMessage(
+    "계정 정보가 수정되었습니다.",
+    "success"
+  );
+
+
+  await loadProfiles();
+
+}
+
+
+
+/* =========================
+   메시지
+========================= */
+
+function showMessage(
+  text,
+  type
+) {
+
+  const box =
+    document.getElementById(
+      "message"
+    );
+
+
+  box.textContent =
+    text;
+
+
+  box.className =
+    `message show ${type}`;
+
+
+  window.setTimeout(
+    function() {
+
+      box.className =
+        "message";
+
+    },
+    3500
+  );
+
+}
+
+
+
+/* =========================
+   역할명
+========================= */
+
+function getRoleText(role) {
+
+  if (
+    role === "student"
+  ) {
+    return "학생";
+  }
+
+
+  if (
+    role === "teacher"
+  ) {
+    return "교직원";
+  }
+
+
+  if (
+    role === "nurse"
+  ) {
+    return "보건교사";
+  }
+
+
+  return role || "알 수 없음";
+
+}
+
+
+
+/* =========================
+   데모 교직원 화면
+========================= */
+
+function goDemoTeacher() {
+
+  sessionStorage.setItem(
+    "demoMode",
+    "teacher"
+  );
+
+
+  window.location.href =
+    "./teacher.html";
+
+}
+
+
+
+/* =========================
+   로그아웃
+========================= */
+
+async function logout() {
+
+  sessionStorage.removeItem(
+    "demoMode"
+  );
+
+
+  sessionStorage.removeItem(
+    "teacherSelectedStudent"
+  );
+
+
+  await supabaseClient.auth
+    .signOut();
+
+
+  window.location.href =
+    "./login.html";
+
+}
+
+
+
+/* =========================
+   HTML 안전처리
+========================= */
+
+function escapeHtml(value) {
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+
+/* 바깥 영역 클릭 시 닫기 */
+
+document.getElementById(
+  "editModal"
+).addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      event.target === this
+    ) {
+
+      closeEditModal();
+
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
