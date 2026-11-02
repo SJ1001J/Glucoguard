@@ -779,6 +779,27 @@ a {
   </div>
 
 
+  <!-- 슈퍼계정 학생 보기 모드 -->
+
+  <div
+    id="superViewBanner"
+    class="demo-banner">
+
+    <div>
+      🛡️ 슈퍼관리 · 실제 학생 화면 보기
+    </div>
+
+    <button
+      class="demo-switch-button"
+      onclick="goBackSuperAdmin()">
+
+      ← 슈퍼관리로 돌아가기
+
+    </button>
+
+  </div>
+
+
 
   <!-- 프로필 -->
 
@@ -1077,7 +1098,6 @@ a {
       </div>
 
     </div>
-
     <div class="arrow">
       ›
     </div>
@@ -1153,12 +1173,16 @@ let isDemoStudent =
   false;
 
 
-let emergencyInfoOpen =
+let isSuperViewingStudent =
   false;
 
 
-let emergencyPlanChannel =
+let superViewingStudentId =
   null;
+
+
+let emergencyInfoOpen =
+  false;
 
 
 
@@ -1207,13 +1231,13 @@ async function loadStudent() {
 
 
   const {
-    data: profile,
+    data: loginProfile,
     error
   } =
     await supabaseClient
       .from("profiles")
       .select(
-        "id,nickname,class_name,avatar,role"
+        "id,nickname,class_name,avatar,role,is_super"
       )
       .eq(
         "id",
@@ -1225,16 +1249,96 @@ async function loadStudent() {
   if (
     error
     ||
-    !profile
+    !loginProfile
   ) {
 
     alert(
       "사용자 정보를 불러오지 못했습니다."
     );
 
-
     await logout();
 
+    return;
+
+  }
+
+
+  /* 슈퍼계정이 실제 학생 화면을 보는 경우 */
+
+  superViewingStudentId =
+    sessionStorage.getItem(
+      "superViewStudent"
+    );
+
+
+  if (
+    loginProfile.is_super === true
+    &&
+    superViewingStudentId
+  ) {
+
+    const {
+      data: studentProfile,
+      error: studentError
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id,nickname,class_name,avatar,role"
+        )
+        .eq(
+          "id",
+          superViewingStudentId
+        )
+        .eq(
+          "role",
+          "student"
+        )
+        .maybeSingle();
+
+
+    if (
+      studentError
+      ||
+      !studentProfile
+    ) {
+
+      sessionStorage.removeItem(
+        "superViewStudent"
+      );
+
+      alert(
+        "선택한 학생 정보를 불러오지 못했습니다."
+      );
+
+      window.location.href =
+        "./admin.html";
+
+      return;
+
+    }
+
+
+    currentProfile =
+      studentProfile;
+
+    isDemoStudent =
+      false;
+
+    isSuperViewingStudent =
+      true;
+
+
+    document.getElementById(
+      "superViewBanner"
+    ).classList.add(
+      "show"
+    );
+
+
+    showStudentProfile();
+
+    await loadEmergencyInfo();
 
     return;
 
@@ -1242,39 +1346,31 @@ async function loadStudent() {
 
 
   currentProfile =
-    profile;
-
+    loginProfile;
 
 
   /* 일반 학생 */
 
   if (
-    profile.role === "student"
+    loginProfile.role === "student"
   ) {
 
     isDemoStudent =
       false;
 
-
     showStudentProfile();
 
-
     await loadEmergencyInfo();
-
-
-    startEmergencyInfoRealtime();
-
 
     return;
 
   }
 
 
-
   /* 데모 */
 
   if (
-    profile.role === "demo"
+    loginProfile.role === "demo"
   ) {
 
     const demoMode =
@@ -1308,27 +1404,23 @@ async function loadStudent() {
 
     showStudentProfile();
 
-
     await loadEmergencyInfo();
-
 
     return;
 
   }
 
 
-
   /* 교직원 */
 
   if (
-    profile.role === "teacher"
+    loginProfile.role === "teacher"
     ||
-    profile.role === "nurse"
+    loginProfile.role === "nurse"
   ) {
 
     window.location.href =
       "./teacher.html";
-
 
     return;
 
@@ -1367,14 +1459,20 @@ function showStudentProfile() {
   document.getElementById(
     "studentClass"
   ).textContent =
-    isDemoStudent
+    isSuperViewingStudent
     ?
-    "학생 화면 체험 중"
+    `${currentProfile.class_name || "학급 정보 없음"} · 슈퍼관리에서 확인 중`
     :
     (
-      currentProfile.class_name
-      ||
-      "학급 정보 없음"
+      isDemoStudent
+      ?
+      "학생 화면 체험 중"
+      :
+      (
+        currentProfile.class_name
+        ||
+        "학급 정보 없음"
+      )
     );
 
 }
@@ -1426,9 +1524,7 @@ function toggleEmergencyInfo() {
    나의 응급정보
 ========================= */
 
-async function loadEmergencyInfo(
-  resetOpen = true
-) {
+async function loadEmergencyInfo() {
 
   const card =
     document.getElementById(
@@ -1453,32 +1549,21 @@ async function loadEmergencyInfo(
   );
 
 
-  /*
-    처음 진입할 때만 접힌 상태로 시작
-    실시간 갱신 때는 현재 열림/닫힘 상태 유지
-  */
-
-  if (
-    resetOpen
-  ) {
-
-    emergencyInfoOpen =
-      false;
+  emergencyInfoOpen =
+    false;
 
 
-    card.classList.remove(
-      "open"
-    );
+  card.classList.remove(
+    "open"
+  );
 
 
-    document.getElementById(
-      "emergencyInfoToggle"
-    ).setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-  }
+  document.getElementById(
+    "emergencyInfoToggle"
+  ).setAttribute(
+    "aria-expanded",
+    "false"
+  );
 
 
   content.innerHTML =
@@ -1518,6 +1603,10 @@ async function loadEmergencyInfo(
   /* 실제 학생 */
 
   badge.textContent =
+    isSuperViewingStudent
+    ?
+    "학생 정보"
+    :
     "내 정보";
 
 
@@ -1530,11 +1619,11 @@ async function loadEmergencyInfo(
         "student_emergency_plans"
       )
       .select(
-        "glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary,updated_at"
+        "glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary"
       )
       .eq(
         "student_id",
-        currentUser.id
+        currentProfile.id
       )
       .maybeSingle();
 
@@ -1701,9 +1790,7 @@ function renderEmergencyInfo(
 
       ${makeEmergencyInfoItem(
         "📅 유효기간",
-        formatExpiryDate(
-          plan.glucagon_expiry
-        )
+        plan.glucagon_expiry
       )}
 
       ${makeEmergencyInfoItem(
@@ -1786,129 +1873,32 @@ function makeEmergencyInfoItem(
 
 
 /* =========================
-   응급정보 실시간 업데이트
-========================= */
-
-function startEmergencyInfoRealtime() {
-
-  if (
-    isDemoStudent
-    ||
-    !currentUser
-  ) {
-
-    return;
-
-  }
-
-
-  if (
-    emergencyPlanChannel
-  ) {
-
-    supabaseClient.removeChannel(
-      emergencyPlanChannel
-    );
-
-  }
-
-
-  emergencyPlanChannel =
-    supabaseClient
-      .channel(
-        `student-emergency-plan-${currentUser.id}`
-      )
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "student_emergency_plans",
-          filter: `student_id=eq.${currentUser.id}`
-        },
-        async function() {
-
-          await loadEmergencyInfo(
-            false
-          );
-
-        }
-      )
-      .subscribe();
-
-}
-
-
-window.addEventListener(
-  "beforeunload",
-  function() {
-
-    if (
-      emergencyPlanChannel
-    ) {
-
-      supabaseClient.removeChannel(
-        emergencyPlanChannel
-      );
-
-    }
-
-  }
-);
-
-
-function formatExpiryDate(
-  value
-) {
-
-  if (
-    !value
-  ) {
-
-    return "";
-
-  }
-
-
-  const parts =
-    String(
-      value
-    ).split(
-      "-"
-    );
-
-
-  if (
-    parts.length !== 3
-  ) {
-
-    return String(
-      value
-    );
-
-  }
-
-
-  return (
-    parts[0]
-    +
-    "."
-    +
-    parts[1]
-    +
-    "."
-    +
-    parts[2]
-  );
-
-}
-
-
-/* =========================
    화면 이동
 ========================= */
 
+function blockSuperRecordInput() {
+
+  if (
+    !isSuperViewingStudent
+  ) {
+    return false;
+  }
+
+
+  alert(
+    "슈퍼관리에서 학생 화면을 확인 중입니다.\n학생 기록을 대신 입력하는 기능은 사용하지 않습니다."
+  );
+
+  return true;
+
+}
+
+
 function goMeal() {
+
+  if (blockSuperRecordInput()) {
+    return;
+  }
 
   window.location.href =
     "./meal.html";
@@ -1918,6 +1908,10 @@ function goMeal() {
 
 function goGlucose() {
 
+  if (blockSuperRecordInput()) {
+    return;
+  }
+
   window.location.href =
     "./glucose.html";
 
@@ -1925,6 +1919,10 @@ function goGlucose() {
 
 
 function goSymptom() {
+
+  if (blockSuperRecordInput()) {
+    return;
+  }
 
   window.location.href =
     "./symptom.html";
@@ -1934,10 +1932,23 @@ function goSymptom() {
 
 function goRecords() {
 
-  sessionStorage.removeItem(
-    "teacherSelectedStudent"
-  );
+  if (
+    isSuperViewingStudent
+  ) {
 
+    sessionStorage.setItem(
+      "teacherSelectedStudent",
+      currentProfile.id
+    );
+
+  }
+  else {
+
+    sessionStorage.removeItem(
+      "teacherSelectedStudent"
+    );
+
+  }
 
   window.location.href =
     "./records.html";
@@ -1947,8 +1958,35 @@ function goRecords() {
 
 function goEmergencyContacts() {
 
+  if (
+    isSuperViewingStudent
+  ) {
+
+    sessionStorage.setItem(
+      "teacherSelectedStudent",
+      currentProfile.id
+    );
+
+  }
+
   window.location.href =
     "./emergency.html";
+
+}
+
+
+function goBackSuperAdmin() {
+
+  sessionStorage.removeItem(
+    "superViewStudent"
+  );
+
+  sessionStorage.removeItem(
+    "teacherSelectedStudent"
+  );
+
+  window.location.href =
+    "./admin.html";
 
 }
 
@@ -2017,7 +2055,7 @@ async function callTeacher() {
       )
       .eq(
         "student_id",
-        currentUser.id
+        currentProfile.id
       )
       .limit(1);
 
@@ -2149,6 +2187,11 @@ async function logout() {
 
   sessionStorage.removeItem(
     "teacherSelectedStudent"
+  );
+
+
+  sessionStorage.removeItem(
+    "superViewStudent"
   );
 
 
