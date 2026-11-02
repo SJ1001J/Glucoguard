@@ -1,1090 +1,845 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="UTF-8">
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GlucoGuard 교직원</title>
 
 <style>
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-margin: 0;
-background: #f4f8fb;
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-sans-serif;
-color: #263238;
+  margin: 0;
+  background: #f4f8fb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #263238;
 }
 
 button,
 input,
-select,
 textarea {
-font-family: inherit;
+  font-family: inherit;
 }
 
 .page {
-width: 100%;
-max-width: 760px;
-margin: 0 auto;
-padding: 20px 18px 40px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 18px 45px;
 }
 
-/* =========================
-데모 배너
-========================= */
-
 .demo-banner {
-display: none;
-align-items: center;
-justify-content: space-between;
-gap: 10px;
-margin-bottom: 12px;
-padding: 11px 13px;
-border-radius: 15px;
-background: #fff4ce;
-color: #806622;
-font-size: 11px;
-font-weight: 900;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #fff3c8;
+  color: #82661c;
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .demo-banner.show {
-display: flex;
-}
-
-.demo-switch {
-border: none;
-border-radius: 10px;
-padding: 9px 11px;
-background: white;
-color: #397762;
-font-size: 10px;
-font-weight: 900;
-cursor: pointer;
+  display: flex;
 }
 
 .demo-actions {
-display: flex;
-gap: 8px;
+  display: flex;
+  gap: 7px;
 }
 
-.super-switch {
-background: #eef4ff;
-color: #4b628f;
+.demo-button {
+  border: none;
+  border-radius: 10px;
+  padding: 9px 11px;
+  background: white;
+  color: #477162;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
-/* =========================
-상단
-========================= */
+.super-button {
+  background: #edf3ff;
+  color: #566b99;
+}
 
 .top-card {
-padding: 20px;
-margin-bottom: 14px;
-border-radius: 24px;
-background: white;
-box-shadow:
-0 6px 20px rgba(57,79,94,.07);
+  margin-bottom: 14px;
+  padding: 19px;
+  border-radius: 23px;
+  background: white;
+  box-shadow: 0 6px 18px rgba(50,75,90,.06);
 }
 
 .top-row {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .brand {
-display: flex;
-align-items: center;
-gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .brand-icon {
-width: 52px;
-height: 52px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 17px;
-background: #eef4ff;
-font-size: 27px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  background: #edf4ff;
+  font-size: 27px;
 }
 
 .brand-title {
-color: #314f68;
-font-size: 22px;
-font-weight: 900;
+  color: #31536b;
+  font-size: 22px;
+  font-weight: 900;
 }
 
 .brand-sub {
-margin-top: 4px;
-color: #8194a1;
-font-size: 11px;
+  margin-top: 4px;
+  color: #8496a0;
+  font-size: 10px;
 }
 
-.logout-button {
-border: none;
-border-radius: 11px;
-padding: 10px 12px;
-background: #f4f6f8;
-color: #657b88;
-font-size: 10px;
-font-weight: 800;
-cursor: pointer;
+.logout {
+  border: none;
+  border-radius: 11px;
+  padding: 10px 12px;
+  background: #f3f5f6;
+  color: #71838d;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
 .teacher-info {
-margin-top: 15px;
-padding-top: 14px;
-border-top: 1px solid #edf1f3;
-color: #718793;
-font-size: 12px;
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid #edf1f3;
+  color: #758894;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .teacher-info strong {
-color: #3e6179;
+  color: #416277;
 }
 
-/* =========================
-오늘의 상황판
-========================= */
-
-.today-board {
-margin-bottom: 14px;
-padding: 17px;
-border-radius: 22px;
-background:
-linear-gradient(
-135deg,
-#eef7ff,
-#f1fbf6
-);
-box-shadow:
-0 5px 16px rgba(57,79,94,.05);
-}
-
-.today-head {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 13px;
-}
-
-.today-title {
-color: #3e6179;
-font-size: 16px;
-font-weight: 900;
-}
-
-.today-date {
-color: #8799a4;
-font-size: 10px;
-}
-
-.today-summary {
-margin-bottom: 12px;
-color: #496675;
-font-size: 12px;
-font-weight: 800;
-}
-
-.today-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 7px;
-}
-
-.today-stat {
-padding: 10px 5px;
-border-radius: 13px;
-background: rgba(255,255,255,.85);
-text-align: center;
-}
-
-.today-stat-icon {
-font-size: 17px;
-}
-
-.today-stat-value {
-margin-top: 3px;
-color: #405e70;
-font-size: 18px;
-font-weight: 900;
-}
-
-.today-stat-label {
-margin-top: 2px;
-color: #8899a2;
-font-size: 8px;
-}
-
-.today-message {
-margin-top: 11px;
-padding: 11px;
-border-radius: 13px;
-background: white;
-color: #637985;
-font-size: 10px;
-line-height: 1.55;
-}
-
-.today-message.attention {
-background: #fff0ee;
-color: #ab4d47;
-}
-
-/* =========================
-주요 기능
-========================= */
-
-.main-tools {
-display: flex;
-flex-direction: column;
-gap: 11px;
-margin-bottom: 14px;
-}
-
-.main-tool {
-width: 100%;
-min-height: 105px;
-display: flex;
-align-items: center;
-gap: 15px;
-padding: 18px;
-border: none;
-border-radius: 22px;
-text-align: left;
-cursor: pointer;
-}
-
-.tool-emergency {
-background: #ffe7e3;
-color: #a7443d;
-}
-
-.tool-education {
-background: #e8f2ff;
-color: #35627f;
-}
-
-.tool-icon {
-width: 58px;
-height: 58px;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-shrink: 0;
-border-radius: 17px;
-background: rgba(255,255,255,.8);
-font-size: 30px;
-}
-
-.tool-content {
-flex: 1;
-}
-
-.tool-title {
-margin-bottom: 5px;
-font-size: 18px;
-font-weight: 900;
-}
-
-.tool-desc {
-font-size: 10px;
-line-height: 1.5;
-}
-
-.tool-arrow {
-font-size: 24px;
-opacity: .5;
-}
-
-/* =========================
-요약
-========================= */
-
-.summary-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-margin-bottom: 14px;
-}
-
-.summary-card {
-padding: 16px;
-border: none;
-border-radius: 19px;
-background: white;
-text-align: left;
-box-shadow:
-0 4px 14px rgba(57,79,94,.05);
-}
-
-.summary-card.clickable {
-cursor: pointer;
-}
-
-.summary-label {
-margin-bottom: 7px;
-color: #8295a0;
-font-size: 11px;
-}
-
-.summary-value {
-color: #365e78;
-font-size: 24px;
-font-weight: 900;
-}
-
-.attention-value {
-color: #d24f47;
-}
-
-.summary-hint {
-margin-top: 5px;
-color: #c77a76;
-font-size: 9px;
-}
-
-/* =========================
-학생 목록
-========================= */
-
+/* 담당학생을 위쪽으로 */
 .student-toggle {
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 15px 16px;
-border: none;
-border-radius: 17px;
-background: white;
-color: #455f70;
-cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 16px;
+  border: none;
+  border-radius: 18px;
+  background: white;
+  color: #456273;
+  box-shadow: 0 4px 13px rgba(50,75,90,.05);
+  cursor: pointer;
 }
 
 .student-toggle-left {
-display: flex;
-align-items: center;
-gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
 }
 
 .student-toggle-title {
-font-size: 14px;
-font-weight: 900;
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .student-toggle-sub {
-margin-top: 3px;
-color: #8a9ba5;
-font-size: 10px;
+  margin-top: 3px;
+  color: #8b9ba4;
+  font-size: 9px;
 }
 
 .student-list {
-display: none;
-margin-top: 11px;
+  display: none;
+  margin-bottom: 14px;
 }
 
 .student-list.open {
-display: block;
+  display: block;
 }
 
-/* =========================
-학생 카드
-========================= */
+.today-board {
+  margin-bottom: 14px;
+  padding: 17px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eef7ff, #effaf5);
+}
+
+.today-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.today-title {
+  color: #406477;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.today-date {
+  color: #8a9aa3;
+  font-size: 9px;
+}
+
+.today-summary {
+  margin-bottom: 11px;
+  color: #506c7a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.today-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.today-stat {
+  padding: 10px 5px;
+  border-radius: 13px;
+  background: rgba(255,255,255,.9);
+  text-align: center;
+}
+
+.today-stat-icon {
+  font-size: 17px;
+}
+
+.today-stat-value {
+  margin-top: 2px;
+  color: #405f70;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.today-stat-label {
+  color: #8798a1;
+  font-size: 8px;
+}
+
+.today-message {
+  margin-top: 10px;
+  padding: 11px;
+  border-radius: 13px;
+  background: white;
+  color: #627985;
+  font-size: 10px;
+}
+
+.today-message.attention {
+  background: #fff0ed;
+  color: #a94d46;
+}
+
+.main-tools {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.main-tool {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 100px;
+  padding: 17px;
+  border: none;
+  border-radius: 21px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tool-emergency {
+  background: #ffe6e2;
+  color: #a34640;
+}
+
+.tool-education {
+  background: #e6f1ff;
+  color: #38637f;
+}
+
+.tool-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 17px;
+  background: rgba(255,255,255,.8);
+  font-size: 29px;
+}
+
+.tool-content {
+  flex: 1;
+}
+
+.tool-title {
+  margin-bottom: 5px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.tool-desc {
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.summary-card {
+  padding: 15px;
+  border: none;
+  border-radius: 18px;
+  background: white;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(50,75,90,.05);
+}
+
+.summary-card.clickable {
+  cursor: pointer;
+}
+
+.summary-label {
+  margin-bottom: 5px;
+  color: #84959f;
+  font-size: 10px;
+}
+
+.summary-value {
+  color: #365e78;
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.attention-value {
+  color: #cc5049;
+}
 
 .student-card {
-padding: 17px;
-margin-bottom: 12px;
-border: 2px solid transparent;
-border-radius: 22px;
-background: white;
-box-shadow:
-0 5px 17px rgba(57,79,94,.06);
+  margin-bottom: 10px;
+  padding: 16px;
+  border: 2px solid transparent;
+  border-radius: 21px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(50,75,90,.06);
 }
 
 .student-card.attention {
-border-color: #ffc1bb;
+  border-color: #ffc2bc;
 }
 
 .student-head {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 11px;
 }
 
 .student-avatar {
-width: 56px;
-height: 56px;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-shrink: 0;
-border-radius: 18px;
-background: #fff1c8;
-font-size: 31px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 17px;
+  background: #fff2cb;
+  font-size: 29px;
 }
 
 .student-info {
-flex: 1;
+  flex: 1;
 }
 
 .student-name {
-color: #344e5e;
-font-size: 18px;
-font-weight: 900;
+  color: #344f60;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .student-class {
-margin-top: 3px;
-color: #81939f;
-font-size: 10px;
+  margin-top: 3px;
+  color: #84949e;
+  font-size: 9px;
 }
 
 .badge {
-padding: 6px 9px;
-border-radius: 10px;
-font-size: 10px;
-font-weight: 900;
+  padding: 6px 8px;
+  border-radius: 9px;
+  font-size: 9px;
+  font-weight: 900;
 }
 
 .badge-alert {
-background: #ffe9e7;
-color: #c84d46;
+  background: #ffe8e5;
+  color: #c34c46;
 }
 
 .badge-ok {
-background: #edf7ef;
-color: #4c8560;
+  background: #eaf7ee;
+  color: #4c8260;
 }
 
-/* =========================
-알림
-========================= */
-
 .alert-list {
-display: flex;
-flex-direction: column;
-gap: 7px;
-margin-bottom: 12px;
+  display: grid;
+  gap: 7px;
+  margin-bottom: 10px;
 }
 
 .alert-item {
-padding: 10px 11px;
-border-radius: 13px;
-font-size: 11px;
-font-weight: 800;
-line-height: 1.5;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
 .alert-low {
-background: #e9f3ff;
-color: #356b96;
-border: 1px solid #cfe4fa;
+  background: #e9f3ff;
+  color: #356d98;
 }
 
 .alert-high {
-background: #fff1df;
-color: #a66528;
-border: 1px solid #f5d4ad;
+  background: #fff0dc;
+  color: #a56829;
 }
 
 .alert-vomit {
-background: #ffe8e6;
-color: #b34842;
-border: 1px solid #f7c5c1;
+  background: #ffe7e4;
+  color: #b34a44;
 }
 
-/* =========================
-기록 요약
-========================= */
-
 .record-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 8px;
-margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-bottom: 10px;
 }
 
 .record-box {
-padding: 11px;
-border-radius: 14px;
-background: #f6f8fa;
+  padding: 10px;
+  border-radius: 13px;
+  background: #f5f7f8;
 }
 
 .record-box.full {
-grid-column: 1 / -1;
-background: #eaf8f2;
+  grid-column: 1 / -1;
+  background: #eaf8f2;
 }
 
 .record-label {
-margin-bottom: 5px;
-color: #8798a2;
-font-size: 9px;
+  margin-bottom: 4px;
+  color: #8798a2;
+  font-size: 8px;
 }
 
 .record-value {
-color: #496675;
-font-size: 11px;
-font-weight: 900;
-line-height: 1.5;
+  color: #496675;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.5;
 }
 
-/* =========================
-학생 버튼
-========================= */
+.safety-button,
+.plan-button {
+  width: 100%;
+  margin-bottom: 7px;
+  padding: 12px;
+  border: none;
+  border-radius: 13px;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
 
 .safety-button {
-width: 100%;
-margin-bottom: 8px;
-padding: 13px;
-border: none;
-border-radius: 14px;
-background: #fff2d8;
-color: #826025;
-font-size: 12px;
-font-weight: 900;
-cursor: pointer;
+  background: #fff2d7;
+  color: #806024;
 }
 
-.emergency-plan-button {
-width: 100%;
-margin-bottom: 8px;
-padding: 13px;
-border: none;
-border-radius: 14px;
-background: #ffe8e4;
-color: #a44842;
-font-size: 12px;
-font-weight: 900;
-cursor: pointer;
+.plan-button {
+  background: #ffe9e5;
+  color: #a54b44;
 }
 
 .student-actions {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
 }
 
 .student-action {
-padding: 11px 7px;
-border: none;
-border-radius: 13px;
-font-size: 10px;
-font-weight: 900;
-cursor: pointer;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
 .action-records {
-background: #eaf3ff;
-color: #356b91;
+  background: #e9f3ff;
+  color: #376d94;
 }
 
 .action-symptom {
-background: #e8f7f1;
-color: #397461;
+  background: #e8f7f1;
+  color: #3d7461;
 }
 
 .action-contact {
-background: #eef0ff;
-color: #5969a0;
+  background: #efefff;
+  color: #626a9b;
 }
-
-.action-disabled {
-background: #f3f5f6;
-color: #95a2a9;
-}
-
-/* =========================
-모달
-========================= */
 
 .overlay {
-position: fixed;
-inset: 0;
-z-index: 1000;
-display: none;
-align-items: center;
-justify-content: center;
-padding: 18px;
-background: rgba(30,45,55,.46);
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  background: rgba(30,45,55,.46);
 }
 
 .modal {
-width: 100%;
-max-width: 500px;
-max-height: 88vh;
-overflow-y: auto;
-padding: 19px;
-border-radius: 24px;
-background: white;
-box-shadow:
-0 18px 45px rgba(0,0,0,.18);
+  width: 100%;
+  max-width: 500px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 18px;
+  border-radius: 23px;
+  background: white;
+  box-shadow: 0 16px 40px rgba(0,0,0,.17);
 }
 
 .modal-head {
-display: flex;
-align-items: flex-start;
-justify-content: space-between;
-gap: 10px;
-margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .modal-title {
-color: #344e5e;
-font-size: 19px;
-font-weight: 900;
+  color: #344f60;
+  font-size: 18px;
+  font-weight: 900;
 }
 
 .modal-desc {
-margin-top: 4px;
-color: #82939d;
-font-size: 10px;
+  margin-top: 3px;
+  color: #84949e;
+  font-size: 9px;
 }
 
 .close {
-width: 35px;
-height: 35px;
-border: none;
-border-radius: 11px;
-background: #f4f6f7;
-color: #6b7e89;
-font-size: 18px;
-cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 10px;
+  background: #f3f5f6;
+  color: #72838d;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-/* =========================
-안전카드
-========================= */
-
 .safety-profile {
-display: flex;
-align-items: center;
-gap: 12px;
-padding: 14px;
-margin-bottom: 11px;
-border-radius: 18px;
-background: #fff6df;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 10px;
+  padding: 13px;
+  border-radius: 17px;
+  background: #fff5de;
 }
 
 .safety-avatar {
-width: 56px;
-height: 56px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 17px;
-background: white;
-font-size: 30px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: white;
+  font-size: 28px;
 }
 
 .safety-name {
-color: #496170;
-font-size: 17px;
-font-weight: 900;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .safety-class {
-margin-top: 3px;
-color: #82939d;
-font-size: 10px;
+  margin-top: 3px;
+  color: #84949e;
+  font-size: 9px;
 }
 
 .ack-button {
-width: 100%;
-margin: 10px 0 12px;
-padding: 13px;
-border: none;
-border-radius: 14px;
-background: #4d9d82;
-color: white;
-font-size: 12px;
-font-weight: 900;
-cursor: pointer;
+  width: 100%;
+  margin: 8px 0 11px;
+  padding: 12px;
+  border: none;
+  border-radius: 13px;
+  background: #4d9d82;
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
 .safe-message {
-padding: 12px;
-margin-bottom: 12px;
-border-radius: 14px;
-background: #edf8f4;
-color: #447565;
-font-size: 11px;
+  margin-bottom: 11px;
+  padding: 11px;
+  border-radius: 13px;
+  background: #edf8f4;
+  color: #477566;
+  font-size: 10px;
+  line-height: 1.5;
 }
-
-/* 응급정보 요약 */
 
 .safety-emergency {
-margin-bottom: 12px;
-padding: 14px;
-border-radius: 17px;
-background: #fff0ed;
-border: 1px solid #f6d1cc;
-}
-
-.safety-emergency-head {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 8px;
-margin-bottom: 10px;
+  margin-bottom: 11px;
+  padding: 13px;
+  border: 1px solid #f5d0cb;
+  border-radius: 16px;
+  background: #fff0ed;
 }
 
 .safety-emergency-title {
-color: #a14d46;
-font-size: 13px;
-font-weight: 900;
+  margin-bottom: 9px;
+  color: #a34d46;
+  font-size: 12px;
+  font-weight: 900;
 }
 
-.safety-emergency-date {
-color: #ad7f7a;
-font-size: 8px;
-font-weight: 800;
+.emergency-item {
+  margin-top: 6px;
+  padding: 9px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.85);
 }
 
-.safety-emergency-list {
-display: grid;
-gap: 7px;
+.emergency-label {
+  margin-bottom: 3px;
+  color: #a97973;
+  font-size: 8px;
+  font-weight: 900;
 }
 
-.safety-emergency-item {
-padding: 9px 10px;
-border-radius: 11px;
-background: rgba(255,255,255,.82);
+.emergency-value {
+  color: #70534f;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
-.safety-emergency-label {
-margin-bottom: 3px;
-color: #a97872;
-font-size: 8px;
-font-weight: 900;
+.form-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+  padding: 12px;
+  border-radius: 15px;
+  background: #fff3f0;
 }
 
-.safety-emergency-value {
-color: #6f514d;
-font-size: 10px;
-font-weight: 800;
-line-height: 1.5;
+.form-avatar {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: white;
+  font-size: 26px;
 }
 
-.safety-emergency-empty {
-padding: 10px;
-border-radius: 11px;
-background: rgba(255,255,255,.82);
-color: #94736f;
-font-size: 10px;
-line-height: 1.55;
+.form-name {
+  font-size: 14px;
+  font-weight: 900;
 }
 
-.safety-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 8px;
-margin-bottom: 12px;
+.form-class {
+  margin-top: 2px;
+  color: #997a75;
+  font-size: 9px;
 }
 
-.safety-box {
-padding: 12px;
-border-radius: 14px;
-background: #f6f8fa;
-}
-
-.safety-box.full {
-grid-column: 1 / -1;
-}
-
-.safety-label {
-color: #8799a3;
-font-size: 9px;
-}
-
-.safety-value {
-margin-top: 5px;
-color: #486573;
-font-size: 11px;
-font-weight: 900;
-line-height: 1.5;
-}
-
-.safety-action-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 8px;
-margin-top: 13px;
-}
-
-.safety-action {
-padding: 12px;
-border: none;
-border-radius: 13px;
-font-size: 10px;
-font-weight: 900;
-cursor: pointer;
-}
-
-.emergency-action {
-background: #ffe6e2;
-color: #a44640;
-}
-
-.records-action {
-background: #eaf3ff;
-color: #356b91;
-}
-
-/* =========================
-응급정보 설정
-========================= */
-
-.emergency-form-profile {
-display: flex;
-align-items: center;
-gap: 11px;
-margin-bottom: 14px;
-padding: 13px;
-border-radius: 16px;
-background: #fff4f1;
-}
-
-.emergency-form-avatar {
-width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-shrink: 0;
-border-radius: 15px;
-background: white;
-font-size: 27px;
-}
-
-.emergency-form-name {
-color: #5e4a47;
-font-size: 15px;
-font-weight: 900;
-}
-
-.emergency-form-class {
-margin-top: 3px;
-color: #9a7b76;
-font-size: 10px;
+.form-note {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff6dd;
+  color: #78652e;
+  font-size: 9px;
+  line-height: 1.55;
 }
 
 .form-group {
-margin-bottom: 13px;
+  margin-bottom: 11px;
 }
 
 .form-label {
-display: block;
-margin-bottom: 6px;
-color: #506873;
-font-size: 11px;
-font-weight: 900;
-}
-
-.form-help {
-margin-top: 5px;
-color: #93a0a7;
-font-size: 9px;
-line-height: 1.5;
+  display: block;
+  margin-bottom: 5px;
+  color: #556d79;
+  font-size: 10px;
+  font-weight: 900;
 }
 
 .form-input,
 .form-textarea {
-width: 100%;
-border: 1px solid #dce5e9;
-border-radius: 12px;
-background: #fbfcfd;
-color: #405963;
-font-size: 12px;
-outline: none;
+  width: 100%;
+  border: 1px solid #dce5e9;
+  border-radius: 11px;
+  background: #fbfcfd;
+  color: #405963;
+  font-size: 12px;
+  outline: none;
 }
 
 .form-input {
-height: 43px;
-padding: 0 12px;
+  height: 42px;
+  padding: 0 11px;
 }
 
 .form-textarea {
-min-height: 110px;
-padding: 11px 12px;
-resize: vertical;
-line-height: 1.6;
+  min-height: 95px;
+  padding: 10px;
+  resize: vertical;
 }
 
-.form-input:focus,
-.form-textarea:focus {
-border-color: #e0a19b;
-background: white;
+.save-plan {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #d85f56;
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
 }
-
-.emergency-form-note {
-margin-bottom: 13px;
-padding: 11px;
-border-radius: 13px;
-background: #fff7df;
-color: #78652e;
-font-size: 10px;
-line-height: 1.6;
-}
-
-.demo-emergency-note {
-display: none;
-margin-bottom: 13px;
-padding: 11px;
-border-radius: 13px;
-background: #eef4ff;
-color: #496d88;
-font-size: 10px;
-line-height: 1.6;
-}
-
-.demo-emergency-note.show {
-display: block;
-}
-
-.save-emergency-button {
-width: 100%;
-padding: 13px;
-border: none;
-border-radius: 13px;
-background: #d95e55;
-color: white;
-font-size: 12px;
-font-weight: 900;
-cursor: pointer;
-}
-
-.save-emergency-button:disabled {
-opacity: .55;
-cursor: wait;
-}
-
-/* =========================
-반복 알림
-========================= */
 
 .repeat-alert {
-position: fixed;
-right: 18px;
-bottom: 18px;
-z-index: 2000;
-width:
-min(
-350px,
-calc(100vw - 36px)
-);
-display: none;
-padding: 15px;
-border: 2px solid #ffb1aa;
-border-radius: 18px;
-background: white;
-box-shadow:
-0 14px 35px rgba(0,0,0,.18);
+  display: none;
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2000;
+  width: min(350px, calc(100vw - 36px));
+  padding: 14px;
+  border: 2px solid #ffb3ad;
+  border-radius: 17px;
+  background: white;
+  box-shadow: 0 14px 35px rgba(0,0,0,.17);
 }
 
 .repeat-alert.show {
-display: block;
+  display: block;
 }
 
 .repeat-alert.low {
-border-color: #92bee8;
+  border-color: #8dbde6;
 }
 
 .repeat-alert.high {
-border-color: #efb46f;
-}
-
-.repeat-alert.vomit {
-border-color: #ed8c84;
+  border-color: #edb36e;
 }
 
 .repeat-title {
-margin-bottom: 5px;
-font-size: 14px;
-font-weight: 900;
-}
-
-.repeat-alert.low .repeat-title {
-color: #356b96;
-}
-
-.repeat-alert.high .repeat-title {
-color: #a66528;
-}
-
-.repeat-alert.vomit .repeat-title {
-color: #b34842;
+  margin-bottom: 5px;
+  color: #a44943;
+  font-size: 13px;
+  font-weight: 900;
 }
 
 .repeat-text {
-margin-bottom: 10px;
-color: #687c87;
-font-size: 11px;
-line-height: 1.5;
+  margin-bottom: 9px;
+  color: #687c87;
+  font-size: 10px;
 }
 
 .repeat-buttons {
-display: grid;
-grid-template-columns: 1fr auto;
-gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px;
 }
 
 .repeat-open,
 .repeat-close {
-border: none;
-border-radius: 11px;
-padding: 10px;
-font-size: 10px;
-font-weight: 900;
-cursor: pointer;
+  padding: 9px;
+  border: none;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
 .repeat-open {
-background: #ffe6e2;
-color: #a44640;
+  background: #ffe7e3;
+  color: #a44943;
 }
 
 .repeat-close {
-background: #f2f4f6;
-color: #6f808a;
+  background: #f1f3f4;
+  color: #70818a;
 }
 
-@media (max-width: 520px) {
+@media(max-width:520px) {
+  .demo-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.demo-banner {
-flex-direction: column;
-align-items: stretch;
+  .demo-actions {
+    flex-direction: column;
+  }
+
+  .today-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .student-actions {
+    grid-template-columns: 1fr;
+  }
 }
-
-.demo-switch {
-width: 100%;
-}
-
-.demo-actions {
-width: 100%;
-flex-direction: column;
-}
-
-.today-grid {
-grid-template-columns: 1fr 1fr;
-}
-
-.student-actions,
-.safety-action-grid {
-grid-template-columns: 1fr;
-}
-
-}
-
 </style>
 </head>
 
@@ -1092,658 +847,428 @@ grid-template-columns: 1fr;
 
 <div class="page">
 
-<div
-id="demoBanner"
-class="demo-banner">
+<div id="demoBanner" class="demo-banner">
+  <div>⭐ 체험 모드 · 👩‍🏫 교직원 화면</div>
 
-<div>
-⭐ 체험 모드 · 👩‍🏫 교직원 화면
-</div>
+  <div class="demo-actions">
+    <button class="demo-button" onclick="switchToStudent()">
+      👧 학생 화면
+    </button>
 
-<div class="demo-actions">
-
-<button
-class="demo-switch"
-onclick="switchToStudent()">
-
-👧 학생 화면
-
-</button>
-
-<button
-class="demo-switch super-switch"
-onclick="goSuperAdmin()">
-
-🛡️ 슈퍼관리
-
-</button>
-
-</div>
-
+    <button class="demo-button super-button" onclick="goSuperAdmin()">
+      🛡️ 슈퍼관리
+    </button>
+  </div>
 </div>
 
 <div class="top-card">
 
-<div class="top-row">
+  <div class="top-row">
 
-<div class="brand">
+    <div class="brand">
 
-<div class="brand-icon">
-👩‍🏫
+      <div class="brand-icon">
+        👩‍🏫
+      </div>
+
+      <div>
+        <div class="brand-title">
+          GlucoGuard 관리
+        </div>
+
+        <div class="brand-sub">
+          학생 안전 지원 및 교직원 교육
+        </div>
+      </div>
+
+    </div>
+
+    <button class="logout" onclick="logout()">
+      로그아웃
+    </button>
+
+  </div>
+
+  <div id="teacherInfo" class="teacher-info">
+    정보를 불러오는 중...
+  </div>
+
 </div>
 
-<div>
 
-<div class="brand-title">
-GlucoGuard 관리
-</div>
+<!-- 담당학생을 최상단으로 이동 -->
 
-<div class="brand-sub">
-학생 안전 지원 및 교직원 교육
-</div>
+<button class="student-toggle" onclick="toggleStudentList()">
 
-</div>
+  <div class="student-toggle-left">
 
-</div>
+    <div style="font-size:22px;">
+      👧
+    </div>
 
-<button
-class="logout-button"
-onclick="logout()">
+    <div>
+      <div id="studentToggleTitle" class="student-toggle-title">
+        담당 학생
+      </div>
 
-로그아웃
+      <div id="studentToggleSub" class="student-toggle-sub">
+        학생 목록 펼치기
+      </div>
+    </div>
+
+  </div>
+
+  <div id="studentToggleArrow">
+    ▼
+  </div>
 
 </button>
 
-</div>
+<div id="studentList" class="student-list"></div>
 
-<div
-id="teacherInfo"
-class="teacher-info">
-
-정보를 불러오는 중...
-
-</div>
-
-</div>
 
 <div class="today-board">
 
-<div class="today-head">
+  <div class="today-head">
 
-<div class="today-title">
-☀️ 오늘의 상황판
-</div>
+    <div class="today-title">
+      ☀️ 오늘의 상황판
+    </div>
 
-<div
-id="todayDate"
-class="today-date">
-</div>
+    <div id="todayDate" class="today-date"></div>
 
-</div>
+  </div>
 
-<div
-id="todaySummary"
-class="today-summary">
+  <div id="todaySummary" class="today-summary">
+    상황을 확인하고 있습니다.
+  </div>
 
-상황을 확인하고 있습니다.
+  <div class="today-grid">
 
-</div>
+    <div class="today-stat">
+      <div class="today-stat-icon">⚠️</div>
+      <div id="todayAttention" class="today-stat-value">0</div>
+      <div class="today-stat-label">확인 필요</div>
+    </div>
 
-<div class="today-grid">
+    <div class="today-stat">
+      <div class="today-stat-icon">📝</div>
+      <div id="todayRecords" class="today-stat-value">0</div>
+      <div class="today-stat-label">오늘 기록</div>
+    </div>
 
-<div class="today-stat">
+    <div class="today-stat">
+      <div class="today-stat-icon">🩸</div>
+      <div id="todayLow" class="today-stat-value">0</div>
+      <div class="today-stat-label">저혈당</div>
+    </div>
 
-<div class="today-stat-icon">
-⚠️
-</div>
+    <div class="today-stat">
+      <div class="today-stat-icon">🔺</div>
+      <div id="todayHigh" class="today-stat-value">0</div>
+      <div class="today-stat-label">고혈당</div>
+    </div>
 
-<div
-id="todayAttention"
-class="today-stat-value">
-0
-</div>
+  </div>
 
-<div class="today-stat-label">
-확인 필요
-</div>
-
-</div>
-
-<div class="today-stat">
-
-<div class="today-stat-icon">
-📝
-</div>
-
-<div
-id="todayRecords"
-class="today-stat-value">
-0
-</div>
-
-<div class="today-stat-label">
-오늘 기록
-</div>
+  <div id="todayMessage" class="today-message"></div>
 
 </div>
 
-<div class="today-stat">
-
-<div class="today-stat-icon">
-🩸
-</div>
-
-<div
-id="todayLow"
-class="today-stat-value">
-0
-</div>
-
-<div class="today-stat-label">
-저혈당
-</div>
-
-</div>
-
-<div class="today-stat">
-
-<div class="today-stat-icon">
-🔺
-</div>
-
-<div
-id="todayHigh"
-class="today-stat-value">
-0
-</div>
-
-<div class="today-stat-label">
-고혈당
-</div>
-
-</div>
-
-</div>
-
-<div
-id="todayMessage"
-class="today-message">
-</div>
-
-</div>
 
 <div class="main-tools">
 
-<button
-class="main-tool tool-emergency"
-onclick="goEmergency()">
+  <button class="main-tool tool-emergency" onclick="goEmergency()">
 
-<div class="tool-icon">
-🚨
-</div>
+    <div class="tool-icon">
+      🚨
+    </div>
 
-<div class="tool-content">
+    <div class="tool-content">
+      <div class="tool-title">
+        응급상황 대처
+      </div>
 
-<div class="tool-title">
-응급상황 대처
-</div>
+      <div class="tool-desc">
+        저혈당, 고혈당, 의식 저하 등 상황별 대응을 확인합니다.
+      </div>
+    </div>
 
-<div class="tool-desc">
-저혈당, 고혈당, 의식 저하 등 상황별 대응 순서를 빠르게 확인합니다.
-</div>
+  </button>
 
-</div>
 
-<div class="tool-arrow">
-›
-</div>
+  <button class="main-tool tool-education" onclick="goEducation()">
 
-</button>
+    <div class="tool-icon">
+      📘
+    </div>
 
-<button
-class="main-tool tool-education"
-onclick="goEducation()">
+    <div class="tool-content">
 
-<div class="tool-icon">
-📘
-</div>
+      <div class="tool-title">
+        교직원 교육
+      </div>
 
-<div class="tool-content">
+      <div class="tool-desc">
+        핵심 교육, 상황 연습, O/X 퀴즈로 학생 지원 방법을 익혀요.
+      </div>
 
-<div class="tool-title">
-교직원 교육
-</div>
+    </div>
 
-<div class="tool-desc">
-핵심 교육, 상황 연습, O/X 퀴즈로 학생 지원 방법을 익혀요.
-</div>
+  </button>
 
 </div>
 
-<div class="tool-arrow">
-›
-</div>
-
-</button>
-
-</div>
 
 <div class="summary-grid">
 
-<div class="summary-card">
+  <div class="summary-card">
 
-<div class="summary-label">
-관리 학생
-</div>
+    <div class="summary-label">
+      관리 학생
+    </div>
 
-<div
-id="studentCount"
-class="summary-value">
-0
-</div>
+    <div id="studentCount" class="summary-value">
+      0
+    </div>
 
-</div>
+  </div>
 
-<button
-class="summary-card clickable"
-onclick="openAttentionList()">
 
-<div class="summary-label">
-확인 필요
-</div>
+  <button class="summary-card clickable" onclick="openAttentionList()">
 
-<div
-id="attentionCount"
-class="summary-value attention-value">
-0
-</div>
+    <div class="summary-label">
+      확인 필요
+    </div>
 
-<div class="summary-hint">
-눌러서 상황 확인 ›
-</div>
+    <div id="attentionCount" class="summary-value attention-value">
+      0
+    </div>
 
-</button>
-
-</div>
-
-<button
-class="student-toggle"
-onclick="toggleStudentList()">
-
-<div class="student-toggle-left">
-
-<div style="font-size:22px;">
-👧
-</div>
-
-<div>
-
-<div
-id="studentToggleTitle"
-class="student-toggle-title">
-
-담당 학생
-
-</div>
-
-<div
-id="studentToggleSub"
-class="student-toggle-sub">
-
-학생 목록 펼치기
+  </button>
 
 </div>
 
 </div>
 
-</div>
 
-<div>
-▼
-</div>
+<!-- 학생 안전카드 -->
 
-</button>
-
-<div
-id="studentList"
-class="student-list">
-</div>
-
-</div>
-
-<!-- 안전카드 -->
-
-<div
-id="safetyOverlay"
-class="overlay">
+<div id="safetyOverlay" class="overlay">
 
 <div class="modal">
 
-<div class="modal-head">
+  <div class="modal-head">
 
-<div>
+    <div>
+      <div class="modal-title">
+        🪪 학생 안전카드
+      </div>
 
-<div class="modal-title">
-🪪 학생 안전카드
-</div>
+      <div class="modal-desc">
+        학생의 현재 상태와 핵심 응급정보를 확인합니다.
+      </div>
+    </div>
 
-<div class="modal-desc">
-학생의 핵심 정보와 응급정보를 빠르게 확인합니다.
-</div>
+    <button class="close" onclick="closeSafety()">
+      ×
+    </button>
 
-</div>
+  </div>
 
-<button
-class="close"
-onclick="closeSafety()">
-×
-</button>
-
-</div>
-
-<div id="safetyContent"></div>
+  <div id="safetyContent"></div>
 
 </div>
 
 </div>
 
-<!-- 확인필요 -->
 
-<div
-id="attentionOverlay"
-class="overlay">
+<!-- 확인 필요 목록 -->
+
+<div id="attentionOverlay" class="overlay">
 
 <div class="modal">
 
-<div class="modal-head">
+  <div class="modal-head">
 
-<div>
+    <div>
+      <div class="modal-title">
+        ⚠️ 확인 필요
+      </div>
 
-<div class="modal-title">
-⚠️ 확인 필요
-</div>
+      <div class="modal-desc">
+        아직 확인하지 않은 학생 기록입니다.
+      </div>
+    </div>
 
-<div class="modal-desc">
-아직 확인하지 않은 기록입니다.
-</div>
+    <button class="close" onclick="closeAttentionList()">
+      ×
+    </button>
 
-</div>
+  </div>
 
-<button
-class="close"
-onclick="closeAttentionList()">
-×
-</button>
-
-</div>
-
-<div id="attentionContent"></div>
+  <div id="attentionContent"></div>
 
 </div>
 
 </div>
+
 
 <!-- 응급정보 설정 -->
 
-<div
-id="emergencyPlanOverlay"
-class="overlay">
+<div id="planOverlay" class="overlay">
 
 <div class="modal">
 
-<div class="modal-head">
+  <div class="modal-head">
 
-<div>
+    <div>
+      <div class="modal-title">
+        🚨 학생 응급정보 설정
+      </div>
 
-<div class="modal-title">
-🚨 학생 응급정보 설정
-</div>
+      <div class="modal-desc">
+        처방 및 개별 관리계획의 정보를 그대로 입력합니다.
+      </div>
+    </div>
 
-<div class="modal-desc">
-응급상황에서 바로 확인할 핵심 정보만 입력합니다.
-</div>
+    <button class="close" onclick="closePlan()">
+      ×
+    </button>
 
-</div>
+  </div>
 
-<button
-class="close"
-onclick="closeEmergencyPlan()">
-×
-</button>
+  <div id="planStudent" class="form-profile"></div>
 
-</div>
+  <div class="form-note">
+    GlucoGuard는 용량을 계산하지 않습니다.
+    학생의 실제 처방과 개별 관리계획 내용을 그대로 입력해주세요.
+  </div>
 
-<div
-id="emergencyPlanStudent"
-class="emergency-form-profile">
-</div>
+  <div class="form-group">
+    <label class="form-label">
+      💉 글루카곤 제품명
+    </label>
 
-<div
-id="demoEmergencyNote"
-class="demo-emergency-note">
+    <input
+      id="glucagonProduct"
+      class="form-input"
+      placeholder="예: Baqsimi">
+  </div>
 
-⭐ 체험 계정입니다.
-여기에 입력한 정보는 실제 학생 데이터에 저장되지 않고
-현재 브라우저 탭에서만 체험용으로 유지됩니다.
+  <div class="form-group">
+    <label class="form-label">
+      💊 처방 용량 / 사용량
+    </label>
 
-</div>
+    <input
+      id="glucagonDose"
+      class="form-input"
+      placeholder="예: 3 mg · 1회분">
+  </div>
 
-<div class="emergency-form-note">
+  <div class="form-group">
+    <label class="form-label">
+      👃 투여 형태
+    </label>
 
-학생의 처방과 개별 당뇨병 관리계획을 기준으로 입력해주세요.
-GlucoGuard는 인슐린 용량이나 글루카곤 용량을 계산하지 않습니다.
+    <input
+      id="glucagonRoute"
+      class="form-input"
+      placeholder="예: 비강">
+  </div>
 
-</div>
+  <div class="form-group">
+    <label class="form-label">
+      📅 유효기간
+    </label>
 
-<div class="form-group">
+    <input
+      id="glucagonExpiry"
+      class="form-input"
+      type="date">
+  </div>
 
-<label
-class="form-label"
-for="glucagonProduct">
+  <div class="form-group">
+    <label class="form-label">
+      📍 글루카곤 보관 위치
+    </label>
 
-💉 글루카곤 제품명
+    <input
+      id="glucagonLocation"
+      class="form-input"
+      placeholder="예: 보건실 응급약품함">
+  </div>
 
-</label>
+  <div class="form-group">
+    <label class="form-label">
+      🎒 응급키트 위치
+    </label>
 
-<input
-id="glucagonProduct"
-class="form-input"
-type="text"
-placeholder="예: Baqsimi, Gvoke, 주사용 글루카곤">
+    <input
+      id="emergencyKitLocation"
+      class="form-input"
+      placeholder="예: 교사용 책상 오른쪽 서랍">
+  </div>
 
-</div>
+  <div class="form-group">
+    <label class="form-label">
+      📋 개별 응급계획
+    </label>
 
-<div class="form-group">
+    <textarea
+      id="planSummary"
+      class="form-textarea"
+      placeholder="학생별 개별 응급계획을 입력해주세요."></textarea>
+  </div>
 
-<label
-class="form-label"
-for="glucagonDose">
-
-💊 처방 용량 / 사용량
-
-</label>
-
-<input
-id="glucagonDose"
-class="form-input"
-type="text"
-placeholder="예: 3 mg, 1회분, 처방 라벨 그대로">
-
-<div class="form-help">
-
-앱이 용량을 계산하지 않습니다. 처방지 또는 제품 라벨에 적힌 내용을 그대로 입력해주세요.
-
-</div>
-
-</div>
-
-<div class="form-group">
-
-<label
-class="form-label"
-for="glucagonRoute">
-
-👃 투여 형태
-
-</label>
-
-<input
-id="glucagonRoute"
-class="form-input"
-type="text"
-placeholder="예: 비강, 근육주사, 피하주사, 기타">
-
-</div>
-
-<div class="form-group">
-
-<label
-class="form-label"
-for="glucagonExpiry">
-
-📅 유효기간
-
-</label>
-
-<input
-id="glucagonExpiry"
-class="form-input"
-type="date">
-
-<div class="form-help">
-
-제품에 표시된 유효기간을 입력해주세요.
+  <button id="savePlanButton" class="save-plan" onclick="savePlan()">
+    저장하기
+  </button>
 
 </div>
 
 </div>
 
-<div class="form-group">
-
-<label
-class="form-label"
-for="glucagonLocation">
-
-📍 글루카곤 보관 위치
-
-</label>
-
-<input
-id="glucagonLocation"
-class="form-input"
-type="text"
-placeholder="예: 보건실 응급약품함 상단">
-
-</div>
-
-<div class="form-group">
-
-<label
-class="form-label"
-for="emergencyKitLocation">
-
-🎒 응급키트 위치
-
-</label>
-
-<input
-id="emergencyKitLocation"
-class="form-input"
-type="text"
-placeholder="예: 3학년 4반 교사용 책상 오른쪽 서랍">
-
-</div>
-
-<div class="form-group">
-
-<label
-class="form-label"
-for="planSummary">
-
-📋 개별 응급계획 요약
-
-</label>
-
-<textarea
-id="planSummary"
-class="form-textarea"
-placeholder="응급상황에서 빠르게 확인할 핵심 내용을 적어주세요."></textarea>
-
-<div class="form-help">
-
-실제 처치는 학생의 개별 관리계획과
-의료진·학교 지침을 우선합니다.
-
-</div>
-
-</div>
-
-<button
-id="saveEmergencyPlanButton"
-class="save-emergency-button"
-onclick="saveEmergencyPlan()">
-
-저장하기
-
-</button>
-
-</div>
-
-</div>
 
 <!-- 반복 알림 -->
 
-<div
-id="repeatAlert"
-class="repeat-alert">
+<div id="repeatAlert" class="repeat-alert">
 
-<div
-id="repeatTitle"
-class="repeat-title">
-</div>
+  <div id="repeatTitle" class="repeat-title"></div>
+  <div id="repeatText" class="repeat-text"></div>
 
-<div
-id="repeatText"
-class="repeat-text">
-</div>
+  <div class="repeat-buttons">
 
-<div class="repeat-buttons">
+    <button class="repeat-open" onclick="openRepeatStudent()">
+      학생 안전카드
+    </button>
 
-<button
-class="repeat-open"
-onclick="openRepeatStudent()">
+    <button class="repeat-close" onclick="hideRepeatAlert()">
+      닫기
+    </button>
 
-학생 안전카드 열기
-
-</button>
-
-<button
-class="repeat-close"
-onclick="hideRepeatAlert()">
-
-닫기
-
-</button>
+  </div>
 
 </div>
 
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
-"https://zvksfkslavrqagytswco.supabase.co";
+  "https://zvksfkslavrqagytswco.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
+  "sb_publishable_SBPOr5LiersAEmwZkcSl_g_VAljE-HS";
 
 const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
-);
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
 
 let currentUser = null;
 let currentProfile = null;
@@ -1753,2916 +1278,2511 @@ let isDemoTeacher = false;
 let students = [];
 let allRecords = [];
 
+/*
+확인 완료한 실제 record_id.
+새로고침 후에도 Supabase에서 다시 불러옵니다.
+*/
+let acknowledgedRecordIds =
+  new Set();
+
 let attentionStudents = [];
 
 let selectedStudent = null;
 let selectedStatus = null;
 
-let selectedEmergencyStudent = null;
+let selectedPlanStudent = null;
 
 let studentListOpen = false;
 
 let repeatStudent = null;
 let repeatTimer = null;
 
-/* =========================
-시작
-========================= */
 
 window.addEventListener(
-"load",
-async function() {
+  "load",
+  async function() {
 
-setDate();
+    setDate();
 
-const allowed =
-await checkLogin();
+    const allowed =
+      await checkLogin();
 
-if (!allowed) {
-return;
-}
+    if (!allowed) {
+      return;
+    }
 
-await loadDashboard();
+    await loadDashboard();
 
-startRepeatTimer();
+    startRepeatTimer();
 
-}
+  }
 );
 
-/* =========================
-로그인
-========================= */
 
 async function checkLogin() {
 
-const {
-data
-} =
-await supabaseClient.auth
-.getSession();
+  const {
+    data
+  } =
+    await supabaseClient.auth
+      .getSession();
 
-if (
-!data.session
-) {
+  if (
+    !data.session
+  ) {
 
-window.location.href =
-"./login.html";
+    location.href =
+      "./login.html";
 
-return false;
+    return false;
 
-}
+  }
 
-currentUser =
-data.session.user;
+  currentUser =
+    data.session.user;
 
-const {
-data: profile,
-error
-} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,nickname,class_name,avatar,role"
-)
-.eq(
-"id",
-currentUser.id
-)
-.maybeSingle();
 
-if (
-error
-||
-!profile
-) {
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,nickname,class_name,avatar,role,is_super"
+      )
+      .eq(
+        "id",
+        currentUser.id
+      )
+      .maybeSingle();
 
-window.location.href =
-"./login.html";
 
-return false;
+  if (
+    error ||
+    !profile
+  ) {
 
-}
+    location.href =
+      "./login.html";
 
-currentProfile =
-profile;
+    return false;
 
-if (
-profile.role === "teacher"
-||
-profile.role === "nurse"
-) {
+  }
 
-isDemoTeacher =
-false;
 
-showTeacherInfo();
+  currentProfile =
+    profile;
 
-return true;
 
-}
+  if (
+    profile.role === "teacher" ||
+    profile.role === "nurse"
+  ) {
 
-if (
-profile.role === "demo"
-) {
+    isDemoTeacher =
+      false;
 
-const demoMode =
-sessionStorage.getItem(
-"demoMode"
-);
+    renderTeacherInfo();
 
-if (
-demoMode !== "teacher"
-) {
+    return true;
 
-sessionStorage.setItem(
-"demoMode",
-"teacher"
-);
+  }
 
-}
 
-isDemoTeacher =
-true;
+  if (
+    profile.role === "demo"
+  ) {
 
-document.getElementById(
-"demoBanner"
-).classList.add(
-"show"
-);
+    isDemoTeacher =
+      true;
 
-showTeacherInfo();
+    sessionStorage.setItem(
+      "demoMode",
+      "teacher"
+    );
 
-return true;
+    document.getElementById(
+      "demoBanner"
+    ).classList.add(
+      "show"
+    );
 
-}
+    renderTeacherInfo();
 
-if (
-profile.role === "student"
-) {
+    return true;
 
-window.location.href =
-"./index.html";
+  }
 
-return false;
+
+  if (
+    profile.role === "student"
+  ) {
+
+    location.href =
+      "./index.html";
+
+  }
+
+
+  return false;
 
 }
 
-return false;
+
+function renderTeacherInfo() {
+
+  document.getElementById(
+    "teacherInfo"
+  ).innerHTML =
+    isDemoTeacher
+      ?
+      `
+        <strong>GlucoGuard Demo</strong>
+        · 체험용 교직원 화면
+        <br>
+        <span style="font-size:9px;">
+          실제 학생 데이터는 표시되지 않습니다.
+        </span>
+      `
+      :
+      `
+        <strong>
+          ${escapeHtml(
+            currentProfile.nickname ||
+            "교직원"
+          )}
+        </strong>
+        ·
+        ${escapeHtml(
+          currentProfile.class_name ||
+          "담당 학급"
+        )}
+      `;
 
 }
 
-/* =========================
-교직원 정보
-========================= */
-
-function showTeacherInfo() {
-
-document.getElementById(
-"teacherInfo"
-).innerHTML =
-isDemoTeacher
-?
-`
-<strong>GlucoGuard Demo</strong>
-· 체험용 교직원 화면
-<br>
-<span style="font-size:10px;">
-실제 학생 데이터는 표시되지 않습니다.
-</span>
-`
-:
-`
-<strong>
-${escapeHtml(currentProfile.nickname || "교직원")}
-</strong>
-·
-${escapeHtml(currentProfile.class_name || "학급 정보 없음")}
-`;
-
-}
-
-/* =========================
-데모 학생 전환
-========================= */
 
 function switchToStudent() {
 
-if (
-!isDemoTeacher
-) {
-return;
-}
+  sessionStorage.setItem(
+    "demoMode",
+    "student"
+  );
 
-sessionStorage.setItem(
-"demoMode",
-"student"
-);
+  sessionStorage.removeItem(
+    "teacherSelectedStudent"
+  );
 
-sessionStorage.removeItem(
-"teacherSelectedStudent"
-);
-
-window.location.href =
-"./index.html";
+  location.href =
+    "./index.html";
 
 }
+
 
 function goSuperAdmin() {
 
-window.location.href =
-"./admin.html";
+  location.href =
+    "./admin.html";
 
 }
 
-/* =========================
-대시보드
-========================= */
+
+/* 대시보드 */
 
 async function loadDashboard() {
 
-if (
-isDemoTeacher
-) {
+  if (
+    isDemoTeacher
+  ) {
 
-students = [
-{
-id: currentUser.id,
-nickname: "체험 학생",
-class_name: "3학년 4반",
-avatar: "🐱"
+    students = [
+      {
+        id: currentUser.id,
+        nickname: "체험 학생",
+        class_name: "3학년 4반",
+        avatar: "🐱"
+      }
+    ];
+
+
+    const {
+      data: records
+    } =
+      await supabaseClient
+        .from("records")
+        .select(
+          "id,user_id,record_type,glucose_value,meal_type,intake_ratio,note,created_at"
+        )
+        .eq(
+          "user_id",
+          currentUser.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+    allRecords =
+      records || [];
+
+
+    renderDashboard();
+
+    return;
+
+  }
+
+
+  const {
+    data: links,
+    error: linkError
+  } =
+    await supabaseClient
+      .from("teacher_students")
+      .select("student_id")
+      .eq(
+        "teacher_id",
+        currentUser.id
+      );
+
+
+  if (
+    linkError
+  ) {
+
+    console.error(
+      linkError
+    );
+
+    students = [];
+    allRecords = [];
+
+    renderDashboard();
+
+    return;
+
+  }
+
+
+  const studentIds =
+    (links || [])
+      .map(
+        item =>
+          item.student_id
+      );
+
+
+  if (
+    studentIds.length === 0
+  ) {
+
+    students = [];
+    allRecords = [];
+
+    renderDashboard();
+
+    return;
+
+  }
+
+
+  const [
+    profilesResult,
+    recordsResult,
+    ackResult
+  ] =
+    await Promise.all([
+
+      supabaseClient
+        .from("profiles")
+        .select(
+          "id,nickname,class_name,avatar"
+        )
+        .in(
+          "id",
+          studentIds
+        ),
+
+      supabaseClient
+        .from("records")
+        .select(
+          "id,user_id,record_type,glucose_value,meal_type,intake_ratio,note,created_at"
+        )
+        .in(
+          "user_id",
+          studentIds
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        ),
+
+      supabaseClient
+        .from(
+          "alert_acknowledgements"
+        )
+        .select(
+          "record_id"
+        )
+        .eq(
+          "teacher_id",
+          currentUser.id
+        )
+
+    ]);
+
+
+  students =
+    profilesResult.data ||
+    [];
+
+
+  allRecords =
+    recordsResult.data ||
+    [];
+
+
+  if (
+    ackResult.error
+  ) {
+
+    console.error(
+      "확인 이력 조회 오류:",
+      ackResult.error
+    );
+
+    acknowledgedRecordIds =
+      new Set();
+
+  }
+  else {
+
+    acknowledgedRecordIds =
+      new Set(
+        (ackResult.data || [])
+          .map(
+            item =>
+              String(
+                item.record_id
+              )
+          )
+      );
+
+  }
+
+
+  renderDashboard();
+
 }
-];
 
-const {
-data: records,
-error
-} =
-await supabaseClient
-.from("records")
-.select(
-"id,user_id,record_type,glucose_value,meal_type,intake_ratio,note,created_at"
-)
-.eq(
-"user_id",
-currentUser.id
-)
-.order(
-"created_at",
-{
-ascending: false
-}
-);
 
-if (error) {
-
-console.error(error);
-allRecords = [];
-
-}
-else {
-
-allRecords =
-records || [];
-
-}
-
-renderDashboard();
-
-return;
-
-}
-
-const {
-data: links,
-error: linkError
-} =
-await supabaseClient
-.from("teacher_students")
-.select(
-"student_id"
-)
-.eq(
-"teacher_id",
-currentUser.id
-);
-
-if (
-linkError
-) {
-
-console.error(
-linkError
-);
-
-students = [];
-allRecords = [];
-
-renderDashboard();
-
-return;
-
-}
-
-const ids =
-(links || [])
-.map(
-item =>
-item.student_id
-);
-
-if (
-ids.length === 0
-) {
-
-students = [];
-allRecords = [];
-
-renderDashboard();
-
-return;
-
-}
-
-const {
-data: profiles
-} =
-await supabaseClient
-.from("profiles")
-.select(
-"id,nickname,class_name,avatar"
-)
-.in(
-"id",
-ids
-);
-
-students =
-profiles || [];
-
-const {
-data: records
-} =
-await supabaseClient
-.from("records")
-.select(
-"id,user_id,record_type,glucose_value,meal_type,intake_ratio,note,created_at"
-)
-.in(
-"user_id",
-ids
-)
-.order(
-"created_at",
-{
-ascending: false
-}
-);
-
-allRecords =
-records || [];
-
-renderDashboard();
-
-}
-
-/* =========================
-데모 알림
-========================= */
+/* 데모 확인기록 */
 
 function getDemoAckIds() {
 
-try {
+  try {
 
-return JSON.parse(
-sessionStorage.getItem(
-"demoAcknowledgedAlerts"
-)
-||
-"[]"
-);
+    return JSON.parse(
+      sessionStorage.getItem(
+        "demoAcknowledgedAlerts"
+      ) ||
+      "[]"
+    );
 
-}
-catch {
+  }
+  catch {
 
-return [];
+    return [];
 
-}
-
-}
-
-function saveDemoAckIds(ids) {
-
-sessionStorage.setItem(
-"demoAcknowledgedAlerts",
-JSON.stringify(ids)
-);
+  }
 
 }
 
-/* =========================
-데모 응급정보
-========================= */
 
-function getDefaultDemoEmergencyPlan() {
-
-return {
-
-glucagon_product:
-"Baqsimi",
-
-glucagon_dose:
-"3 mg · 1회분",
-
-glucagon_route:
-"비강",
-
-glucagon_expiry:
-"2027-03-31",
-
-glucagon_location:
-"보건실 응급약품함",
-
-emergency_kit_location:
-"교실 교사용 책상 오른쪽 서랍",
-
-plan_summary:
-"저혈당 또는 이상 증상이 있으면 학생을 혼자 두지 않고 가까운 교직원이 함께합니다. 실제 처치는 학생별 개별 관리계획을 확인합니다.",
-
-updated_at:
-new Date().toISOString()
-
-};
-
-}
-
-function getDemoEmergencyPlan() {
-
-try {
-
-const saved =
-sessionStorage.getItem(
-"demoEmergencyPlan"
-);
-
-if (
-!saved
+function saveDemoAckIds(
+  ids
 ) {
 
-return getDefaultDemoEmergencyPlan();
+  sessionStorage.setItem(
+    "demoAcknowledgedAlerts",
+    JSON.stringify(ids)
+  );
 
 }
 
-const parsed =
-JSON.parse(saved);
 
-return {
-...parsed,
+/* 알림 판정 */
 
-updated_at:
-parsed.updated_at
-||
-new Date().toISOString()
-};
-
-}
-catch {
-
-return getDefaultDemoEmergencyPlan();
-
-}
-
-}
-
-function saveDemoEmergencyPlan(plan) {
-
-sessionStorage.setItem(
-"demoEmergencyPlan",
-JSON.stringify(plan)
-);
-
-}
-
-/* =========================
-알림 판정
-========================= */
-
-function getAlert(record) {
-
-let type = null;
-let label = null;
-let reason = null;
-
-if (
-record.record_type === "glucose"
-&&
-record.glucose_value !== null
+function getAlert(
+  record
 ) {
 
-if (
-Number(record.glucose_value) < 70
+  let type = null;
+  let label = null;
+  let reason = null;
+
+
+  if (
+    record.record_type === "glucose" &&
+    record.glucose_value !== null
+  ) {
+
+    const value =
+      Number(
+        record.glucose_value
+      );
+
+
+    if (
+      value < 70
+    ) {
+
+      type = "low";
+      label = "🩸 저혈당 확인 필요";
+      reason =
+        `혈당 ${value} mg/dL`;
+
+    }
+    else if (
+      value >= 250
+    ) {
+
+      type = "high";
+      label = "🔺 고혈당 확인 필요";
+      reason =
+        `혈당 ${value} mg/dL`;
+
+    }
+
+  }
+
+
+  if (
+    record.record_type === "symptom"
+  ) {
+
+    const note =
+      parseNote(
+        record.note
+      );
+
+
+    const symptoms =
+      Array.isArray(
+        note.symptoms
+      )
+        ?
+        note.symptoms
+        :
+        [];
+
+
+    const vomiting =
+      symptoms.includes("구토") ||
+      symptoms.includes("토했어요");
+
+
+    const value =
+      record.glucose_value !== null
+        ?
+        Number(
+          record.glucose_value
+        )
+        :
+        null;
+
+
+    if (
+      value !== null &&
+      value < 70
+    ) {
+
+      type =
+        vomiting
+          ?
+          "vomit"
+          :
+          "low";
+
+      label =
+        vomiting
+          ?
+          "🤢 구토 동반 · 저혈당 확인 필요"
+          :
+          "🩸 저혈당 확인 필요";
+
+      reason =
+        `상태 기록 당시 혈당 ${value} mg/dL`;
+
+    }
+    else if (
+      value !== null &&
+      value >= 250
+    ) {
+
+      type =
+        vomiting
+          ?
+          "vomit"
+          :
+          "high";
+
+      label =
+        vomiting
+          ?
+          "🤢 구토 동반 · 고혈당 확인 필요"
+          :
+          "🔺 고혈당 확인 필요";
+
+      reason =
+        `상태 기록 당시 혈당 ${value} mg/dL`;
+
+    }
+    else if (
+      vomiting
+    ) {
+
+      type = "vomit";
+      label = "🤢 구토 증상 확인 필요";
+      reason = "학생이 구토 증상을 기록했습니다.";
+
+    }
+
+  }
+
+
+  if (!type) {
+    return null;
+  }
+
+
+  return {
+    type,
+    label,
+    reason,
+    record
+  };
+
+}
+
+
+function buildStatus(
+  records
 ) {
 
-type = "low";
-label = "🩸 저혈당 확인 필요";
-reason =
-`혈당 ${record.glucose_value} mg/dL`;
+  const latestGlucose =
+    records.find(
+      item =>
+        item.record_type === "glucose"
+    );
+
+
+  const latestMeal =
+    records.find(
+      item =>
+        item.record_type === "meal"
+    );
+
+
+  const latestSymptom =
+    records.find(
+      item =>
+        item.record_type === "symptom"
+    );
+
+
+  let alerts =
+    records
+      .map(
+        getAlert
+      )
+      .filter(Boolean);
+
+
+  /*
+  한 번 확인한 알림은 제거.
+  새 record_id가 생성되면 다시 알림.
+  */
+
+  if (
+    isDemoTeacher
+  ) {
+
+    const ids =
+      getDemoAckIds();
+
+
+    alerts =
+      alerts.filter(
+        alert =>
+          !ids.includes(
+            Number(
+              alert.record.id
+            )
+          )
+      );
+
+  }
+  else {
+
+    alerts =
+      alerts.filter(
+        alert =>
+          !acknowledgedRecordIds.has(
+            String(
+              alert.record.id
+            )
+          )
+      );
+
+  }
+
+
+  return {
+    latestGlucose,
+    latestMeal,
+    latestSymptom,
+    alerts,
+
+    needsAttention:
+      alerts.length > 0,
+
+    todayCount:
+      records.filter(
+        item =>
+          isToday(
+            item.created_at
+          )
+      ).length
+  };
 
 }
-
-else if (
-Number(record.glucose_value) >= 250
-) {
-
-type = "high";
-label = "🔺 고혈당 확인 필요";
-reason =
-`혈당 ${record.glucose_value} mg/dL`;
-
-}
-
-}
-
-if (
-record.record_type === "symptom"
-) {
-
-const note =
-parseNote(
-record.note
-);
-
-const symptoms =
-Array.isArray(
-note.symptoms
-)
-?
-note.symptoms
-:
-[];
-
-const vomiting =
-symptoms.includes("구토")
-||
-symptoms.includes("토했어요");
-
-if (
-record.glucose_value !== null
-&&
-Number(record.glucose_value) < 70
-) {
-
-type =
-vomiting
-?
-"vomit"
-:
-"low";
-
-label =
-vomiting
-?
-"🤢 구토 동반 · 저혈당 확인 필요"
-:
-"🩸 저혈당 확인 필요";
-
-reason =
-`상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
-
-}
-
-else if (
-record.glucose_value !== null
-&&
-Number(record.glucose_value) >= 250
-) {
-
-type =
-vomiting
-?
-"vomit"
-:
-"high";
-
-label =
-vomiting
-?
-"🤢 구토 동반 · 고혈당 확인 필요"
-:
-"🔺 고혈당 확인 필요";
-
-reason =
-`상태 기록 당시 혈당 ${record.glucose_value} mg/dL`;
-
-}
-
-else if (
-vomiting
-) {
-
-type = "vomit";
-label = "🤢 구토 증상 확인 필요";
-reason = "구토 증상 기록";
-
-}
-
-}
-
-if (!type) {
-return null;
-}
-
-return {
-type,
-label,
-reason,
-record
-};
-
-}
-/* =========================
-학생 상태
-========================= */
-
-function buildStatus(records) {
-
-const latestGlucose =
-records.find(
-item =>
-item.record_type ===
-"glucose"
-);
-
-const latestMeal =
-records.find(
-item =>
-item.record_type ===
-"meal"
-);
-
-const latestSymptom =
-records.find(
-item =>
-item.record_type ===
-"symptom"
-);
-
-let alerts =
-records
-.map(
-item =>
-getAlert(item)
-)
-.filter(Boolean);
-
-if (
-isDemoTeacher
-) {
-
-const acknowledged =
-getDemoAckIds();
-
-alerts =
-alerts.filter(
-alert =>
-!acknowledged.includes(
-Number(
-alert.record.id
-)
-)
-);
-
-}
-
-return {
-latestGlucose,
-latestMeal,
-latestSymptom,
-alerts,
-
-needsAttention:
-alerts.length > 0,
-
-todayCount:
-records.filter(
-item =>
-isToday(
-item.created_at
-)
-).length
-
-};
-
-}
-
-/* =========================
-대시보드 렌더링
-========================= */
-
 function renderDashboard() {
 
-attentionStudents =
-[];
+  const list =
+    document.getElementById(
+      "studentList"
+    );
 
-const container =
-document.getElementById(
-"studentList"
-);
 
-container.innerHTML =
-"";
+  list.innerHTML =
+    "";
 
-document.getElementById(
-"studentCount"
-).textContent =
-students.length;
 
-document.getElementById(
-"studentToggleTitle"
-).textContent =
-`담당 학생 ${students.length}명`;
+  attentionStudents =
+    [];
 
-students.forEach(
-student => {
 
-const records =
-allRecords.filter(
-record =>
-record.user_id ===
-student.id
-);
+  document.getElementById(
+    "studentCount"
+  ).textContent =
+    students.length;
 
-const status =
-buildStatus(
-records
-);
 
-if (
-status.needsAttention
-) {
+  document.getElementById(
+    "studentToggleTitle"
+  ).textContent =
+    `담당 학생 ${students.length}명`;
 
-attentionStudents.push(
-{
-student,
-status
+
+  students.forEach(
+    student => {
+
+      const records =
+        allRecords.filter(
+          record =>
+            record.user_id ===
+            student.id
+        );
+
+
+      const status =
+        buildStatus(
+          records
+        );
+
+
+      if (
+        status.needsAttention
+      ) {
+
+        attentionStudents.push(
+          {
+            student,
+            status
+          }
+        );
+
+      }
+
+
+      list.appendChild(
+        createStudentCard(
+          student,
+          status
+        )
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "attentionCount"
+  ).textContent =
+    attentionStudents.length;
+
+
+  renderTodayBoard();
+
+
+  if (
+    attentionStudents.length === 0
+  ) {
+
+    hideRepeatAlert();
+
+  }
+
 }
-);
 
-}
-
-container.appendChild(
-createStudentCard(
-student,
-status
-)
-);
-
-}
-);
-
-document.getElementById(
-"attentionCount"
-).textContent =
-attentionStudents.length;
-
-renderTodayBoard();
-
-if (
-attentionStudents.length === 0
-) {
-
-hideRepeatAlert();
-
-}
-
-}
-
-/* =========================
-오늘 상황판
-========================= */
 
 function renderTodayBoard() {
 
-const todayRecords =
-allRecords.filter(
-record =>
-isToday(
-record.created_at
-)
-);
+  const todayRecords =
+    allRecords.filter(
+      record =>
+        isToday(
+          record.created_at
+        )
+    );
 
-let low = 0;
-let high = 0;
 
-attentionStudents.forEach(
-item => {
+  let low = 0;
+  let high = 0;
 
-item.status.alerts.forEach(
-alert => {
 
-if (
-!isToday(
-alert.record.created_at
-)
-) {
-return;
-}
+  attentionStudents.forEach(
+    item => {
 
-if (
-alert.type === "low"
-) {
-low++;
-}
+      item.status.alerts.forEach(
+        alert => {
 
-if (
-alert.type === "high"
-) {
-high++;
-}
+          if (
+            !isToday(
+              alert.record.created_at
+            )
+          ) {
+            return;
+          }
 
-if (
-alert.type === "vomit"
-) {
 
-if (
-alert.record.glucose_value !== null
-&&
-Number(
-alert.record.glucose_value
-) < 70
-) {
-low++;
-}
+          const value =
+            alert.record.glucose_value !== null
+              ?
+              Number(
+                alert.record.glucose_value
+              )
+              :
+              null;
 
-if (
-alert.record.glucose_value !== null
-&&
-Number(
-alert.record.glucose_value
-) >= 250
-) {
-high++;
-}
 
-}
+          if (
+            value !== null &&
+            value < 70
+          ) {
+            low++;
+          }
 
-}
-);
 
-}
-);
+          if (
+            value !== null &&
+            value >= 250
+          ) {
+            high++;
+          }
 
-document.getElementById(
-"todayAttention"
-).textContent =
-attentionStudents.length;
+        }
+      );
 
-document.getElementById(
-"todayRecords"
-).textContent =
-todayRecords.length;
+    }
+  );
 
-document.getElementById(
-"todayLow"
-).textContent =
-low;
 
-document.getElementById(
-"todayHigh"
-).textContent =
-high;
+  document.getElementById(
+    "todayAttention"
+  ).textContent =
+    attentionStudents.length;
 
-document.getElementById(
-"todaySummary"
-).textContent =
-`담당 학생 ${students.length}명 · 오늘 기록 ${todayRecords.length}건 · 현재 확인 필요 ${attentionStudents.length}명`;
 
-const message =
-document.getElementById(
-"todayMessage"
-);
+  document.getElementById(
+    "todayRecords"
+  ).textContent =
+    todayRecords.length;
 
-if (
-attentionStudents.length === 0
-) {
 
-message.className =
-"today-message";
+  document.getElementById(
+    "todayLow"
+  ).textContent =
+    low;
 
-message.textContent =
-"✅ 현재 미확인 이상 기록이 없습니다.";
 
-}
-else {
+  document.getElementById(
+    "todayHigh"
+  ).textContent =
+    high;
 
-message.className =
-"today-message attention";
 
-message.textContent =
-`⚠️ ${attentionStudents[0].student.nickname} 학생에게 확인이 필요한 기록이 있습니다.`;
+  document.getElementById(
+    "todaySummary"
+  ).textContent =
+    `담당 학생 ${students.length}명 · 오늘 기록 ${todayRecords.length}건 · 현재 확인 필요 ${attentionStudents.length}명`;
 
-}
+
+  const message =
+    document.getElementById(
+      "todayMessage"
+    );
+
+
+  if (
+    attentionStudents.length === 0
+  ) {
+
+    message.className =
+      "today-message";
+
+    message.textContent =
+      "✅ 현재 미확인 이상 기록이 없습니다.";
+
+  }
+  else {
+
+    message.className =
+      "today-message attention";
+
+    message.textContent =
+      `⚠️ ${attentionStudents[0].student.nickname} 학생에게 확인이 필요한 기록이 있습니다.`;
+
+  }
 
 }
 
-/* =========================
-학생 카드
-========================= */
 
 function createStudentCard(
-student,
-status
+  student,
+  status
 ) {
 
-const card =
-document.createElement(
-"div"
-);
+  const card =
+    document.createElement(
+      "div"
+    );
 
-card.className =
-"student-card"
-+
-(
-status.needsAttention
-?
-" attention"
-:
-""
-);
 
-const glucose =
-status.latestGlucose
-&&
-status.latestGlucose.glucose_value !== null
-?
-`${status.latestGlucose.glucose_value} mg/dL`
-:
-"기록 없음";
+  card.className =
+    "student-card"
+    +
+    (
+      status.needsAttention
+        ?
+        " attention"
+        :
+        ""
+    );
 
-card.innerHTML =
-`
-<div class="student-head">
 
-<div class="student-avatar">
-${escapeHtml(student.avatar || "🐻")}
-</div>
+  const glucose =
+    status.latestGlucose?.glucose_value !== null &&
+    status.latestGlucose?.glucose_value !== undefined
+      ?
+      `${status.latestGlucose.glucose_value} mg/dL`
+      :
+      "기록 없음";
 
-<div class="student-info">
 
-<div class="student-name">
-${escapeHtml(student.nickname)}
-</div>
+  card.innerHTML = `
 
-<div class="student-class">
-${escapeHtml(student.class_name || "")}
-· 오늘 기록 ${status.todayCount}건
-</div>
+    <div class="student-head">
 
-</div>
+      <div class="student-avatar">
+        ${escapeHtml(
+          student.avatar ||
+          "🐻"
+        )}
+      </div>
 
-${
-status.needsAttention
-?
-`
-<div class="badge badge-alert">
-확인 필요
-</div>
-`
-:
-`
-<div class="badge badge-ok">
-확인 완료
-</div>
-`
+      <div class="student-info">
+
+        <div class="student-name">
+          ${escapeHtml(
+            student.nickname ||
+            "학생"
+          )}
+        </div>
+
+        <div class="student-class">
+          ${escapeHtml(
+            student.class_name ||
+            ""
+          )}
+          · 오늘 기록
+          ${status.todayCount}건
+        </div>
+
+      </div>
+
+      ${
+        status.needsAttention
+          ?
+          `
+            <div class="badge badge-alert">
+              확인 필요
+            </div>
+          `
+          :
+          `
+            <div class="badge badge-ok">
+              확인 완료
+            </div>
+          `
+      }
+
+    </div>
+
+    ${
+      status.needsAttention
+        ?
+        `
+          <div class="alert-list">
+            ${createAlerts(
+              status.alerts
+            )}
+          </div>
+        `
+        :
+        ""
+    }
+
+    <div class="record-grid">
+
+      <div class="record-box">
+
+        <div class="record-label">
+          🩸 최근 혈당
+        </div>
+
+        <div class="record-value">
+          ${escapeHtml(
+            glucose
+          )}
+        </div>
+
+      </div>
+
+      <div class="record-box">
+
+        <div class="record-label">
+          🍱 최근 식사
+        </div>
+
+        <div class="record-value">
+          ${escapeHtml(
+            mealText(
+              status.latestMeal
+            )
+          )}
+        </div>
+
+      </div>
+
+      <div class="record-box full">
+
+        <div class="record-label">
+          🙂 최근 몸 상태
+        </div>
+
+        <div class="record-value">
+          ${escapeHtml(
+            symptomText(
+              status.latestSymptom
+            )
+          )}
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="safety-button">
+      🪪 학생 안전카드
+    </button>
+
+    <button class="plan-button">
+      🚨 응급정보 설정
+    </button>
+
+    <div class="student-actions">
+
+      <button class="student-action action-records">
+        📊 기록 보기
+      </button>
+
+      <button class="student-action action-symptom">
+        🙂 몸 상태
+      </button>
+
+      <button class="student-action action-contact">
+        📞 연락처
+      </button>
+
+    </div>
+  `;
+
+
+  card.querySelector(
+    ".safety-button"
+  ).onclick =
+    () =>
+      openSafety(
+        student,
+        status
+      );
+
+
+  card.querySelector(
+    ".plan-button"
+  ).onclick =
+    () =>
+      openPlan(
+        student
+      );
+
+
+  card.querySelector(
+    ".action-records"
+  ).onclick =
+    () =>
+      openStudentPage(
+        student,
+        "records.html"
+      );
+
+
+  card.querySelector(
+    ".action-symptom"
+  ).onclick =
+    () =>
+      openStudentPage(
+        student,
+        "symptom.html"
+      );
+
+
+  card.querySelector(
+    ".action-contact"
+  ).onclick =
+    () => {
+
+      if (
+        isDemoTeacher
+      ) {
+
+        alert(
+          "체험 모드에서는 실제 연락처를 사용하지 않습니다."
+        );
+
+        return;
+
+      }
+
+      openStudentPage(
+        student,
+        "emergency.html"
+      );
+
+    };
+
+
+  return card;
+
 }
 
-</div>
 
-${
-status.needsAttention
-?
-`
-<div class="alert-list">
-${createAlerts(status.alerts)}
-</div>
-`
-:
-""
-}
-
-<div class="record-grid">
-
-<div class="record-box">
-
-<div class="record-label">
-🩸 최근 혈당
-</div>
-
-<div class="record-value">
-${escapeHtml(glucose)}
-</div>
-
-</div>
-
-<div class="record-box">
-
-<div class="record-label">
-🍱 최근 식사
-</div>
-
-<div class="record-value">
-${escapeHtml(
-mealText(
-status.latestMeal
-)
-)}
-</div>
-
-</div>
-
-<div class="record-box full">
-
-<div class="record-label">
-🙂 최근 몸 상태
-</div>
-
-<div class="record-value">
-${escapeHtml(
-symptomText(
-status.latestSymptom
-)
-)}
-</div>
-
-</div>
-
-</div>
-
-<button class="safety-button">
-🪪 학생 안전카드 보기
-</button>
-
-<button class="emergency-plan-button">
-🚨 응급정보 설정
-</button>
-
-<div class="student-actions">
-
-<button class="student-action action-records">
-📊 학생 기록 보기
-</button>
-
-<button class="student-action action-symptom">
-🙂 몸 상태 기록
-</button>
-
-<button class="student-action action-contact">
-📞 비상연락처
-</button>
-
-<button class="student-action action-disabled">
-🔑 비밀번호
-</button>
-
-</div>
-`;
-
-card.querySelector(
-".safety-button"
-).onclick =
-() =>
-openSafety(
-student,
-status
-);
-
-card.querySelector(
-".emergency-plan-button"
-).onclick =
-function() {
-
-openEmergencyPlan(
-student
-);
-
-};
-
-card.querySelector(
-".action-records"
-).onclick =
-function() {
-
-if (
-isDemoTeacher
+function openStudentPage(
+  student,
+  page
 ) {
 
-sessionStorage.setItem(
-"demoMode",
-"student"
-);
+  if (
+    isDemoTeacher
+  ) {
 
-sessionStorage.removeItem(
-"teacherSelectedStudent"
-);
+    sessionStorage.setItem(
+      "demoMode",
+      "student"
+    );
 
-window.location.href =
-"./records.html";
+    sessionStorage.removeItem(
+      "teacherSelectedStudent"
+    );
 
-return;
+  }
+  else {
 
-}
+    sessionStorage.setItem(
+      "teacherSelectedStudent",
+      student.id
+    );
 
-sessionStorage.setItem(
-"teacherSelectedStudent",
-student.id
-);
+  }
 
-window.location.href =
-"./records.html";
 
-};
-
-card.querySelector(
-".action-symptom"
-).onclick =
-function() {
-
-if (
-isDemoTeacher
-) {
-
-sessionStorage.setItem(
-"demoMode",
-"student"
-);
-
-window.location.href =
-"./symptom.html";
-
-return;
+  location.href =
+    `./${page}`;
 
 }
 
-sessionStorage.setItem(
-"teacherSelectedStudent",
-student.id
-);
 
-window.location.href =
-"./symptom.html";
-
-};
-
-card.querySelector(
-".action-contact"
-).onclick =
-function() {
-
-if (
-isDemoTeacher
-) {
-
-alert(
-"체험 모드에서는 실제 연락처를 사용하지 않습니다."
-);
-
-return;
-
-}
-
-sessionStorage.setItem(
-"teacherSelectedStudent",
-student.id
-);
-
-window.location.href =
-"./emergency.html";
-
-};
-
-card.querySelector(
-".action-disabled"
-).onclick =
-function() {
-
-if (
-isDemoTeacher
-) {
-
-alert(
-"체험 모드에서는 비밀번호 변경 기능을 사용하지 않습니다."
-);
-
-}
-
-};
-
-return card;
-
-}
-
-/* =========================
-응급정보 불러오기
-========================= */
-
-async function getEmergencyPlanForStudent(
-student
-) {
-
-if (
-isDemoTeacher
-) {
-
-return getDemoEmergencyPlan();
-
-}
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from(
-"student_emergency_plans"
-)
-.select(
-"glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary,updated_at"
-)
-.eq(
-"student_id",
-student.id
-)
-.maybeSingle();
-
-if (
-error
-) {
-
-console.error(
-error
-);
-
-return {
-load_error: true
-};
-
-}
-
-return data;
-
-}
-
-/* =========================
-안전카드 응급정보 HTML
-========================= */
-
-function createSafetyEmergencyHtml(
-plan
-) {
-
-if (
-plan
-&&
-plan.load_error
-) {
-
-return `
-<div class="safety-emergency">
-
-<div class="safety-emergency-head">
-
-<div class="safety-emergency-title">
-🚨 응급정보
-</div>
-
-</div>
-
-<div class="safety-emergency-empty">
-응급정보를 불러오지 못했습니다.
-</div>
-
-</div>
-`;
-
-}
-
-if (
-!plan
-) {
-
-return `
-<div class="safety-emergency">
-
-<div class="safety-emergency-head">
-
-<div class="safety-emergency-title">
-🚨 응급정보
-</div>
-
-</div>
-
-<div class="safety-emergency-empty">
-⚠️ 아직 등록된 응급정보가 없습니다.
-</div>
-
-</div>
-`;
-
-}
-
-const hasInformation =
-plan.glucagon_product
-||
-plan.glucagon_dose
-||
-plan.glucagon_route
-||
-plan.glucagon_expiry
-||
-plan.glucagon_location
-||
-plan.emergency_kit_location
-||
-plan.plan_summary;
-
-if (
-!hasInformation
-) {
-
-return `
-<div class="safety-emergency">
-
-<div class="safety-emergency-head">
-
-<div class="safety-emergency-title">
-🚨 응급정보
-</div>
-
-</div>
-
-<div class="safety-emergency-empty">
-⚠️ 아직 등록된 응급정보가 없습니다.
-</div>
-
-</div>
-`;
-
-}
-
-return `
-<div class="safety-emergency">
-
-<div class="safety-emergency-head">
-
-<div class="safety-emergency-title">
-🚨 응급정보
-</div>
-
-<div class="safety-emergency-date">
-
-${plan.updated_at
-?
-`마지막 확인: ${escapeHtml(formatEmergencyDate(plan.updated_at))}`
-:
-""
-}
-
-</div>
-
-</div>
-
-<div class="safety-emergency-list">
-
-${createSafetyEmergencyItem(
-"💉 글루카곤",
-plan.glucagon_product
-)}
-
-${createSafetyEmergencyItem(
-"💊 처방 용량 / 사용량",
-plan.glucagon_dose
-)}
-
-${createSafetyEmergencyItem(
-"👃 투여 형태",
-plan.glucagon_route
-)}
-
-${createSafetyEmergencyItem(
-"📅 유효기간",
-formatExpiryDate(plan.glucagon_expiry)
-)}
-
-${createSafetyEmergencyItem(
-"📍 글루카곤 보관 위치",
-plan.glucagon_location
-)}
-
-${createSafetyEmergencyItem(
-"🎒 응급키트 위치",
-plan.emergency_kit_location
-)}
-
-${createSafetyEmergencyItem(
-"📋 개별 응급계획",
-plan.plan_summary
-)}
-
-</div>
-
-</div>
-`;
-
-}
-
-function createSafetyEmergencyItem(
-label,
-value
-) {
-
-if (
-!value
-) {
-return "";
-}
-
-return `
-<div class="safety-emergency-item">
-
-<div class="safety-emergency-label">
-${escapeHtml(label)}
-</div>
-
-<div class="safety-emergency-value">
-${escapeHtml(value)}
-</div>
-
-</div>
-`;
-
-}
-
-/* =========================
-안전카드
-========================= */
+/* 안전카드 */
 
 async function openSafety(
-student,
-status
+  student,
+  status
 ) {
 
-selectedStudent =
-student;
+  selectedStudent =
+    student;
 
-selectedStatus =
-status;
+  selectedStatus =
+    status;
 
-document.getElementById(
-"safetyOverlay"
-).style.display =
-"flex";
 
-document.getElementById(
-"safetyContent"
-).innerHTML =
-`
-<div class="safe-message">
-학생 정보를 불러오는 중...
-</div>
-`;
+  document.getElementById(
+    "safetyOverlay"
+  ).style.display =
+    "flex";
 
-const emergencyPlan =
-await getEmergencyPlanForStudent(
-student
-);
 
-if (
-selectedStudent?.id !== student.id
-) {
-return;
-}
+  document.getElementById(
+    "safetyContent"
+  ).innerHTML =
+    `
+      <div class="safe-message">
+        학생 정보를 불러오는 중...
+      </div>
+    `;
 
-const glucose =
-status.latestGlucose
-&&
-status.latestGlucose.glucose_value !== null
-?
-`${status.latestGlucose.glucose_value} mg/dL`
-:
-"기록 없음";
 
-document.getElementById(
-"safetyContent"
-).innerHTML =
-`
-<div class="safety-profile">
+  const plan =
+    await getEmergencyPlan(
+      student
+    );
 
-<div class="safety-avatar">
-${escapeHtml(student.avatar || "🐻")}
-</div>
 
-<div>
+  if (
+    selectedStudent?.id !==
+    student.id
+  ) {
+    return;
+  }
 
-<div class="safety-name">
-${escapeHtml(student.nickname)}
-</div>
 
-<div class="safety-class">
-${escapeHtml(student.class_name || "")}
-· 오늘 기록 ${status.todayCount}건
-</div>
+  document.getElementById(
+    "safetyContent"
+  ).innerHTML = `
 
-</div>
+    <div class="safety-profile">
 
-</div>
+      <div class="safety-avatar">
+        ${escapeHtml(
+          student.avatar ||
+          "🐻"
+        )}
+      </div>
 
-${
-status.needsAttention
-?
-`
-<div class="alert-list">
-${createAlerts(status.alerts)}
-</div>
+      <div>
 
-<button
-class="ack-button"
-onclick="acknowledgeAlerts()">
+        <div class="safety-name">
+          ${escapeHtml(
+            student.nickname
+          )}
+        </div>
 
-✅ 확인 완료
+        <div class="safety-class">
+          ${escapeHtml(
+            student.class_name ||
+            ""
+          )}
+        </div>
 
-</button>
-`
-:
-`
-<div class="safe-message">
-✅ 현재 미확인 이상 기록이 없습니다.
-</div>
-`
-}
+      </div>
 
-${createSafetyEmergencyHtml(
-emergencyPlan
-)}
+    </div>
 
-<div class="safety-grid">
+    ${
+      status.needsAttention
+        ?
+        `
+          <div class="alert-list">
+            ${createAlerts(
+              status.alerts
+            )}
+          </div>
 
-<div class="safety-box">
+          <button
+            class="ack-button"
+            onclick="acknowledgeAlerts()">
 
-<div class="safety-label">
-🩸 최근 혈당
-</div>
+            ✅ 확인 완료
 
-<div class="safety-value">
-${escapeHtml(glucose)}
-</div>
+          </button>
+        `
+        :
+        `
+          <div class="safe-message">
+            ✅ 현재 미확인 이상 기록이 없습니다.
+          </div>
+        `
+    }
 
-</div>
+    ${renderEmergencyPlan(
+      plan
+    )}
 
-<div class="safety-box">
+    <div class="record-grid">
 
-<div class="safety-label">
-📝 오늘 기록
-</div>
+      <div class="record-box">
 
-<div class="safety-value">
-${status.todayCount}건
-</div>
+        <div class="record-label">
+          📝 오늘 기록
+        </div>
 
-</div>
+        <div class="record-value">
+          ${status.todayCount}건
+        </div>
 
-<div class="safety-box full">
+      </div>
 
-<div class="safety-label">
-🙂 최근 몸 상태
-</div>
+      <div class="record-box">
 
-<div class="safety-value">
-${escapeHtml(
-symptomText(
-status.latestSymptom
-)
-)}
-</div>
+        <div class="record-label">
+          🩸 최근 혈당
+        </div>
 
-</div>
+        <div class="record-value">
+          ${
+            status.latestGlucose?.glucose_value
+              ??
+              "기록 없음"
+          }
+        </div>
 
-</div>
+      </div>
 
-${
-isDemoTeacher
-?
-`
-<div class="safe-message">
-⭐ 체험 모드에서는 실제 학생·보호자 정보가 표시되지 않습니다.
-</div>
-`
-:
-""
-}
+    </div>
 
-<div class="safety-action-grid">
-
-<button
-class="safety-action emergency-action"
-onclick="goStudentEmergency()">
-
-🚨 응급상황 대처
-
-</button>
-
-<button
-class="safety-action records-action"
-onclick="openSafetyRecords()">
-
-📊 전체 기록 보기
-
-</button>
-
-</div>
-`;
+  `;
 
 }
 
-/* =========================
-안전카드 닫기
-========================= */
 
 function closeSafety() {
 
-document.getElementById(
-"safetyOverlay"
-).style.display =
-"none";
+  document.getElementById(
+    "safetyOverlay"
+  ).style.display =
+    "none";
 
-selectedStudent =
-null;
+  selectedStudent =
+    null;
 
-selectedStatus =
-null;
-
-}
-
-/* =========================
-학생별 응급대처 이동
-========================= */
-
-function goStudentEmergency() {
-
-if (
-selectedStudent
-&&
-!isDemoTeacher
-) {
-
-sessionStorage.setItem(
-"teacherSelectedStudent",
-selectedStudent.id
-);
+  selectedStatus =
+    null;
 
 }
 
-window.location.href =
-"./emergency-guide.html";
-
-}
-
-/* =========================
-응급정보 설정
-========================= */
-
-async function openEmergencyPlan(
-student
-) {
-
-selectedEmergencyStudent =
-student;
-
-document.getElementById(
-"emergencyPlanOverlay"
-).style.display =
-"flex";
-
-document.getElementById(
-"emergencyPlanStudent"
-).innerHTML =
-`
-<div class="emergency-form-avatar">
-
-${escapeHtml(
-student.avatar || "🐻"
-)}
-
-</div>
-
-<div>
-
-<div class="emergency-form-name">
-
-${escapeHtml(
-student.nickname || "학생"
-)}
-
-</div>
-
-<div class="emergency-form-class">
-
-${escapeHtml(
-student.class_name ||
-"학급 정보 없음"
-)}
-
-</div>
-
-</div>
-`;
-
-clearEmergencyPlanForm();
-
-const demoNote =
-document.getElementById(
-"demoEmergencyNote"
-);
-
-if (
-isDemoTeacher
-) {
-
-demoNote.classList.add(
-"show"
-);
-
-const data =
-getDemoEmergencyPlan();
-
-document.getElementById(
-"glucagonProduct"
-).value =
-data.glucagon_product || "";
-
-document.getElementById(
-"glucagonDose"
-).value =
-data.glucagon_dose || "";
-
-document.getElementById(
-"glucagonRoute"
-).value =
-data.glucagon_route || "";
-
-document.getElementById(
-"glucagonExpiry"
-).value =
-data.glucagon_expiry || "";
-
-document.getElementById(
-"glucagonLocation"
-).value =
-data.glucagon_location || "";
-
-document.getElementById(
-"emergencyKitLocation"
-).value =
-data.emergency_kit_location || "";
-
-document.getElementById(
-"planSummary"
-).value =
-data.plan_summary || "";
-
-return;
-
-}
-
-demoNote.classList.remove(
-"show"
-);
-
-const saveButton =
-document.getElementById(
-"saveEmergencyPlanButton"
-);
-
-saveButton.disabled =
-true;
-
-saveButton.textContent =
-"불러오는 중...";
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from(
-"student_emergency_plans"
-)
-.select(
-"glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary"
-)
-.eq(
-"student_id",
-student.id
-)
-.maybeSingle();
-
-saveButton.disabled =
-false;
-
-saveButton.textContent =
-"저장하기";
-
-if (
-error
-) {
-
-console.error(
-error
-);
-
-alert(
-"응급정보를 불러오지 못했어요."
-);
-
-return;
-
-}
-
-document.getElementById(
-"glucagonProduct"
-).value =
-data?.glucagon_product || "";
-
-document.getElementById(
-"glucagonDose"
-).value =
-data?.glucagon_dose || "";
-
-document.getElementById(
-"glucagonRoute"
-).value =
-data?.glucagon_route || "";
-
-document.getElementById(
-"glucagonExpiry"
-).value =
-data?.glucagon_expiry || "";
-
-document.getElementById(
-"glucagonLocation"
-).value =
-data?.glucagon_location || "";
-
-document.getElementById(
-"emergencyKitLocation"
-).value =
-data?.emergency_kit_location || "";
-
-document.getElementById(
-"planSummary"
-).value =
-data?.plan_summary || "";
-
-}
-
-/* =========================
-응급정보 초기화
-========================= */
-
-function clearEmergencyPlanForm() {
-
-document.getElementById(
-"glucagonProduct"
-).value =
-"";
-
-document.getElementById(
-"glucagonDose"
-).value =
-"";
-
-document.getElementById(
-"glucagonRoute"
-).value =
-"";
-
-document.getElementById(
-"glucagonExpiry"
-).value =
-"";
-
-document.getElementById(
-"glucagonLocation"
-).value =
-"";
-
-document.getElementById(
-"emergencyKitLocation"
-).value =
-"";
-
-document.getElementById(
-"planSummary"
-).value =
-"";
-
-}
-
-/* =========================
-응급정보 닫기
-========================= */
-
-function closeEmergencyPlan() {
-
-document.getElementById(
-"emergencyPlanOverlay"
-).style.display =
-"none";
-
-selectedEmergencyStudent =
-null;
-
-clearEmergencyPlanForm();
-
-}
-
-/* =========================
-응급정보 저장
-========================= */
-
-async function saveEmergencyPlan() {
-
-if (
-!selectedEmergencyStudent
-) {
-return;
-}
-
-const glucagonProduct =
-document.getElementById(
-"glucagonProduct"
-).value.trim();
-
-const glucagonDose =
-document.getElementById(
-"glucagonDose"
-).value.trim();
-
-const glucagonRoute =
-document.getElementById(
-"glucagonRoute"
-).value.trim();
-
-const glucagonExpiry =
-document.getElementById(
-"glucagonExpiry"
-).value;
-
-const glucagonLocation =
-document.getElementById(
-"glucagonLocation"
-).value.trim();
-
-const emergencyKitLocation =
-document.getElementById(
-"emergencyKitLocation"
-).value.trim();
-
-const planSummary =
-document.getElementById(
-"planSummary"
-).value.trim();
-
-/* 데모 */
-
-if (
-isDemoTeacher
-) {
-
-saveDemoEmergencyPlan(
-{
-glucagon_product:
-glucagonProduct,
-
-glucagon_dose:
-glucagonDose,
-
-glucagon_route:
-glucagonRoute,
-
-glucagon_expiry:
-glucagonExpiry,
-
-glucagon_location:
-glucagonLocation,
-
-emergency_kit_location:
-emergencyKitLocation,
-
-plan_summary:
-planSummary,
-
-updated_at:
-new Date().toISOString()
-}
-);
-
-alert(
-"체험용 응급정보를 저장했어요.\n이 브라우저 탭에서만 유지됩니다."
-);
-
-closeEmergencyPlan();
-
-return;
-
-}
-
-/* 실제 교직원 */
-
-const saveButton =
-document.getElementById(
-"saveEmergencyPlanButton"
-);
-
-saveButton.disabled =
-true;
-
-saveButton.textContent =
-"저장 중...";
-
-const {
-error
-} =
-await supabaseClient
-.from(
-"student_emergency_plans"
-)
-.upsert(
-{
-student_id:
-selectedEmergencyStudent.id,
-
-glucagon_product:
-glucagonProduct || null,
-
-glucagon_dose:
-glucagonDose || null,
-
-glucagon_route:
-glucagonRoute || null,
-
-glucagon_expiry:
-glucagonExpiry || null,
-
-glucagon_location:
-glucagonLocation || null,
-
-emergency_kit_location:
-emergencyKitLocation || null,
-
-plan_summary:
-planSummary || null
-},
-{
-onConflict:
-"student_id"
-}
-);
-
-saveButton.disabled =
-false;
-
-saveButton.textContent =
-"저장하기";
-
-if (
-error
-) {
-
-console.error(
-error
-);
-
-alert(
-"응급정보를 저장하지 못했어요."
-);
-
-return;
-
-}
-
-alert(
-"학생 응급정보를 저장했어요."
-);
-
-closeEmergencyPlan();
-
-}
-
-/* =========================
-알림 HTML
-========================= */
 
 function createAlerts(
-alerts
+  alerts
 ) {
 
-return alerts
-.map(
-alert =>
-`
-<div class="alert-item alert-${alert.type}">
+  return alerts
+    .map(
+      alert => `
+        <div class="alert-item alert-${alert.type}">
+          <div>
+            ${escapeHtml(
+              alert.label
+            )}
+          </div>
 
-<div>
-${escapeHtml(alert.label)}
-</div>
-
-<div style="
-margin-top:3px;
-font-weight:600;
-">
-
-${escapeHtml(alert.reason)}
-
-</div>
-
-</div>
-`
-)
-.join("");
+          <div style="margin-top:3px;font-weight:600;">
+            ${escapeHtml(
+              alert.reason
+            )}
+          </div>
+        </div>
+      `
+    )
+    .join("");
 
 }
 
-/* =========================
-확인 완료
-========================= */
+
+/* 확인 완료 */
 
 async function acknowledgeAlerts() {
 
-if (
-!selectedStatus
-||
-selectedStatus.alerts.length === 0
-) {
-return;
+  if (
+    !selectedStatus ||
+    selectedStatus.alerts.length === 0
+  ) {
+    return;
+  }
+
+
+  /*
+  데모는 현재 브라우저 탭에서 유지.
+  */
+
+  if (
+    isDemoTeacher
+  ) {
+
+    const current =
+      getDemoAckIds();
+
+
+    selectedStatus.alerts.forEach(
+      alert => {
+
+        const id =
+          Number(
+            alert.record.id
+          );
+
+
+        if (
+          !current.includes(id)
+        ) {
+
+          current.push(id);
+
+        }
+
+      }
+    );
+
+
+    saveDemoAckIds(
+      current
+    );
+
+
+    closeSafety();
+
+    renderDashboard();
+
+    hideRepeatAlert();
+
+
+    alert(
+      "확인 완료 처리했습니다."
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+  실제 교직원은 DB에 저장.
+  이미 저장된 값이 있어도 문제가 생기지 않도록 upsert 사용.
+  */
+
+  const rows =
+    selectedStatus.alerts.map(
+      alert => ({
+        teacher_id:
+          currentUser.id,
+
+        student_id:
+          selectedStudent.id,
+
+        record_id:
+          alert.record.id
+      })
+    );
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "alert_acknowledgements"
+      )
+      .upsert(
+        rows,
+        {
+          onConflict:
+            "teacher_id,record_id"
+        }
+      );
+
+
+  if (
+    error
+  ) {
+
+    /*
+    unique constraint가 없는 기존 DB에서도
+    insert 방식으로 재시도.
+    */
+
+    const {
+      error: insertError
+    } =
+      await supabaseClient
+        .from(
+          "alert_acknowledgements"
+        )
+        .insert(
+          rows
+        );
+
+
+    if (
+      insertError
+    ) {
+
+      console.error(
+        insertError
+      );
+
+      alert(
+        "확인 완료 처리에 실패했습니다."
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  /*
+  화면에서도 즉시 제거.
+  */
+
+  selectedStatus.alerts.forEach(
+    alert => {
+
+      acknowledgedRecordIds.add(
+        String(
+          alert.record.id
+        )
+      );
+
+    }
+  );
+
+
+  closeSafety();
+
+  hideRepeatAlert();
+
+  renderDashboard();
+
+
+  alert(
+    "확인 완료 처리했습니다."
+  );
+
 }
 
-if (
-isDemoTeacher
-) {
 
-const current =
-getDemoAckIds();
-
-selectedStatus.alerts.forEach(
-alert => {
-
-const id =
-Number(
-alert.record.id
-);
-
-if (
-!current.includes(id)
-) {
-
-current.push(id);
-
-}
-
-}
-);
-
-saveDemoAckIds(
-current
-);
-
-closeSafety();
-
-renderDashboard();
-
-alert(
-"확인 완료 처리했습니다."
-);
-
-return;
-
-}
-
-const rows =
-selectedStatus.alerts.map(
-alert => ({
-teacher_id:
-currentUser.id,
-
-student_id:
-selectedStudent.id,
-
-record_id:
-alert.record.id
-})
-);
-
-const {
-error
-} =
-await supabaseClient
-.from(
-"alert_acknowledgements"
-)
-.insert(
-rows
-);
-
-if (
-error
-) {
-
-alert(
-"확인 완료 처리에 실패했습니다."
-);
-
-return;
-
-}
-
-closeSafety();
-
-alert(
-"확인 완료 처리했습니다."
-);
-
-await loadDashboard();
-
-}
-
-/* =========================
-확인 필요 목록
-========================= */
+/* 확인 필요 목록 */
 
 function openAttentionList() {
 
-document.getElementById(
-"attentionOverlay"
-).style.display =
-"flex";
+  document.getElementById(
+    "attentionOverlay"
+  ).style.display =
+    "flex";
 
-const container =
-document.getElementById(
-"attentionContent"
-);
 
-if (
-attentionStudents.length === 0
-) {
+  const area =
+    document.getElementById(
+      "attentionContent"
+    );
 
-container.innerHTML =
-`
-<div class="safe-message">
-✅ 현재 확인이 필요한 학생이 없습니다.
-</div>
-`;
 
-return;
+  if (
+    attentionStudents.length === 0
+  ) {
+
+    area.innerHTML =
+      `
+        <div class="safe-message">
+          ✅ 현재 확인이 필요한 학생이 없습니다.
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  area.innerHTML =
+    "";
+
+
+  attentionStudents.forEach(
+    item => {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.style.marginBottom =
+        "13px";
+
+
+      div.innerHTML = `
+
+        <div class="safety-profile">
+
+          <div class="safety-avatar">
+            ${escapeHtml(
+              item.student.avatar ||
+              "🐻"
+            )}
+          </div>
+
+          <div>
+            <div class="safety-name">
+              ${escapeHtml(
+                item.student.nickname
+              )}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="alert-list">
+          ${createAlerts(
+            item.status.alerts
+          )}
+        </div>
+
+        <button class="ack-button">
+          🪪 학생 안전카드 열기
+        </button>
+      `;
+
+
+      div.querySelector(
+        "button"
+      ).onclick =
+        function() {
+
+          closeAttentionList();
+
+          openSafety(
+            item.student,
+            item.status
+          );
+
+        };
+
+
+      area.appendChild(
+        div
+      );
+
+    }
+  );
 
 }
 
-container.innerHTML =
-"";
-
-attentionStudents.forEach(
-item => {
-
-const div =
-document.createElement(
-"div"
-);
-
-div.style.marginBottom =
-"14px";
-
-div.innerHTML =
-`
-<div class="safety-profile">
-
-<div class="safety-avatar">
-${escapeHtml(item.student.avatar || "🐻")}
-</div>
-
-<div>
-
-<div class="safety-name">
-${escapeHtml(item.student.nickname)}
-</div>
-
-<div class="safety-class">
-${escapeHtml(item.student.class_name || "")}
-</div>
-
-</div>
-
-</div>
-
-<div class="alert-list">
-${createAlerts(item.status.alerts)}
-</div>
-
-<button class="ack-button">
-🪪 학생 안전카드 열기
-</button>
-`;
-
-div.querySelector(
-"button"
-).onclick =
-function() {
-
-closeAttentionList();
-
-openSafety(
-item.student,
-item.status
-);
-
-};
-
-container.appendChild(
-div
-);
-
-}
-);
-
-}
 
 function closeAttentionList() {
 
-document.getElementById(
-"attentionOverlay"
-).style.display =
-"none";
+  document.getElementById(
+    "attentionOverlay"
+  ).style.display =
+    "none";
 
 }
 
-/* =========================
-반복 알림
-========================= */
+
+/* 응급정보 */
+
+function defaultDemoPlan() {
+
+  return {
+    glucagon_product:
+      "Baqsimi",
+
+    glucagon_dose:
+      "3 mg · 1회분",
+
+    glucagon_route:
+      "비강",
+
+    glucagon_expiry:
+      "2027-03-31",
+
+    glucagon_location:
+      "보건실 응급약품함",
+
+    emergency_kit_location:
+      "교실 교사용 책상 오른쪽 서랍",
+
+    plan_summary:
+      "학생을 혼자 두지 않고 개별 관리계획을 확인합니다."
+  };
+
+}
+
+
+function getDemoPlan() {
+
+  try {
+
+    return JSON.parse(
+      sessionStorage.getItem(
+        "demoEmergencyPlan"
+      )
+    ) ||
+    defaultDemoPlan();
+
+  }
+  catch {
+
+    return defaultDemoPlan();
+
+  }
+
+}
+
+
+async function getEmergencyPlan(
+  student
+) {
+
+  if (
+    isDemoTeacher
+  ) {
+
+    return getDemoPlan();
+
+  }
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from(
+        "student_emergency_plans"
+      )
+      .select(
+        "glucagon_product,glucagon_dose,glucagon_route,glucagon_expiry,glucagon_location,emergency_kit_location,plan_summary,updated_at"
+      )
+      .eq(
+        "student_id",
+        student.id
+      )
+      .maybeSingle();
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+    return null;
+
+  }
+
+
+  return data;
+
+}
+
+
+function renderEmergencyPlan(
+  plan
+) {
+
+  if (!plan) {
+
+    return `
+      <div class="safety-emergency">
+        <div class="safety-emergency-title">
+          🚨 응급정보
+        </div>
+
+        <div class="safe-message">
+          아직 등록된 응급정보가 없습니다.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  return `
+    <div class="safety-emergency">
+
+      <div class="safety-emergency-title">
+        🚨 응급정보
+      </div>
+
+      ${planItem(
+        "💉 글루카곤",
+        plan.glucagon_product
+      )}
+
+      ${planItem(
+        "💊 용량 / 사용량",
+        plan.glucagon_dose
+      )}
+
+      ${planItem(
+        "👃 투여 형태",
+        plan.glucagon_route
+      )}
+
+      ${planItem(
+        "📅 유효기간",
+        plan.glucagon_expiry
+      )}
+
+      ${planItem(
+        "📍 글루카곤 위치",
+        plan.glucagon_location
+      )}
+
+      ${planItem(
+        "🎒 응급키트 위치",
+        plan.emergency_kit_location
+      )}
+
+      ${planItem(
+        "📋 개별 계획",
+        plan.plan_summary
+      )}
+
+    </div>
+  `;
+
+}
+
+
+function planItem(
+  label,
+  value
+) {
+
+  if (!value) {
+    return "";
+  }
+
+
+  return `
+    <div class="emergency-item">
+
+      <div class="emergency-label">
+        ${escapeHtml(label)}
+      </div>
+
+      <div class="emergency-value">
+        ${escapeHtml(value)}
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+async function openPlan(
+  student
+) {
+
+  selectedPlanStudent =
+    student;
+
+
+  document.getElementById(
+    "planOverlay"
+  ).style.display =
+    "flex";
+
+
+  document.getElementById(
+    "planStudent"
+  ).innerHTML = `
+
+    <div class="form-avatar">
+      ${escapeHtml(
+        student.avatar ||
+        "🐻"
+      )}
+    </div>
+
+    <div>
+      <div class="form-name">
+        ${escapeHtml(
+          student.nickname
+        )}
+      </div>
+
+      <div class="form-class">
+        ${escapeHtml(
+          student.class_name ||
+          ""
+        )}
+      </div>
+    </div>
+  `;
+
+
+  const plan =
+    await getEmergencyPlan(
+      student
+    ) || {};
+
+
+  document.getElementById(
+    "glucagonProduct"
+  ).value =
+    plan.glucagon_product ||
+    "";
+
+
+  document.getElementById(
+    "glucagonDose"
+  ).value =
+    plan.glucagon_dose ||
+    "";
+
+
+  document.getElementById(
+    "glucagonRoute"
+  ).value =
+    plan.glucagon_route ||
+    "";
+
+
+  document.getElementById(
+    "glucagonExpiry"
+  ).value =
+    plan.glucagon_expiry ||
+    "";
+
+
+  document.getElementById(
+    "glucagonLocation"
+  ).value =
+    plan.glucagon_location ||
+    "";
+
+
+  document.getElementById(
+    "emergencyKitLocation"
+  ).value =
+    plan.emergency_kit_location ||
+    "";
+
+
+  document.getElementById(
+    "planSummary"
+  ).value =
+    plan.plan_summary ||
+    "";
+
+}
+
+
+function closePlan() {
+
+  document.getElementById(
+    "planOverlay"
+  ).style.display =
+    "none";
+
+  selectedPlanStudent =
+    null;
+
+}
+
+
+async function savePlan() {
+
+  if (
+    !selectedPlanStudent
+  ) {
+    return;
+  }
+
+
+  const plan = {
+
+    glucagon_product:
+      document.getElementById(
+        "glucagonProduct"
+      ).value.trim() ||
+      null,
+
+    glucagon_dose:
+      document.getElementById(
+        "glucagonDose"
+      ).value.trim() ||
+      null,
+
+    glucagon_route:
+      document.getElementById(
+        "glucagonRoute"
+      ).value.trim() ||
+      null,
+
+    glucagon_expiry:
+      document.getElementById(
+        "glucagonExpiry"
+      ).value ||
+      null,
+
+    glucagon_location:
+      document.getElementById(
+        "glucagonLocation"
+      ).value.trim() ||
+      null,
+
+    emergency_kit_location:
+      document.getElementById(
+        "emergencyKitLocation"
+      ).value.trim() ||
+      null,
+
+    plan_summary:
+      document.getElementById(
+        "planSummary"
+      ).value.trim() ||
+      null
+
+  };
+
+
+  if (
+    isDemoTeacher
+  ) {
+
+    sessionStorage.setItem(
+      "demoEmergencyPlan",
+      JSON.stringify(plan)
+    );
+
+    alert(
+      "체험용 응급정보를 저장했습니다."
+    );
+
+    closePlan();
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "savePlanButton"
+    );
+
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "저장 중...";
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "student_emergency_plans"
+      )
+      .upsert(
+        {
+          student_id:
+            selectedPlanStudent.id,
+
+          ...plan
+        },
+        {
+          onConflict:
+            "student_id"
+        }
+      );
+
+
+  button.disabled =
+    false;
+
+  button.textContent =
+    "저장하기";
+
+
+  if (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+    alert(
+      "응급정보 저장에 실패했습니다."
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "응급정보를 저장했습니다."
+  );
+
+  closePlan();
+
+}
+
+
+/* 반복 알림 */
 
 function startRepeatTimer() {
 
-setTimeout(
-showRepeatAlert,
-3000
-);
+  setTimeout(
+    showRepeatAlert,
+    3000
+  );
 
-repeatTimer =
-setInterval(
-showRepeatAlert,
-60000
-);
+
+  repeatTimer =
+    setInterval(
+      showRepeatAlert,
+      60000
+    );
 
 }
+
 
 function showRepeatAlert() {
 
-if (
-attentionStudents.length === 0
-) {
+  if (
+    attentionStudents.length === 0
+  ) {
 
-hideRepeatAlert();
+    hideRepeatAlert();
 
-return;
+    return;
+
+  }
+
+
+  repeatStudent =
+    attentionStudents[0];
+
+
+  const alert =
+    repeatStudent.status.alerts[0];
+
+
+  if (!alert) {
+
+    hideRepeatAlert();
+
+    return;
+
+  }
+
+
+  const box =
+    document.getElementById(
+      "repeatAlert"
+    );
+
+
+  box.className =
+    `repeat-alert show ${alert.type}`;
+
+
+  document.getElementById(
+    "repeatTitle"
+  ).textContent =
+    `${alert.label} · ${repeatStudent.student.nickname}`;
+
+
+  document.getElementById(
+    "repeatText"
+  ).textContent =
+    alert.reason;
 
 }
 
-repeatStudent =
-attentionStudents[0];
-
-const alert =
-repeatStudent.status.alerts[0];
-
-const box =
-document.getElementById(
-"repeatAlert"
-);
-
-box.className =
-`repeat-alert show ${alert.type}`;
-
-document.getElementById(
-"repeatTitle"
-).textContent =
-`${alert.label} · ${repeatStudent.student.nickname}`;
-
-document.getElementById(
-"repeatText"
-).textContent =
-alert.reason;
-
-}
 
 function hideRepeatAlert() {
 
-document.getElementById(
-"repeatAlert"
-).className =
-"repeat-alert";
+  document.getElementById(
+    "repeatAlert"
+  ).className =
+    "repeat-alert";
 
 }
+
 
 function openRepeatStudent() {
 
-if (
-!repeatStudent
-) {
-return;
+  if (
+    !repeatStudent
+  ) {
+    return;
+  }
+
+
+  hideRepeatAlert();
+
+
+  openSafety(
+    repeatStudent.student,
+    repeatStudent.status
+  );
+
 }
 
-hideRepeatAlert();
 
-openSafety(
-repeatStudent.student,
-repeatStudent.status
-);
-
-}
-
-/* =========================
-학생 목록
-========================= */
+/* 기타 */
 
 function toggleStudentList() {
 
-studentListOpen =
-!studentListOpen;
+  studentListOpen =
+    !studentListOpen;
 
-document.getElementById(
-"studentList"
-).classList.toggle(
-"open",
-studentListOpen
-);
 
-document.getElementById(
-"studentToggleSub"
-).textContent =
-studentListOpen
-?
-"학생 목록 접기"
-:
-"학생 목록 펼치기";
+  document.getElementById(
+    "studentList"
+  ).classList.toggle(
+    "open",
+    studentListOpen
+  );
 
-}
 
-/* =========================
-기록 이동
-========================= */
+  document.getElementById(
+    "studentToggleSub"
+  ).textContent =
+    studentListOpen
+      ?
+      "학생 목록 접기"
+      :
+      "학생 목록 펼치기";
 
-function openSafetyRecords() {
 
-if (
-!selectedStudent
-) {
-return;
-}
-
-if (
-isDemoTeacher
-) {
-
-sessionStorage.setItem(
-"demoMode",
-"student"
-);
-
-sessionStorage.removeItem(
-"teacherSelectedStudent"
-);
-
-window.location.href =
-"./records.html";
-
-return;
+  document.getElementById(
+    "studentToggleArrow"
+  ).textContent =
+    studentListOpen
+      ?
+      "▲"
+      :
+      "▼";
 
 }
 
-sessionStorage.setItem(
-"teacherSelectedStudent",
-selectedStudent.id
-);
-
-window.location.href =
-"./records.html";
-
-}
-
-/* =========================
-메뉴
-========================= */
 
 function goEmergency() {
 
-sessionStorage.removeItem(
-"teacherSelectedStudent"
-);
-
-window.location.href =
-"./emergency-guide.html";
+  location.href =
+    "./emergency-guide.html";
 
 }
+
 
 function goEducation() {
 
-window.location.href =
-"./teacher-education.html";
+  location.href =
+    "./teacher-education.html";
 
 }
 
-/* =========================
-식사 텍스트
-========================= */
 
 function mealText(
-record
+  record
 ) {
 
-if (!record) {
-return "기록 없음";
-}
+  if (!record) {
+    return "기록 없음";
+  }
 
-const ratio =
-Number(
-record.intake_ratio
-);
 
-let amount =
-"";
+  const ratio =
+    Number(
+      record.intake_ratio
+    );
 
-if (
-ratio === 1
-) {
 
-amount =
-"다 먹었어요";
+  const text = {
+    1: "다 먹었어요",
+    .5: "반 정도",
+    .25: "조금",
+    0: "안 먹었어요"
+  }[ratio];
 
-}
-else if (
-ratio === .5
-) {
 
-amount =
-"반 정도 먹었어요";
-
-}
-else if (
-ratio === .25
-) {
-
-amount =
-"조금 먹었어요";
-
-}
-else if (
-ratio === 0
-) {
-
-amount =
-"안 먹었어요";
+  return (
+    record.meal_type ||
+    "식사"
+  )
+  +
+  (
+    text
+      ?
+      ` · ${text}`
+      :
+      ""
+  );
 
 }
 
-return (
-(record.meal_type || "식사")
-+
-(
-amount
-?
-" · " + amount
-:
-""
-)
-);
-
-}
-
-/* =========================
-상태 텍스트
-========================= */
 
 function symptomText(
-record
+  record
 ) {
 
-if (!record) {
-return "기록 없음";
+  if (!record) {
+    return "기록 없음";
+  }
+
+
+  const note =
+    parseNote(
+      record.note
+    );
+
+
+  const parts =
+    [];
+
+
+  if (
+    note.context
+  ) {
+    parts.push(
+      note.context
+    );
+  }
+
+
+  if (
+    Array.isArray(
+      note.symptoms
+    )
+  ) {
+
+    parts.push(
+      note.symptoms.join(", ")
+    );
+
+  }
+
+
+  if (
+    record.glucose_value !== null
+  ) {
+
+    parts.push(
+      `혈당 ${record.glucose_value} mg/dL`
+    );
+
+  }
+
+
+  return (
+    parts.join(" · ") ||
+    "몸 상태 기록"
+  );
+
 }
 
-const data =
-parseNote(
-record.note
-);
 
-const values =
-[];
-
-if (
-data.context
+function parseNote(
+  value
 ) {
 
-values.push(
-data.context
-);
+  try {
+
+    return JSON.parse(
+      value ||
+      "{}"
+    );
+
+  }
+  catch {
+
+    return {};
+
+  }
 
 }
 
-if (
-Array.isArray(
-data.symptoms
-)
-&&
-data.symptoms.length
+
+function isToday(
+  value
 ) {
 
-values.push(
-data.symptoms.join(", ")
-);
+  const date =
+    new Date(value);
+
+  const now =
+    new Date();
+
+
+  return (
+    date.getFullYear() ===
+    now.getFullYear()
+    &&
+    date.getMonth() ===
+    now.getMonth()
+    &&
+    date.getDate() ===
+    now.getDate()
+  );
 
 }
 
-if (
-record.glucose_value !== null
-) {
-
-values.push(
-`혈당 ${record.glucose_value} mg/dL`
-);
-
-}
-
-return (
-values.join(" · ")
-||
-"몸 상태 기록"
-);
-
-}
-
-/* =========================
-응급정보 날짜
-========================= */
-
-function formatExpiryDate(
-value
-) {
-
-if (!value) {
-return "";
-}
-
-const parts =
-String(value).split("-");
-
-if (
-parts.length !== 3
-) {
-
-return String(value);
-
-}
-
-return (
-parts[0]
-+
-"."
-+
-parts[1]
-+
-"."
-+
-parts[2]
-);
-
-}
-
-function formatEmergencyDate(
-value
-) {
-
-if (!value) {
-return "";
-}
-
-const date =
-new Date(
-value
-);
-
-if (
-Number.isNaN(
-date.getTime()
-)
-) {
-
-return "";
-
-}
-
-return (
-date.getFullYear()
-+
-"."
-+
-String(
-date.getMonth() + 1
-).padStart(
-2,
-"0"
-)
-+
-"."
-+
-String(
-date.getDate()
-).padStart(
-2,
-"0"
-)
-);
-
-}
-
-/* =========================
-날짜
-========================= */
 
 function setDate() {
 
-const now =
-new Date();
+  const now =
+    new Date();
 
-document.getElementById(
-"todayDate"
-).textContent =
-`${now.getMonth() + 1}월 ${now.getDate()}일`;
 
-}
-
-function isToday(
-value
-) {
-
-const date =
-new Date(
-value
-);
-
-const today =
-new Date();
-
-return (
-date.getFullYear() ===
-today.getFullYear()
-&&
-date.getMonth() ===
-today.getMonth()
-&&
-date.getDate() ===
-today.getDate()
-);
+  document.getElementById(
+    "todayDate"
+  ).textContent =
+    `${now.getMonth()+1}월 ${now.getDate()}일`;
 
 }
 
-/* =========================
-공통
-========================= */
-
-function parseNote(
-note
-) {
-
-try {
-
-return JSON.parse(
-note || "{}"
-);
-
-}
-catch {
-
-return {};
-
-}
-
-}
 
 function escapeHtml(
-value
+  value
 ) {
 
-return String(
-value ?? ""
-)
-.replaceAll(
-"&",
-"&amp;"
-)
-.replaceAll(
-"<",
-"&lt;"
-)
-.replaceAll(
-">",
-"&gt;"
-)
-.replaceAll(
-'"',
-"&quot;"
-)
-.replaceAll(
-"'",
-"&#039;"
-);
+  return String(
+    value ??
+    ""
+  )
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
 
 }
 
-/* =========================
-로그아웃
-========================= */
 
 async function logout() {
 
-sessionStorage.removeItem(
-"demoMode"
-);
+  sessionStorage.clear();
 
-sessionStorage.removeItem(
-"teacherSelectedStudent"
-);
+  await supabaseClient.auth
+    .signOut();
 
-sessionStorage.removeItem(
-"demoAcknowledgedAlerts"
-);
-
-sessionStorage.removeItem(
-"demoEmergencyPlan"
-);
-
-await supabaseClient.auth
-.signOut();
-
-window.location.href =
-"./login.html";
+  location.href =
+    "./login.html";
 
 }
 
-/* =========================
-모달 밖 클릭
-========================= */
 
 [
-"safetyOverlay",
-"attentionOverlay",
-"emergencyPlanOverlay"
+  "safetyOverlay",
+  "attentionOverlay",
+  "planOverlay"
 ].forEach(
-id => {
+  id => {
 
-document.getElementById(
-id
-).addEventListener(
-"click",
-function(event) {
+    document.getElementById(
+      id
+    ).addEventListener(
+      "click",
+      function(event) {
 
-if (
-event.target !== this
-) {
-return;
-}
+        if (
+          event.target !== this
+        ) {
+          return;
+        }
 
-if (
-id === "safetyOverlay"
-) {
 
-closeSafety();
+        if (
+          id === "safetyOverlay"
+        ) {
 
-return;
+          closeSafety();
 
-}
+        }
+        else if (
+          id === "attentionOverlay"
+        ) {
 
-if (
-id === "emergencyPlanOverlay"
-) {
+          closeAttentionList();
 
-closeEmergencyPlan();
+        }
+        else {
 
-return;
+          closePlan();
 
-}
+        }
 
-this.style.display =
-"none";
+      }
+    );
 
-}
-);
-
-}
+  }
 );
 
 </script>
